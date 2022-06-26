@@ -11,7 +11,7 @@
     }
   }
   .anime {
-  @apply transition duration-300 ease-in-out;
+  @apply motion-safe:transition duration-[0.1s] ease-in ;
 }
 
 .page-enter-active, .page-leave-active {
@@ -20,4 +20,8 @@
 .page-enter, .page-leave-active {
   opacity: 0;
 }
+
+input{
+ padding: 12px 8px !important;
+ }
   

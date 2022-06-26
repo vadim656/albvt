@@ -6,7 +6,7 @@
           <span class="font-semibold text-[17px]">Пациентам</span>
           <ul class="flex flex-col gap-[14px]">
             <li v-for="(item, i) in footermenu" :key="i">
-              <NuxtLink :to="item.link" class="cursor-pointer text-[13px]">
+              <NuxtLink :to="item.link" class="cursor-pointer text-[13px] !text-[#343434] hover:!text-main">
                 {{ item.name }}
               </NuxtLink>
             </li>
@@ -16,7 +16,7 @@
           <span class="font-semibold text-[17px]">О нас</span>
           <ul class="flex flex-col gap-[14px]">
             <li>
-              <NuxtLink to="/" class="cursor-pointer text-[13px]">
+              <NuxtLink to="/" class="cursor-pointer text-[13px] !text-[#343434] hover:!text-main">
                 Нормативные документы
               </NuxtLink>
             </li>
