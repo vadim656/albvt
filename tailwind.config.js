@@ -16,12 +16,12 @@ module.exports = {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1140px'
+      xl: '1440px'
     },
     colors: {
       'transparent': 'transparent',
       'white': '#FFFFFF',
-      'main': '#3BBAF1',
+      'main': '#54ACD2',
       'blue': '#227FD6'
     }
   },

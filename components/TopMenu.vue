@@ -1,7 +1,7 @@
 <template>
   <div class="w-full text-white flex">
     <nav class=" w-full flex items-center">
-      <ul class="flex w-full justify-between font-base text-[15px] ">
+      <ul class="flex w-full justify-start gap-[20px] font-base text-[16px] ">
         <li v-for="(item, i) in topmenu" :key="i" class="relative">
           <nuxt-link
             v-if="item.sub == false"
@@ -10,38 +10,39 @@
             >{{ item.name }}</nuxt-link
           >
           <div v-else class="flex items-center gap-1">
-            <span
-              
-              @click="activesubmenu = !activesubmenu"
-              class="cursor-pointer"
+            <span @click="activesubmenu = !activesubmenu" class="cursor-pointer"
               >{{ item.name }}
             </span>
             <img src="/img/icons/arrow-white.svg" alt="" />
           </div>
 
           <div
-            class="absolute top-6 -left-2 bg-white px-2 py-4 w-full min-w-[220px] z-[99999] shadow-md rounded-[5px]"
+            class="absolute top-6 -left-2 bg-white  w-full min-w-[320px] z-[99999] shadow-xl rounded-[5px] overflow-hidden"
             v-if="activesubmenu && item.sub == true"
           >
-            <ul class="flex flex-col gap-2">
+            <ul class="flex flex-col bg-white">
               <li
                 v-for="(submenu, i) in submenu"
                 :key="i"
                 @click="activesubmenu = !activesubmenu"
+                class="hover:bg-[#f1f1f1] anime px-2 py-4"
               >
-                <span
+                <!-- <span
                   v-if="submenu.active == false"
                   class="text-[#858585] cursor-default"
                 >
-                  {{ submenu.name }}
-                </span>
+                  - {{ submenu.name }}
+                </span> -->
+                <div class="flex gap-2 items-start">
+                    <span class="text-[#343434]">-</span>
                 <nuxt-link
-                  v-else
                   :to="submenu.link"
-                  class="text-[#343434] hover:text-main anime"
+                  class="text-[#343434]  anime"
                 >
                   {{ submenu.name }}
                 </nuxt-link>
+                </div>
+                
               </li>
             </ul>
           </div>
@@ -58,27 +59,18 @@ export default {
       activesubmenu: false,
       submenu: [
         {
-          name: 'Неактивная ссылка',
-          link: '/404',
-          active: false
-        },
-        {
           name: 'Постановка капельниц',
           link: '/test-pages/one',
           active: true
         },
         {
-          name: 'Справка для предоставления в ИФНС',
+          name: 'ЭКГ',
           link: '/test-pages/two',
           active: true
         },
+
         {
-          name: 'Подготовка к анализам',
-          link: '/podgotovka',
-          active: true
-        },
-        {
-          name: 'Оформление заказа',
+          name: 'Предрейсовые и послерейсовые медицинские осмотры',
           link: '/zakaz',
           active: true
         }

@@ -1,13 +1,13 @@
 <template>
-  <div class="w-full h-full bg-main pt-[13px] pb-[26px]">
+  <div class="w-full h-full bg-main pt-[14px] pb-[26px]">
     <header
       class="container grid grid-cols-4 grid-rows-[47px_20px_1fr] gap-[20px]"
     >
       <logo-main class="" />
       <header-search class="col-span-2" />
-      <div class="col-span-1 flex gap-[10px]">
+      <div class="col-span-1 flex gap-[10px] justify-between">
         <button
-          class="text-[15px] text-white font-light px-[12px] py-[14px] flex items-center  border-[0.5px] rounded-[5px] h-[47px]"
+          class="text-[16px] text-white font-light px-[14px] py-[14px] flex items-center  border-[0.5px] rounded-[5px] h-[47px]"
         >
           Результаты анализов
         </button>
@@ -25,7 +25,7 @@
         class="flex justify-end items-center gap-[3px] col-span-1 row-span-1 text-white "
       >
         <img src="/img/icons/call.svg" alt="" />
-        <a href="" class="font-medium text-[14px]">+7 (863) 241-85-55</a>
+        <a href="" class="font-medium text-[16px]">+7 (863) 241-85-55</a>
       </div>
       <div class="col-span-4 row-span-1">
         <header-group-items />

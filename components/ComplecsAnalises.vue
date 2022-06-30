@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-[58px]">
     <HeadingH3>Комплексы анализов</HeadingH3>
-    <div class="grid grid-cols-5 gap-[14px]">
+    <div class="grid grid-cols-5 gap-[20px]">
       <analises-item v-for="(item, i) in 5" :key="i" />
     </div>
   </div>

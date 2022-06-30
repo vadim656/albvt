@@ -4,9 +4,9 @@
   >
     <img src="/img/analis.jpg" alt="" class="w-full h-[200px] object-cover" />
     <div class="flex flex-col gap-[16px] p-[10px]">
-      <span class="text-[16px] border-b border-b-[#8D8D8D] w-full pb-4  ">Функция почек </span>
+      <span class="text-[18px] border-b border-b-[#8D8D8D] w-full pb-4  ">Функция почек </span>
       <span class="text-blue text-[18px]">2000.00 ₽</span>
-      <button class="border  border-main rounded-[5px] py-2 text-main text-[15px] hover:bg-main hover:text-white anime">
+      <button class="border  border-main rounded-[5px] py-2 text-main text-[16px] hover:bg-main hover:text-white anime">
         Подробнее
       </button>
     </div>

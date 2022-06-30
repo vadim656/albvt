@@ -1,5 +1,5 @@
 <template>
-  <div class="container grid grid-cols-[6fr,4fr] gap-[40px] w-full pt-[47px]">
+  <div class="container grid grid-cols-[6fr,3fr,4fr] gap-[40px] w-full pt-[47px] justify-between">
     <div class="flex flex-col gap-[20px]">
       <h2 class="text-[24px] font-medium ">
         Заполните форму для подачи online заявки
@@ -9,8 +9,8 @@
       >
         <form action="" class="flex flex-col gap-4">
           <div class="flex flex-col">
-            <div class=" py-[16px] flex flex-col gap-4 text-[15px] font-light">
-              <span class="text-[#A55B4A] text-[15px] "
+            <div class=" py-[16px] flex flex-col gap-4 text-[16px] font-light">
+              <span class="text-[#A55B4A] text-[16px] "
                 >Место сдачи анализов</span
               >
               <div class="flex gap-4">
@@ -23,7 +23,7 @@
                     id="mesto1"
                     class=""
                   />
-                  <label for="mesto1" class="text-[13px]">У нас в офисе</label>
+                  <label for="mesto1" class="text-[14px]">У нас в офисе</label>
                 </div>
                 <div class="flex items-center gap-4 w-1/4">
                   <input
@@ -33,7 +33,7 @@
                     id="mesto2"
                     class=""
                   />
-                  <label for="mesto2" class="text-[13px]">На дому</label>
+                  <label for="mesto2" class="text-[14px]">На дому</label>
                 </div>
 
                 <div class="flex items-center gap-4 w-2/4">
@@ -44,7 +44,7 @@
                     id="mesto3"
                     class=""
                   />
-                  <label for="mesto3" class="text-[13px]"
+                  <label for="mesto3" class="text-[14px]"
                     >В офисе нашего партнера ИНВИТРО, но по
                     <span class="text-main">НАШИМ</span> низким ценам</label
                   >
@@ -54,7 +54,7 @@
             <div>
               <div v-if="form.mesto == 'ofis_my'">
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
                   <div class="relative">
                     <div
@@ -86,7 +86,7 @@
                           v-for="(item, i) in form.invitro"
                           :key="i"
                           :id="item.name"
-                          class="px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[40px] hover:shadow-md anime cursor-pointer text-[13px]"
+                          class="px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[40px] hover:shadow-md anime cursor-pointer text-[14px]"
                           @click="selectInvitroAdd(item)"
                         >
                           <span class="h-full flex items-center">{{
@@ -100,7 +100,7 @@
                       </div>
                     </div>
                   </div>
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Кто будет сдавать анализы?</span
                   >
                   <div class="grid grid-cols-2 gap-[20px]">
@@ -134,7 +134,7 @@
                         id="gender1"
                         class=""
                       />
-                      <label for="gender1" class="text-[13px]">Мужчина</label>
+                      <label for="gender1" class="text-[14px]">Мужчина</label>
                     </div>
                     <div class="flex items-center gap-2 w-1/4">
                       <input
@@ -144,7 +144,7 @@
                         id="gender2"
                         class=""
                       />
-                      <label for="gender2" class="text-[13px]">Женщина</label>
+                      <label for="gender2" class="text-[14px]">Женщина</label>
                     </div>
                     <div class="flex items-center gap-2 w-2/4">
                       <input
@@ -154,16 +154,16 @@
                         id="gender3"
                         class=""
                       />
-                      <label for="gender3" class="text-[13px]"
+                      <label for="gender3" class="text-[14px]"
                         >Пациент придёт с представителем</label
                       >
                     </div>
                   </div>
                 </div>
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Укажите паспортные данные и желаемую дату сдачи
                     анализов</span
                   >
@@ -191,9 +191,9 @@
                   </div>
                 </div>
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Контакты для связи с Вами</span
                   >
                   <div class="grid grid-cols-2 gap-[20px]">
@@ -212,9 +212,9 @@
               </div>
               <div v-if="form.mesto == 'sam'">
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Кто будет сдавать анализы?</span
                   >
                   <div class="grid grid-cols-2 gap-[20px]">
@@ -248,7 +248,7 @@
                         id="gender1"
                         class=""
                       />
-                      <label for="gender1" class="text-[13px]">Мужчина</label>
+                      <label for="gender1" class="text-[14px]">Мужчина</label>
                     </div>
                     <div class="flex items-center gap-4 ">
                       <input
@@ -258,14 +258,14 @@
                         id="gender2"
                         class=""
                       />
-                      <label for="gender2" class="text-[13px]">Женщина</label>
+                      <label for="gender2" class="text-[14px]">Женщина</label>
                     </div>
                   </div>
                 </div>
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Укажите Ваш адрес и желаемую дату сдачи анализов</span
                   >
                   <div class="grid grid-cols-2 gap-[20px]">
@@ -302,9 +302,9 @@
                   </div>
                 </div>
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Контакты для связи с Вами</span
                   >
                   <div class="grid grid-cols-2 gap-[20px]">
@@ -323,7 +323,7 @@
               </div>
               <div v-if="form.mesto == 'ofic'">
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
                   <div class="relative">
                     <div
@@ -355,7 +355,7 @@
                           v-for="(item, i) in form.invitro"
                           :key="i"
                           :id="item.name"
-                          class="px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[40px] hover:shadow-md anime cursor-pointer text-[13px]"
+                          class="px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[40px] hover:shadow-md anime cursor-pointer text-[14px]"
                           @click="selectInvitroAdd(item)"
                         >
                           <span class="h-full flex items-center">{{
@@ -369,7 +369,7 @@
                       </div>
                     </div>
                   </div>
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Кто будет сдавать анализы?</span
                   >
                   <div class="grid grid-cols-2 gap-[20px]">
@@ -403,7 +403,7 @@
                         id="gender1"
                         class=""
                       />
-                      <label for="gender1" class="text-[13px]">Мужчина</label>
+                      <label for="gender1" class="text-[14px]">Мужчина</label>
                     </div>
                     <div class="flex items-center gap-2 w-1/4">
                       <input
@@ -413,7 +413,7 @@
                         id="gender2"
                         class=""
                       />
-                      <label for="gender2" class="text-[13px]">Женщина</label>
+                      <label for="gender2" class="text-[14px]">Женщина</label>
                     </div>
                     <div class="flex items-center gap-2 w-2/4">
                       <input
@@ -423,16 +423,16 @@
                         id="gender3"
                         class=""
                       />
-                      <label for="gender3" class="text-[13px]"
+                      <label for="gender3" class="text-[14px]"
                         >Пациент придёт с представителем</label
                       >
                     </div>
                   </div>
                 </div>
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Укажите паспортные данные и желаемую дату сдачи
                     анализов</span
                   >
@@ -460,9 +460,9 @@
                   </div>
                 </div>
                 <div
-                  class=" py-[16px] flex flex-col gap-4 text-[15px] font-light"
+                  class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <span class="text-[#A55B4A] text-[15px] "
+                  <span class="text-[#A55B4A] text-[16px] "
                     >Контакты для связи с Вами</span
                   >
                   <div class="grid grid-cols-2 gap-[20px]">
@@ -487,10 +487,12 @@
       <div></div>
       <div></div>
     </div>
+    <div>еще что то </div>
     <div>
       <div
-        class="bg-white   w-full max-w-[370px] shadow-md rounded-[5px] "
+        class="flex justify-end"
       >
+      <div class="w-full  bg-white    shadow-md rounded-[5px] ">
         <div class="w-full justify-center  text-[16px] bg-[#EDEDED] h-[48px] flex items-center uppercase"
           >
           <span>к оплате</span> </div
@@ -514,13 +516,13 @@
             <li
               v-for="(item, i) in dopItems"
               :key="i"
-              class="flex justify-between items-start px-[24px] text-[12px] text-[#909090]"
+              class="flex justify-between items-start px-[24px] text-[14px] text-[#909090]"
             >
               <span class="font-medium">- {{ item.name }} </span>
-              <span>{{ item.price }} руб.</span>
+              <span class="">{{ item.price }} руб.</span>
             </li>
           </ul>
-          <span class="text-[#54ACD2] text-[12px] text-center"
+          <span class="text-[#54ACD2] text-[14px] text-center"
             >Взятие биоматериала не входит в общую стоимость выбранных вами
             исследований. Оно требуется для выбранных Вами услуг.</span
           >
@@ -528,26 +530,28 @@
         <!-- end dop to price -->
         <div class="px-[24px] my-[24px] flex flex-col gap-[24px]">
           <div class="flex justify-between items-end">
-            <span class="text-[12px]">ИТОГОВАЯ СТОИМОСТЬ: </span>
-            <span class="text-[15px] font-medium"> 550 руб.</span>
+            <span class="text-[14px]">ИТОГОВАЯ СТОИМОСТЬ: </span>
+            <span class="text-[16px] font-bold"> 550 руб.</span>
           </div>
           <div class="flex justify-between items-center">
-            <span class="text-[12px]">Место сдачи анализа: : </span>
-            <span v-if="form.mesto == 'ofis_my'" class="text-[13px] font-bold text-[#A55B4A] underline underline-offset-2"> У нас в офисе</span>
-            <span v-if="form.mesto == 'sam'" class="text-[13px] font-bold text-[#A55B4A] underline underline-offset-2"> На дому</span>
-            <span v-if="form.mesto == 'ofic'" class="text-[13px] font-bold text-[#A55B4A] underline underline-offset-2 text-right"> В офисе партнера: <br>
+            <span class="text-[14px]">Место сдачи анализа: : </span>
+            <span v-if="form.mesto == 'ofis_my'" class="text-[16px] font-bold text-[#A55B4A] underline underline-offset-2"> У нас в офисе</span>
+            <span v-if="form.mesto == 'sam'" class="text-[16px] font-bold text-[#A55B4A] underline underline-offset-2"> На дому</span>
+            <span v-if="form.mesto == 'ofic'" class="text-[16px] font-bold text-[#A55B4A] underline underline-offset-2 text-right"> В офисе партнера: <br>
             <span v-if="form.invitroSelect !== 'Выберите ближайший офис нашего партнера ИНВИТРО:'">
               {{ form.invitroSelect }}
             </span>
             </span>
           </div>
           <button
-            class="rounded-[5px] mb-[24px] border border-main h-[40px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[15px]"
+            class="rounded-[5px] mb-[24px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
           >
            Предзаказ с оплатой
           </button>
 
         </div>
+      </div>
+        
       </div>
     </div>
   </div>
