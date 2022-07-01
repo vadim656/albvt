@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-col gap-[20px]">
+    <div class="flex flex-col gap-[20px] ">
       <!-- left sidebar -->
       <tabs class="flex flex-col gap-[20px] w-full ">
         <tab title="Все анализы" class="cursor-pointer">

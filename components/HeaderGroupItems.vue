@@ -3,7 +3,7 @@
     <div
       v-for="(item, i) in itemsgroup"
       :key="i"
-      class="bg-white rounded-[5px] h-[172px] flex justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
+      class="bg-white rounded-[5px] h-[122px] xl:h-[172px] flex justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
     >
       <img :src='item.img' alt="уу" class="w-[48px] h-auto" />
       <NuxtLink :to="item.link" class="font-medium text-[14px] text-[#343434]">

@@ -13,16 +13,16 @@ export const getters = {
 }
 
 export const mutations = {
-  SET_PRODUCTS (state, all_products) {
-    state.products = all_products
+  SET_PRODUCTS (state, array3) {
+    state.products = array3
   },
   // set category
-  SET_CATEGORIES (state, all_categories) {
-    state.categories = all_categories
+  SET_CATEGORIES (state, con_category) {
+    state.categories = con_category
   },
   // set subcategory
-  SET_SUBCATEGORIES (state, all_sub_categories) {
-    state.subCategory = all_sub_categories
+  SET_SUBCATEGORIES (state, con_sub_category) {
+    state.subCategory = con_sub_category
   },
   // set cart in store
   SET_CART (state, index) {
@@ -30,14 +30,14 @@ export const mutations = {
   },
   // remove cart item in store
   REMOVE_FROM_CART (state, index) {
-    state.cart.splice(state.cart.indexOf(index), 1)
+    state.cart.splice(index, 1)
   }
 }
 
 export const actions = {
   // get allproducts
   async GET_PRODUCTS_FROM_API ({ commit }) {
-    const all_products = await this.$axios.$get(
+    const array3 = await this.$axios.$get(
       'https://foxsis.ru/alvd/wp-json/wc/v3/products',
       {
         auth: {
@@ -45,15 +45,18 @@ export const actions = {
           password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
         },
         params: {
-          per_page: 100
+          per_page: 20
         }
       }
     )
-    commit('SET_PRODUCTS', all_products)
+
+
+    // const array3 = all_products.concat(all_products_2)
+    commit('SET_PRODUCTS', array3)
   },
   // get category
   async GET_CATEGORIES_FROM_API ({ commit }) {
-    const all_categories = await this.$axios.$get(
+    const con_category = await this.$axios.$get(
       'https://foxsis.ru/alvd/wp-json/wc/v3/products/categories',
       {
         auth: {
@@ -61,12 +64,14 @@ export const actions = {
           password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
         },
         params: {
-          per_page: 30,
+          per_page: 20,
           parent: 61
         }
       }
     )
-    commit('SET_CATEGORIES', all_categories)
+
+    // const con_category = all_categories.concat(dop_categories)
+    commit('SET_CATEGORIES', con_category)
   },
   // get subcategory
   async GET_SUBCATEGORIES_FROM_API ({ commit }, subcategory) {
@@ -83,6 +88,8 @@ export const actions = {
         }
       }
     )
+
+    // const con_sub_category = all_sub_categories.concat(dop_sub_categories)
     commit('SET_SUBCATEGORIES', all_sub_categories)
   },
   // add to cart item
@@ -90,7 +97,7 @@ export const actions = {
     commit('SET_CART', item)
   },
   // delete to cart item
-  DELETE_FROM_CART ({ commit, index }) {
+  DELETE_FROM_CART ({ commit }, index) {
     commit('REMOVE_FROM_CART', index)
   }
 }

@@ -499,9 +499,10 @@
         >
         <div class="flex flex-col list-disc list-outside px-[24px] pt-[12px]">
           <cart-item
-            v-for="item in inCarts"
+            v-for="(item, index) in CART"
             :key="item.name"
             :itemInCart="item"
+            @deleteFromCart="deleteFromCart(index)"
           />
         </div>
         <!-- dop to price -->
@@ -514,8 +515,8 @@
               >+ Взятие биоматериала:
             </span>
             <li
-              v-for="(item, i) in dopItems"
-              :key="i"
+              v-for="(item, index) in dopItems"
+              :key="index"
               class="flex justify-between items-start px-[24px] text-[14px] text-[#909090]"
             >
               <span class="font-medium">- {{ item.name }} </span>
@@ -531,7 +532,7 @@
         <div class="px-[24px] my-[24px] flex flex-col gap-[24px]">
           <div class="flex justify-between items-end">
             <span class="text-[14px]">ИТОГОВАЯ СТОИМОСТЬ: </span>
-            <span class="text-[16px] font-bold"> 550 руб.</span>
+            <span class="text-[16px] font-bold">{{ totalPrice.toLocaleString('ru-RU') }} руб.</span>
           </div>
           <div class="flex justify-between items-center">
             <span class="text-[14px]">Место сдачи анализа: : </span>
@@ -558,43 +559,12 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import CartItem from '~/components/cart/CartItem.vue'
 export default {
   data () {
     return {
-      inCarts: [
-        {
-          name: 'Билирубин общий',
-          subname: 'код-13,  Венозная кровь',
-          price: 200
-        },
-        {
-          name: 'Билирубин общий 2',
-          subname: 'код-13,  Венозная кровь',
-          price: 400
-        },
-
-        {
-          name: 'Билирубин общий 2',
-          subname: 'код-13,  Венозная кровь',
-          price: 400
-        },
-        {
-          name: 'Билирубин общий 2',
-          subname: 'код-13,  Венозная кровь',
-          price: 400
-        },
-        {
-          name: 'Билирубин общий 2',
-          subname: 'код-13,  Венозная кровь',
-          price: 400
-        },
-        {
-          name: 'Билирубин общий 2',
-          subname: 'код-13,  Венозная кровь',
-          price: 400
-        }
-      ],
+      
       dopItems: [
         {
           name: 'Венозная кровь',
@@ -685,6 +655,20 @@ export default {
     },
        closeCart () {
       this.$emit('cartView')
+    }, 
+     ...mapActions(['DELETE_FROM_CART']),
+    deleteFromCart (index) {
+      this.DELETE_FROM_CART(index)
+      console.log('delete: ' + index)
+    }
+  },
+  computed: {
+    ...mapGetters(['CART']),
+    totalPrice: function () {
+      let result = this.CART.reduce((prev, item) => {
+        return prev + parseInt(item.price)
+      }, 0)
+      return result
     }
   },
   layout: 'MainLayout'

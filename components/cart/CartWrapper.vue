@@ -5,15 +5,17 @@
       @click="closeCart()"
     ></div>
     <div
-      class="bg-white absolute overflow-hidden pt-[24px] right-0 top-0 w-full max-w-[370px] shadow-md rounded-bl-[5px] z-[999999]"
+      class="bg-white absolute overflow-hidden pt-[24px] right-0 top-0 w-full  max-w-[370px] shadow-md rounded-bl-[5px] z-[999999]"
     >
       <span class="w-full flex justify-end pb-[24px] text-[16px] px-[24px]"
         >Корзина</span
       >
-      <div class="flex flex-col list-disc list-outside px-[24px]">
+      <div
+        class="scrollbar-cart flex flex-col list-disc list-outside px-[24px] h-full max-h-[380px] overflow-y-auto "
+      >
         <cart-item
           v-for="(item, index) in CART"
-          :key="item.sku"
+          :key="index"
           :itemInCart="item"
           @deleteFromCart="deleteFromCart(index)"
         />
@@ -45,13 +47,14 @@
       <div class="px-[24px] my-[24px] flex flex-col gap-[24px]">
         <div class="flex justify-between items-end">
           <span class="text-[14px]">ИТОГОВАЯ СТОИМОСТЬ: </span>
-          <span class="text-[16px] font-medium"> 550 руб.</span>
+          <span class="text-[16px] font-medium">{{ totalPrice.toLocaleString('ru-RU') }} руб.</span>
         </div>
-        <button
+        <nuxt-link
+        to="/zakaz"
           class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
         >
           Оформить заказ
-        </button>
+        </nuxt-link>
         <div class="flex justify-between items-end text-[12px]">
           <button class="text-main hover:text-blue anime">
             Очистить корзину
@@ -83,7 +86,8 @@ export default {
           name: 'Пробоподготовка',
           price: '150'
         }
-      ]
+      ],
+      totalCartPrice: null
     }
   },
   methods: {
@@ -97,9 +101,47 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['CART'])
+    ...mapGetters(['CART']),
+    totalPrice: function () {
+      let result = this.CART.reduce((prev, item) => {
+        return prev + parseInt(item.price)
+      }, 0)
+      return result
+    }
   }
 }
 </script>
 
-<style></style>
+<style>
+.scrollbar-cart::-webkit-scrollbar {
+  width: 4px;
+  background-color: #f9f9fd;
+}
+
+.scrollbar-cart::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(84, 172, 210, 1);
+}
+
+.scrollbar-cart::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: #f9f9fd;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(196, 196, 196);
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full text-white flex">
     <nav class=" w-full flex items-center">
-      <ul class="flex w-full justify-start gap-[20px] font-base text-[16px] ">
+      <ul class="flex w-full justify-start gap-[20px] font-base text-[14px] xl:text-[16px] ">
         <li v-for="(item, i) in topmenu" :key="i" class="relative">
           <nuxt-link
             v-if="item.sub == false"
