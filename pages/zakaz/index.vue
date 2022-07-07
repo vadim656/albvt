@@ -1,7 +1,7 @@
 <template>
-  <div class="container grid grid-cols-[6fr,3fr,4fr] gap-[40px] w-full pt-[47px] justify-between">
+  <div class="container grid grid-cols-1 sm:grid-cols-[6fr,3fr,4fr] sm:gap-[20px] w-full pt-[47px] justify-between">
     <div class="flex flex-col gap-[20px]">
-      <h2 class="text-[24px] font-medium ">
+      <h2 class="text-[24px] font-medium text-center sm:text-right">
         Заполните форму для подачи online заявки
       </h2>
       <div
@@ -13,8 +13,8 @@
               <span class="text-[#A55B4A] text-[16px] "
                 >Место сдачи анализов</span
               >
-              <div class="flex gap-4">
-                <div class="flex items-center gap-4 w-1/4">
+              <div class="flex gap-4 flex-wrap sm:flex-nowrap">
+                <div class="flex items-center gap-4 w-full sm:w-1/4">
                   <input
                     checked="checked"
                     type="radio"
@@ -25,7 +25,7 @@
                   />
                   <label for="mesto1" class="text-[14px]">У нас в офисе</label>
                 </div>
-                <div class="flex items-center gap-4 w-1/4">
+                <div class="flex items-center gap-4 w-full sm:w-1/4">
                   <input
                     type="radio"
                     value="sam"
@@ -35,8 +35,7 @@
                   />
                   <label for="mesto2" class="text-[14px]">На дому</label>
                 </div>
-
-                <div class="flex items-center gap-4 w-2/4">
+                <div class="flex items-center gap-4  w-full sm:w-2/4">
                   <input
                     type="radio"
                     value="ofic"
@@ -56,54 +55,11 @@
                 <div
                   class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
-                  <div class="relative">
-                    <div
-                      class="w-full mb-4  px-2  py-2 items-center border-[1px] border-[#AEAEAE] rounded-[5px] grid grod-cols-2 gap-[20px]"
-                    >
-                      <div
-                        @click="form.showInvitro = !form.showInvitro"
-                        class="cursor-pointer flex justify-between items-center"
-                      >
-                        <span>{{ form.invitroSelect }}</span>
-                        <img
-                          v-if="form.showInvitro"
-                          src="/img/icons/arrow.svg"
-                          alt=""
-                          class="rotate-90 mr-2"
-                        />
-                        <img
-                          v-else
-                          src="/img/icons/arrow.svg"
-                          alt=""
-                          class="mr-2"
-                        />
-                      </div>
-                      <div
-                        class="rounded-[5px]  grid grid-cols-2 gap-[10px]"
-                        v-show="form.showInvitro"
-                      >
-                        <div
-                          v-for="(item, i) in form.invitro"
-                          :key="i"
-                          :id="item.name"
-                          class="px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[40px] hover:shadow-md anime cursor-pointer text-[14px]"
-                          @click="selectInvitroAdd(item)"
-                        >
-                          <span class="h-full flex items-center">{{
-                            item.name
-                          }}</span>
-                          <span
-                            class="border-l-[1px] border-[#AEAEAE] pl-2 h-full flex items-center"
-                            >{{ item.time }}</span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                 
                   <span class="text-[#A55B4A] text-[16px] "
                     >Кто будет сдавать анализы?</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="Фамилия"
@@ -125,8 +81,8 @@
                       class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     />
                   </div>
-                  <div class="flex items-center gap-4 mt-2">
-                    <div class="flex items-center gap-2 w-1/4">
+                  <div class="flex items-center gap-4 mt-2 flex-wrap sm:flex-nowrap">
+                    <div class="flex items-center gap-2 w-full sm:w-1/4">
                       <input
                         type="radio"
                         value="male"
@@ -136,7 +92,7 @@
                       />
                       <label for="gender1" class="text-[14px]">Мужчина</label>
                     </div>
-                    <div class="flex items-center gap-2 w-1/4">
+                    <div class="flex items-center gap-2 w-full sm:w-1/4">
                       <input
                         type="radio"
                         value="female"
@@ -146,7 +102,7 @@
                       />
                       <label for="gender2" class="text-[14px]">Женщина</label>
                     </div>
-                    <div class="flex items-center gap-2 w-2/4">
+                    <div class="flex items-center gap-2 w-full sm:w-2/4">
                       <input
                         type="radio"
                         value="femalemale"
@@ -167,7 +123,7 @@
                     >Укажите паспортные данные и желаемую дату сдачи
                     анализов</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="Паспорт (серия/номер)"
@@ -196,15 +152,19 @@
                   <span class="text-[#A55B4A] text-[16px] "
                     >Контакты для связи с Вами</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="E-mail"
+                       v-mask="'##'"
+                       id="us-phone-number-ex"
                       class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     />
                     <input
                       type="text"
-                      placeholder="+7"
+                      id="us-phone-number-ex2"
+                      placeholder="+7 (999) 999-99-99"
+                      v-mask="'+7 (###) ###-##-##'"
                       class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     />
                   </div>
@@ -217,7 +177,7 @@
                   <span class="text-[#A55B4A] text-[16px] "
                     >Кто будет сдавать анализы?</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="Фамилия"
@@ -239,7 +199,7 @@
                       class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     />
                   </div>
-                  <div class="flex items-center gap-4 mt-2">
+                  <div class="flex items-center gap-4 mt-2 flex-wrap sm:flex-nowrap">
                     <div class="flex items-center gap-4 ">
                       <input
                         type="radio"
@@ -268,7 +228,7 @@
                   <span class="text-[#A55B4A] text-[16px] "
                     >Укажите Ваш адрес и желаемую дату сдачи анализов</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="г. Ростов-на-Дону"
@@ -307,7 +267,7 @@
                   <span class="text-[#A55B4A] text-[16px] "
                     >Контакты для связи с Вами</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="E-mail"
@@ -327,7 +287,7 @@
                 >
                   <div class="relative">
                     <div
-                      class="w-full mb-4  px-2  py-2 items-center border-[1px] border-[#AEAEAE] rounded-[5px] grid grod-cols-2 gap-[20px]"
+                      class="w-full mb-4  px-2  py-3 items-center border-[1px] border-[#AEAEAE] rounded-[5px] grid gap-[20px]"
                     >
                       <div
                         @click="form.showInvitro = !form.showInvitro"
@@ -348,21 +308,21 @@
                         />
                       </div>
                       <div
-                        class="rounded-[5px]  grid grid-cols-2 gap-[10px]"
+                        class="rounded-[5px]  grid  grid-cols-1 sm:grid-cols-2 gap-[10px]"
                         v-show="form.showInvitro"
                       >
                         <div
                           v-for="(item, i) in form.invitro"
                           :key="i"
                           :id="item.name"
-                          class="px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[40px] hover:shadow-md anime cursor-pointer text-[14px]"
+                          class="px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[48px] hover:shadow-md anime cursor-pointer text-[14px]"
                           @click="selectInvitroAdd(item)"
                         >
                           <span class="h-full flex items-center">{{
                             item.name
                           }}</span>
                           <span
-                            class="border-l-[1px] border-[#AEAEAE] pl-2 h-full flex items-center"
+                            class="border-l-[1px] border-[#AEAEAE] pl-2 h-full flex items-center text-[12px]"
                             >{{ item.time }}</span
                           >
                         </div>
@@ -372,7 +332,7 @@
                   <span class="text-[#A55B4A] text-[16px] "
                     >Кто будет сдавать анализы?</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="Фамилия"
@@ -394,8 +354,8 @@
                       class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     />
                   </div>
-                  <div class="flex items-center gap-4 mt-2">
-                    <div class="flex items-center gap-2 w-1/4">
+                  <div class="flex items-center gap-4 mt-2 flex-wrap sm:flex-nowrap">
+                    <div class="flex items-center gap-2 w-full sm:w-1/4">
                       <input
                         type="radio"
                         value="male"
@@ -405,7 +365,7 @@
                       />
                       <label for="gender1" class="text-[14px]">Мужчина</label>
                     </div>
-                    <div class="flex items-center gap-2 w-1/4">
+                    <div class="flex items-center gap-2 w-full sm:w-1/4">
                       <input
                         type="radio"
                         value="female"
@@ -415,7 +375,7 @@
                       />
                       <label for="gender2" class="text-[14px]">Женщина</label>
                     </div>
-                    <div class="flex items-center gap-2 w-2/4">
+                    <div class="flex items-center gap-2 w-full sm:w-2/4">
                       <input
                         type="radio"
                         value="femalemale"
@@ -436,7 +396,7 @@
                     >Укажите паспортные данные и желаемую дату сдачи
                     анализов</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="Паспорт (серия/номер)"
@@ -465,7 +425,7 @@
                   <span class="text-[#A55B4A] text-[16px] "
                     >Контакты для связи с Вами</span
                   >
-                  <div class="grid grid-cols-2 gap-[20px]">
+                  <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                     <input
                       type="text"
                       placeholder="E-mail"
@@ -487,13 +447,20 @@
       <div></div>
       <div></div>
     </div>
-    <div>еще что то </div>
+    <div class="bg-white p-4 rounded-[5px] shadow-md flex flex-col gap-2" v-if="form.mesto == 'ofic' && form.invitroSelect !== 'Выберите ближайший офис нашего партнера ИНВИТРО:'">
+      <span class="text-[#746F6F] text-[14px]">Вы находитесь на сайте нашего партнера ИНВИТРО</span>
+      <iframe :src="form.invitroSite" height="630" align="left" class="w-full">
+      Ваш браузер не поддерживает плавающие фреймы!
+      </iframe>
+    </div>
+    <div v-else></div>
+    <!-- cart -->
     <div>
       <div
         class="flex justify-end"
       >
       <div class="w-full  bg-white    shadow-md rounded-[5px] ">
-        <div class="w-full justify-center  text-[16px] bg-[#EDEDED] h-[48px] flex items-center uppercase"
+        <div  v-if="CART.length >= 1" class="w-full justify-center  text-[16px] bg-[#EDEDED] h-[48px] flex items-center uppercase"
           >
           <span>к оплате</span> </div
         >
@@ -508,31 +475,48 @@
         <!-- dop to price -->
         <div
           class="bg-[#ECECEC] py-[18px] px-[24px] mt-[24px] flex flex-col gap-[24px]"
+          v-if="CART.length >= 1"
         >
           <ul class="flex flex-col gap-2">
-            <span
-              class="text-[#A55B4A] text-[14px] font-medium w-full text-center"
-              >+ Взятие биоматериала:
-            </span>
-            <li
-              v-for="(item, index) in dopItems"
-              :key="index"
-              class="flex justify-between items-start px-[24px] text-[14px] text-[#909090]"
-            >
-              <span class="font-medium">- {{ item.name }} </span>
-              <span class="">{{ item.price }} руб.</span>
-            </li>
-          </ul>
+          <span
+            class="text-[#A55B4A] text-[16px] font-medium w-full text-center"
+            >+ Взятие биоматериала:
+          </span>
+          <li
+            v-for="(item, index) in bioMaterialsComplete"
+            :key="item.sku"
+            class="flex justify-between items-start  text-[12px] text-[#909090]"
+          >
+            <span class="font-medium text-[12px] ">- {{ item.name }} </span>
+            <span>{{ item.price }} руб.</span>
+          </li>
+        </ul>
           <span class="text-[#54ACD2] text-[14px] text-center"
             >Взятие биоматериала не входит в общую стоимость выбранных вами
             исследований. Оно требуется для выбранных Вами услуг.</span
           >
         </div>
+         <div class="bg-white p-[24px] flex flex-col gap-[24px]" v-else>
+        <span class="text-[#A55B4A] text-[16px] font-medium w-full text-center">
+          Ваша корзина пуста.
+        </span>
+        <span class="text-[14px]"
+          >Впишите нужное исследование в поисковую строку или перейдите в раздел
+          “Анализы”</span
+        >
+        <button
+          
+         
+        >
+        <nuxt-link to="/all-analyzes"  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]">Анализы</nuxt-link>
+          
+        </button>
+      </div>
         <!-- end dop to price -->
-        <div class="px-[24px] my-[24px] flex flex-col gap-[24px]">
+        <div class="px-[24px] my-[24px] flex flex-col gap-[24px]" v-show="CART.length >= 1">
           <div class="flex justify-between items-end">
             <span class="text-[14px]">ИТОГОВАЯ СТОИМОСТЬ: </span>
-            <span class="text-[16px] font-bold">{{ totalPrice.toLocaleString('ru-RU') }} руб.</span>
+            <span class="text-[16px] font-bold">{{ totalPriceInCart.toLocaleString('ru-RU')  }} руб.</span>
           </div>
           <div class="flex justify-between items-center">
             <span class="text-[14px]">Место сдачи анализа: : </span>
@@ -555,6 +539,7 @@
         
       </div>
     </div>
+    <!-- end cart -->
   </div>
 </template>
 
@@ -585,91 +570,151 @@ export default {
         mesto: 'ofis_my',
         gender: '',
         invitroSelect: 'Выберите ближайший офис нашего партнера ИНВИТРО:',
+        invitroSite: '',
         showInvitro: false,
         invitro: [
           {
             name: 'Днепровский, 105',
-            time: '07:00 - 19:00'
+            time: '07:00 - 19:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=32430'
           },
           {
             name: '1 Конной Армии, 29А',
-            time: '07:00 - 19:00'
+            time: '07:00 - 19:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=10929'
           },
           {
             name: '40 лет Победы, 89',
-            time: '07:00 - 16:00'
+            time: '07:00 - 16:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=23175'
           },
           {
             name: 'Богданова, 79',
-            time: '07:00 - 19:00'
+            time: '07:00 - 19:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=56318'
           },
           {
             name: ' Космонавтов, 6/13',
-            time: '06:30 - 19:00'
+            time: '06:30 - 19:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=8551'
           },
           {
             name: 'Б. Садовая, 130/30',
-            time: '07:00 - 19:00'
+            time: '07:00 - 19:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=64268'
           },
           {
             name: 'Ленина, 44/6',
-            time: '07:00 - 19:00'
+            time: '07:00 - 19:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=4964'
           },
           {
             name: 'Текучёва, 143',
-            time: '07:00 - 16:00'
+            time: '07:00 - 16:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=22955'
           },
           {
             name: 'Стачки, 26',
-            time: '07:00 - 16:00'
+            time: '07:00 - 16:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=23176'
           },
           {
             name: 'Миронова, 10',
-            time: '07:00 - 16:00'
+            time: '07:00 - 16:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=57266'
           },
           {
             name: 'Ерёменко, 97/29',
-            time: '07:00 - 16:00'
+            time: '07:00 - 16:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=52856'
           },
           {
             name: 'Таганрогская, 143',
-            time: '07:00 - 16:00'
+            time: '07:00 - 16:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=13119'
           },
           {
             name: 'Зорге, 52',
-            time: '07:00 - 16:00'
+            time: '07:00 - 16:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=13116'
           },
           {
             name: 'Станиславского, 54',
-            time: '07:00 - 19:00'
+            time: '07:00 - 19:00',
+            invitro: 'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=3092'
           }
         ]
-      }
+      },
+      dopTest: [],
+      totalCartPrice: null,
+      prePrice: null,
+      preMaterial: []
     }
   },
   components: { CartItem },
   methods: {
     selectInvitroAdd (item) {
       this.form.invitroSelect = item.name
+      this.form.invitroSite = item.invitro
       this.form.showInvitro = false
     },
        closeCart () {
       this.$emit('cartView')
     }, 
-     ...mapActions(['DELETE_FROM_CART']),
+     ...mapActions(['DELETE_FROM_CART', 'RESET_CART']),
     deleteFromCart (index) {
       this.DELETE_FROM_CART(index)
       console.log('delete: ' + index)
+    },
+    resetCart () {
+      this.RESET_CART()
+      console.log('reset cart is reset')
     }
   },
   computed: {
-    ...mapGetters(['CART']),
+    ...mapGetters(['CART', 'GET_ALL_BIOMATERIALS']),
     totalPrice: function () {
       let result = this.CART.reduce((prev, item) => {
         return prev + parseInt(item.price)
       }, 0)
       return result
+    },
+    bioMaterialsActive: function () {
+      let activeItem = this.dopItems.filter(item => item.active == true)
+      return activeItem
+    },
+    bioMaterialsComplete: function () {
+      let chars = this.dopTest
+      let uniqueChars = []
+      chars.forEach(element => {
+        element.forEach(subelement => {
+          if (!uniqueChars.includes(subelement)) {
+            uniqueChars.push(subelement)
+          }
+        })
+      })
+
+      return uniqueChars, (this.preMaterial = uniqueChars)
+    },
+    totalPriceInCart: function () {
+      let result = this.CART.reduce((prev, item) => {
+        return prev + parseInt(item.price)
+      }, 0)
+      this.prePrice = result
+      let totalPriceInCartReduce = this.preMaterial.reduce((prev, item) => {
+        return prev + parseInt(item.price)
+      }, this.prePrice)
+      return totalPriceInCartReduce
     }
+  },
+  mounted () {
+    this.CART.forEach(element => {
+      element.upsell_ids.forEach(element => {
+        this.dopTest.push(
+          this.GET_ALL_BIOMATERIALS.filter(item => item.id == element)
+        )
+      })
+    })
   },
   layout: 'MainLayout'
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full grid grid-cols-4 gap-[20px] justify-items-stretch items-start">
+  <div class="w-full sm:grid grid-cols-4 gap-[20px] justify-items-stretch items-start">
     <div class="flex flex-col gap-[16px]">
       <span class="text-blue font-medium text-[15px] text-center">Режим работы:</span>
       <div class="flex flex-col text-[#A0AFBD] items-center">

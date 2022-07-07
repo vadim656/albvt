@@ -6,18 +6,33 @@
       <div class="flex gap-2">
         <div class="flex flex-col">
           <span
-            class="text-[16px]  cursor-pointer text-main anime test-text "
+            class="text-[14px] sm:text-[16px]  cursor-pointer text-main anime test-text "
             :title="itemInCart.name"
             >{{ itemInCart.name }}</span
           >
-          <span class="text-[12px] text-[#9A9A9A] pt-1"
-            >{{ itemInCart.sku
-            }}<span v-if="itemInCart.attributes[5]"
-              >, {{ itemInCart.attributes[5].options['0'] }}</span
+          <div
+            class="text-[12px] text-[#9A9A9A] pt-1 flex flex-col justify-start gap-2 items-start"
+          >
+            <span>
+              {{ itemInCart.attributes[2].options[0] }}
+            </span>
+            <!-- <div
+              v-for="item in newTest"
+              :key="item.id"
+              class="grid grid-cols-[2fr,1fr] gap-2 "
             >
-          </span>
+              <span
+                class="text-[12px] text-[#838383] font-thin"
+                v-for="name in item"
+                :key="name.id"
+              >
+                {{ name.name }}
+              </span>
+            </div> -->
+          </div>
+
           <div class="flex items-center justify-between gap-[10px]  pt-2">
-            <span class="text-[16px] text-[#717171] font-medium"
+            <span class="text-[14px] sm:text-[16px] text-[#717171] font-medium"
               >{{
                 parseInt(itemInCart.price).toLocaleString('ru-RU')
               }}
@@ -27,6 +42,7 @@
         </div>
       </div>
     </div>
+
     <button @click="deleteFromCart(itemInCart)">
       <img
         src="/img/icons/close_cart.svg"
@@ -39,6 +55,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: {
     itemInCart: {
@@ -49,12 +66,24 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      newTest: []
+    }
   },
   methods: {
     deleteFromCart () {
       this.$emit('deleteFromCart')
     }
+  },
+  computed: {
+    ...mapGetters(['GET_ALL_BIOMATERIALS'])
+  },
+  mounted () {
+    this.itemInCart.upsell_ids.forEach(element => {
+      this.newTest.push(
+        this.GET_ALL_BIOMATERIALS.filter(item => item.id == element)
+      )
+    })
   }
 }
 </script>

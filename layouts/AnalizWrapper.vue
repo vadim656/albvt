@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#F5F5F5]">
     <the-header />
-    <div class="container grid grid-cols-[1fr,3fr] py-[44px] gap-[20px]">
+    <div class="container grid grid-cols-1 sm:grid-cols-[1fr,3fr] py-[44px] gap-[20px]">
       <sidebar-analiz/>
       <Nuxt />
     </div>

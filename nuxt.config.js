@@ -6,7 +6,7 @@ export default {
   head: {
     title: 'albb',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ru',
     },
     meta: [
       { charset: 'utf-8' },
@@ -22,7 +22,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-   { src: '~/plugins/persistedState.client.js'}
+   '~/plugins/persistedState.client.js',
+   '@plugins/v-mask.js',
+   '@plugins/v-tooltip.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -36,11 +38,11 @@ export default {
   ],
   axios: {
     baseURL: 'http://localhost:3000', 
-    proxy: true
+    // proxy: true
   },
-  proxy: {
-    '/api/': { target: 'https://foxsis.ru/alvd/wp-json/wc/v3/products', pathRewrite: {'^/api/': ''} }
-    },
+  // proxy: {
+  //   '/api/': { target: 'https://foxsis.ru/alvd/wp-json/wc/v3/products', pathRewrite: {'^/api/': ''} }
+  //   },
   googleFonts: {
     display: 'swap',
     preconnect: true,

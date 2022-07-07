@@ -10,12 +10,19 @@ module.exports = {
   theme: {
     extend: {},
     container: {
-      center: true
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '0rem',
+        md: '0rem',
+        lg: '0rem',
+        xl: '0rem'
+      },
     },
     screens: {
       sm: '640px',
       md: '768px',
-      lg: '1024px',
+      lg: '1180px',
       xl: '1440px'
     },
     colors: {

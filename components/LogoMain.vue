@@ -1,7 +1,6 @@
 <template>
   <nuxt-link to="/" class="flex flex-col !text-white uppercase  justify-start cursor-pointer">
-    <span class="text-[24px]">Альба Вита</span>
-    <span class="text-[11px] ">Медицинские анализы</span>
+    <img src="/img/icons/full-logo.svg" alt="" class="w-[122px] sm:w-[152px] h-auto">
   </nuxt-link>
 </template>
 

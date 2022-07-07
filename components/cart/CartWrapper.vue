@@ -7,11 +7,12 @@
     <div
       class="bg-white absolute overflow-hidden pt-[24px] right-0 top-0 w-full  max-w-[370px] shadow-md rounded-bl-[5px] z-[999999]"
     >
-      <span class="w-full flex justify-end pb-[24px] text-[16px] px-[24px]"
-        >Корзина</span
-      >
+      <span
+        class="w-full sm:flex justify-end pb-[24px] text-[16px] px-[24px] hidden"
+        >Корзина
+      </span>
       <div
-        class="scrollbar-cart flex flex-col list-disc list-outside px-[24px] h-full max-h-[380px] overflow-y-auto "
+        class="scrollbar-cart flex flex-col list-disc list-outside px-[24px] h-full max-h-[260px] sm:max-h-[380px] overflow-y-auto "
       >
         <cart-item
           v-for="(item, index) in CART"
@@ -23,6 +24,7 @@
       <!-- dop to price -->
       <div
         class="bg-[#ECECEC] py-[18px] px-[24px] mt-[24px] flex flex-col gap-[24px]"
+        v-if="CART.length >= 1"
       >
         <ul class="flex flex-col gap-2">
           <span
@@ -30,11 +32,11 @@
             >+ Взятие биоматериала:
           </span>
           <li
-            v-for="(item, index) in dopItems"
+            v-for="(item, index) in bioMaterialsComplete"
             :key="item.sku"
-            class="flex justify-between items-start px-[24px] text-[12px] text-[#909090]"
+            class="flex justify-between items-start  text-[12px] text-[#909090]"
           >
-            <span class="font-medium text-[14px]">- {{ item.name }} </span>
+            <span class="font-medium text-[12px] ">- {{ item.name }} </span>
             <span>{{ item.price }} руб.</span>
           </li>
         </ul>
@@ -43,20 +45,45 @@
           исследований. Оно требуется для выбранных Вами услуг.</span
         >
       </div>
+      <div class="bg-white p-[24px] flex flex-col gap-[24px]" v-else>
+        <span class="text-[#A55B4A] text-[16px] font-medium w-full text-center">
+          Ваша корзина пуста.
+        </span>
+        <span class="text-[14px]"
+          >Впишите нужное исследование в поисковую строку или перейдите в раздел
+          “Анализы”</span
+        >
+        <button
+          @click="closeCart()"
+         
+        >
+        <nuxt-link to="/all-analyzes"  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]">Анализы</nuxt-link>
+          
+        </button>
+      </div>
+
       <!-- end dop to price -->
-      <div class="px-[24px] my-[24px] flex flex-col gap-[24px]">
+      <div
+        class="px-[24px] my-[24px] flex flex-col gap-4 sm:gap-[24px]"
+        v-show="CART.length >= 1"
+      >
         <div class="flex justify-between items-end">
           <span class="text-[14px]">ИТОГОВАЯ СТОИМОСТЬ: </span>
-          <span class="text-[16px] font-medium">{{ totalPrice.toLocaleString('ru-RU') }} руб.</span>
+          <span class="text-[16px] font-medium"
+            >{{ totalPriceInCart.toLocaleString('ru-RU') }} руб.</span
+          >
         </div>
-        <nuxt-link
-        to="/zakaz"
-          class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
-        >
-          Оформить заказ
-        </nuxt-link>
+        <button @click="closeCart()">
+          <nuxt-link
+            to="/zakaz"
+            class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
+          >
+            Оформить заказ
+          </nuxt-link>
+        </button>
+
         <div class="flex justify-between items-end text-[12px]">
-          <button class="text-main hover:text-blue anime">
+          <button @click="resetCart()" class="text-main hover:text-blue anime">
             Очистить корзину
           </button>
           <button @click="closeCart()">Закрыть корзину</button>
@@ -76,38 +103,77 @@ export default {
       dopItems: [
         {
           name: 'Венозная кровь',
-          price: '150'
+          price: '150',
+          active: true
         },
         {
-          name: 'Мазок        ',
-          price: '160'
+          name: 'Мазок',
+          price: '160',
+          active: false
         },
         {
           name: 'Пробоподготовка',
-          price: '150'
+          price: '150',
+          active: false
         }
       ],
-      totalCartPrice: null
+      dopTest: [],
+      totalCartPrice: null,
+      prePrice: null,
+      preMaterial: []
     }
   },
   methods: {
     closeCart () {
       this.$emit('cartView')
     },
-    ...mapActions(['DELETE_FROM_CART']),
+    ...mapActions(['DELETE_FROM_CART', 'RESET_CART']),
     deleteFromCart (index) {
       this.DELETE_FROM_CART(index)
-      console.log('delete: ' + index)
+    },
+    resetCart () {
+      this.RESET_CART()
+      console.log('reset cart is reset')
     }
   },
   computed: {
-    ...mapGetters(['CART']),
-    totalPrice: function () {
+    ...mapGetters(['CART', 'GET_ALL_BIOMATERIALS']),
+    bioMaterialsActive: function () {
+      let activeItem = this.dopItems.filter(item => item.active == true)
+      return activeItem
+    },
+    bioMaterialsComplete: function () {
+      let chars = this.dopTest
+      let uniqueChars = []
+      chars.forEach(element => {
+        element.forEach(subelement => {
+          if (!uniqueChars.includes(subelement)) {
+            uniqueChars.push(subelement)
+          }
+        })
+      })
+
+      return uniqueChars, (this.preMaterial = uniqueChars)
+    },
+    totalPriceInCart: function () {
       let result = this.CART.reduce((prev, item) => {
         return prev + parseInt(item.price)
       }, 0)
-      return result
+      this.prePrice = result
+      let totalPriceInCartReduce = this.preMaterial.reduce((prev, item) => {
+        return prev + parseInt(item.price)
+      }, this.prePrice)
+      return totalPriceInCartReduce
     }
+  },
+  mounted () {
+    this.CART.forEach(element => {
+      element.upsell_ids.forEach(element => {
+        this.dopTest.push(
+          this.GET_ALL_BIOMATERIALS.filter(item => item.id == element)
+        )
+      })
+    })
   }
 }
 </script>
