@@ -38,7 +38,7 @@ export default {
         {
           img: '/img/icons/Group951.svg',
           name: 'Комплексы анализов',
-          link: '/404'
+          link: '/all-analyzes'
         },
         {
           img: '/img/icons/Group952.svg',

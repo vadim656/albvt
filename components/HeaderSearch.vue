@@ -1,16 +1,20 @@
 <template>
   <div>
-    <div class="relative">
-      <div class="flex relative">
+    <div class="relative w-full">
+      <div class="flex relative w-full">
         <input
           v-model="searchInput"
-          @input="getResults"
+          @input="search"
           type="search"
           id="default-search"
-          class="block w-full pr-20 rounded-tl-[5px] rounded-bl-[5px] bg-white pl-4   h-[47px] focus:outline-none"
-          placeholder="Поиск анализов..."
+          class="block w-full pr-20 rounded-tl-[5px] rounded-bl-[5px] bg-white pl-4   h-[47px] focus:outline-none text-[#979797]"
+          placeholder="Поиск анализов"
+          autocomplete="off"
         />
-        <button
+
+        <nuxt-link
+          :to="{ path: '/all-analyzes/', query: { search: searchInput } }"
+          replace
           class="flex justify-center border-l border-l-blue  items-center px-[16px]  z-[1] bg-white  anime rounded-tr-[5px] rounded-br-[5px]"
         >
           <img
@@ -18,46 +22,60 @@
             alt=""
             class="block w-full h-auto hover:scale-110 anime"
           />
-        </button>
+        </nuxt-link>
       </div>
 
       <ul
-        v-show="searchInput.length >= 3 "
+        v-show="searchInput.length >= 1"
         class="absolute top-[4rem] left-0 flex flex-col bg-white z-[999] pt-4 shadow-md rounded-[5px] w-full"
       >
         <li
-          v-for="item in searchProducts.slice(0, 5)"
-          :key="item.id"
-          class="border-b-[0.5px] border-b-[#D9D9D9]/50 px-4 py-3  grid grid-cols-[10fr,3fr] gap-2 items-center hover:bg-[#F5F5F5] anime"
+          v-for="(item, i) in sortedArray"
+          :key="i"
+          class="border-b-[0.5px] border-b-[#D9D9D9]/50 px-4 py-3  grid grid-cols-[9fr,4fr] sm:grid-cols-[10fr,3fr] gap-2 items-center hover:bg-[#F5F5F5] anime"
         >
           <div class="flex flex-col">
             <nuxt-link
               :to="
                 '/all-analyzes' +
                   '/' +
-                  item.categories[0].slug +
+                  item.node.productCategories.edges[0].node.slug +
                   '/' +
-                  item.categories[0].id +
+                  item.node.productCategories.edges[0].node.databaseId +
                   '/' +
-                  
-                  item.id
+                  item.node.databaseId
               "
-              class="test-text text-[#777777] hover:text-[#343434] anime"
-              :title="item.name"
-              >{{ item.name }}</nuxt-link
+              class="test-text text-[#777777] hover:text-[#343434] anime text-[12px] sm:text-[14px]"
+              :title="item.node.name"
+              >{{ item.node.name }}</nuxt-link
             >
-            <!-- {{ item.name }} -->
             <div class="flex gap-3">
-              <span class="text-[12px] text-[#9A9A9A] pt-1">код: {{
-                item.attributes[2].options[0]
-              }}</span>
-              <span v-if="parseInt(item.attributes[0].options[0]) == 1" class="text-[12px] text-[#9A9A9A] pt-1">{{ item.attributes[0].options[0] }} день</span>
-              <span v-else-if="parseInt(item.attributes[0].options[0]) < 5" class="text-[12px] text-[#9A9A9A] pt-1">{{ item.attributes[0].options[0] }} дня</span>
-              <span v-else class="text-[12px] text-[#9A9A9A] pt-1">{{ item.attributes[0].options[0] }} дней</span>
+              <span class="text-[12px] text-[#9A9A9A] pt-1"
+                >код: {{ item.node.attributes.edges[2].node.options[0] }}</span
+              >
+              <span
+                v-if="
+                  parseInt(item.node.attributes.edges[0].node.options[0]) == 1
+                "
+                class="text-[12px] text-[#9A9A9A] pt-1"
+                >{{ item.node.attributes.edges[0].node.options[0] }} день</span
+              >
+              <span
+                v-else-if="
+                  parseInt(item.node.attributes.edges[0].node.options[0]) < 5 ||
+                    parseInt(item.node.attributes.edges[0].node.options[0]) >=
+                      22
+                "
+                class="text-[12px] text-[#9A9A9A] pt-1"
+                >{{ item.node.attributes.edges[0].node.options[0] }} дня</span
+              >
+              <span v-else class="text-[12px] text-[#9A9A9A] pt-1"
+                >{{ item.node.attributes.edges[0].node.options[0] }} дней</span
+              >
             </div>
           </div>
           <div
-            v-if="CART.includes(item)"
+            v-if="inCart.includes(item.node.name)"
             class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[14px]"
           >
             <svg
@@ -77,74 +95,245 @@
           </div>
           <button
             v-else
-            @click="addToCart(item)"
-            class="bg-main/10 hover:bg-main/20 anime text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2"
+            @click="productInCart(item.node.databaseId)"
+            class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2"
           >
             <img src="/img/icons/add-to-cart.svg" alt="" />
-            <span>{{ parseInt(item.price).toLocaleString('ru-RU') }} ₽</span>
+            <span class="text-[12px] sm:text-[16px]"
+              >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
+            >
           </button>
         </li>
         <nuxt-link
-        v-if="searchProducts.length > 0 "
-          :to="{ path: '/all-analyzes/', query: { search: searchInput }}" replace
+          v-if="searchResults.length != 0"
+          :to="{ path: '/all-analyzes/', query: { search: searchInput } }"
+          replace
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
-         
-          >
-          <span  @click="searchProducts = ''"> Все результаты</span>
-         </nuxt-link
         >
-        <span v-else class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]">К сожалению ничего не найдено</span>
+          <span @click="searchProducts = ''"> Все результаты</span>
+        </nuxt-link>
+        <span
+          v-else
+          class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
+          >К сожалению ничего не найдено</span
+        >
       </ul>
+      <!-- {{ searchResult }}
+      <div v-for="(item , i) in searchResults" :key="i">
+        <span>{{item}}</span>
+      </div> -->
     </div>
-    <!-- test search -->
-    <!-- <div>
-      <li v-for="(eee, i) in SEARCH_RESULT" :key="i">{{ eee.name }}</li>
-    </div> -->
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import gql from 'graphql-tag'
+
+const ALL_CHARACTERS_QUERY = gql`
+  query ALL_CHARACTERS_QUERY($search: String) {
+    products(first: 30, where: { search: $search }) {
+      edges {
+        node {
+          name
+          sku
+          attributes {
+            edges {
+              node {
+                name
+                options
+              }
+            }
+          }
+          databaseId
+          ... on SimpleProduct {
+            price(format: RAW)
+          }
+          productCategories {
+            edges {
+              node {
+                databaseId
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default {
   data () {
     return {
       searchInput: '',
-      searchProducts: []
+      searchProducts: [],
+      searchResults: [],
+      inCart: []
     }
   },
   computed: {
-    ...mapGetters(['CART'])
-  },
+    ...mapGetters(['CART']),
+    sortedArray: function () {
+      const inputSearhValue = this.searchInput
 
+      // длинна строки
+      function compareTwo (a, b) {
+        var nameA = a.node.name.toLowerCase()
+        var nameB = b.node.name.toLowerCase()
+
+        if (nameA.length < nameB.length) return -1
+        if (nameA.length > nameB.length) return 1
+        return 0
+      }
+      // точно соответствующий
+      function compareTree (a, b) {
+        var nameA = a.node.name.toLowerCase()
+        var nameB = b.node.name.toLowerCase()
+
+        if (
+          nameA.split(' ').includes(inputSearhValue) <
+          nameB.split(' ').includes(inputSearhValue)
+        ) {
+          console.log('211')
+          return 1
+        }
+        if (
+          nameA.split(' ').includes(inputSearhValue) >
+          nameB.split(' ').includes(inputSearhValue)
+        ) {
+          console.log('218')
+          return -1
+        }
+
+        return 0
+      }
+
+      return this.searchResults
+        .sort(compareTwo)
+        .sort(compareTree)
+
+        .filter(item =>
+          item.node.name.toLowerCase().includes(this.searchInput.toLowerCase())
+        )
+        .splice(0, 7)
+    }
+  },
   methods: {
     ...mapActions(['ADD_TO_CART']),
-    addToCart (item) {
-      this.ADD_TO_CART(item)
-    },
-
-    async getResults () {
-      if (this.searchInput.length >= 3) {
-        let searchProducts = await this.$axios.$get(
-          'https://foxsis.ru/alvd/wp-json/wc/v3/products',
-          {
-            auth: {
-              username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
-              password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
-            },
-            params: {
-              search: this.searchInput,
-              per_page: 20,
-              _fields: 'id,name,categories,sku,attributes,price'
-            }
+    async search () {
+      const lowerCase = this.searchInput.toLowerCase()
+      try {
+        const res = await this.$apollo.query({
+          query: ALL_CHARACTERS_QUERY,
+          variables: {
+            search: lowerCase
           }
-        )
-
-        let filtered_results = searchProducts.filter(item =>
-          item.name.toLowerCase().includes(this.searchInput)
-        )
-        this.searchProducts = filtered_results
+        })
+        if (res) {
+          this.loading = false
+          const { results } = res.data.products.edges
+          return { results }, (this.searchResults = res.data.products.edges)
+        }
+      } catch (err) {
+        this.loading = false
+        this.searchResults = []
       }
+    },
+    autoKeyboardLang(str) {
+      var s = [
+        'й',
+        'ц',
+        'у',
+        'к',
+        'е',
+        'н',
+        'г',
+        'ш',
+        'щ',
+        'з',
+        'х',
+        'ъ',
+        'ф',
+        'ы',
+        'в',
+        'а',
+        'п',
+        'р',
+        'о',
+        'л',
+        'д',
+        'ж',
+        'э',
+        'я',
+        'ч',
+        'с',
+        'м',
+        'и',
+        'т',
+        'ь',
+        'б',
+        'ю'
+      ]
+      var r = [
+        'q',
+        'w',
+        'e',
+        'r',
+        't',
+        'y',
+        'u',
+        'i',
+        'o',
+        'p',
+        '\\[',
+        '\\]',
+        'a',
+        's',
+        'd',
+        'f',
+        'g',
+        'h',
+        'j',
+        'k',
+        'l',
+        ';',
+        "'",
+        'z',
+        'x',
+        'c',
+        'v',
+        'b',
+        'n',
+        'm',
+        ',',
+        '\\.'
+      ]
+      for (var i = 0; i < r.length; i++) {
+        var reg = new RegExp(r[i], 'mig')
+        str = str.replace(reg, function (a) {
+          return a == a.toLowerCase() ? s[i] : s[i].toUpperCase()
+        })
+      }
+
+      return str
+    },
+    async productInCart (id) {
+      const searchProductsApi = await this.$axios.$get(
+        'https://foxsis.ru/alvd/wp-json/wc/v3/products/' + id,
+        {
+          auth: {
+            username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
+            password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
+          }
+        }
+      )
+      console.log(searchProductsApi)
+      return (
+        { searchProductsApi },
+        this.inCart.push(searchProductsApi),
+        this.ADD_TO_CART(searchProductsApi)
+      )
     }
   }
 }

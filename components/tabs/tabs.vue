@@ -4,8 +4,8 @@
       <li v-for='(tab, index) in tabs'
         :key='tab.title'
         @click='selectTab(index)'
-        class="flex justify-center cursor-pointer items-center px-3 border border-[#54ACD2] rounded-[5px] h-[40px]  text-[16px]"
-        :class='{"flex bg-main text-white justify-center items-center border border-[#54ACD2] rounded-[5px] h-[40px] px-[8px] text-[13px]   flex-col gap-2": (index == selectedIndex)}'>
+        class="flex w-1/2 justify-center cursor-pointer items-center px-3 border border-[#4CBDEE] rounded-[5px] h-[40px]  text-[16px]"
+        :class='{"flex bg-[#4CBDEE] text-white justify-center items-center border border-[#4CBDEE] rounded-[5px] h-[40px]  flex-col gap-2": (index == selectedIndex)}'>
         {{ tab.title }}
       </li>
     </ul>

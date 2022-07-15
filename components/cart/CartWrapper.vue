@@ -11,8 +11,9 @@
         class="w-full sm:flex justify-end pb-[24px] text-[16px] px-[24px] hidden"
         >Корзина
       </span>
+      <!-- max-h-[180px] sm:max-h-[380px]  -->
       <div
-        class="scrollbar-cart flex flex-col list-disc list-outside px-[24px] h-full max-h-[260px] sm:max-h-[380px] overflow-y-auto "
+        class="scrollbar-cart flex flex-col list-disc list-outside px-[24px] h-full  max-h-[180px] lg:max-h-[260px]  overflow-y-auto "
       >
         <cart-item
           v-for="(item, index) in CART"
@@ -127,7 +128,7 @@ export default {
     closeCart () {
       this.$emit('cartView')
     },
-    ...mapActions(['DELETE_FROM_CART', 'RESET_CART']),
+    ...mapActions(['DELETE_FROM_CART', 'RESET_CART', 'GET_BIOMATERIALS_FROM_API']),
     deleteFromCart (index) {
       this.DELETE_FROM_CART(index)
     },
@@ -180,18 +181,18 @@ export default {
 
 <style>
 .scrollbar-cart::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
   background-color: #f9f9fd;
 }
 
 .scrollbar-cart::-webkit-scrollbar-thumb {
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: rgba(84, 172, 210, 1);
 }
 
 .scrollbar-cart::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: #f9f9fd;
 }
 

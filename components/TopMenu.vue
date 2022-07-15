@@ -1,51 +1,59 @@
 <template>
   <div class="w-full text-white flex">
     <nav class=" w-full flex items-center">
-      <ul class="flex w-full justify-between gap-[20px] font-base text-[14px] xl:text-[16px] ">
-        <li v-for="(item, i) in topmenu" :key="i" class="relative">
+      <ul
+        class="flex w-full justify-between gap-[20px] font-base text-[14px] xl:text-[16px] relative"
+      >
+        <li class="group">
           <nuxt-link
-            v-if="item.sub == false"
-            :to="item.link"
-            class="!text-white hover:!text-[#d4d4d4] anime"
-            >{{ item.name }}</nuxt-link
+            to="/o-nas"
+            class="!text-white hover:underline hover:underline-offset-2 anime"
+            >О нас</nuxt-link
           >
-          <div v-else class="flex items-center gap-1">
-            <span @click="activesubmenu = !activesubmenu" class="cursor-pointer"
-              >{{ item.name }}
-            </span>
-            <img src="/img/icons/arrow-white.svg" alt="" />
-          </div>
-
-          <div
-            class="absolute top-6 -left-2 bg-white  w-full min-w-[320px] z-[99999] shadow-xl rounded-[5px] overflow-hidden"
-            v-if="activesubmenu && item.sub == true"
+        </li>
+        <li class="group flex items-center gap-1 dropdown relative anime">
+          <nuxt-link
+            to="/"
+            class="!text-white hover:underline hover:underline-offset-2 anime dropbtn"
+            >Услуги</nuxt-link
           >
-            <ul class="flex flex-col bg-white">
-              <li
-                v-for="(submenu, i) in submenu"
-                :key="i"
-                @click="activesubmenu = !activesubmenu"
-                class="hover:bg-[#f1f1f1] anime px-2 py-4"
-              >
-                <!-- <span
-                  v-if="submenu.active == false"
-                  class="text-[#858585] cursor-default"
+          <img src="/img/icons/arrow-white.svg" alt="" />
+          <div class="dropdown-content top-4 left-0 bg-white shadow-md  min-w-[250px] rounded-[5px] anime">
+            <ul class="text-[14px]">
+              <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
+                <nuxt-link to="/test-pages/one">Постановка капельниц</nuxt-link>
+              </li>
+              <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
+                <nuxt-link to="/test-pages/two">ЭКГ</nuxt-link>
+              </li>
+              <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
+                <nuxt-link to="/zakaz"
+                  >Предрейсовые и послерейсовые медицинские осмотры</nuxt-link
                 >
-                  - {{ submenu.name }}
-                </span> -->
-                <div class="flex gap-2 items-start">
-                    <span class="text-[#343434]">-</span>
-                <nuxt-link
-                  :to="submenu.link"
-                  class="text-[#343434]  anime"
-                >
-                  {{ submenu.name }}
-                </nuxt-link>
-                </div>
-                
               </li>
             </ul>
           </div>
+        </li>
+        <li class="group">
+          <nuxt-link
+            to="/all-analyzes"
+            class="!text-white hover:underline hover:underline-offset-2 anime"
+            >Анализы</nuxt-link
+          >
+        </li>
+        <li class="group">
+          <nuxt-link
+            to="/all-analyzes"
+            class="!text-white hover:underline hover:underline-offset-2 anime"
+            >Комплексы анализов</nuxt-link
+          >
+        </li>
+        <li class="group">
+          <nuxt-link
+            to="/contacts"
+            class="!text-white hover:underline hover:underline-offset-2 anime"
+            >Контакты</nuxt-link
+          >
         </li>
       </ul>
     </nav>
@@ -79,7 +87,7 @@ export default {
         {
           name: 'О нас',
           sub: false,
-          link: '/404'
+          link: '/o-nas'
         },
         {
           name: 'Услуги',
@@ -107,4 +115,21 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown-content li {
+  color: #343434;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>

@@ -16,7 +16,7 @@
             <span>
               {{ itemInCart.attributes[2].options[0] }}
             </span>
-            <!-- <div
+            <div
               v-for="item in newTest"
               :key="item.id"
               class="grid grid-cols-[2fr,1fr] gap-2 "
@@ -28,7 +28,7 @@
               >
                 {{ name.name }}
               </span>
-            </div> -->
+            </div>
           </div>
 
           <div class="flex items-center justify-between gap-[10px]  pt-2">

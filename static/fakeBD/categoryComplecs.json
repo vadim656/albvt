@@ -1,0 +1,203 @@
+{
+    "data": {
+      "productCategories": {
+        "edges": [
+          {
+            "node": {
+              "databaseId": 2797,
+              "name": "1. Для женщин",
+              "slug": "1-dlya-zhenshhin",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2807,
+              "name": "11. Оценка функции почек",
+              "slug": "11-oczenka-funkczii-pochek",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2808,
+              "name": "12. Госпитальные исследования",
+              "slug": "12-gospitalnye-issledovaniya",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2809,
+              "name": "13. Диагностика заболеваний соединительной ткани",
+              "slug": "13-diagnostika-zabolevanij-soedinitel",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2810,
+              "name": "14. Диагностика сахарного диабета",
+              "slug": "14-diagnostika-saharnogo-diabeta",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2811,
+              "name": "15. Диагностика и контроль терапии остеопороза",
+              "slug": "15-diagnostika-i-kontrol-terapii-osteo",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2812,
+              "name": "16. Оценка функции щитовидной железы",
+              "slug": "16-oczenka-funkczii-shhitovidnoj-zhelezy",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2813,
+              "name": "17. Инфекции, передаваемые половым путём",
+              "slug": "17-infekczii-peredavaemye-polovym-putyom",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2814,
+              "name": "18. Проблемы веса",
+              "slug": "18-problemy-vesa",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2815,
+              "name": "19. Диеты",
+              "slug": "19-diety",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2798,
+              "name": "2. Для мужчин",
+              "slug": "2-dlya-muzhchin",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2816,
+              "name": "20. Заболевания верхних дыхательных путей",
+              "slug": "20-zabolevaniya-verhnih-dyhatelnyh-put",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2817,
+              "name": "21. Аллергия",
+              "slug": "21-allergiya",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2818,
+              "name": "22. Гематологические исследования",
+              "slug": "22-gematologicheskie-issledovaniya",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2819,
+              "name": "23. Красота кожи, волос и ногтей",
+              "slug": "23-krasota-kozhi-volos-i-nogtej",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2820,
+              "name": "24. Оценка свертывающей системы крови",
+              "slug": "24-oczenka-svertyvayushhej-sistemy-krovi",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2821,
+              "name": "25. COVID-19",
+              "slug": "25-covid-19",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2799,
+              "name": "3. Ежегодные профилактические обследования",
+              "slug": "3-ezhegodnye-profilakticheskie-obsledo",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2800,
+              "name": "4. Спортивные профили",
+              "slug": "4-sportivnye-profili",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2801,
+              "name": "5. Обследование домашнего персонала",
+              "slug": "5-obsledovanie-domashnego-personala",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2802,
+              "name": "6. Оценка риска развития заболеваний сердечно-сосудистой системы",
+              "slug": "6-oczenka-riska-razvitiya-zabolevanij-se",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2803,
+              "name": "7. Диагностика антифосфолипидного синдрома",
+              "slug": "7-diagnostika-antifosfolipidnogo-sin",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2804,
+              "name": "8. Диагностика состояния желудочно-кишечного тракта",
+              "slug": "8-diagnostika-sostoyaniya-zheludochno-kish",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2805,
+              "name": "9. Оценка функции печени",
+              "slug": "9-oczenka-funkczii-pecheni",
+              "parentDatabaseId": 2823
+            }
+          }
+        ]
+      }
+    },
+    "extensions": {
+      "debug": []
+    }
+  }

@@ -1,0 +1,9 @@
+REST API или GraphQL
+
+- Возможность аутенфикации для получения доступа к карточке клиента (Basic Auth или Oauth2)
+- Регистрация с Basic Auth или Oauth2
+- Endpoints:
+     -- "Анализы" ( GET / PUT / POST / DELETE )
+     -- "Клиенты" ( GET )
+     -- "Заявка" ( GET / PUT / POST / DELETE )
+     -- "Результаты анализов"  ( GET )

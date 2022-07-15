@@ -6,25 +6,26 @@ export default {
   head: {
     title: 'albb',
     htmlAttrs: {
-      lang: 'ru',
+      lang: 'ru'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/main.css',],
+  css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-   '~/plugins/persistedState.client.js',
-   '@plugins/v-mask.js',
-   '@plugins/v-tooltip.js'
+    '~/plugins/persistedState.client.js',
+    '@plugins/v-mask.js',
+    '@plugins/v-tooltip.js',
+    '@plugins/vue-input-facade.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -34,15 +35,56 @@ export default {
   buildModules: [
     '@nuxt/postcss8',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/apollo',
+    '@nuxtjs/auth-next',
   ],
+  auth: {
+    strategies: {
+      graphql: {
+        scheme: '@shemes/graphqlScheme.js'
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: false,
+      home: '/my-account'
+    },
+    refreshToken: {
+      property: 'refreshToken',
+      maxAge: 14000
+    },
+    cookie: true,
+    token: {
+      prefix: 'token-baer'
+    }
+  },
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'https://foxsis.ru/alvd/graphql',
+        httpLinkOptions: {
+          credentials: 'include'
+        },
+        errorHandler: '~/plugins/apollo-error-handler.js',
+        wsEndpoint: null,
+        tokenName: 'apollo-token',
+        authenticationType: 'Bearer',
+        persisting: false,
+        websocketsOnly: false
+      }
+    },
+    defaultOptions: {
+      $query: {
+        fetchPolicy: 'cache-and-network'
+      }
+    }
+  },
   axios: {
-    baseURL: 'http://localhost:3000', 
+    baseURL: 'http://localhost:3000'
     // proxy: true
   },
-  // proxy: {
-  //   '/api/': { target: 'https://foxsis.ru/alvd/wp-json/wc/v3/products', pathRewrite: {'^/api/': ''} }
-  //   },
   googleFonts: {
     display: 'swap',
     preconnect: true,

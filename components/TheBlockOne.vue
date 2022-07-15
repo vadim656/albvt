@@ -1,32 +1,20 @@
 <template>
-  <div class="w-full sm:grid grid-cols-4 gap-[20px] justify-items-stretch items-start">
-    <div class="flex flex-col gap-[16px]">
-      <span class="text-blue font-medium text-[15px] text-center">Режим работы:</span>
-      <div class="flex flex-col text-[#A0AFBD] items-center">
+  <div class="w-full lg:grid grid-cols-2 gap-[20px] justify-items-stretch items-start">
+    <div class="flex  gap-[16px] justify-start items-start">
+      <span class="text-blue font-medium text-[14px] text-center">Режим работы:</span>
+      <div class="flex flex-col text-[#343434]/70 items-start text-[14px]">
         <span class="text-center"><span class="font-medium text-center">7:00-11:00</span> - сдача анализов</span>
         <span class="text-center"><span class="font-medium text-center">7:00-15:00</span> - можно забрать
           результаты</span>
       </div>
     </div>
-    <div class="flex flex-col gap-[16px]">
-      <span class="text-blue font-medium text-[15px] text-center">Акции:</span>
-      <div class="flex flex-col text-[#A0AFBD] items-center">
-        <span class="text-center"><span class="font-medium">20%</span> - скидка пенсионерам</span>
-        <span class="text-center"><span class="font-medium">20%</span>- скидка ветеранам ВОВ</span>
+    <div class="flex  gap-[16px] justify-start items-start">
+      <span class="text-blue font-medium text-[14px] text-center">Акции:</span>
+      <div class="flex flex-col text-[#343434]/70 items-start text-[14px]">
+        <span class="text-center"><span class="font-medium">20%</span> - скидка пенсионерам и ветеранам ВОВ</span>
       </div>
     </div>
-    <div class="flex flex-col gap-[16px]">
-      <span class="text-blue font-medium text-[15px] text-center">При себе иметь:</span>
-      <div class="flex flex-col text-[#A0AFBD] items-center">
-        <span class="text-center">документ удостоверяющий личность</span>
-      </div>
-    </div>
-    <div class="flex flex-col gap-[16px]">
-      <span class="text-blue font-medium text-[15px] text-center">Как добраться:</span>
-      <div class="flex flex-col text-[#A0AFBD] items-center">
-        <span class="text-center">документ удостоверяющий личность</span>
-      </div>
-    </div>
+    
   </div>
 </template>
 
