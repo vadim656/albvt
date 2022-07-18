@@ -2,7 +2,8 @@
   <div>
     <div class="flex flex-col gap-[20px] ">
       <h1 class="h-[40px] text-[15px] font-medium">
-        {{ title.name.replace(/[0-9]/g, '').replace(/\./g, '') }}
+        {{ products[0].categories[0].name.replace(/[0-9]/g, '').replace(/\./g, '') }}
+        <!-- {{ title}} -->
       </h1>
       <!-- right section -->
       <div class="bg-white shadow-md rounded-[5px] ">
@@ -17,7 +18,7 @@
           <div class="flex flex-col w-full  xl:mt-[12px]">
             <!-- one analiz  -->
             <div
-              v-for="item in itemsSlice"
+              v-for="item in products"
               :key="item.id"
               class="grid grid-cols-[3fr,3fr,2fr,1fr]  lg:grid-cols-[3fr,3fr,1fr] xl:grid-cols-[2fr,13fr,2fr,3fr] grid-rows-2 xl:grid-rows-1  gap-2 xl:gap-[20px] items-center hover:bg-[#F5F5F5] p-[10px] anime border-b-[0.5px] border-b-[#e4e4e4]"
             >
@@ -78,10 +79,7 @@
                 class=" flex xl:hidden gap-2 lg:gap-4 col-span-2 text-[10px] lg:text-[14px] font-normal text-[#777777]"
               >
                 <span>Код: {{ item.attributes[2].options[0] }}</span>
-                <div
-                  class="flex gap-2 cursor-pointer"
-                  
-                >
+                <div class="flex gap-2 cursor-pointer">
                   <span v-for="(material, i) in item.upsell_ids" :key="i">
                     <span v-if="material == 10387">
                       Пробоподготовка (МИК)(+200₽)
@@ -183,12 +181,12 @@
 
       <!-- end right section -->
       <div class="w-full flex justify-center">
-        <button
+        <!-- <button
           @click="limit = null"
           v-if="limit !== null && products.length > 7"
         >
           Показать еще
-        </button>
+        </button> -->
       </div>
     </div>
 
@@ -207,47 +205,82 @@ export default {
     return {
       title: '',
       limit: 7,
-      addCartItem: ''
+      addCartItem: '',
+      test: [],
+      products: []
     }
   },
   methods: {
-    ...mapActions(['GET_PRODUCTS_FROM_API', 'ADD_TO_CART']),
+    ...mapActions(['ADD_TO_CART']),
     addToCart (item) {
       this.ADD_TO_CART(item), (this.addCartItem = item.name)
     }
+    // async getProductToParams () {
+    //   const params2 = this.$route.params
+    //   const all_products_2 = await this.$axios.$get(
+    //     'https://foxsis.ru/alvd/wp-json/wc/v3/products',
+    //     {
+    //       auth: {
+    //         username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
+    //         password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
+    //       },
+    //       params: {
+    //         category: params2.id,
+    //         per_page: 7
+    //       }
+    //     }
+    //   )
+    //   const title = await this.$axios.$get(
+    //     `https://foxsis.ru/alvd/wp-json/wc/v3/products/categories/` +
+    //       params2.id,
+    //     {
+    //       auth: {
+    //         username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
+    //         password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
+    //       },
+    //       params: {
+    //         _fields: 'name'
+    //       }
+    //     }
+    //   )
+
+    //   return (
+    //     { all_products_2, title },
+    //     (this.test = all_products_2),
+    //     (this.title = title.name.replace(/[0-9]/g, '').replace(/\./g, ''))
+    //   )
+    // }
   },
   computed: {
-    ...mapGetters(['CART']),
+    ...mapGetters(['CART'])
 
-    itemsSlice () {
-      return this.limit ? this.products.slice(0, this.limit) : this.products
-    }
+    // itemsSlice () {
+    //   return this.limit ? this.products.slice(0, this.limit) : this.products
+    // }
+  },
+  created () {
+    // this.getProductToParams()
   },
   async asyncData ({ $axios, params }) {
-    let products = await $axios.$get(
+    const products = await $axios.$get(
       'https://foxsis.ru/alvd/wp-json/wc/v3/products',
       {
-        auth: {
-          username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
-          password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
+        // auth: {
+        //   username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
+        //   password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
+        // },
+        headers: {
+          Authorization:
+            'Basic Y2tfODVlNDRlODczNTI2MWQ0NWExOWQ4ZjdhYWYwMTJmOGQ2NDBjMmRhYzpjc180MjYxYmI2MzlmNGU5YTE4YzE0Njg1MTM2MWQ2MzE3ODA0YTgxNmZj'
         },
         params: {
           category: params.id,
-          per_page: 100
+          per_page: 7
         }
       }
     )
-    let title = await $axios.$get(
-      `https://foxsis.ru/alvd/wp-json/wc/v3/products/categories/` +params.id,
-      {
-        auth: {
-          username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
-          password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
-        }
-      }
-    )
-
-    return { title, products }
+    
+    return { products }
   }
 }
 </script>

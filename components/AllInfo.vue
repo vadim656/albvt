@@ -63,10 +63,9 @@ export default {
   components: { HeadingH3, Swiper, SwiperSlide },
   methods: {
     onSwiper2 (swiper) {
-      console.log(swiper)
+      
     },
     onSlideChange () {
-      console.log('slide change')
     }
   },
   computed: {

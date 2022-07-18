@@ -15,7 +15,7 @@
           </div>
           <div class="flex flex-col w-full   xl:mt-[12px]">
             <!-- one analiz  -->
-            <!-- <div
+            <div
               v-for="item in itemsSlice"
               :key="item.id"
               class="grid grid-cols-[3fr,3fr,2fr,1fr]  lg:grid-cols-[3fr,3fr,1fr] xl:grid-cols-[2fr,13fr,2fr,3fr] grid-rows-2 xl:grid-rows-1  gap-2 xl:gap-[20px] items-center hover:bg-[#F5F5F5] p-[10px] anime border-b-[0.5px] border-b-[#e4e4e4]"
@@ -28,7 +28,7 @@
               >
                 <nuxt-link
                   :to="
-                    '/all-analyzes/' +
+                    '/all-complecs/' +
                       item.categories[0].slug +
                       '/' +
                       item.categories[0].id +
@@ -44,6 +44,7 @@
                     {{ item.name }}
                   </p>
                 </nuxt-link>
+                <!-- <span class="text-[#858585]">{{ item.sunItems }}</span> -->
               </div>
               <div class="hidden xl:flex flex-col col-span-1">
                 <span
@@ -71,6 +72,7 @@
                   >{{ item.attributes[0].options[0] }} дней</span
                 >
               </div>
+              <!-- modile -->
               <div
                 class=" flex xl:hidden gap-2 lg:gap-4 col-span-2 text-[10px] lg:text-[14px] font-normal text-[#777777]"
               >
@@ -127,6 +129,7 @@
                 >
                 <span v-else>{{ item.attributes[0].options[0] }} дней</span>
               </div>
+              <!-- end modile -->
               <div
                 v-if="CART.includes(item)"
                 :id="item.id"
@@ -171,7 +174,7 @@
               <pop-add-to-cart v-show="addCartItem">
                 {{ addCartItem }}
               </pop-add-to-cart>
-            </div> -->
+            </div>
             <!-- end one analiz -->
           </div>
         </div>
@@ -198,7 +201,7 @@ import { mapActions, mapGetters } from 'vuex'
 import PopAddToCart from '~/components/elements/PopAddToCart.vue'
 export default {
   components: { PopAddToCart },
-  layout: 'AnalizWrapper',
+  layout: 'ComplecsWrapper',
   data () {
     return {
       allAnalizes: [],
@@ -211,7 +214,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['ADD_TO_CART']),
+    ...mapActions(['GET_PRODUCTS_FROM_API', 'ADD_TO_CART']),
     addToCart (item) {
       this.ADD_TO_CART(item)
       this.addCartItem = item.name
@@ -219,18 +222,20 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['CART']),
-    // itemsSlice () {
-    //   if (this.$nuxt._route.query.search) {
-    //     return this.filtered_results
-    //   } else {
-    //     return this.limit
-    //       ? this.GET_ALL_PRODUCTS.slice(0, this.limit)
-    //       : this.GET_ALL_PRODUCTS
-    //   }
-    // }
+    ...mapGetters(['GET_ALL_PRODUCTS', 'CART']),
+    itemsSlice () {
+      if (this.$nuxt._route.query.search) {
+        return this.filtered_results
+      } else {
+        console.log('ne analiz: ')
+        return this.limit
+          ? this.GET_ALL_PRODUCTS.slice(0, this.limit)
+          : this.GET_ALL_PRODUCTS
+      }
+    }
   },
   mounted () {
+    this.GET_PRODUCTS_FROM_API()
     
   }
 }

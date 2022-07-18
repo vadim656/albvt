@@ -1,36 +1,23 @@
 <template>
   <div>
-    <div class="relative w-full">
-      <div class="flex relative w-full">
-        <div
-          class="fixed bg-[#343434]/40  w-screen h-screen left-0 top-0 pt-[13px] z-[-1] backdrop-blur-sm"
-          v-if="searchInputFake.length >= 1"
-        ></div>
+    <div class="container w-full flex flex-col gap-10 py-[47px]">
+      <div class="flex flex-col gap-4 w-full justify-center items-center">
+        <heading-h-3>Поиск по сайту</heading-h-3>
         <input
           v-model="searchInput"
           @input="search"
           type="search"
-          id="default-search"
-          class="block w-full pr-20 rounded-tl-[5px] rounded-bl-[5px] bg-white pl-4   h-[47px] focus:outline-none text-[#979797] z-[4]"
+          id="default-search2"
+          class="block w-full xl:max-w-[600px] lg:max-w-[400px] pr-20 rounded-[5px]  bg-white pl-4   h-[47px] focus:outline-none text-[#979797] shadow-md"
           placeholder="Поиск анализов"
           autocomplete="off"
         />
 
-        <nuxt-link
-          :to="{ path: '/search-result/', query: { search: searchInput } }"
-          class="flex justify-center border-l border-l-blue  items-center px-[16px]  z-[1] bg-white  anime rounded-tr-[5px] rounded-br-[5px]"
-        >
-          <img
-            src="/img/icons/search.svg"
-            alt=""
-            class="block w-full h-auto hover:scale-110 anime"
-          />
-        </nuxt-link>
       </div>
 
       <ul
-        v-show="searchInputFake.length >= 1"
-        class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md rounded-[5px] w-full "
+        v-show="searchInput.length >= 1"
+        class=" flex flex-col bg-white  pt-4 shadow-md rounded-[5px] w-full "
       >
         <li
           v-for="(item, i) in sortedArray"
@@ -48,19 +35,19 @@
                   '/' +
                   item.node.databaseId
               "
-              class="test-text text-[#777777] hover:text-[#343434] anime text-[12px] sm:text-[14px]"
+              class="test-text text-[#777777] hover:text-[#343434] anime text-[12px] sm:text-[16px]"
               :title="item.node.name"
               >{{ item.node.name }}</nuxt-link
             >
             <div class="flex gap-3">
-              <span class="text-[12px] text-[#9A9A9A] pt-1"
+              <span class="text-[14px] text-[#9A9A9A] pt-1"
                 >код: {{ item.node.allPaSku.nodes[0].name }}</span
               >
               <span
                 v-if="
                   parseInt(item.node.attributes.edges[0].node.options[0]) == 1
                 "
-                class="text-[12px] text-[#9A9A9A] pt-1"
+                class="text-[14px] text-[#9A9A9A] pt-1"
                 >{{ item.node.attributes.edges[0].node.options[0] }} день</span
               >
               <span
@@ -69,17 +56,17 @@
                     parseInt(item.node.attributes.edges[0].node.options[0]) >=
                       22
                 "
-                class="text-[12px] text-[#9A9A9A] pt-1"
+                class="text-[14px] text-[#9A9A9A] pt-1"
                 >{{ item.node.attributes.edges[0].node.options[0] }} дня</span
               >
-              <span v-else class="text-[12px] text-[#9A9A9A] pt-1"
+              <span v-else class="text-[14px] text-[#9A9A9A] pt-1"
                 >{{ item.node.attributes.edges[0].node.options[0] }} дней</span
               >
             </div>
           </div>
           <div
             v-if="inCart.includes(item.node.name)"
-            class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[14px]"
+            class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[16px]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,36 +83,26 @@
               />
             </svg>
           </div>
-          
-          <button
-            v-else
+          <div v-else class="flex justify-end items-center">
+            <button
+            
             @click="productInCart(item.node.databaseId)"
-            class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2"
+            class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2 h-[40px] lg:w-[160px]"
           >
             <img src="/img/icons/add-to-cart.svg" alt="" />
-            <span class="text-[12px] sm:text-[16px]"
+            <span class="text-[14px] sm:text-[16px]"
               >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
             >
           </button>
+          </div>
+          
         </li>
-        <nuxt-link
-          v-if="searchResults.length != 0"
-          :to="{ path: '/search-result/', query: { search: searchInput } }"
-          replace
-          class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
-        >
-          <span @click="searchInputFake = searchInputFake.replace(searchInputFake,'') "> Все результаты</span>
-        </nuxt-link>
         <span
-          v-else
+        v-if="sortedArray.length == 0"
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
           >К сожалению ничего не найдено</span
         >
       </ul>
-      <!-- {{ searchResult }}
-      <div v-for="(item , i) in searchResults" :key="i">
-        <span>{{item}}</span>
-      </div> -->
     </div>
   </div>
 </template>
@@ -133,6 +110,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import gql from 'graphql-tag'
+import HeadingH3 from '~/components/HeadingH3.vue'
 
 const ALL_CHARACTERS_QUERY = gql`
   query ALL_CHARACTERS_QUERY($search: String) {
@@ -173,16 +151,17 @@ const ALL_CHARACTERS_QUERY = gql`
 `
 
 export default {
+  components: { HeadingH3 },
   data () {
     return {
       searchInput: '',
-      searchInputFake: '',
       searchProducts: [],
       searchResults: [],
       inCart: [],
       test: ''
     }
   },
+  layout: 'MainLayout',
   computed: {
     ...mapGetters(['CART']),
     sortedArray: function () {
@@ -209,7 +188,6 @@ export default {
             nameB.split(' ').includes(inputSearhValue) ||
           nameB.split(' ').includes(inputSearhValueEn)
         ) {
-          console.log('211')
           return 1
         }
         if (
@@ -218,7 +196,6 @@ export default {
             nameB.split(' ').includes(inputSearhValue) ||
           nameB.split(' ').includes(inputSearhValueEn)
         ) {
-          console.log('218')
           return -1
         }
 
@@ -234,13 +211,19 @@ export default {
           item.node.name.toLowerCase().includes(this.searchInput.toLowerCase()) ||
           item.node.name.toLowerCase().includes(this.test.toLowerCase())
       )
-      .splice(0, 7)
+      .splice(0, 100)
     }
   },
   methods: {
     ...mapActions(['ADD_TO_CART']),
+    CurentInSearchInput(){
+      if (this.$route.query.search) {
+          this.searchInput = this.$route.query.search
+          this.search()
+      } 
+    
+    },
     async search () {
-      this.searchInputFake = this.searchInput
       const lowerCase = this.searchInput.toLowerCase()
       this.autoKeyboardLang(lowerCase)
 
@@ -377,13 +360,15 @@ export default {
           }
         }
       )
-      console.log(searchProductsApi)
       return (
         { searchProductsApi },
         this.inCart.push(searchProductsApi),
         this.ADD_TO_CART(searchProductsApi)
       )
     }
+  },
+  created(){
+    this.CurentInSearchInput()
   }
 }
 </script>

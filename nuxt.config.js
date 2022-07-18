@@ -82,7 +82,12 @@ export default {
     }
   },
   axios: {
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://albvt.ru/',
+    credentials: true,
+    debug: true,
+    common: {
+      'Authorization': 'Basic Y2tfODVlNDRlODczNTI2MWQ0NWExOWQ4ZjdhYWYwMTJmOGQ2NDBjMmRhYzpjc180MjYxYmI2MzlmNGU5YTE4YzE0Njg1MTM2MWQ2MzE3ODA0YTgxNmZj'
+    },
     // proxy: true
   },
   googleFonts: {
@@ -105,5 +110,6 @@ export default {
         autoprefixer: {}
       }
     }
-  }
+  },
+  cache: true
 }

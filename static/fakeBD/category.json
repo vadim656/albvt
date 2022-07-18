@@ -4,87 +4,31 @@
       "edges": [
         {
           "node": {
-            "databaseId": 2834,
-            "name": "Аллергологические исследования",
-            "slug": "allergologicheskie-issledovaniya",
+            "databaseId": 2824,
+            "name": "Гематологические исследования",
+            "slug": "gematologicheskie-issledovaniya",
             "parentDatabaseId": 2822,
             "children": {
               "edges": [
                 {
                   "node": {
-                    "name": "14.1. Аллергологические исследования, технология ImmunoCAP",
-                    "databaseId": 2909,
-                    "slug": "14-1-allergologicheskie-issledovaniya-te"
+                    "name": "1.1. Клинический анализ крови",
+                    "databaseId": 2849,
+                    "slug": "1-1-klinicheskij-analiz-krovi"
                   }
                 },
                 {
                   "node": {
-                    "name": "14.10. Определение специфических IgG: бытовые аллергены",
-                    "databaseId": 2918,
-                    "slug": "14-10-opredelenie-speczificheskih-igg-bytovye"
+                    "name": "1.2. Иммуногематология",
+                    "databaseId": 2850,
+                    "slug": "1-2-immunogematologiya"
                   }
                 },
                 {
                   "node": {
-                    "name": "14.11. Определение специфических IgG: аллергены животных",
-                    "databaseId": 2919,
-                    "slug": "14-11-opredelenie-speczificheskih-igg-allerge"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.2. Иммуноглобулин Е общий",
-                    "databaseId": 2910,
-                    "slug": "14-2-immunoglobulin-e-obshhij"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.3. Определение специфических IgE: комплексные аллергопанели",
-                    "databaseId": 2911,
-                    "slug": "14-3-opredelenie-speczificheskih-ige-komplek"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.4. Определение специфических IgE: пищевые аллергены",
-                    "databaseId": 2912,
-                    "slug": "14-4-opredelenie-speczificheskih-ige-pishhevye"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.5. Определение специфических IgE: бытовые аллергены",
-                    "databaseId": 2913,
-                    "slug": "14-5-opredelenie-speczificheskih-ige-bytovye"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.6. Определение специфических IgE: аллергены животных",
-                    "databaseId": 2914,
-                    "slug": "14-6-opredelenie-speczificheskih-ige-allerge"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.7. Определение специфических IgE: аллергены пыльцы растений",
-                    "databaseId": 2915,
-                    "slug": "14-7-opredelenie-speczificheskih-ige-allerge"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.8. Определение специфических IgE: профессиональные аллергены",
-                    "databaseId": 2916,
-                    "slug": "14-8-opredelenie-speczificheskih-ige-profess"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "14.9. Определение специфических IgG: пищевые аллергены",
-                    "databaseId": 2917,
-                    "slug": "14-9-opredelenie-speczificheskih-igg-pishhevye"
+                    "name": "1.3. Оценка свертывающей системы крови (коагулограмма)",
+                    "databaseId": 2851,
+                    "slug": "1-3-oczenka-svertyvayushhej-sistemy-krovi-k"
                   }
                 }
               ]
@@ -189,170 +133,12 @@
         },
         {
           "node": {
-            "databaseId": 2824,
-            "name": "Гематологические исследования",
-            "slug": "gematologicheskie-issledovaniya",
+            "databaseId": 2794,
+            "name": "Онкомаркеры",
+            "slug": "onkomarkery",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "1.1. Клинический анализ крови",
-                    "databaseId": 2849,
-                    "slug": "1-1-klinicheskij-analiz-krovi"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "1.2. Иммуногематология",
-                    "databaseId": 2850,
-                    "slug": "1-2-immunogematologiya"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "1.3. Оценка свертывающей системы крови (коагулограмма)",
-                    "databaseId": 2851,
-                    "slug": "1-3-oczenka-svertyvayushhej-sistemy-krovi-k"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2841,
-            "name": "Генетические предрасположенности",
-            "slug": "geneticheskie-predraspolozhennosti",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "21.10. Нарушения обмена веществ",
-                    "databaseId": 2938,
-                    "slug": "21-10-narusheniya-obmena-veshhestv"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.11. Фармакогенетика",
-                    "databaseId": 2939,
-                    "slug": "21-11-farmakogenetika"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.12. Система детоксикации ксенобиотиков и канцерогенов",
-                    "databaseId": 2940,
-                    "slug": "21-12-sistema-detoksikaczii-ksenobiotiko"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.13. Услуги врача-генетика",
-                    "databaseId": 2941,
-                    "slug": "21-13-uslugi-vracha-genetika"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.14. Определение пола плода",
-                    "databaseId": 2942,
-                    "slug": "21-14-opredelenie-pola-ploda"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.15. Аутоиммунные заболевания",
-                    "databaseId": 2943,
-                    "slug": "21-15-autoimmunnye-zabolevaniya"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.2. Образ жизни и генетические факторы (Lifestyle and Genetic Factors)",
-                    "databaseId": 2930,
-                    "slug": "21-2-obraz-zhizni-i-geneticheskie-faktory-lifestyl"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.3. Репродуктивное здоровье",
-                    "databaseId": 2931,
-                    "slug": "21-3-reproduktivnoe-zdorove"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.4. HLA-типирование и резус-фактор",
-                    "databaseId": 2932,
-                    "slug": "21-4-hla-tipirovanie-i-rezus-faktor"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.5. Система свертывания крови",
-                    "databaseId": 2933,
-                    "slug": "21-5-sistema-svertyvaniya-krovi"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.6. Болезни сердца и сосудов",
-                    "databaseId": 2934,
-                    "slug": "21-6-bolezni-serdcza-i-sosudov"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.7. Болезни желудочно-кишечного тракта",
-                    "databaseId": 2935,
-                    "slug": "21-7-bolezni-zheludochno-kishechnogo-trakta"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.8. Болезни центральной нервной системы",
-                    "databaseId": 2936,
-                    "slug": "21-8-bolezni-czentralnoj-nervnoj-sistem"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "21.9. Онкологические заболевания",
-                    "databaseId": 2937,
-                    "slug": "21-9-onkologicheskie-zabolevaniya"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2838,
-            "name": "Гистологические исследования",
-            "slug": "gistologicheskie-issledovaniya",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "18.1. Гистологические исследования с окрашиванием гематоксилин-эозином",
-                    "databaseId": 2926,
-                    "slug": "18-1-gistologicheskie-issledovaniya-s-okr"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "18.2. Иммуногистохимические исследования",
-                    "databaseId": 2927,
-                    "slug": "18-2-immunogistohimicheskie-issledovani"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
@@ -446,6 +232,262 @@
                     "name": "4.9. Оценка эндокринной функции поджелудочной железы",
                     "databaseId": 2872,
                     "slug": "4-9-oczenka-endokrinnoj-funkczii-podzhelud"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2827,
+            "name": "Микроэлементы",
+            "slug": "mikroelementy",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "5.1. Микроэлементы в крови (сыворотка крови, цельная кровь)",
+                    "databaseId": 2876,
+                    "slug": "5-1-mikroelementy-v-krovi-syvorotka-kro"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "5.2. Микроэлементы в моче",
+                    "databaseId": 2877,
+                    "slug": "5-2-mikroelementy-v-moche"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "5.3. Микроэлементы в волосах",
+                    "databaseId": 2878,
+                    "slug": "5-3-mikroelementy-v-volosah"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "5.4. Микроэлементы в ногтях",
+                    "databaseId": 2879,
+                    "slug": "5-4-mikroelementy-v-nogtyah"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2828,
+            "name": "Лекарственный мониторинг",
+            "slug": "lekarstvennyj-monitoring",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "6.1. Лекарственный мониторинг",
+                    "databaseId": 2880,
+                    "slug": "6-1-lekarstvennyj-monitoring"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2796,
+            "name": "Моча",
+            "slug": "mocha",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "7.1. Клинические тесты",
+                    "databaseId": 2845,
+                    "slug": "7-1-klinicheskie-testy"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "7.2. Биохимия мочи (суточная экскреция)",
+                    "databaseId": 2846,
+                    "slug": "7-2-biohimiya-mochi-sutochnaya-ekskrecziya"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "7.3. Психоактивные вещества в моче",
+                    "databaseId": 2847,
+                    "slug": "7-3-psihoaktivnye-veshhestva-v-moche"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "7.4. Исследование почечного камня",
+                    "databaseId": 2848,
+                    "slug": "7-4-issledovanie-pochechnogo-kamnya"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2795,
+            "name": "Кал",
+            "slug": "kal",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": []
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2829,
+            "name": "Инфекционные заболевания",
+            "slug": "infekczionnye-zabolevaniya",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "Бактериальные",
+                    "databaseId": 2882,
+                    "slug": "bakterialnye"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "Вирусные",
+                    "databaseId": 2881,
+                    "slug": "virusnye"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "Грибковые",
+                    "databaseId": 2883,
+                    "slug": "gribkovye"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "Паразитарные",
+                    "databaseId": 2884,
+                    "slug": "parazitarnye"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2830,
+            "name": "Микробиологические исследования: неспецифические воспалительные заболевания",
+            "slug": "mikrobiologicheskie-issledovaniya-ne",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "10.1. Микробиологические исследования: неспецифические воспалительные заболевания различных локализаций",
+                    "databaseId": 2885,
+                    "slug": "10-1-mikrobiologicheskie-issledovaniya-n"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2831,
+            "name": "Иммунологические",
+            "slug": "immunologicheskie",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "11.1. Комплексные иммунологические исследования",
+                    "databaseId": 2886,
+                    "slug": "11-1-kompleksnye-immunologicheskie-issle"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "11.2. Иммуноглобулины общие",
+                    "databaseId": 2887,
+                    "slug": "11-2-immunoglobuliny-obshhie"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "11.3. Специфические белки",
+                    "databaseId": 2888,
+                    "slug": "11-3-speczificheskie-belki"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "11.4. Компоненты комплемента",
+                    "databaseId": 2889,
+                    "slug": "11-4-komponenty-komplementa"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "11.5. Цитокины",
+                    "databaseId": 2890,
+                    "slug": "11-5-czitokiny"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2832,
+            "name": "Интерфероновый статус",
+            "slug": "interferonovyj-status",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "12.1. Интерфероновый статус",
+                    "databaseId": 2891,
+                    "slug": "12-1-interferonovyj-status"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "12.2. Интерфероновый статус (4 показателя) с определением чувствительности к препаратам интерферона",
+                    "databaseId": 2892,
+                    "slug": "12-2-interferonovyj-status-4-pokazatelya-s"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "12.3. Интерфероновый статус (4 показателя) с определением чувствительности к индукторам интерферона",
+                    "databaseId": 2893,
+                    "slug": "12-3-interferonovyj-status-4-pokazatelya-s"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "12.4. Интерфероновый статус (4 показателя) с определением чувствительности к иммуномодуляторам",
+                    "databaseId": 2894,
+                    "slug": "12-4-interferonovyj-status-4-pokazatelya-s"
                   }
                 }
               ]
@@ -564,125 +606,87 @@
         },
         {
           "node": {
-            "databaseId": 2831,
-            "name": "Иммунологические",
-            "slug": "immunologicheskie",
+            "databaseId": 2834,
+            "name": "Аллергологические исследования",
+            "slug": "allergologicheskie-issledovaniya",
             "parentDatabaseId": 2822,
             "children": {
               "edges": [
                 {
                   "node": {
-                    "name": "11.1. Комплексные иммунологические исследования",
-                    "databaseId": 2886,
-                    "slug": "11-1-kompleksnye-immunologicheskie-issle"
+                    "name": "14.1. Аллергологические исследования, технология ImmunoCAP",
+                    "databaseId": 2909,
+                    "slug": "14-1-allergologicheskie-issledovaniya-te"
                   }
                 },
                 {
                   "node": {
-                    "name": "11.2. Иммуноглобулины общие",
-                    "databaseId": 2887,
-                    "slug": "11-2-immunoglobuliny-obshhie"
+                    "name": "14.10. Определение специфических IgG: бытовые аллергены",
+                    "databaseId": 2918,
+                    "slug": "14-10-opredelenie-speczificheskih-igg-bytovye"
                   }
                 },
                 {
                   "node": {
-                    "name": "11.3. Специфические белки",
-                    "databaseId": 2888,
-                    "slug": "11-3-speczificheskie-belki"
+                    "name": "14.11. Определение специфических IgG: аллергены животных",
+                    "databaseId": 2919,
+                    "slug": "14-11-opredelenie-speczificheskih-igg-allerge"
                   }
                 },
                 {
                   "node": {
-                    "name": "11.4. Компоненты комплемента",
-                    "databaseId": 2889,
-                    "slug": "11-4-komponenty-komplementa"
+                    "name": "14.2. Иммуноглобулин Е общий",
+                    "databaseId": 2910,
+                    "slug": "14-2-immunoglobulin-e-obshhij"
                   }
                 },
                 {
                   "node": {
-                    "name": "11.5. Цитокины",
-                    "databaseId": 2890,
-                    "slug": "11-5-czitokiny"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2832,
-            "name": "Интерфероновый статус",
-            "slug": "interferonovyj-status",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "12.1. Интерфероновый статус",
-                    "databaseId": 2891,
-                    "slug": "12-1-interferonovyj-status"
+                    "name": "14.3. Определение специфических IgE: комплексные аллергопанели",
+                    "databaseId": 2911,
+                    "slug": "14-3-opredelenie-speczificheskih-ige-komplek"
                   }
                 },
                 {
                   "node": {
-                    "name": "12.2. Интерфероновый статус (4 показателя) с определением чувствительности к препаратам интерферона",
-                    "databaseId": 2892,
-                    "slug": "12-2-interferonovyj-status-4-pokazatelya-s"
+                    "name": "14.4. Определение специфических IgE: пищевые аллергены",
+                    "databaseId": 2912,
+                    "slug": "14-4-opredelenie-speczificheskih-ige-pishhevye"
                   }
                 },
                 {
                   "node": {
-                    "name": "12.3. Интерфероновый статус (4 показателя) с определением чувствительности к индукторам интерферона",
-                    "databaseId": 2893,
-                    "slug": "12-3-interferonovyj-status-4-pokazatelya-s"
+                    "name": "14.5. Определение специфических IgE: бытовые аллергены",
+                    "databaseId": 2913,
+                    "slug": "14-5-opredelenie-speczificheskih-ige-bytovye"
                   }
                 },
                 {
                   "node": {
-                    "name": "12.4. Интерфероновый статус (4 показателя) с определением чувствительности к иммуномодуляторам",
-                    "databaseId": 2894,
-                    "slug": "12-4-interferonovyj-status-4-pokazatelya-s"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2829,
-            "name": "Инфекционные заболевания",
-            "slug": "infekczionnye-zabolevaniya",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "Бактериальные",
-                    "databaseId": 2882,
-                    "slug": "bakterialnye"
+                    "name": "14.6. Определение специфических IgE: аллергены животных",
+                    "databaseId": 2914,
+                    "slug": "14-6-opredelenie-speczificheskih-ige-allerge"
                   }
                 },
                 {
                   "node": {
-                    "name": "Вирусные",
-                    "databaseId": 2881,
-                    "slug": "virusnye"
+                    "name": "14.7. Определение специфических IgE: аллергены пыльцы растений",
+                    "databaseId": 2915,
+                    "slug": "14-7-opredelenie-speczificheskih-ige-allerge"
                   }
                 },
                 {
                   "node": {
-                    "name": "Грибковые",
-                    "databaseId": 2883,
-                    "slug": "gribkovye"
+                    "name": "14.8. Определение специфических IgE: профессиональные аллергены",
+                    "databaseId": 2916,
+                    "slug": "14-8-opredelenie-speczificheskih-ige-profess"
                   }
                 },
                 {
                   "node": {
-                    "name": "Паразитарные",
-                    "databaseId": 2884,
-                    "slug": "parazitarnye"
+                    "name": "14.9. Определение специфических IgG: пищевые аллергены",
+                    "databaseId": 2917,
+                    "slug": "14-9-opredelenie-speczificheskih-igg-pishhevye"
                   }
                 }
               ]
@@ -729,171 +733,6 @@
         },
         {
           "node": {
-            "databaseId": 2828,
-            "name": "Лекарственный мониторинг",
-            "slug": "lekarstvennyj-monitoring",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "6.1. Лекарственный мониторинг",
-                    "databaseId": 2880,
-                    "slug": "6-1-lekarstvennyj-monitoring"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2830,
-            "name": "Микробиологические исследования: неспецифические воспалительные заболевания",
-            "slug": "mikrobiologicheskie-issledovaniya-ne",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "10.1. Микробиологические исследования: неспецифические воспалительные заболевания различных локализаций",
-                    "databaseId": 2885,
-                    "slug": "10-1-mikrobiologicheskie-issledovaniya-n"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2827,
-            "name": "Микроэлементы",
-            "slug": "mikroelementy",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "5.1. Микроэлементы в крови (сыворотка крови, цельная кровь)",
-                    "databaseId": 2876,
-                    "slug": "5-1-mikroelementy-v-krovi-syvorotka-kro"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "5.2. Микроэлементы в моче",
-                    "databaseId": 2877,
-                    "slug": "5-2-mikroelementy-v-moche"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "5.3. Микроэлементы в волосах",
-                    "databaseId": 2878,
-                    "slug": "5-3-mikroelementy-v-volosah"
-                  }
-                },
-                {
-                  "node": {
-                    "name": "5.4. Микроэлементы в ногтях",
-                    "databaseId": 2879,
-                    "slug": "5-4-mikroelementy-v-nogtyah"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2844,
-            "name": "Наследственные болезни обмена веществ у новорожденных / скрининг \"Пяточка\"",
-            "slug": "nasledstvennye-bolezni-obmena-veshhes",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "24.1. Наследственные болезни обмена веществ у новорождённых/скрининг «Пяточка»",
-                    "databaseId": 2945,
-                    "slug": "24-1-nasledstvennye-bolezni-obmena-veshhe"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2842,
-            "name": "Наследственные моногенные заболевания",
-            "slug": "nasledstvennye-monogennye-zabolevan",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "22.1. Наследственные моногенные заболевания и состояния",
-                    "databaseId": 2944,
-                    "slug": "22-1-nasledstvennye-monogennye-zaboleva"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2840,
-            "name": "Онкогенетические исследования",
-            "slug": "onkogeneticheskie-issledovaniya",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "20.1. Онкогенетические исследования",
-                    "databaseId": 2929,
-                    "slug": "20-1-onkogeneticheskie-issledovaniya"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2843,
-            "name": "Определение отцовства и материнства",
-            "slug": "opredelenie-otczovstva-i-materinstva",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": []
-            }
-          }
-        },
-        {
-          "node": {
-            "databaseId": 2839,
-            "name": "Цитогенетические исследования",
-            "slug": "czitogeneticheskie-issledovaniya",
-            "parentDatabaseId": 2822,
-            "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "19.1. Цитогенетические исследования",
-                    "databaseId": 2928,
-                    "slug": "19-1-czitogeneticheskie-issledovaniya"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "node": {
             "databaseId": 2837,
             "name": "Цитологические исследования",
             "slug": "czitologicheskie-issledovaniya",
@@ -931,7 +770,234 @@
               ]
             }
           }
+        },
+        {
+          "node": {
+            "databaseId": 2838,
+            "name": "Гистологические исследования",
+            "slug": "gistologicheskie-issledovaniya",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "18.1. Гистологические исследования с окрашиванием гематоксилин-эозином",
+                    "databaseId": 2926,
+                    "slug": "18-1-gistologicheskie-issledovaniya-s-okr"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "18.2. Иммуногистохимические исследования",
+                    "databaseId": 2927,
+                    "slug": "18-2-immunogistohimicheskie-issledovani"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2839,
+            "name": "Цитогенетические исследования",
+            "slug": "czitogeneticheskie-issledovaniya",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "19.1. Цитогенетические исследования",
+                    "databaseId": 2928,
+                    "slug": "19-1-czitogeneticheskie-issledovaniya"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        
+        {
+          "node": {
+            "databaseId": 2840,
+            "name": "Онкогенетические исследования",
+            "slug": "onkogeneticheskie-issledovaniya",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "20.1. Онкогенетические исследования",
+                    "databaseId": 2929,
+                    "slug": "20-1-onkogeneticheskie-issledovaniya"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2841,
+            "name": "Генетические предрасположенности",
+            "slug": "geneticheskie-predraspolozhennosti",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "21.10. Нарушения обмена веществ",
+                    "databaseId": 2938,
+                    "slug": "21-10-narusheniya-obmena-veshhestv"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.11. Фармакогенетика",
+                    "databaseId": 2939,
+                    "slug": "21-11-farmakogenetika"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.12. Система детоксикации ксенобиотиков и канцерогенов",
+                    "databaseId": 2940,
+                    "slug": "21-12-sistema-detoksikaczii-ksenobiotiko"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.13. Услуги врача-генетика",
+                    "databaseId": 2941,
+                    "slug": "21-13-uslugi-vracha-genetika"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.14. Определение пола плода",
+                    "databaseId": 2942,
+                    "slug": "21-14-opredelenie-pola-ploda"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.15. Аутоиммунные заболевания",
+                    "databaseId": 2943,
+                    "slug": "21-15-autoimmunnye-zabolevaniya"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.2. Образ жизни и генетические факторы (Lifestyle and Genetic Factors)",
+                    "databaseId": 2930,
+                    "slug": "21-2-obraz-zhizni-i-geneticheskie-faktory-lifestyl"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.3. Репродуктивное здоровье",
+                    "databaseId": 2931,
+                    "slug": "21-3-reproduktivnoe-zdorove"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.4. HLA-типирование и резус-фактор",
+                    "databaseId": 2932,
+                    "slug": "21-4-hla-tipirovanie-i-rezus-faktor"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.5. Система свертывания крови",
+                    "databaseId": 2933,
+                    "slug": "21-5-sistema-svertyvaniya-krovi"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.6. Болезни сердца и сосудов",
+                    "databaseId": 2934,
+                    "slug": "21-6-bolezni-serdcza-i-sosudov"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.7. Болезни желудочно-кишечного тракта",
+                    "databaseId": 2935,
+                    "slug": "21-7-bolezni-zheludochno-kishechnogo-trakta"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.8. Болезни центральной нервной системы",
+                    "databaseId": 2936,
+                    "slug": "21-8-bolezni-czentralnoj-nervnoj-sistem"
+                  }
+                },
+                {
+                  "node": {
+                    "name": "21.9. Онкологические заболевания",
+                    "databaseId": 2937,
+                    "slug": "21-9-onkologicheskie-zabolevaniya"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2842,
+            "name": "Наследственные моногенные заболевания",
+            "slug": "nasledstvennye-monogennye-zabolevan",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "22.1. Наследственные моногенные заболевания и состояния",
+                    "databaseId": 2944,
+                    "slug": "22-1-nasledstvennye-monogennye-zaboleva"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2843,
+            "name": "Определение отцовства и материнства",
+            "slug": "opredelenie-otczovstva-i-materinstva",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": []
+            }
+          }
+        },
+        {
+          "node": {
+            "databaseId": 2844,
+            "name": "Наследственные болезни обмена веществ у новорожденных / скрининг \"Пяточка\"",
+            "slug": "nasledstvennye-bolezni-obmena-veshhes",
+            "parentDatabaseId": 2822,
+            "children": {
+              "edges": [
+                {
+                  "node": {
+                    "name": "24.1. Наследственные болезни обмена веществ у новорождённых/скрининг «Пяточка»",
+                    "databaseId": 2945,
+                    "slug": "24-1-nasledstvennye-bolezni-obmena-veshhe"
+                  }
+                }
+              ]
+            }
+          }
         }
+        
+       
+       
       ]
     }
   },

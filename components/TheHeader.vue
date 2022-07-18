@@ -36,11 +36,11 @@
         
 
         <div class="col-span-1 flex gap-[10px] justify-between">
-          <button
-            class="text-[14px] xl:text-[16px] text-white font-light px-[14px] py-[14px] hidden lg:w-full xl:max-w-[210px] sm:flex sm:items-center sm:justify-center  border-[0.5px] rounded-[5px] h-[47px]"
+          <nuxt-link to="/result"
+            class="text-[14px] xl:text-[16px] !text-white font-light px-[14px] py-[14px] hidden lg:w-full xl:max-w-[210px] sm:flex sm:items-center sm:justify-center  border-[0.5px] rounded-[5px] h-[47px]"
           >
             Результаты анализов
-          </button>
+          </nuxt-link>
           <div
             class="flex w-full sm:w-[100px]  justify-between sm:justify-end items-center gap-[0px] sm:gap-[10px] "
           >

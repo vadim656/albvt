@@ -4,7 +4,7 @@
     <div
       class="container grid grid-cols-1 sm:grid-cols-[1fr,3fr] py-[44px] gap-[20px]"
     >
-      <sidebar-analiz  />
+      <sidebar-complecs/>
       <Nuxt />
     </div>
 
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SidebarAnaliz from '~/components/Sidebars/SidebarAnaliz.vue'
+import SidebarComplecs from '~/components/Sidebars/SidebarComplecs.vue'
 import TheFooter from '~/components/TheFooter.vue'
 import TheHeader from '~/components/TheHeader.vue'
 
@@ -21,7 +21,7 @@ import TheHeader from '~/components/TheHeader.vue'
 
 
 export default {
-  components: { TheHeader, TheFooter, SidebarAnaliz },
+  components: { TheHeader, TheFooter, SidebarComplecs },
   data(){
     return {
     }

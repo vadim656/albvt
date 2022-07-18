@@ -355,10 +355,10 @@
                             v-for="(item, i) in form.invitro"
                             :key="i"
                             :id="item.name"
-                            class="invitro px-2 border-[1px] border-[#AEAEAE] hover:border-none rounded-[5px] flex justify-between items-center  h-[48px] hover:shadow-md anime cursor-pointer text-[14px]"
+                            class="invitro px-2 border-[1px] border-[#AEAEAE]  rounded-[5px] flex justify-between items-center  h-[48px] hover:shadow-lg anime cursor-pointer text-[14px]"
                             @click="selectInvitroAdd(item)"
                           >
-                            <span class="h-full flex items-center">{{
+                            <span class="h-full flex items-center text-[12px]">{{
                               item.name
                             }}</span>
                             <span
@@ -499,28 +499,6 @@
               </div>
             </div>
           </form>
-        </div>
-      </div>
-      <div id="tut" class=" block">
-        <div
-          class="bg-white p-4 rounded-[5px] shadow-md flex flex-col gap-2"
-          v-if="
-            form.mesto == 'ofic' &&
-              form.invitroSelect !==
-                'Выберите ближайший офис нашего партнера ИНВИТРО:'
-          "
-        >
-          <span class="text-[#746F6F] text-[14px]"
-            >Вы находитесь на сайте нашего партнера ИНВИТРО</span
-          >
-          <iframe
-            :src="form.invitroSite"
-            height="630"
-            align="left"
-            class="w-full"
-          >
-            Ваш браузер не поддерживает плавающие фреймы!
-          </iframe>
         </div>
       </div>
     </div>
@@ -686,6 +664,35 @@
       </div>
     </div>
     <!-- end cart -->
+    <div v-if="modalInvitro == true &&  form.invitroSelect !== 'Выберите ближайший офис нашего партнера ИНВИТРО:'" @click="modalInvitro = !modalInvitro" class="fixed flex justify-center items-center bg-[#343434]/40  w-screen h-screen left-0 top-0  z-[1] backdrop-blur-sm">
+      <div class="w-[400px] h-full max-h-[780px] z-[6] bg-white p-4 rounded-[5px] shadow-md">
+        <div
+          class="bg-white p-4 rounded-[5px] shadow-md flex flex-col gap-2"
+          v-if="
+            form.mesto == 'ofic' &&
+              form.invitroSelect !==
+                'Выберите ближайший офис нашего партнера ИНВИТРО:'
+          "
+        >
+          <span class="text-[#746F6F] text-[14px] w-full text-center"
+            >Вы находитесь на сайте нашего партнера ИНВИТРО</span
+          >
+          <span class="text-[#B07263] w-full text-center text-[14px]">Ознакомьтесь с подробной информацией о работе данного офиса.</span>
+          
+          <iframe
+            :src="form.invitroSite"
+            height="600"
+            align="left"
+            class="w-full"
+          >
+            Ваш браузер не поддерживает плавающие фреймы!
+          </iframe>
+          <span  @click="modalInvitro = !modalInvitro"  class="text-[#746F6F] text-[14px] w-full text-center cursor-pointer"
+            >Закрыть</span
+          >
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -710,6 +717,7 @@ export default {
           price: '150'
         }
       ],
+      modalInvitro: false,
       form: {
         family: '',
         name: '',
@@ -836,15 +844,16 @@ export default {
       this.form.invitroSelect = item.name
       this.form.invitroSite = item.invitro
       this.form.showInvitro = false
-      this.scrolltoInvitro()
+      this.modalInvitro = true
+      // this.scrolltoInvitro()
     },
-    scrolltoInvitro () {
-      var hiddenElement = document.getElementById('tut')
-      hiddenElement.scrollIntoView({
-        block: 'start',
-        behavior: 'smooth'
-      })
-    },
+    // scrolltoInvitro () {
+    //   var hiddenElement = document.getElementById('tut')
+    //   hiddenElement.scrollIntoView({
+    //     block: 'start',
+    //     behavior: 'smooth'
+    //   })
+    // },
     closeCart () {
       this.$emit('cartView')
     },

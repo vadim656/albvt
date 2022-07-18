@@ -12,6 +12,78 @@
           },
           {
             "node": {
+              "databaseId": 2798,
+              "name": "2. Для мужчин",
+              "slug": "2-dlya-muzhchin",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2799,
+              "name": "3. Ежегодные профилактические обследования",
+              "slug": "3-ezhegodnye-profilakticheskie-obsledo",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2800,
+              "name": "4. Спортивные профили",
+              "slug": "4-sportivnye-profili",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2801,
+              "name": "5. Обследование домашнего персонала",
+              "slug": "5-obsledovanie-domashnego-personala",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2802,
+              "name": "6. Оценка риска развития заболеваний сердечно-сосудистой системы",
+              "slug": "6-oczenka-riska-razvitiya-zabolevanij-se",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2803,
+              "name": "7. Диагностика антифосфолипидного синдрома",
+              "slug": "7-diagnostika-antifosfolipidnogo-sin",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2804,
+              "name": "8. Диагностика состояния желудочно-кишечного тракта",
+              "slug": "8-diagnostika-sostoyaniya-zheludochno-kish",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2805,
+              "name": "9. Оценка функции печени",
+              "slug": "9-oczenka-funkczii-pecheni",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
+              "databaseId": 2806,
+              "name": "10. Неинвазивная оценка фиброза печени",
+              "slug": "10-neinvazivnaya-oczenka-fibroza-pecheni",
+              "parentDatabaseId": 2823
+            }
+          },
+          {
+            "node": {
               "databaseId": 2807,
               "name": "11. Оценка функции почек",
               "slug": "11-oczenka-funkczii-pochek",
@@ -82,14 +154,7 @@
               "parentDatabaseId": 2823
             }
           },
-          {
-            "node": {
-              "databaseId": 2798,
-              "name": "2. Для мужчин",
-              "slug": "2-dlya-muzhchin",
-              "parentDatabaseId": 2823
-            }
-          },
+         
           {
             "node": {
               "databaseId": 2816,
@@ -137,63 +202,14 @@
               "slug": "25-covid-19",
               "parentDatabaseId": 2823
             }
-          },
-          {
-            "node": {
-              "databaseId": 2799,
-              "name": "3. Ежегодные профилактические обследования",
-              "slug": "3-ezhegodnye-profilakticheskie-obsledo",
-              "parentDatabaseId": 2823
-            }
-          },
-          {
-            "node": {
-              "databaseId": 2800,
-              "name": "4. Спортивные профили",
-              "slug": "4-sportivnye-profili",
-              "parentDatabaseId": 2823
-            }
-          },
-          {
-            "node": {
-              "databaseId": 2801,
-              "name": "5. Обследование домашнего персонала",
-              "slug": "5-obsledovanie-domashnego-personala",
-              "parentDatabaseId": 2823
-            }
-          },
-          {
-            "node": {
-              "databaseId": 2802,
-              "name": "6. Оценка риска развития заболеваний сердечно-сосудистой системы",
-              "slug": "6-oczenka-riska-razvitiya-zabolevanij-se",
-              "parentDatabaseId": 2823
-            }
-          },
-          {
-            "node": {
-              "databaseId": 2803,
-              "name": "7. Диагностика антифосфолипидного синдрома",
-              "slug": "7-diagnostika-antifosfolipidnogo-sin",
-              "parentDatabaseId": 2823
-            }
-          },
-          {
-            "node": {
-              "databaseId": 2804,
-              "name": "8. Диагностика состояния желудочно-кишечного тракта",
-              "slug": "8-diagnostika-sostoyaniya-zheludochno-kish",
-              "parentDatabaseId": 2823
-            }
-          },
-          {
-            "node": {
-              "databaseId": 2805,
-              "name": "9. Оценка функции печени",
-              "slug": "9-oczenka-funkczii-pecheni",
-              "parentDatabaseId": 2823
-            }
           }
+         
+         
+         
+          
+          
+        
+         
         ]
       }
     },

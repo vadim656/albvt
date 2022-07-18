@@ -25,6 +25,9 @@ module.exports = {
       lg: '1180px',
       xl: '1440px'
     },
+    boxShadow: {
+      'md': '0px 8px 24px rgba(149, 157, 165, 0.2)', 
+    },
     colors: {
       'transparent': 'transparent',
       'white': '#FFFFFF',

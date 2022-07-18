@@ -1,10 +1,12 @@
 <template>
-  <div class="flex flex-col gap-[20px] ">
-    <h1 class="h-[40px] text-[24px] font-medium">
-      Клинический анализ крови в Ростове-на-Дону
-    </h1>
-    <!-- right section -->
-    <div class="bg-white shadow-md rounded-[5px] ">
+  <div>
+    <div class="flex flex-col gap-[20px] ">
+      <h1 class="h-[40px] text-[15px] font-medium">
+        {{ title }}
+         <!-- {{ title.name}} -->
+      </h1>
+      <!-- right section -->
+      <div class="bg-white shadow-md rounded-[5px] ">
         <div>
           <div
             class="hidden xl:grid lg:grid-cols-[3fr,3fr,2fr,1fr]   xl:grid-cols-[2fr,13fr,2fr,3fr] w-full border-b border-b-[#C3C3C3] gap-[20px] py-[12px] p-[10px]"
@@ -13,10 +15,10 @@
             <span class="">Наименование исследования</span>
             <span class="">Цена</span>
           </div>
-          <div class="flex flex-col w-full   xl:mt-[12px]">
+          <div class="flex flex-col w-full  xl:mt-[12px]">
             <!-- one analiz  -->
-            <!-- <div
-              v-for="item in itemsSlice"
+            <div
+              v-for="item in test"
               :key="item.id"
               class="grid grid-cols-[3fr,3fr,2fr,1fr]  lg:grid-cols-[3fr,3fr,1fr] xl:grid-cols-[2fr,13fr,2fr,3fr] grid-rows-2 xl:grid-rows-1  gap-2 xl:gap-[20px] items-center hover:bg-[#F5F5F5] p-[10px] anime border-b-[0.5px] border-b-[#e4e4e4]"
             >
@@ -28,7 +30,7 @@
               >
                 <nuxt-link
                   :to="
-                    '/all-analyzes/' +
+                    '/all-complecs/' +
                       item.categories[0].slug +
                       '/' +
                       item.categories[0].id +
@@ -44,6 +46,7 @@
                     {{ item.name }}
                   </p>
                 </nuxt-link>
+                <!-- <span class="text-[#858585]">{{ item.sunItems }}</span> -->
               </div>
               <div class="hidden xl:flex flex-col col-span-1">
                 <span
@@ -71,14 +74,12 @@
                   >{{ item.attributes[0].options[0] }} дней</span
                 >
               </div>
+              <!-- modile -->
               <div
                 class=" flex xl:hidden gap-2 lg:gap-4 col-span-2 text-[10px] lg:text-[14px] font-normal text-[#777777]"
               >
                 <span>Код: {{ item.attributes[2].options[0] }}</span>
-                <div
-                  class="flex gap-2 cursor-pointer"
-                  
-                >
+                <div class="flex gap-2 cursor-pointer">
                   <span v-for="(material, i) in item.upsell_ids" :key="i">
                     <span v-if="material == 10387">
                       Пробоподготовка (МИК)(+200₽)
@@ -127,6 +128,7 @@
                 >
                 <span v-else>{{ item.attributes[0].options[0] }} дней</span>
               </div>
+              <!-- end modile -->
               <div
                 v-if="CART.includes(item)"
                 :id="item.id"
@@ -171,68 +173,93 @@
               <pop-add-to-cart v-show="addCartItem">
                 {{ addCartItem }}
               </pop-add-to-cart>
-            </div> -->
+            </div>
             <!-- end one analiz -->
           </div>
         </div>
       </div>
 
-    <div class="w-full flex justify-center">
-      <button
-        @click="limit = null"
-        v-if="
-          limit !== null &&
-            !this.$nuxt._route.query.search &&
-            this.GET_ALL_PRODUCTS.length > 7
-        "
-      >
-        Показать еще
-      </button>
+      <!-- end right section -->
+      <div class="w-full flex justify-center">
+        <!-- <button
+          @click="limit = null"
+          v-if="limit !== null && products.length > 7"
+        >
+          Показать еще
+        </button> -->
+      </div>
     </div>
-    <!-- end right section -->
+
+    <!-- tut -->
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import PopAddToCart from '~/components/elements/PopAddToCart.vue'
+
 export default {
   components: { PopAddToCart },
-  layout: 'AnalizWrapper',
+  layout: 'ComplecsWrapper',
   data () {
     return {
-      allAnalizes: [],
-      products: [],
-      viewAllAnalizes: false,
+      title: '',
       limit: 7,
       addCartItem: '',
-      searchProductsAll: [],
-      msg: 'Цена указана без учета забора биоматериала'
+      test: []
     }
   },
   methods: {
-    ...mapActions(['ADD_TO_CART']),
+    ...mapActions(['GET_PRODUCTS_FROM_API', 'ADD_TO_CART']),
     addToCart (item) {
-      this.ADD_TO_CART(item)
-      this.addCartItem = item.name
+      this.ADD_TO_CART(item), (this.addCartItem = item.name)
+    },
+    async getProductToParams () {
+      const params2 = this.$route.params
+      const all_products_2 = await this.$axios.$get(
+        'https://foxsis.ru/alvd/wp-json/wc/v3/products',
+        {
+          auth: {
+            username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
+            password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
+          },
+          params: {
+            category: params2.id,
+            per_page: 7
+          }
+        }
+      )
+      const title = await this.$axios.$get(
+        `https://foxsis.ru/alvd/wp-json/wc/v3/products/categories/` + params2.id,
+        {
+          auth: {
+            username: 'ck_85e44e8735261d45a19d8f7aaf012f8d640c2dac',
+            password: 'cs_4261bb639f4e9a18c146851361d6317804a816fc'
+          },
+          params: {
+            _fields: 'name'
+          }
+        }
+      )
+
+      return (
+        { all_products_2, title },
+        (this.test = all_products_2),
+        (this.title = title.name.replace(/[0-9]/g, '').replace(/\./g, ''))
+      )
     }
   },
-
   computed: {
     ...mapGetters(['CART']),
-    // itemsSlice () {
-    //   if (this.$nuxt._route.query.search) {
-    //     return this.filtered_results
-    //   } else {
-    //     return this.limit
-    //       ? this.GET_ALL_PRODUCTS.slice(0, this.limit)
-    //       : this.GET_ALL_PRODUCTS
-    //   }
-    // }
+
+    itemsSlice () {
+      return this.limit ? this.products.slice(0, this.limit) : this.products
+    }
   },
-  mounted () {
-    
-  }
+  created () {
+    this.getProductToParams()
+  },
+ 
 }
 </script>
 
@@ -247,19 +274,5 @@ export default {
   -webkit-box-orient: vertical;
   line-clamp: 1;
   box-orient: vertical;
-  transition: all 0.3s ease-in-out;
 }
-
-/* .test-text:hover{
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -moz-box;
-      -moz-box-orient: vertical;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      line-clamp: 3;
-      box-orient: vertical;
-      transition: all 0.3s ease-in-out;
-} */
 </style>

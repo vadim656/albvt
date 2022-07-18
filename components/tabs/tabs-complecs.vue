@@ -6,7 +6,8 @@
         @click='selectTab(index)'
         class="flex w-1/2 justify-center cursor-pointer items-center px-3 border border-[#4CBDEE] rounded-[5px] h-[40px]  text-[16px]"
         :class='{"flex bg-[#4CBDEE] text-white justify-center items-center border border-[#4CBDEE] rounded-[5px] h-[40px]  flex-col gap-2": (index == selectedIndex)}'>
-        {{ tab.title }}
+        
+        
       </li>
     </ul>
     <slot></slot>
@@ -23,7 +24,7 @@ export default {
   },
   data () {
     return {
-      selectedIndex: 0, // the index of the selected tab,
+      selectedIndex: 1, // the index of the selected tab,
       tabs: []         // all of the tabs
     }
   },
@@ -31,15 +32,8 @@ export default {
     this.tabs = this.$children
   },
   mounted () {
-    if (this.$route.path == '/all-analyzes/1-dlya-zhenshhin/2797') {
-      this.selectedIndex = 1
-      console.log('1 ' + this.$route.path);
-    } else {
-     this.selectedIndex = 0
-     console.log('2 ' + this.$route.path);
-    }
-
-    
+      this.selectTab (1)
+      console.log('complecs');
   },
   methods: {
     selectTab (i) {

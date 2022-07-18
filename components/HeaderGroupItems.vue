@@ -33,12 +33,12 @@ export default {
         {
           img: '/img/icons/Group950.svg',
           name: 'Анализы по группам',
-          link: '/all-analyzes'
+          link: '/all-analyzes/gematologicheskie-issledovaniya/2849/'
         },
         {
           img: '/img/icons/Group951.svg',
           name: 'Комплексы анализов',
-          link: '/all-analyzes'
+          link: '/all-complecs/1-dlya-zhenshhin/2797'
         },
         {
           img: '/img/icons/Group952.svg',
