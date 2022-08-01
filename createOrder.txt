@@ -1,0 +1,220 @@
+
+Метод POST 
+url = 'https://foxsis.ru/alvd/wp-json/wc/v3/orders'
+
+
+---------------------------------------------
+
+пример отправки запроса для создания заявки 
+
+{     
+    "customer_id": 0, // если пользователя нет в базе то передаем 0 , в противном случае берем существующий , тогда заказ автоматом сформируется с привязкой к клиенту по ID (но тут надо подумать как правильно)
+    "payment_method": "bacs", // передавать статично
+    "payment_method_title": "Direct Bank Transfer", // передавать статично 
+    "set_paid": false,  // если оплачен  то TRUE , если нет то FALSE
+    "billing": {
+      "first_name": "John",  // Имя !String
+      "last_name": "Doe", // Фамилия !String
+      "address_1": "969 Market", // Адрес !String
+      "email": "john.doe@example.com", // !String
+      "phone": "(555) 555-5555" // !String через маску  +7 (###) ###-##-## для правильной привязки к клиенту 
+
+    "line_items": [
+        {
+        "sku": "2da49eaa-d9a8-11ec-b634-00ace4a0ffad", // sku из 1С
+        "price": 150, // !String  цена  из 1С (можно ставить любую со связкой к "total")
+        "total": "150", // !String  цена  из 1С (можно ставить любую со связкой к "price" * "quantity")
+        "quantity": 1 //  !Number
+        }
+    ], 
+    "meta_data": [
+        {
+            "key": "field_1",
+            "value": "gender"
+        },
+        {
+            "key": "field_2",
+            "value": "dataRozhdeniya"
+        },
+        {
+            "key": "field_3",
+            "value": "dataSdachi"
+        },
+        {
+            "key": "field_4",
+            "value": "passportSeriya"
+        },
+        {
+            "key": "field_5",
+            "value": "passportData"
+        },
+        {
+            "key": "field_6",
+            "value": "passportKem"
+        },
+        {
+            "key": "field_7",
+            "value": "ulitcha"
+        },
+        {
+            "key": "field_8",
+            "value": "dateAnaliz"
+        },
+        {
+            "key": "field_9",
+            "value": "year"
+        },
+        {
+            "key": "field_10",
+            "value": "mesto"
+        },
+        {
+            "key": "field_11",
+            "value": "otchestvo"
+        },
+        {
+            "key": "field_12",
+            "value": "invitroSelect"
+        }
+    ]
+   
+}
+
+
+--------------------------------------------------------------------------------
+
+
+В ответе на запрос будет получена такая форма = 
+(лишнее удалил)
+--------------------------------------------------
+{
+    "id": 11796, // номер заказа как раз
+    "parent_id": 0,
+    "status": "pending",
+    "currency": "RUB",
+    "date_created": "2022-07-27T21:29:16",
+    "date_modified": "2022-07-28T01:22:46",
+    "cart_tax": "0.00",
+    "total": "11500.00",
+    "total_tax": "0.00",
+    "customer_id": 0,
+    "order_key": "wc_order_hEOyxlUe324d2",
+    "billing": {
+        "first_name": "Семен",
+        "last_name": "Иванов",
+        "company": "",
+        "address_1": "",
+        "address_2": "",
+        "city": "",
+        "state": "",
+        "postcode": "",
+        "country": "",
+        "email": "va.four2001@gmail.com",
+        "phone": "+7 (896) 240-60-04"
+    },
+
+    "payment_method": "bacs",
+    "payment_method_title": "Direct Bank Transfer",
+
+    "meta_data": [
+
+        {
+            "id": 388926,
+            "key": "field_1",
+            "value": "pol"
+        },
+
+        {
+            "id": 388928,
+            "key": "field_2",
+            "value": "dataRozhdeniya"
+        },
+
+        {
+            "id": 388930,
+            "key": "field_3",
+            "value": "dataSdachi"
+        },
+
+        {
+            "id": 388932,
+            "key": "field_4",
+            "value": "passportSeriya"
+        },
+
+        {
+            "id": 388934,
+            "key": "field_5",
+            "value": "passportData"
+        },
+
+        {
+            "id": 388936,
+            "key": "field_6",
+            "value": "passportKem"
+        },
+ 
+        {
+            "id": 388938,
+            "key": "field_7",
+            "value": "ulitcha"
+        },
+  
+        {
+            "id": 388940,
+            "key": "field_8",
+            "value": "dateAnaliz"
+        },
+
+        {
+            "id": 388942,
+            "key": "field_9",
+            "value": "year"
+        },
+
+        {
+            "id": 388944,
+            "key": "field_10",
+            "value": "mesto"
+        },
+
+        {
+            "id": 388946,
+            "key": "field_11",
+            "value": "otchestvo"
+        },
+        {
+            "id": 388948,
+            "key": "field_12",
+            "value": "invitroSelect"
+        }
+    ],
+    "line_items": [
+        {
+            "id": 118,
+            "name": "Забор венозной крови",
+            "product_id": 9847,
+            "variation_id": 0,
+            "quantity": 1,
+            "tax_class": "",
+            "subtotal": "150.00",
+            "subtotal_tax": "0.00",
+            "total": "150.00",
+            "total_tax": "0.00",
+            "taxes": [],
+            "meta_data": [],
+            "sku": "2da49eaa-d9a8-11ec-b634-00ace4a0ffad",
+            "price": 150,
+            "image": {
+                "id": "",
+                "src": ""
+            },
+            "parent_name": null
+        }
+    ],
+
+}
+
+
+
+

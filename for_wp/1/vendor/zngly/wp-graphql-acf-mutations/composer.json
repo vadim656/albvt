@@ -1,0 +1,86 @@
+{
+    "version": "1.0.12",
+    "name": "zngly/wp-graphql-acf-mutations",
+    "description": "ACF Mutations for WP GraphQL",
+    "homepage": "https://github.com/zngly/wp-graphql-acf-mutations",
+    "keywords": [
+        "zngly",
+        "wpgraphql",
+        "package",
+        "acf",
+        "mutations",
+        "graphql"
+    ],
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Vlad Medves",
+            "email": "vlad@zngly.com"
+        }
+    ],
+    "type": "wordpress-plugin",
+    "require": {
+        "php": "^7.0 || ^8.0"
+    },
+    "support": {
+        "source": "https://github.com/zngly/wp-graphql-acf-mutations",
+        "issues": "https://github.com/zngly/wp-graphql-acf-mutations/issues"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "extra": {
+        "wordpress-install-dir": "./wordpress",
+        "installer-paths": {
+            "wordpress/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "wordpress/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    },
+    "config": {
+        "vendor-dir": "./wordpress/vendor"
+    },
+    "require-dev": {
+        "johnpbloch/wordpress": ">=6.0",
+        "wp-graphql/wp-graphql": "^1.8",
+        "wp-graphql/wp-graphql-acf": "^0.5.3",
+        "wordpress-plugin/advanced-custom-fields-pro": "^5.9",
+        "wpackagist-theme/twentytwentytwo": "*",
+        "spatie/file-system-watcher": "^1.1"
+    },
+    "autoload-dev": {
+        "classmap": [
+            "src/",
+            "scripts/",
+            "dev/"
+        ]
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "scripts": {
+        "install": "composer install --no-dev",
+        "install:dev": [
+            "Zngly\\ACF\\Scripts\\Install::run"
+        ],
+        "watch": [
+            "Zngly\\ACF\\Scripts\\Watcher::run"
+        ]
+    }
+}

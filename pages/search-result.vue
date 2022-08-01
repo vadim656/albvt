@@ -2,16 +2,28 @@
   <div>
     <div class="container w-full flex flex-col gap-10 py-[47px]">
       <div class="flex flex-col gap-4 w-full justify-center items-center">
-        <heading-h-3>Поиск по сайту</heading-h-3>
-        <input
-          v-model="searchInput"
-          @input="search"
-          type="search"
+        <heading-h-3>Поиск по анализам</heading-h-3>
+        <label class="relative block w-full">
+          <span class="sr-only">Search</span>
+          <span
+            class="absolute inset-y-0 right-0 flex items-center pr-[16px] z-[99]"
+          >
+            <img
+              src="/img/icons/search.svg"
+              alt=""
+              class="block w-full h-auto hover:scale-110 anime"
+            />
+          </span>
+         <input
+          @input="search($event.target.value)"
+          v-bind:value="searchInput"
+          type="text"
           id="default-search2"
-          class="block w-full xl:max-w-[600px] lg:max-w-[400px] pr-20 rounded-[5px]  bg-white pl-4   h-[47px] focus:outline-none text-[#979797] shadow-md"
+          class="block  w-full pr-20 rounded-[5px] text-center  bg-white pl-4 border-[2px] border-[#343434]/20   h-[60px] focus:outline-none text-[#979797]"
           placeholder="Поиск анализов"
           autocomplete="off"
         />
+        </label>
 
       </div>
 
@@ -85,20 +97,18 @@
           </div>
           <div v-else class="flex justify-end items-center">
             <button
-            
-            @click="productInCart(item.node.databaseId)"
-            class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2 h-[40px] lg:w-[160px]"
-          >
-            <img src="/img/icons/add-to-cart.svg" alt="" />
-            <span class="text-[14px] sm:text-[16px]"
-              >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
+              @click="productInCart(item.node.databaseId)"
+              class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2 h-[40px] lg:w-[160px]"
             >
-          </button>
+              <img src="/img/icons/add-to-cart.svg" alt="" />
+              <span class="text-[14px] sm:text-[16px]"
+                >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
+              >
+            </button>
           </div>
-          
         </li>
         <span
-        v-if="sortedArray.length == 0"
+          v-if="sortedArray.length == 0"
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
           >К сожалению ничего не найдено</span
         >
@@ -203,28 +213,30 @@ export default {
       }
 
       return this.searchResults
-      .sort(compareTwo)
-      .sort(compareTree)
+        .sort(compareTwo)
+        .sort(compareTree)
 
-      .filter(
-        item =>
-          item.node.name.toLowerCase().includes(this.searchInput.toLowerCase()) ||
-          item.node.name.toLowerCase().includes(this.test.toLowerCase())
-      )
-      .splice(0, 100)
+        .filter(
+          item =>
+            item.node.name
+              .toLowerCase()
+              .includes(this.searchInput.toLowerCase()) ||
+            item.node.name.toLowerCase().includes(this.test.toLowerCase())
+        )
+        .splice(0, 100)
     }
   },
   methods: {
     ...mapActions(['ADD_TO_CART']),
-    CurentInSearchInput(){
+    CurentInSearchInput () {
       if (this.$route.query.search) {
-          this.searchInput = this.$route.query.search
-          this.search()
-      } 
-    
+        this.searchInput = this.$route.query.search
+        this.search()
+      }
     },
-    async search () {
-      const lowerCase = this.searchInput.toLowerCase()
+    async search (value) {
+       this.searchInput = value
+      const lowerCase = value.toLowerCase()
       this.autoKeyboardLang(lowerCase)
 
       try {
@@ -367,7 +379,7 @@ export default {
       )
     }
   },
-  created(){
+  created () {
     this.CurentInSearchInput()
   }
 }

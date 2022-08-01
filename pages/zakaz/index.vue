@@ -4,13 +4,193 @@
   >
     <div class="flex flex-col gap-[20px]">
       <div class="flex flex-col gap-[20px]">
-        <h2 class="text-[24px] font-medium text-center sm:text-right">
+        <h2
+          class="text-[24px] font-medium text-center sm:text-right"
+          v-show="!$auth.loggedIn"
+        >
           Заполните форму для подачи online заявки
         </h2>
         <div
+          v-show="register == false && !$auth.loggedIn"
+          class="bg-white  shadow-md rounded-[5px] p-[24px] flex justify-center items-center  mt-24px"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-[#A75F4F] mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            />
+          </svg>
+          <span
+            >Для оформления заказа необходимо <br />
+            <span>авторизоваться</span>
+            или
+            <button
+              @click="register = true"
+              class="underline underline-offset-2 text-[#A75F4F]"
+            >
+              зарегистрироваться.
+            </button>
+          </span>
+        </div>
+        <div
+          v-if="$auth.loggedIn"
+          class="capitalize bg-white  shadow-md rounded-[5px] p-[24px] flex flex-col items-start gap-4 mt-24px"
+        >
+          <div>
+            Привет,
+            <b
+              >{{ this.$auth.$state.user.firstName }}
+              {{ this.$auth.$state.user.lastName }}</b
+            >
+          </div>
+        </div>
+        <div
+          v-if="register == false && !$auth.loggedIn"
+          class="capitalize bg-white  shadow-md rounded-[5px] p-[24px] flex w-full mb-[24px] sm:w-1/2 flex-col justify-center items-center gap-4 mt-24px"
+        >
+          <span>Авторизация</span>
+          <div>
+            <tabs-login>
+      <tab-login title="По телефону">
+         <!-- телефон -->
+      <form @submit.prevent="handleLoginSubmit3()" class="flex flex-col gap-4">
+        
+        <div class="flex flex-col items-start justify-start gap-2 w-full ">
+          <!-- <label for="login" class="text-[14px]">Логин</label> -->
+          <input
+            type="text"
+            value="ofis_my"
+            placeholder="+7(___)___−__−__*"
+            v-facade="'+7(###)###-##-##'"
+            v-model="credentials.username"
+            class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+            id="login"
+          />
+        </div>
+        <div class="flex flex-col items-start justify-start gap-2 w-full ">
+          <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
+          <input
+            type="password"
+            placeholder="Пароль"
+            value="ofis_my"
+            v-model="credentials.password"
+            class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+            id="pass"
+          />
+        </div>
+        <div class="flex flex-col items-center justify-center gap-2">
+          <button
+            type="submit"
+            class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
+          >
+            Войти
+          </button>
+          <div
+                  v-if="loginError == true"
+                  class="flex justify-center gap-1 items-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-[#A75F4F] mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    />
+                  </svg>
+                  <span class="text-[#A55B4A] uppercase text-[12px]"
+                    >Неправильный логин или пароль</span
+                  >
+                </div>
+          
+        </div>
+      </form>
+      </tab-login>
+      <tab-login title="По Email">
+         <!-- email -->
+      <form @submit.prevent="handleLoginSubmit2()" class="flex flex-col gap-4">
+        
+        <div class="flex flex-col items-start justify-start gap-2 w-full ">
+          <!-- <label for="login" class="text-[14px]">Логин</label> -->
+          <input
+            type="text"
+            placeholder="email"
+            v-model="credentials2.username"
+            class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+            id="login2"
+          />
+        </div>
+        <div class="flex flex-col items-start justify-start gap-2 w-full ">
+          <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
+          <input
+            type="password"
+            placeholder="Пароль"
+            v-model="credentials2.password"
+            class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+            id="pass2"
+          />
+        </div>
+        <div class="flex flex-col items-center justify-center gap-2">
+          <button
+            type="submit"
+            class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
+          >
+            Войти
+          </button>
+          <div
+                  v-if="loginError == true"
+                  class="flex justify-center gap-1 items-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-[#A75F4F] mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    />
+                  </svg>
+                  <span class="text-[#A55B4A] uppercase text-[12px]"
+                    >Неправильный логин или пароль</span
+                  >
+                </div>
+          <div @click="closeLogin()">
+            <nuxt-link to="/register" class="text-[#343434] w-full text-center"
+              >Регистрация</nuxt-link
+            >
+          </div>
+        </div>
+      </form>
+      </tab-login>
+    </tabs-login>
+          </div>
+        </div>
+
+        <!-- форма заявки -->
+        <!-- открывается только по нажатию "зарегистрироваться" -->
+        <div
+          v-if="register == true || $auth.loggedIn"
           class="bg-white  shadow-md rounded-[5px] p-[24px] flex flex-col gap-[20px] mt-24px"
         >
-          <form action="" class="flex flex-col gap-4">
+          <form @submit.prevent="oplata()" class="flex flex-col gap-4">
             <div class="flex flex-col">
               <div
                 class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
@@ -24,7 +204,7 @@
                       checked="checked"
                       type="radio"
                       value="ofis_my"
-                      v-model="form.mesto"
+                      v-model="formZakaz.mesto"
                       id="mesto1"
                       class=""
                     />
@@ -36,7 +216,7 @@
                     <input
                       type="radio"
                       value="sam"
-                      v-model="form.mesto"
+                      v-model="formZakaz.mesto"
                       id="mesto2"
                       class=""
                     />
@@ -46,7 +226,7 @@
                     <input
                       type="radio"
                       value="ofic"
-                      v-model="form.mesto"
+                      v-model="formZakaz.mesto"
                       id="mesto3"
                       class=""
                     />
@@ -58,37 +238,81 @@
                 </div>
               </div>
               <div>
-                <div v-if="form.mesto == 'ofis_my'">
+                <div v-if="formZakaz.mesto == 'ofis_my'">
                   <div
                     class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                   >
+                    <div
+                      class="input-med flex justify-between items-center h-[50px]"
+                    >
+                      <span class="text-[12px]"
+                        >г. Ростов-на-Дону, ул. Восточная, 11. (Кировский
+                        р-он)</span
+                      >
+                      <a
+                        href="https://2gis.ru/rostov/firm/70000001044917415"
+                        target="_blank"
+                        class="px-4 text-center border-l-[0.5px] text-[12px] sm:text-[14px] border-[#343434]/70 hover:text-main"
+                        >На карте</a
+                      >
+                    </div>
                     <span class="text-[#A55B4A] text-[16px] "
                       >Кто будет сдавать анализы?</span
                     >
+
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                       <input
-                        required="required"
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        placeholder="Фамилия"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Фамилия*"
+                        v-model="formZakaz.family"
+                        :class="[
+                          this.formZakaz.family.length == 0
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
-                        required="required"
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        placeholder="Имя"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        v-model="formZakaz.name"
+                        placeholder="Имя*"
+                        :class="[
+                          this.formZakaz.name.length == 0
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
-                        required="required"
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        placeholder="Отчество"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Отчество*"
+                        v-model="formZakaz.otchestvo"
+                        :class="[
+                          this.formZakaz.otchestvo.length == 0
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
-                        required="required"
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        placeholder="Дата рождения"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        v-facade="'##.##.####'"
+                        placeholder="Дата рождения*"
+                        v-model="formZakaz.dataRozhdeniya"
+                        :class="[
+                          this.formZakaz.dataRozhdeniya.length !== 10
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                     </div>
                     <div
@@ -96,10 +320,10 @@
                     >
                       <div class="flex items-center gap-2 w-full sm:w-1/4">
                         <input
-                          type="checkbox"
+                          type="radio"
                           checked="checked"
                           value="male"
-                         
+                          v-model="formZakaz.gender"
                           id="gender1"
                           class=""
                         />
@@ -107,9 +331,9 @@
                       </div>
                       <div class="flex items-center gap-2 w-full sm:w-1/4">
                         <input
-                          type="checkbox"
+                          type="radio"
                           value="female"
-                         
+                          v-model="formZakaz.gender"
                           id="gender2"
                           class=""
                         />
@@ -119,8 +343,8 @@
                         <input
                           type="checkbox"
                           value="femalemale"
-                         
                           id="gender3"
+                          v-model="formZakaz.genderDop"
                           class=""
                         />
                         <label for="gender3" class="text-[14px]"
@@ -129,6 +353,7 @@
                       </div>
                     </div>
                   </div>
+                  <!-- паспорт -->
                   <div
                     class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                   >
@@ -138,62 +363,161 @@
                     >
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Паспорт (серия/номер)"
+                        placeholder="Паспорт (серия/номер)*"
                         v-facade="'#### ######'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        v-model="formZakaz.passportSeriya"
+                        :class="[
+                          this.formZakaz.passportSeriya.length !== 11
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Паспорт (дата выдачи) "
-                         v-facade="'##/##/####'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Паспорт (дата выдачи)* "
+                        v-facade="'##.##.####'"
+                        v-model="formZakaz.passportData"
+                        :class="[
+                          this.formZakaz.passportData.length !== 10
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Паспорт (кем выдан)"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Паспорт (кем выдан)*"
+                        v-model="formZakaz.passportKem"
+                        :class="[
+                          this.formZakaz.passportKem.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Дата сдачи анализов"
-                         v-facade="'##/##/####'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Дата сдачи анализов*"
+                        v-facade="'##.##.####'"
+                        v-model="formZakaz.dataSdachi"
+                        :class="[
+                          this.formZakaz.dataSdachi.length !== 10
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                     </div>
                   </div>
+                  <!-- контакты -->
                   <div
                     class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                   >
                     <span class="text-[#A55B4A] text-[16px] "
                       >Контакты для связи с Вами</span
                     >
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
-                      <input
-                        type="text"
-                        required="required"
-                        placeholder="E-mail"
-                        v-mask="'##'"
-                        id="us-phone-number-ex"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                      />
-                      <input
-                        type="text"
-                        required="required"
-                        id="us-phone-number-ex2"
-                        name="phone"
-                         placeholder="+7 (___) ___−__−__"
-                        v-facade="'+7 (###) ###-##-##'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                      />
+                    <div class="grid grid-cols-1  sm:grid-cols-2 gap-[20px]">
+                      <div class="flex flex-col gap-4">
+                        <input
+                          @input="doneformZakazZakaz()"
+                          type="email"
+                          required="required"
+                          placeholder="E-mail*"
+                          v-model="formZakaz.email"
+                          id="us-phone-number-ex"
+                          :class="[
+                            this.formZakaz.email.length <= 6
+                              ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                              : '!border-[green] !focus:outline-[green]'
+                          ]"
+                          class=" input-med "
+                        />
+                        <span class="text-[12px]"
+                          >На эту почту будут отправлены результаты
+                          анализов</span
+                        >
+                      </div>
+                      <div class="flex flex-col gap-4">
+                        <input
+                          @input="doneformZakazZakaz()"
+                          type="text"
+                          required="required"
+                          id="us-phone-number-ex2"
+                          v-model="formZakaz.phone"
+                          name="phone"
+                          placeholder="+7(___)___−__−__*"
+                          v-facade="'+7(###)###-##-##'"
+                          :class="[
+                            this.formZakaz.phone.length !== 16
+                              ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                              : '!border-[green] !focus:outline-[green]'
+                          ]"
+                          class=" input-med "
+                        />
+                        <span class="text-[12px]"
+                          >Этот номер будет использоваться в качестве логина для
+                          доступа в личный кабинет</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- аккаунт -->
+                  <div
+                    class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
+                    v-if="!$auth.loggedIn"
+                  >
+                    <span class="text-[#A55B4A] text-[16px] "
+                      >Данные для входа в личный кабинет</span
+                    >
+                    <div class="grid grid-cols-1  sm:grid-cols-2 gap-[20px]">
+                      <div class="flex flex-col gap-4">
+                        <input
+                          @input="doneformZakazZakaz()"
+                          type="password"
+                          required="required"
+                          id="us-phone-number-password"
+                          v-model="credentials.password"
+                          name="phone"
+                          placeholder="Придумайте пароль"
+                          :class="[
+                            this.credentials.password.length <= 8
+                              ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                              : '!border-[green] !focus:outline-[green]'
+                          ]"
+                          class=" input-med "
+                        />
+                        <span class="text-[12px]"
+                          >Этот пароль будет использоваться для доступа в личный
+                          кабинет</span
+                        >
+                      </div>
+
+                      <button
+                        v-if="succes == false && !$auth.loggedIn"
+                        @click="RegisterUser()"
+                        class="text-[12px] xl:text-[14px] text-white bg-main hover:text-main hover:bg-white font-light px-[14px] py-[14px]  w-full  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] h-[50px]"
+                      >
+                        Зарегистрироваться и войти
+                      </button>
+                      <div
+                        v-else
+                        class="text-[14px] xl:text-[16px] text-white bg-green  hover:bg-white font-light px-[14px] py-[14px]  w-full  sm:flex sm:items-center sm:justify-center    rounded-[5px] h-[50px]"
+                      ></div>
+                      Успешно
                     </div>
                   </div>
                 </div>
-                <div v-if="form.mesto == 'sam'">
+                <div v-if="formZakaz.mesto == 'sam'">
                   <div
                     class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                   >
@@ -202,28 +526,57 @@
                     >
                     <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Фамилия"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Фамилия*"
+                        v-model="formZakaz.family"
+                        :class="[
+                          this.formZakaz.family.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Имя"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        v-model="formZakaz.name"
+                        placeholder="Имя*"
+                        :class="[
+                          this.formZakaz.name.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Отчество"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Отчество*"
+                        v-model="formZakaz.otchestvo"
+                        :class="[
+                          this.formZakaz.otchestvo.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Дата рождения"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        v-facade="'##.##.####'"
+                        placeholder="Дата рождения*"
+                        v-model="formZakaz.dataRozhdeniya"
+                        :class="[
+                          this.formZakaz.dataRozhdeniya.length !== 10
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                     </div>
                     <div
@@ -233,7 +586,7 @@
                         <input
                           type="radio"
                           value="male"
-                          v-model="form.gender"
+                          v-model="formZakaz.gender"
                           id="gender1"
                           class=""
                         />
@@ -243,7 +596,7 @@
                         <input
                           type="radio"
                           value="female"
-                          v-model="form.gender"
+                          v-model="formZakaz.gender"
                           id="gender2"
                           class=""
                         />
@@ -258,42 +611,65 @@
                       >Укажите Ваш адрес и желаемую дату сдачи анализов</span
                     >
                     <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
+                      <div
+                        class="bg-white flex items-center p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                      >
+                        г. Ростов-на-Дону
+                      </div>
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="г. Ростов-на-Дону"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Улица*"
+                        class=" input-med "
+                        v-model="formZakaz.ulitcha"
+                        :class="[
+                          this.formZakaz.dataRozhdeniya.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Улица"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Номер дома*"
+                        class=" input-med "
+                        v-model="formZakaz.nomerDoma"
+                        :class="[
+                          this.formZakaz.nomerDoma.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
-                        required="required"
-                        placeholder="Номер дома"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                      />
-                      <input
-                        type="text"
-                        required="required"
                         placeholder="Квартира(если есть)"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        class=" input-med "
+                        v-model="formZakaz.kvartira"
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Паспорт (кем выдан)"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Паспорт (кем выдан)*"
+                        v-model="formZakaz.passportKem"
+                        :class="[
+                          this.formZakaz.passportKem.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Дата сдачи анализов"
-                         v-facade="'##/##/####'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Дата сдачи анализов*"
+                        v-facade="'##.##.####'"
+                        class=" input-med "
+                        v-model="formZakaz.dataSdachi"
                       />
                     </div>
                   </div>
@@ -305,23 +681,79 @@
                     >
                     <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
                       <input
-                        type="text"
+                        @input="doneformZakazZakaz()"
+                        type="email"
                         required="required"
-                        placeholder="E-mail"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="E-mail*"
+                        v-model="formZakaz.email"
+                        id="us-phone-number-ex"
+                        :class="[
+                          this.formZakaz.email.length <= 6
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
+                        id="us-phone-number-ex2"
+                        v-model="formZakaz.phone"
                         name="phone"
-                         placeholder="+7 (___) ___−__−__"
-                        v-facade="'+7 (###) ###-##-##'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="+7(___)___−__−__*"
+                        v-facade="'+7(###)###-##-##'"
+                        :class="[
+                          this.formZakaz.phone.length !== 16
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                     </div>
                   </div>
+                  <!-- аккаунт -->
+                  <div
+                    class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
+                    v-if="!$auth.loggedIn"
+                  >
+                    <span class="text-[#A55B4A] text-[16px] "
+                      >Данные для входа в личный кабинет</span
+                    >
+                    <div class="grid grid-cols-1  sm:grid-cols-2 gap-[20px]">
+                      <div class="flex flex-col gap-4">
+                        <input
+                          @input="doneformZakazZakaz()"
+                          type="password"
+                          required="required"
+                          id="us-phone-number-password"
+                          v-model="credentials.password"
+                          name="phone"
+                          placeholder="Придумайте пароль"
+                          :class="[
+                            this.credentials.password.length <= 8
+                              ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                              : '!border-[green] !focus:outline-[green]'
+                          ]"
+                          class=" input-med "
+                        />
+                        <span class="text-[12px]"
+                          >Этот пароль будет использоваться для доступа в личный
+                          кабинет</span
+                        >
+                      </div>
+
+                      <button
+                        v-if="succes == false && !$auth.loggedIn"
+                        @click="RegisterUser()"
+                        class="text-[12px] xl:text-[14px] text-white bg-main hover:text-main hover:bg-white font-light px-[14px] py-[14px]  w-full  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] h-[50px]"
+                      >
+                        Зарегистрироваться и войти
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div v-if="form.mesto == 'ofic'">
+                <div v-if="formZakaz.mesto == 'ofic'">
                   <div
                     class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                   >
@@ -330,12 +762,14 @@
                         class="w-full mb-4  px-2  py-3 items-center border-[1px] border-[#AEAEAE] rounded-[5px] grid gap-[20px]"
                       >
                         <div
-                          @click="form.showInvitro = !form.showInvitro"
+                          @click="
+                            formZakaz.showInvitro = !formZakaz.showInvitro
+                          "
                           class="cursor-pointer flex justify-between items-center"
                         >
-                          <span>{{ form.invitroSelect }}</span>
+                          <span>{{ formZakaz.invitroSelect }}</span>
                           <img
-                            v-if="form.showInvitro"
+                            v-if="formZakaz.showInvitro"
                             src="/img/icons/arrow.svg"
                             alt=""
                             class="rotate-90 mr-2"
@@ -349,18 +783,19 @@
                         </div>
                         <div
                           class="rounded-[5px]  grid  grid-cols-1 sm:grid-cols-2 gap-[10px]"
-                          v-show="form.showInvitro"
+                          v-show="formZakaz.showInvitro"
                         >
                           <div
-                            v-for="(item, i) in form.invitro"
+                            v-for="(item, i) in formZakaz.invitro"
                             :key="i"
                             :id="item.name"
                             class="invitro px-2 border-[1px] border-[#AEAEAE]  rounded-[5px] flex justify-between items-center  h-[48px] hover:shadow-lg anime cursor-pointer text-[14px]"
                             @click="selectInvitroAdd(item)"
                           >
-                            <span class="h-full flex items-center text-[12px]">{{
-                              item.name
-                            }}</span>
+                            <span
+                              class="h-full flex items-center text-[12px]"
+                              >{{ item.name }}</span
+                            >
                             <span
                               class="border-l-[1px] border-[#AEAEAE] pl-2 h-full flex items-center text-[12px]"
                               >{{ item.time }}</span
@@ -372,30 +807,59 @@
                     <span class="text-[#A55B4A] text-[16px] "
                       >Кто будет сдавать анализы?</span
                     >
-                    <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Фамилия"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Фамилия*"
+                        v-model="formZakaz.family"
+                        :class="[
+                          this.formZakaz.family.length == 0
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Имя"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        v-model="formZakaz.name"
+                        placeholder="Имя*"
+                        :class="[
+                          this.formZakaz.name.length == 0
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Отчество"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Отчество*"
+                        v-model="formZakaz.otchestvo"
+                        :class="[
+                          this.formZakaz.otchestvo.length == 0
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
+                        required
                         type="text"
-                        required="required"
-                        placeholder="Дата рождения"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        v-facade="'##.##.####'"
+                        placeholder="Дата рождения*"
+                        v-model="formZakaz.dataRozhdeniya"
+                        :class="[
+                          this.formZakaz.dataRozhdeniya.length !== 10
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                     </div>
                     <div
@@ -403,9 +867,10 @@
                     >
                       <div class="flex items-center gap-2 w-full sm:w-1/4">
                         <input
-                          type="checkbox"
+                          type="radio"
+                          checked="checked"
                           value="male"
-                          
+                          v-model="formZakaz.gender"
                           id="gender1"
                           class=""
                         />
@@ -413,9 +878,9 @@
                       </div>
                       <div class="flex items-center gap-2 w-full sm:w-1/4">
                         <input
-                          type="checkbox"
+                          type="radio"
                           value="female"
-                         
+                          v-model="formZakaz.gender"
                           id="gender2"
                           class=""
                         />
@@ -425,8 +890,8 @@
                         <input
                           type="checkbox"
                           value="femalemale"
-                          
                           id="gender3"
+                          v-model="formZakaz.genderDop"
                           class=""
                         />
                         <label for="gender3" class="text-[14px]"
@@ -435,6 +900,7 @@
                       </div>
                     </div>
                   </div>
+                  <!-- паспорт -->
                   <div
                     class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                   >
@@ -442,57 +908,142 @@
                       >Укажите паспортные данные и желаемую дату сдачи
                       анализов</span
                     >
-                    <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Паспорт (серия/номер)"
-                         v-facade="'#### ######'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Паспорт (серия/номер)*"
+                        v-facade="'#### ######'"
+                        v-model="formZakaz.passportSeriya"
+                        :class="[
+                          this.formZakaz.passportSeriya.length !== 11
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Паспорт (дата выдачи) "
-                         v-facade="'##/##/####'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Паспорт (дата выдачи)* "
+                        v-facade="'##.##.####'"
+                        v-model="formZakaz.passportData"
+                        :class="[
+                          this.formZakaz.passportData.length !== 10
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Паспорт (кем выдан)"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Паспорт (кем выдан)*"
+                        v-model="formZakaz.passportKem"
+                        :class="[
+                          this.formZakaz.passportKem.length <= 1
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
-                        placeholder="Дата сдачи анализов"
-                         v-facade="'##/##/####'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="Дата сдачи анализов*"
+                        v-facade="'##.##.####'"
+                        v-model="formZakaz.dataSdachi"
+                        :class="[
+                          this.formZakaz.dataSdachi.length !== 10
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                     </div>
                   </div>
+                  <!-- контакты -->
                   <div
                     class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                   >
                     <span class="text-[#A55B4A] text-[16px] "
                       >Контакты для связи с Вами</span
                     >
-                    <div class="grid  grid-cols-1 sm:grid-cols-2 gap-[20px]">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
                       <input
-                        type="text"
+                        @input="doneformZakazZakaz()"
+                        type="email"
                         required="required"
-                        placeholder="E-mail"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="E-mail*"
+                        v-model="formZakaz.email"
+                        id="us-phone-number-ex"
+                        :class="[
+                          this.formZakaz.email.length <= 6
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
                       <input
+                        @input="doneformZakazZakaz()"
                         type="text"
                         required="required"
+                        id="us-phone-number-ex2"
+                        v-model="formZakaz.phone"
                         name="phone"
-                         placeholder="+7 (___) ___−__−__"
-                        v-facade="'+7 (###) ###-##-##'"
-                        class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
+                        placeholder="+7(___)___−__−__*"
+                        v-facade="'+7(###)###-##-##'"
+                        :class="[
+                          this.formZakaz.phone.length !== 16
+                            ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                            : '!border-[green] !focus:outline-[green]'
+                        ]"
+                        class=" input-med "
                       />
+                    </div>
+                  </div>
+                  <!-- аккаунт -->
+                  <div
+                    class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
+                    v-if="!$auth.loggedIn"
+                  >
+                    <span class="text-[#A55B4A] text-[16px] "
+                      >Данные для входа в личный кабинет</span
+                    >
+                    <div class="grid grid-cols-1  sm:grid-cols-2 gap-[20px]">
+                      <div class="flex flex-col gap-4">
+                        <input
+                          @input="doneformZakazZakaz()"
+                          type="password"
+                          required="required"
+                          id="us-phone-number-password"
+                          v-model="credentials.password"
+                          name="phone"
+                          placeholder="Придумайте пароль"
+                          :class="[
+                            this.credentials.password.length <= 8
+                              ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                              : '!border-[green] !focus:outline-[green]'
+                          ]"
+                          class=" input-med "
+                        />
+                        <span class="text-[12px]"
+                          >Этот пароль будет использоваться для доступа в личный
+                          кабинет</span
+                        >
+                      </div>
+
+                      <button
+                        v-if="succes == false && !$auth.loggedIn"
+                        @click="RegisterUser()"
+                        class="text-[12px] xl:text-[14px] text-white bg-main hover:text-main hover:bg-white font-light px-[14px] py-[14px]  w-full  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] h-[50px]"
+                      >
+                        Зарегистрироваться и войти
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -500,11 +1051,14 @@
             </div>
           </form>
         </div>
+
+        <!-- конец форма заявки -->
       </div>
     </div>
 
     <!-- cart -->
     <div></div>
+    <!-- cart consult -->
     <div>
       <div class="flex justify-end">
         <div class="w-full  bg-white    shadow-md rounded-[5px] ">
@@ -512,7 +1066,7 @@
             v-if="CART.length >= 1"
             class="w-full justify-center  text-[16px] bg-[#EDEDED] h-[48px] flex items-center uppercase"
           >
-            <span>к оплате</span>
+            <span>корзина</span>
           </div>
           <div class="flex flex-col list-disc list-outside px-[24px] pt-[12px]">
             <cart-item
@@ -586,74 +1140,73 @@
             <div class="flex justify-between items-center">
               <span class="text-[14px]">Место сдачи анализа: : </span>
               <span
-                v-if="form.mesto == 'ofis_my'"
+                v-if="formZakaz.mesto == 'ofis_my'"
                 class="text-[14px] font-bold text-[#A55B4A] underline underline-offset-2"
               >
                 У нас в офисе</span
               >
               <span
-                v-if="form.mesto == 'sam'"
+                v-if="formZakaz.mesto == 'sam'"
                 class="text-[14px] font-bold text-[#A55B4A] underline underline-offset-2"
               >
                 На дому</span
               >
               <span
-                v-if="form.mesto == 'ofic'"
+                v-if="formZakaz.mesto == 'ofic'"
                 class="text-[14px]  font-bold text-[#A55B4A] underline underline-offset-2 text-right"
               >
                 В офисе партнера: <br />
                 <span
                   v-if="
-                    form.invitroSelect !==
+                    formZakaz.invitroSelect !==
                       'Выберите ближайший офис нашего партнера ИНВИТРО:'
                   "
                 >
-                  {{ form.invitroSelect }}
+                  {{ formZakaz.invitroSelect }}
                 </span>
               </span>
             </div>
 
-            <div
-              v-if="form.year.length != 0 && form.year.length != 0"
-              class="flex flex-col gap-[20px]"
-            >
-              <button
-                @submit.prevent="onSubmit"
-                class="rounded-[5px]  border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
-              >
-                Предзаказ с оплатой
-              </button>
-              <button
-                class="rounded-[5px] border bg-main h-[49px] hover:bg-[#4CBDEE]  anime  text-white w-full flex justify-center items-center py-2 text-[16px]"
-              >
-                Получить консультацию
-              </button>
-            </div>
             <!-- v-f -->
             <div class="flex flex-col gap-[20px]">
               <button
-                @submit.prevent="onSubmit"
+                v-if="formZakaz.done == true && $auth.loggedIn"
+                @click="modalOrder()"
                 class="rounded-[5px]  border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
               >
-                Предзаказ с оплатой
+                Отправить заявку
               </button>
+              <div class="flex flex-col gap-[10px]" v-else>
+                <div
+                  class="opacity-50 rounded-[5px] cursor-not-allowed  border border-main h-[49px]   anime text-main w-full flex justify-center items-center py-2 text-[16px]"
+                >
+                  Отправить заявку
+                </div>
+                <span class="text-[#A55B4A] text-[14px]"
+                  >* Заполните все поля
+                </span>
+              </div>
               <button
+                @click="addConsult()"
                 class="rounded-[5px] border bg-main h-[49px] hover:bg-[#4CBDEE]  anime  text-white w-full flex justify-center items-center py-2 text-[16px]"
               >
                 Получить консультацию
               </button>
             </div>
             <!-- v-f -->
-            <span class="text-[12px]">
-              <button class="text-[#A55B4A] underline underline-offset-2">
+            <!-- <span class="text-[12px]">
+              <nuxt-link
+                to="/register"
+                class="text-[#A55B4A] underline underline-offset-2"
+              >
                 Зарегистрируйтесь
-              </button>
+              </nuxt-link>
               для дальнейшего доступа в личный кабинет
-            </span>
+            </span> -->
             <span class="w-full text-center text-[#768C9F]/60 text-[12px]">
               Оформляя заказ, Вы принимаете условия
               <nuxt-link
-                to="/ww"
+                to="/soglashenie"
                 class="underline underline-offset-2 text-[#768C9F]/90 text-[12px]"
                 >Соглашения</nuxt-link
               >
@@ -664,76 +1217,162 @@
       </div>
     </div>
     <!-- end cart -->
-    <div v-if="modalInvitro == true &&  form.invitroSelect !== 'Выберите ближайший офис нашего партнера ИНВИТРО:'" @click="modalInvitro = !modalInvitro" class="fixed flex justify-center items-center bg-[#343434]/40  w-screen h-screen left-0 top-0  z-[1] backdrop-blur-sm">
-      <div class="w-[400px] h-full max-h-[780px] z-[6] bg-white p-4 rounded-[5px] shadow-md">
+    <div
+      v-if="
+        modalInvitro == true &&
+          formZakaz.invitroSelect !==
+            'Выберите ближайший офис нашего партнера ИНВИТРО:'
+      "
+      @click="modalInvitro = !modalInvitro"
+      class="fixed flex justify-center items-center bg-[#343434]/40  w-screen h-screen left-0 top-0  z-[1] backdrop-blur-sm"
+    >
+      <div
+        class="w-[400px] h-full max-h-[780px] z-[6] bg-white p-4 rounded-[5px] shadow-md"
+      >
         <div
           class="bg-white p-4 rounded-[5px] shadow-md flex flex-col gap-2"
           v-if="
-            form.mesto == 'ofic' &&
-              form.invitroSelect !==
+            formZakaz.mesto == 'ofic' &&
+              formZakaz.invitroSelect !==
                 'Выберите ближайший офис нашего партнера ИНВИТРО:'
           "
         >
           <span class="text-[#746F6F] text-[14px] w-full text-center"
             >Вы находитесь на сайте нашего партнера ИНВИТРО</span
           >
-          <span class="text-[#B07263] w-full text-center text-[14px]">Ознакомьтесь с подробной информацией о работе данного офиса.</span>
-          
+          <span class="text-[#B07263] w-full text-center text-[14px]"
+            >Ознакомьтесь с подробной информацией о работе данного офиса.</span
+          >
+
           <iframe
-            :src="form.invitroSite"
+            :src="formZakaz.invitroSite"
             height="600"
             align="left"
             class="w-full"
           >
             Ваш браузер не поддерживает плавающие фреймы!
           </iframe>
-          <span  @click="modalInvitro = !modalInvitro"  class="text-[#746F6F] text-[14px] w-full text-center cursor-pointer"
+          <span
+            @click="modalInvitro = !modalInvitro"
+            class="text-[#746F6F] text-[14px] w-full text-center cursor-pointer"
             >Закрыть</span
           >
         </div>
+      </div>
+    </div>
+    <div
+      v-if="modalConsul == true"
+      class="fixed flex justify-center items-center bg-[#343434]/40  w-screen h-screen left-0 top-0  z-[1] backdrop-blur-sm"
+    >
+      <div
+        class="w-[400px] h-auto z-[8] bg-white p-4 rounded-[5px] shadow-md flex flex-col gap-4 justify-center items-center fixed"
+      >
+        <span class="w-full text-center text-[24px]"
+          >Получить консультацию</span
+        >
+        <input
+          type="text"
+          placeholder="Имя"
+          v-model="formZakaz.name"
+          :class="[
+            this.formZakaz.name.length <= 0
+              ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+              : '!border-[green] !focus:outline-[green]'
+          ]"
+          class=" input-med "
+        />
+        <input
+          type="text"
+          placeholder="+7(___)___−__−__*"
+          v-facade="'+7(###)###-##-##'"
+          v-model="formZakaz.phone"
+          :class="[
+            this.formZakaz.phone.length !== 16
+              ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+              : '!border-[green] !focus:outline-[green]'
+          ]"
+          class=" input-med "
+        />
+        <span v-if="status == true">Сообщение успешно отправлено</span>
+        <!-- <span v-elseif="status == false"
+          >Произошла ошибка, попробуйте еще раз</span
+        > -->
+        <button
+          v-show="
+            formZakaz.name.length !== 0 &&
+              formZakaz.phone.length === 18 &&
+              status !== true
+          "
+          @click="ConsultZayavka()"
+          class="rounded-[5px]  border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full max-w-[250px] flex justify-center items-center py-2 text-[16px]"
+        >
+          Отправить
+        </button>
+        <span @click="modalConsul = !modalConsul" class="cursor-pointer"
+          >Закрыть</span
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { gql } from 'graphql-tag'
 import { mapActions, mapGetters } from 'vuex'
 import CartItem from '~/components/cart/CartItem.vue'
+import TabLogin from '~/components/tabs/tab-login.vue'
+import tabsLogin from '~/components/tabs/tabs-login.vue'
+
+const ME_USER = gql`
+  query ME_USER($id: ID!) {
+    user(id: $id, idType: DATABASE_ID) {
+      client_data {
+        kvartira
+        nomerDoma
+        nomerTelefona
+        otchestvo
+        datarozhdeniya
+        pasport
+      }
+      firstName
+      lastName
+      username
+      email
+      id
+      databaseId
+      jwtRefreshToken
+    }
+  }
+`
 
 export default {
   data () {
     return {
-      dopItems: [
-        {
-          name: 'Венозная кровь',
-          price: '150'
-        },
-        {
-          name: 'Мазок        ',
-          price: '160'
-        },
-        {
-          name: 'Пробоподготовка',
-          price: '150'
-        }
-      ],
       modalInvitro: false,
-      form: {
-        family: '',
-        name: '',
-        otchestvo: '',
+      modalConsul: false,
+      register: false,
+      auth: false,
+      formZakaz: {
+        family: 'Петров',
+        name: 'Петр',
+        otchestvo: 'Петрович',
+        dataRozhdeniya: '',
+        dataSdachi: '',
         passportSeriya: '',
         passportData: '',
         passportKem: '',
         gorod: '',
         ulitcha: '',
+        nomerDoma: '',
+        kvartira: '',
         dateAnaliz: '',
-        email: '',
+        email: 'test@test.ru',
         phone: '',
         year: '',
         checkedNames: [],
         mesto: 'ofis_my',
         gender: 'male',
+        genderDop: false,
         invitroSelect: 'Выберите ближайший офис нашего партнера ИНВИТРО:',
         invitroSite: '',
         showInvitro: false,
@@ -822,38 +1461,130 @@ export default {
             invitro:
               'https://www.invitro.ru/offices/rostovnadony/clinic.php?ID=3092'
           }
-        ]
+        ],
+        done: false
       },
       dopTest: [],
       totalCartPrice: null,
       prePrice: null,
       preMaterial: [],
-      medSestra: false
+      medSestra: false,
+      errors: [],
+      status: false,
+      modalOrderOpen: true,
+      password: '',
+      credentials: {
+        username: '',
+        password: ''
+      },
+      credentials2: {
+        username: '',
+        password: ''
+      },
+      okeyRegister: false,
+      succes: '',
+      dataMe: [],
+      loginError: false,
+      jjj22: []
     }
   },
-  components: { CartItem },
+  components: { CartItem, tabsLogin, TabLogin },
   methods: {
-    warn: function (message, event) {
-      // теперь у нас есть доступ к нативному событию
-      if (event) {
-        event.preventDefault()
+    RegisterUser () {
+      const dsfdf33 = this.formZakaz.phone.toString()
+      const phoneForRegister = dsfdf33
+        .replace('-', '')
+        .replace('-', '')
+        .replace('+7', '')
+        .replace('(', '')
+        .replace(')', '')
+      const url = 'https://foxsis.ru/alvd/wp-json/wp/v2/users'
+      const dataUserRegister = {
+          "first_name": this.formZakaz.name,
+          "last_name": this.formZakaz.family,
+          "password": this.credentials.password,
+          "email": this.formZakaz.email,
+          "username": phoneForRegister,
+          "acf": {
+            "otchestvo": this.credentials.otchestvo,
+            "dataRozhdeniya": this.credentials.dataRozhdeniya,
+            "nomer_doma": this.credentials.nomerDoma,
+            "pasport": this.credentials.passportSeriya,
+            "kvartira": this.credentials.kvartira,
+            "nomer_telefona": phoneForRegister,
+            "data_vydachi_pasport": this.credentials.passportData,
+            "pasport_kem": this.credentials.passportKem,
+            "gender": this.credentials.gender
+          }
       }
-      alert(message)
+
+      this.$axios
+        .post(url, dataUserRegister)
+        .then(data => {
+          // Result
+          this.succes = true
+          this.dataNewUser = data
+          this.handleLoginSubmit()
+          this.reloadPage()
+        })
+        .catch(error => {
+          // Error
+          console.error(error)
+          this.succes = 'Что то пошло не так'
+        })
+    },
+    oplata () {
+      console.log('1344')
+    },
+    
+    addConsult () {
+      if (
+        (this.formZakaz.name, length !== 0 && this.formZakaz.phone.length == 18)
+      ) {
+        console.log('da')
+      } else {
+        this.modalConsul = true
+      }
+    },
+    ConsultZayavka () {
+      const cartToMail = this.CART
+      const finalCartToMail = cartToMail.map(element => element.name)
+      const convertCart = JSON.stringify(finalCartToMail)
+      console.log(convertCart)
+      // 2. Create a FormData object, and append each field to the object
+      const emailBody = {
+        'text-859': this.formZakaz.name,
+        'text-893': this.formZakaz.phone,
+        'your-message': convertCart
+      }
+
+      const form = new FormData()
+      for (const field in emailBody) {
+        form.append(field, emailBody[field])
+      }
+
+      this.$axios
+        .$post(
+          'https://foxsis.ru/alvd/wp-json/contact-form-7/v1/contact-forms/11757/feedback',
+          form
+        )
+        .then(response => {
+          console.log(response)
+          this.status = true
+          this.errors = false
+        })
+        .catch(error => {
+          // this.errors = error.response.data.message
+          this.errors = true
+        })
     },
     selectInvitroAdd (item) {
-      this.form.invitroSelect = item.name
-      this.form.invitroSite = item.invitro
-      this.form.showInvitro = false
+      this.formZakaz.invitroSelect = item.name
+      this.formZakaz.invitroSite = item.invitro
+      this.formZakaz.showInvitro = false
       this.modalInvitro = true
       // this.scrolltoInvitro()
     },
-    // scrolltoInvitro () {
-    //   var hiddenElement = document.getElementById('tut')
-    //   hiddenElement.scrollIntoView({
-    //     block: 'start',
-    //     behavior: 'smooth'
-    //   })
-    // },
     closeCart () {
       this.$emit('cartView')
     },
@@ -865,6 +1596,353 @@ export default {
     resetCart () {
       this.RESET_CART()
       console.log('reset cart is reset')
+    },
+    doneformZakazZakaz () {
+      if (this.formZakaz.mesto == 'ofis_my') {
+        if (
+          this.formZakaz.family !== '' &&
+          this.formZakaz.name !== '' &&
+          this.formZakaz.otchestvo !== '' &&
+          this.formZakaz.dataRozhdeniya.length == 10 &&
+          this.formZakaz.email.length >= 5 &&
+          this.formZakaz.phone.length == 16 &&
+          this.formZakaz.passportSeriya.length == 11 &&
+          this.formZakaz.passportData.length == 10 &&
+          this.formZakaz.passportKem.length >= 1 &&
+          this.formZakaz.dataSdachi.length == 10
+        ) {
+          this.formZakaz.done = true
+        } else {
+          this.formZakaz.done = false
+        }
+      }
+      if (this.formZakaz.mesto == 'ofic') {
+        if (
+          this.formZakaz.family !== '' &&
+          this.formZakaz.name !== '' &&
+          this.formZakaz.otchestvo !== '' &&
+          this.formZakaz.dataRozhdeniya.length == 10 &&
+          this.formZakaz.email.length >= 5 &&
+          this.formZakaz.phone.length == 16 &&
+          this.formZakaz.passportSeriya.length == 11 &&
+          this.formZakaz.passportData.length == 10 &&
+          this.formZakaz.passportKem.length >= 1 &&
+          this.formZakaz.dataSdachi.length == 10
+        ) {
+          this.formZakaz.done = true
+        } else {
+          this.formZakaz.done = false
+        }
+      }
+      if (this.formZakaz.mesto == 'sam') {
+        if (
+          this.formZakaz.family !== '' &&
+          this.formZakaz.name !== '' &&
+          this.formZakaz.otchestvo !== '' &&
+          this.formZakaz.dataRozhdeniya.length == 10 &&
+          this.formZakaz.email.length >= 5 &&
+          this.formZakaz.phone.length == 16 &&
+          this.formZakaz.passportKem.length >= 1 &&
+          this.formZakaz.dataSdachi.length == 10
+        ) {
+          this.formZakaz.done = true
+        } else {
+          this.formZakaz.done = false
+        }
+      }
+    },
+    createOrder () {
+      const adress =
+        this.formZakaz.ulitcha +
+        ', ' +
+        this.formZakaz.nomerDoma +
+        ', ' +
+        this.formZakaz.kvartira
+      const orderCart = this.CART.map(item => item.id)
+      const formedDataCart = []
+      const bioMaterials = this.preMaterial.map(item => item.id)
+      const SDSD_test =
+        'gender' +
+        '%' +
+        this.formZakaz.gender +
+        '$' +
+        'dataRozhdeniya' +
+        '%' +
+        this.formZakaz.dataRozhdeniya +
+        '$' +
+        'dataSdachi' +
+        '%' +
+        this.formZakaz.dataSdachi +
+        '$' +
+        'passportSeriya' +
+        '%' +
+        this.formZakaz.passportSeriya +
+        '$' +
+        'passportData' +
+        '%' +
+        this.formZakaz.passportData +
+        '$' +
+        'passportKem' +
+        '%' +
+        this.formZakaz.passportKem +
+        '$' +
+        'ulitcha' +
+        '%' +
+        this.formZakaz.ulitcha +
+        '$' +
+        'dateAnaliz' +
+        '%' +
+        this.formZakaz.dateAnaliz +
+        '$' +
+        'year' +
+        '%' +
+        this.formZakaz.year +
+        '$' +
+        'mesto' +
+        '%' +
+        this.formZakaz.mesto +
+        '$' +
+        'otchestvo' +
+        '%' +
+        this.formZakaz.otchestvo +
+        '$' +
+        'invitroSelect' +
+        '%' +
+        this.formZakaz.invitroSelect
+
+      const DonUlictsa = (
+        this.formZakaz.ulitcha +
+        ', ' +
+        this.formZakaz.nomerDoma +
+        ', ' +
+        this.formZakaz.kvartira
+      ).toString()
+
+      const metaData = [
+        {
+          key: 'field_1',
+          value: this.formZakaz.gender
+        },
+        {
+          key: 'field_2',
+          value: this.formZakaz.dataRozhdeniya
+        },
+        {
+          key: 'field_3',
+          value: this.formZakaz.dataSdachi
+        },
+        {
+          key: 'field_4',
+          value: this.formZakaz.passportSeriya
+        },
+        {
+          key: 'field_5',
+          value: this.formZakaz.passportData
+        },
+        {
+          key: 'field_6',
+          value: this.formZakaz.passportKem
+        },
+        {
+          key: 'field_7',
+          value: DonUlictsa
+        },
+        {
+          key: 'field_8',
+          value: this.formZakaz.dateAnaliz
+        },
+        {
+          key: 'field_9',
+          value: this.formZakaz.genderDop.toString()
+        },
+        {
+          key: 'field_10',
+          value: this.formZakaz.mesto
+        },
+        {
+          key: 'field_11',
+          value: this.formZakaz.otchestvo
+        },
+        {
+          key: 'field_12',
+          value: this.formZakaz.invitroSelect
+        }
+      ]
+      const setClientDone = SDSD_test.toString()
+      const clientInfo = bioMaterials.forEach(element => {
+        formedDataCart.push({
+          product_id: element,
+          quantity: 1
+        })
+      })
+
+      orderCart.forEach(element => {
+        formedDataCart.push({
+          product_id: element,
+          quantity: 1
+        })
+      })
+
+      const data = {
+        payment_method: 'bacs',
+        payment_method_title: 'Direct Bank Transfer',
+        customer_id: this.jjj22.user.databaseId,
+        set_paid: false,
+        status: 'processing',
+        billing: {
+          first_name: this.formZakaz.name,
+          last_name: this.formZakaz.family,
+          address_1: this.formZakaz.ulitcha,
+          email: this.formZakaz.email,
+          phone: this.formZakaz.phone
+        },
+        customer_note: setClientDone,
+        line_items: formedDataCart,
+        meta_data: metaData
+      }
+      this.$axios
+        .$post('https://foxsis.ru/alvd/wp-json/wc/v3/orders', data)
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          this.errors = error.response.data.message
+          this.errors = true
+        })
+    },
+    modalOrder () {
+      this.modalOrderOpen = !this.modalOrderOpen
+      this.createOrder()
+    },
+    async handleLogoutZakaz () {
+      this.$nuxt.$loading.start()
+      await this.$auth.logout()
+    },
+    async handleLoginSubmit () {
+      
+      const phoneUser = this.formZakaz.phone
+      const getPhone = phoneUser
+        .replace('-', '')
+        .replace('-', '')
+        .replace('+7', '')
+        .replace('(', '')
+        .replace(')', '')
+      this.formZakaz.phone = getPhone
+      this.formBusy = true
+      try {
+        await this.$auth.loginWith('graphql', {
+          username: getPhone,
+          password: this.credentials.password
+        })
+        // console.log(localStorage["auth._token.graphql"]);
+        this.formBusy = false
+        this.loginError = false
+        // this.validUserCheck()
+        this.userFetch()
+        this.reloadPage()
+      } catch (errors) {
+        this.formBusy = false
+        this.loginError = true
+        console.log(errors)
+      }
+    },
+    async handleLoginSubmit2 () {
+      const emailUser = this.credentials2.username
+      this.formBusy = true
+      try {
+        await this.$auth.loginWith('graphql', {
+        username: emailUser,
+        password: this.credentials2.password
+      })
+        // console.log(localStorage["auth._token.graphql"]);
+        this.formBusy = false
+        this.loginError = false
+        this.reloadPage()
+      } catch (errors) {
+        this.formBusy = false
+        this.loginError = true
+        console.log(errors)
+      }
+    },
+     async handleLoginSubmit3 () {
+      
+     const phoneUser = this.credentials.username
+      const getPhone = phoneUser.replace('-','').replace('-','').replace('+7','').replace('(','').replace(')','')
+      this.credentials.username = getPhone
+      console.log(getPhone);
+      const credentials = this.credentials
+      this.formBusy = true
+      try {
+        await this.$auth.loginWith('graphql', {
+        username: getPhone,
+        password: this.credentials.password
+      })
+        // console.log(localStorage["auth._token.graphql"]);
+        this.formBusy = false
+        this.loginError = false
+        this.reloadPage()
+      } catch (errors) {
+        this.formBusy = false
+        this.loginError = true
+        console.log(errors)
+      }
+    },
+    async onLogout () {
+      await this.$apolloHelpers.onLogout()
+      this.isAuthenticated = false
+    },
+    closeLogin () {
+      this.$emit('loginView')
+    },
+    async onLogout () {
+      await this.$apolloHelpers.onLogout()
+      this.isAuthenticated = false
+    },
+    closeLogin () {
+      this.$emit('loginView')
+    },
+    validUserCheck () {
+      if (!this.$auth.loggedIn) {
+        console.log('eyseyseys')
+      } else {
+        console.log('nonono')
+        this.reNameInput()
+      }
+    },
+    reNameInput () {
+      //  client_data {
+      //   kvartira
+      //   nomerDoma
+      //   nomerTelefona
+      //   otchestvo
+      //   datarozhdeniya
+      //   pasport
+      // }
+      if (this.formZakaz.email) {
+        this.formZakaz.email = this.jjj22.user.email
+      }
+      if (this.formZakaz.name) {
+        this.formZakaz.name = this.jjj22.user.firstName
+      }
+
+      if (this.formZakaz.family) {
+        this.formZakaz.family = this.jjj22.user.lastName
+      }
+      if (this.formZakaz.phone) {
+        this.formZakaz.phone = this.jjj22.user.username
+      }
+      if (this.formZakaz.otchestvo) {
+        this.formZakaz.otchestvo = this.jjj22.user.client_data.otchestvo
+      }
+      if (this.formZakaz.dataRozhdeniya) {
+        this.formZakaz.dataRozhdeniya = this.jjj22.user.client_data.datarozhdeniya
+      }
+      if (this.formZakaz.passportSeriya) {
+        this.formZakaz.passportSeriya = this.jjj22.user.client_data.pasport
+      }
+    },
+    reloadPage(){
+      location.reload()
     }
   },
   computed: {
@@ -875,10 +1953,10 @@ export default {
       }, 0)
       return result
     },
-    bioMaterialsActive: function () {
-      let activeItem = this.dopItems.filter(item => item.active == true)
-      return activeItem
-    },
+    // bioMaterialsActive: function () {
+    //   let activeItem = this.dopItems.filter(item => item.active == true)
+    //   return activeItem
+    // },
     bioMaterialsComplete: function () {
       let chars = this.dopTest
       let uniqueChars = []
@@ -900,7 +1978,7 @@ export default {
       let totalPriceInCartReduce = this.preMaterial.reduce((prev, item) => {
         return prev + parseInt(item.price)
       }, this.prePrice)
-      if (totalPriceInCartReduce <= 1500 && this.form.mesto == 'sam') {
+      if (totalPriceInCartReduce <= 1500 && this.formZakaz.mesto == 'sam') {
         this.medSestra = true
         return totalPriceInCartReduce + 400
       } else {
@@ -909,6 +1987,7 @@ export default {
       }
     }
   },
+  layout: 'MainLayout',
   mounted () {
     this.CART.forEach(element => {
       element.upsell_ids.forEach(element => {
@@ -916,9 +1995,26 @@ export default {
           this.GET_ALL_BIOMATERIALS.filter(item => item.id == element)
         )
       })
-    })
+    }),
+      this.validUserCheck()
   },
-  layout: 'MainLayout'
+  async asyncData (ctx) {
+    if (ctx.app.$auth.loggedIn) {
+      const databaseId = ctx.app.$auth.$state.user.databaseId
+      const client = ctx.app.apolloProvider.defaultClient
+
+      //fetch user
+      const resMe = await client.query({
+        query: ME_USER,
+        variables: {
+          id: databaseId
+        }
+      })
+      const jjj22 = resMe.data
+
+      return { jjj22 }
+    }
+  }
 }
 </script>
 

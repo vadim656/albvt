@@ -2,9 +2,9 @@ import gql from 'graphql-tag'
 
 export default async function ({ app, redirect }) {
   const hasToken = !!app.$apolloHelpers.getToken()
-  if (!hasToken) {
-    return redirect('/login')
-  }
+  // if (!hasToken) {
+  //   return redirect('/')
+  // }
   //make sure the token is still valid
   try {
     const {
@@ -22,9 +22,9 @@ export default async function ({ app, redirect }) {
         }
       `
     })
-    if (!Object.keys(customer).length) {
-      return redirect('/login')
-    }
+    // if (!Object.keys(customer).length) {
+    //   return redirect('/')
+    // }
     //we are good to go and validated
   } catch (e) {
     //token is not valid
@@ -32,7 +32,7 @@ export default async function ({ app, redirect }) {
     try {
       const result = await app.$apolloHelpers.onLogout()
       //redirect them to login page
-      return redirect('/login')
+      return redirect('/')
     } catch (e) {
       console.error(e)
     }

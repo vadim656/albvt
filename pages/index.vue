@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main-page-wrapper :data_wrap="data" />
+    <main-page-wrapper :data_wrap="data" :isMobile="isMobile"  />
   </div>
 </template>
 
@@ -11,8 +11,24 @@ export default {
   data () {
     return {
       data: [],
-      dataInfo: []
+      dataInfo: [],
+      isMobile: false
     }
+  },
+   beforeDestroy () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.onResize, { passive: true })
+    }
+  },
+  methods: {
+     onResize () {
+      this.isMobile = window.innerWidth < 600
+      console.log(this.$route.path);
+    }
+  },
+  mounted () {
+    this.onResize()
+    window.addEventListener('resize', this.onResize, { passive: true })
   },
   layout: 'MainLayout',
   async asyncData ({ $axios }) {

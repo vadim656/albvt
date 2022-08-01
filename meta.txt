@@ -1,0 +1,64 @@
+
+данные о заказе  из формы на сайте, переписать api  теперь все  отдельно происходит
+
+доступные методы  GET / PUT
+
+url="https://foxsis.ru/alvd/wp-json/wc/v3/orders/{{ID}}"
+
+можно передать только эти параметры по аналигии с редактированием номенклатуры в документе заказа
+
+{
+    
+    "meta_data": [
+        {
+            "key": "field_1",
+            "value": "gender"
+        },
+        {
+            "key": "field_2",
+            "value": "dataRozhdeniya"
+        },
+        {
+            "key": "field_3",
+            "value": "dataSdachi"
+        },
+        {
+            "key": "field_4",
+            "value": "passportSeriya"
+        },
+        {
+            "key": "field_5",
+            "value": "passportData"
+        },
+        {
+            "key": "field_6",
+            "value": "passportKem"
+        },
+        {
+            "key": "field_7",
+            "value": "ulitcha"
+        },
+        {
+            "key": "field_8",
+            "value": "dateAnaliz"
+        },
+        {
+            "key": "field_9",
+            "value": "year"
+        },
+        {
+            "key": "field_10",
+            "value": "mesto"
+        },
+        {
+            "key": "field_11",
+            "value": "otchestvo"
+        },
+        {
+            "key": "field_12",
+            "value": "invitroSelect"
+        }
+    ]
+}
+
+

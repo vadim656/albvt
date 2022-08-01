@@ -1,26 +1,32 @@
 <template>
   <div>
-    <div class="relative w-full">
-      <div class="flex relative w-full">
+    <div class="absolute sm:relative w-full top-0 left-0 px-[16px] sm:px-0">
+      <div class="flex relative w-full  ">
         <div
-          class="fixed bg-[#343434]/40  w-screen h-screen left-0 top-0 pt-[13px] z-[-1] backdrop-blur-sm"
-          v-if="searchInputFake.length >= 1"
+          class="fixed bg-[#343434]/40  w-screen h-screen left-0 top-0 pt-[13px] z-[1]"
+          v-if="searchInputFake.length >= 1 && showSearch == true"
+          @click="showSearch = false"
+        ></div>
+        <div
+          class="sm:hidden fixed bg-[#343434]/40  w-screen h-screen left-0 top-0 pt-[13px] z-[1] "
+          @click="mobSearchClose()"
         ></div>
         <input
-          v-model="searchInput"
-          @input="search"
-          type="search"
+          @input="search($event.target.value)"
+          v-bind:value="searchInput"
+          type="text"
           id="default-search"
           class="block w-full pr-20 rounded-tl-[5px] rounded-bl-[5px] bg-white pl-4   h-[47px] focus:outline-none text-[#979797] z-[4]"
           placeholder="Поиск анализов"
           autocomplete="off"
         />
-
         <nuxt-link
           :to="{ path: '/search-result/', query: { search: searchInput } }"
-          class="flex justify-center border-l border-l-blue  items-center px-[16px]  z-[1] bg-white  anime rounded-tr-[5px] rounded-br-[5px]"
+          @click="showSearch = false"
+          class="flex justify-center items-center px-[16px]  z-[1] bg-white  anime rounded-tr-[5px] rounded-br-[5px]"
         >
           <img
+            @click="closeSearch()"
             src="/img/icons/search.svg"
             alt=""
             class="block w-full h-auto hover:scale-110 anime"
@@ -29,16 +35,36 @@
       </div>
 
       <ul
-        v-show="searchInputFake.length >= 1"
-        class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md rounded-[5px] w-full "
+        v-show="searchInputFake.length >= 1 && showSearch == true"
+        class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md sm:px-0 [px-16px] sm:rounded-[5px] w-full "
       >
         <li
           v-for="(item, i) in sortedArray"
           :key="i"
           class="border-b-[0.5px] border-b-[#D9D9D9]/50 px-4 py-3  grid grid-cols-[9fr,4fr] sm:grid-cols-[10fr,3fr] gap-2 items-center hover:bg-[#F5F5F5] anime"
         >
-          <div class="flex flex-col">
+          <div class="flex flex-col gap-1">
+            <!-- если комплекс -->
             <nuxt-link
+              v-if="item.node.crossSell.edges.length"
+              @click="showSearch = false"
+              :to="
+                '/all-complecs' +
+                  '/' +
+                  item.node.productCategories.edges[0].node.slug +
+                  '/' +
+                  item.node.productCategories.edges[0].node.databaseId +
+                  '/' +
+                  item.node.databaseId
+              "
+              class="test-text text-[#777777] hover:text-[#343434] anime text-[12px] sm:text-[14px]"
+              :title="item.node.name"
+              >{{ item.node.name }}</nuxt-link
+            >
+            <!-- если анализ -->
+            <nuxt-link
+              v-else
+              @click="showSearch = false"
               :to="
                 '/all-analyzes' +
                   '/' +
@@ -52,7 +78,7 @@
               :title="item.node.name"
               >{{ item.node.name }}</nuxt-link
             >
-            <div class="flex gap-3">
+            <div class="flex gap-3 flex-wrap sm:flex-nowrap">
               <span class="text-[12px] text-[#9A9A9A] pt-1"
                 >код: {{ item.node.allPaSku.nodes[0].name }}</span
               >
@@ -75,10 +101,18 @@
               <span v-else class="text-[12px] text-[#9A9A9A] pt-1"
                 >{{ item.node.attributes.edges[0].node.options[0] }} дней</span
               >
+              <span
+                v-if="item.node.crossSell.edges.length"
+                class="text-[12px] text-[#757575] pt-1 bg-main/20 px-2 py-1 rounded-[5px]"
+                >Комплекс</span
+              >
             </div>
           </div>
           <div
-            v-if="inCart.includes(item.node.name)"
+            v-if="
+              inCart.includes(item.node.name) ||
+                CART_IDS.includes(item.node.databaseId)
+            "
             class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[14px]"
           >
             <svg
@@ -96,11 +130,11 @@
               />
             </svg>
           </div>
-          
+
           <button
             v-else
             @click="productInCart(item.node.databaseId)"
-            class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2"
+            class="bg-main/20   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2"
           >
             <img src="/img/icons/add-to-cart.svg" alt="" />
             <span class="text-[12px] sm:text-[16px]"
@@ -114,7 +148,13 @@
           replace
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
         >
-          <span @click="searchInputFake = searchInputFake.replace(searchInputFake,'') "> Все результаты</span>
+          <span
+            @click="
+              searchInputFake = searchInputFake.replace(searchInputFake, '')
+            "
+          >
+            Все результаты</span
+          >
         </nuxt-link>
         <span
           v-else
@@ -122,10 +162,6 @@
           >К сожалению ничего не найдено</span
         >
       </ul>
-      <!-- {{ searchResult }}
-      <div v-for="(item , i) in searchResults" :key="i">
-        <span>{{item}}</span>
-      </div> -->
     </div>
   </div>
 </template>
@@ -133,6 +169,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import gql from 'graphql-tag'
+import _ from 'lodash'
 
 const ALL_CHARACTERS_QUERY = gql`
   query ALL_CHARACTERS_QUERY($search: String) {
@@ -157,6 +194,13 @@ const ALL_CHARACTERS_QUERY = gql`
           databaseId
           ... on SimpleProduct {
             price(format: RAW)
+            crossSell(first: 1) {
+              edges {
+                node {
+                  name
+                }
+              }
+            }
           }
           productCategories {
             edges {
@@ -180,11 +224,13 @@ export default {
       searchProducts: [],
       searchResults: [],
       inCart: [],
-      test: ''
+      test: '',
+      showSearch: false,
+      loading: false
     }
   },
   computed: {
-    ...mapGetters(['CART']),
+    ...mapGetters(['CART', 'CART_IDS']),
     sortedArray: function () {
       const inputSearhValue = this.searchInput.toLowerCase()
       const inputSearhValueEn = this.test.toLowerCase()
@@ -226,22 +272,33 @@ export default {
       }
 
       return this.searchResults
-      .sort(compareTwo)
-      .sort(compareTree)
+        .sort(compareTwo)
+        .sort(compareTree)
 
-      .filter(
-        item =>
-          item.node.name.toLowerCase().includes(this.searchInput.toLowerCase()) ||
-          item.node.name.toLowerCase().includes(this.test.toLowerCase())
-      )
-      .splice(0, 7)
+        .filter(
+          item =>
+            item.node.name
+              .toLowerCase()
+              .includes(this.searchInput.toLowerCase()) ||
+            item.node.name.toLowerCase().includes(this.test.toLowerCase())
+        )
+        .splice(0, 7)
     }
   },
   methods: {
     ...mapActions(['ADD_TO_CART']),
-    async search () {
-      this.searchInputFake = this.searchInput
-      const lowerCase = this.searchInput.toLowerCase()
+    mobSearchClose () {
+      this.showSearch = false
+      this.$emit('mobSearchClose')
+    },
+    closeSearch () {
+      this.mobSearchClose()
+    },
+    async search (value) {
+      this.searchInput = value
+      this.searchInputFake = value
+      this.showSearch = true
+      const lowerCase = value.toLowerCase()
       this.autoKeyboardLang(lowerCase)
 
       try {
@@ -266,6 +323,64 @@ export default {
         this.searchResults = []
       }
     },
+    // search: _.throttle(async function () {
+    //   this.searchInputFake = this.searchInput
+    //   this.showSearch = true
+    //   const lowerCase = this.searchInput.toLowerCase()
+    //   this.autoKeyboardLang(lowerCase)
+
+    //   try {
+    //     const res = await this.$apollo.query({
+    //       query: ALL_CHARACTERS_QUERY,
+    //       variables: {
+    //         search: lowerCase
+    //       }
+    //     })
+    //     if (res) {
+    //       this.loading = false
+    //       const { results } = res.data.products.edges
+    //       return (
+    //         { results },
+    //         (this.searchResults = res.data.products.edges),
+    //         this.searchToEn()
+    //       )
+    //     }
+    //   } catch (err) {
+    //     alert('косяк')
+    //     this.loading = false
+    //     this.searchToEn()
+    //     this.searchResults = []
+    //   }
+    // }, 100),
+    // async search () {
+    //   this.searchInputFake = this.searchInput
+    //   this.showSearch = true
+    //   const lowerCase = this.searchInput.toLowerCase()
+    //   this.autoKeyboardLang(lowerCase)
+
+    //   try {
+    //     const res = await this.$apollo.query({
+    //       query: ALL_CHARACTERS_QUERY,
+    //       variables: {
+    //         search: lowerCase
+    //       }
+    //     })
+    //     if (res) {
+    //       this.loading = false
+    //       const { results } = res.data.products.edges
+    //       return (
+    //         { results },
+    //         (this.searchResults = res.data.products.edges),
+    //         this.searchToEn()
+    //       )
+    //     }
+    //   } catch (err) {
+    //     alert('косяк')
+    //     this.loading = false
+    //     this.searchToEn()
+    //     this.searchResults = []
+    //   }
+    // },
     async searchToEn () {
       const EnToRu = this.test
       try {
@@ -368,6 +483,7 @@ export default {
       return str, (this.test = str)
     },
     async productInCart (id) {
+      this.showSearch = false
       const searchProductsApi = await this.$axios.$get(
         'https://foxsis.ru/alvd/wp-json/wc/v3/products/' + id,
         {
@@ -388,4 +504,25 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.button-close {
+  position: absolute;
+
+  right: 60px;
+  top: 8px;
+  bottom: 8px;
+
+  padding: 0 10px;
+
+  transition: background 200ms;
+
+  z-index: 4;
+}
+.button-close:hover {
+  color: #a55b4a;
+}
+
+input::-webkit-input-placeholder {
+  color: #8a8a8a;
+}
+</style>

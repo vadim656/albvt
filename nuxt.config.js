@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -25,7 +25,8 @@ export default {
     '~/plugins/persistedState.client.js',
     '@plugins/v-mask.js',
     '@plugins/v-tooltip.js',
-    '@plugins/vue-input-facade.js'
+    '@plugins/vue-input-facade.js',
+    '@plugins/lodash.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -38,7 +39,29 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
     '@nuxtjs/auth-next',
+    
+    [
+      'nuxt-mail',
+      {
+        smtp: {
+          auth: {
+            user: 'albv@foxsis.ru',
+            pass: 'Dropestroke0013!'
+          }
+        }
+
+      }
+    ]
   ],
+  mail: {
+    message: {
+      to: 'va.four2016@gmail.com',
+    },
+    smtp: {
+      host: "smtp.beget.com",
+      port: 25,
+    },
+  },
   auth: {
     strategies: {
       graphql: {
@@ -47,9 +70,9 @@ export default {
     },
     redirect: {
       login: '/login',
-      logout: '/login',
+      logout: '/',
       callback: false,
-      home: '/my-account'
+      home: false
     },
     refreshToken: {
       property: 'refreshToken',
@@ -84,9 +107,14 @@ export default {
   axios: {
     baseURL: 'https://albvt.ru/',
     credentials: true,
-    debug: true,
     common: {
-      'Authorization': 'Basic Y2tfODVlNDRlODczNTI2MWQ0NWExOWQ4ZjdhYWYwMTJmOGQ2NDBjMmRhYzpjc180MjYxYmI2MzlmNGU5YTE4YzE0Njg1MTM2MWQ2MzE3ODA0YTgxNmZj'
+      'Cache-Control': 'max-age=0',
+      'Content-Encoding': 'gzip',
+      'Content-Type': 'application/json; charset=UTF-8',
+      Allow: 'GET, POST',
+      'Access-control-allow-methods': 'GET, POST',
+      'Access-Control-Allow-Headers': 'Authorization, Content-Type'
+      // 'Authorization': 'Basic Y2tfODVlNDRlODczNTI2MWQ0NWExOWQ4ZjdhYWYwMTJmOGQ2NDBjMmRhYzpjc180MjYxYmI2MzlmNGU5YTE4YzE0Njg1MTM2MWQ2MzE3ODA0YTgxNmZj'
     },
     // proxy: true
   },
@@ -111,5 +139,6 @@ export default {
       }
     }
   },
+
   cache: true
 }

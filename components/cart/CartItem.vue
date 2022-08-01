@@ -29,6 +29,9 @@
                 {{ name.name }}
               </span>
             </div>
+            <span v-if="itemInCart.cross_sell_ids.length >= 1">
+              ({{ itemInCart.cross_sell_ids.length }}) Анализов
+            </span>
           </div>
 
           <div class="flex items-center justify-between gap-[10px]  pt-2">

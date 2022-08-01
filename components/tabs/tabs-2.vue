@@ -1,10 +1,10 @@
 <template>
-  <div class="grid grid-cols-[1fr,3fr]  gap-[20px] pt-[47px] w-full ">
-    <ul class='flex flex-col gap-[10px]'>
+  <div class="grid grid-cols-1  gap-[20px] pt-[47px] w-full ">
+    <ul class='grid grid-cols-1 sm:grid-cols-5 gap-[10px]'>
       <li v-for='(tab, index) in tabs'
         :key='tab.title'
         @click='selectTab(index)'
-        class="flex justify-center flex-col cursor-pointer items-center  rounded-[5px] bg-white shadow-md h-[100px]  text-[13px] text-[#343434] hover:text-main hover:shadow-lg anime"
+        class="flex justify-center flex-col cursor-pointer items-center  rounded-[5px] bg-white shadow-md py-4 sm:py-8   text-[14px] font-medium text-[#343434] hover:text-main hover:shadow-lg anime"
         :class='{" !text-main ": (index == selectedIndex)}'>
         {{ tab.title }}
       </li>

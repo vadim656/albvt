@@ -4,16 +4,16 @@ import { LocalScheme } from '~auth/runtime'
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($username: String!, $password: String!) {
-    login(input: {password: $password, username: $username}) {
-    authToken
-    refreshToken
-    user {
-      id
-      name
-      firstName
-      lastName
+    login(input: { password: $password, username: $username }) {
+      authToken
+      refreshToken
+      user {
+        id
+        name
+        firstName
+        lastName
+      }
     }
-  }
   }
 `
 
@@ -26,22 +26,23 @@ export const LOGOUT_MUTATION = gql`
 export const USER_DETAILS_QUERY = gql`
   query UserDetailsQuery {
     customer {
-    email
-    username
-    id
-    role
-    jwtRefreshToken
-    firstName
-    lastName
-  }
+      email
+      username
+      id
+      role
+      jwtRefreshToken
+      firstName
+      lastName
+      databaseId
+    }
   }
 `
 
 export default class GraphQLScheme extends LocalScheme {
-  async login(credentials, { reset = true } = {}) {
+  async login (credentials, { reset = true } = {}) {
     const {
       apolloProvider: { defaultClient: apolloClient },
-      $apolloHelpers,
+      $apolloHelpers
     } = this.$auth.ctx.app
 
     // Ditch any leftover local tokens before attempting to log in
@@ -53,7 +54,7 @@ export default class GraphQLScheme extends LocalScheme {
     const response = await apolloClient
       .mutate({
         mutation: LOGIN_MUTATION,
-        variables: credentials,
+        variables: credentials
       })
       .then(({ data }) => data && data.login)
 
@@ -69,9 +70,9 @@ export default class GraphQLScheme extends LocalScheme {
     return response.authToken
   }
 
-  fetchUser() {
+  fetchUser () {
     const {
-      apolloProvider: { defaultClient: apolloClient },
+      apolloProvider: { defaultClient: apolloClient }
     } = this.$auth.ctx.app
 
     // Token is required but not available
@@ -82,7 +83,7 @@ export default class GraphQLScheme extends LocalScheme {
     // Try to fetch user
     return apolloClient
       .query({
-        query: USER_DETAILS_QUERY,
+        query: USER_DETAILS_QUERY
       })
       .then(({ data }) => {
         if (!data.customer) {
@@ -94,21 +95,21 @@ export default class GraphQLScheme extends LocalScheme {
 
         return data.customer
       })
-      .catch((error) => {
+      .catch(error => {
         this.$auth.callOnError(error, { method: 'fetchUser' })
         return Promise.reject(error)
       })
   }
 
-  async logout() {
+  async logout () {
     const {
       apolloProvider: { defaultClient: apolloClient },
-      $apolloHelpers,
+      $apolloHelpers
     } = this.$auth.ctx.app
 
     await apolloClient
       .mutate({
-        mutation: LOGOUT_MUTATION,
+        mutation: LOGOUT_MUTATION
       })
       .catch(() => {
         // Handle errors
@@ -119,12 +120,12 @@ export default class GraphQLScheme extends LocalScheme {
     return this.$auth.reset({ resetInterceptor: false })
   }
 
-  initializeRequestInterceptor() {
+  initializeRequestInterceptor () {
     // Instead of initializing axios interceptors, Do nothing
     // Since we are not using axios
   }
 
-  reset() {
+  reset () {
     this.$auth.setUser(false)
     this.token.reset()
   }

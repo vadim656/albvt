@@ -1,9 +1,9 @@
 <template>
   <div class="flex w-full flex-col sm:flex-row   gap-[20px]">
-    <div class="w-full sm:w-3/4  order-2 sm:order-1">
+    <div class="w-full sm:w-2/3  order-2 sm:order-1 gap-[20px]">
       <div class="flex flex-col gap-[8px] ">
         <h1
-          class="font-medium pb-[8px] underline underline-main underline-offset-4 text-[13px]  block overflow-hidden"
+          class="font-medium pb-[8px]   text-[24px]  block overflow-hidden"
         >
           {{ subcategory.name.replace(/[0-9]/g, '').replace(/\./g, "") }}:
         </h1>
@@ -12,16 +12,16 @@
 
       <div class=" flex flex-col gap-[20px] ">
         <div class="flex flex-col gap-[20px]">
-          <span class="text-[13px] font-semibold">Анализы и цены</span>
+         
           <div class="w-full ">
             <tabs-analiz
               class="w-full "
             >
               <tab-analiz title="Описание" class="cursor-pointer" v-if="products.description.length > 0"> 
-                <div v-html="products.description" class="text-[14px] pt-4"></div>
+                <p v-html="products.description" class="text-[14px] pt-4"></p>
               </tab-analiz>
               <tab-analiz title="Подготовка"  class="text-[14px] pt-4"> 
-                <div v-html="products.short_description" class="text-[14px] pt-4"></div>
+                <p v-html="products.short_description" class="text-[14px] pt-4"></p>
               </tab-analiz>
             </tabs-analiz>
 
@@ -35,16 +35,14 @@
     </div>
     
 
-    <div class="w-full sm:w-1/4 order-1 sm:order-2">
+    <div class="w-full sm:w-1/3 order-1 sm:order-2">
       <cart-item-analiz 
       :data="products" 
       :bio="GET_ALL_BIOMATERIALS"
       @addToCart="addToCart"
       />
     </div>
-     <pop-add-to-cart v-show="addCartItem">
-      {{ addCartItem }}
-    </pop-add-to-cart>
+
   </div>
 </template>
 
@@ -52,10 +50,10 @@
 import CartItemAnaliz from '~/components/cart/CartItemAnaliz.vue'
 import TabAnaliz from '~/components/tabs/tab-analiz.vue'
 import TabsAnaliz from '~/components/tabs/tabs-analiz.vue'
-import PopAddToCart from '~/components/elements/PopAddToCart.vue'
+
 import { mapActions, mapGetters } from 'vuex'
 export default {
-  components: { CartItemAnaliz, TabAnaliz, TabsAnaliz, PopAddToCart },
+  components: { CartItemAnaliz, TabAnaliz, TabsAnaliz },
   layout: 'AnalizWrapper',
   head() {
       return {
@@ -88,7 +86,7 @@ export default {
     this.GET_BIOMATERIALS_FROM_API()
   },
   computed: {
-    ...mapGetters(['GET_ALL_BIOMATERIALS']),
+    ...mapGetters(['GET_ALL_BIOMATERIALS', 'CART_IDS']),
 
   },
   async asyncData ({ $axios, params }) {

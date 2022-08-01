@@ -25,9 +25,11 @@
               >
                 Нормативные документы
               </NuxtLink>
+              
             </li>
           </ul>
-          <span class="font-semibold text-[17px]">Контакты</span>
+          <br>
+          <span class="font-semibold text-[17px]">Контакты</span> 
           <div class="flex flex-col gap-[14px]">
             <div class="flex gap-[22px]">
               <img
@@ -59,7 +61,8 @@
           </div>
         </div>
         <div class="pyrder-2 lg:col-span-1 col-span-2">
-         <!-- <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adaf7dfa6bc4d1d3631e0e20b828484c5faf7118d65f939ad39ec025cbae30557&amp;source=constructor" width="100%" height="350" frameborder="0"></iframe> -->
+          <!-- карта!! -->
+         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adaf7dfa6bc4d1d3631e0e20b828484c5faf7118d65f939ad39ec025cbae30557&amp;source=constructor" width="100%" height="350" frameborder="0"></iframe>
         </div>
       </div>
     </div>
@@ -74,24 +77,24 @@
             Главная
           </span>
         </nuxt-link>
-        <nuxt-link to="/all-analyzes" class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
+        <nuxt-link to="/all-analyzes/gematologicheskie-issledovaniya/2849" class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
          <img class="" src="/img/icons/mob-foo-2.svg" alt="" />
           <span>
             Анализы
           </span>
         </nuxt-link>
-        <div class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
+        <nuxt-link to="/result" class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
          <img class="" src="/img/icons/mob-foo-3.svg" alt="" />
           <span>
             Результаты
           </span>
-        </div>
-        <div class="flex flex-col gap-2 justify-center items-center">
+        </nuxt-link>
+        <nuxt-link to="/contacts" class="flex flex-col gap-2 justify-center items-center">
          <img src="/img/icons/mob-foo-4.svg" alt="" />
           <span>
             Адреса
           </span>
-        </div>
+        </nuxt-link>
       </div>
     </div>
     <!-- end mobile bottom-bar -->
@@ -105,11 +108,11 @@ export default {
       footermenu: [
         {
           name: 'Анализы и цены',
-          link: '/'
+          link: '/all-analyzes/gematologicheskie-issledovaniya/2849/'
         },
         {
           name: 'Результаты анализов',
-          link: '/'
+          link: '/result'
         },
         {
           name: 'Анализы на дому',
@@ -117,23 +120,23 @@ export default {
         },
         {
           name: 'Комплексы анализов',
-          link: '/'
+          link: '/all-complecs/1-dlya-zhenshhin/2797'
         },
         {
           name: 'Часто задаваемые вопросы',
-          link: '/'
+          link: '/test-pages/one'
         },
         {
           name: 'Политика обработки персональных данных',
-          link: '/'
+          link: '/politic'
         },
         {
           name: 'Пользовательское соглашение',
-          link: '/'
+          link: '/soglashenie'
         },
         {
           name: 'Оплата и возврат',
-          link: '/'
+          link: '/oplata'
         }
       ]
     }

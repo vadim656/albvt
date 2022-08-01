@@ -1,22 +1,25 @@
 <template>
   <div class="w-full h-full bg-main  pb-[26px] ">
     <header
-      class="w-full fixed left-0 top-0 bg-main  sm:pb-[0px] pt-[14px]  z-[3]"
-      :class="[WidhtDevice < 600 ? 'pb-[90px]' : ' pb-[14px]']"
+      class="w-full fixed left-0 top-0 bg-main  sm:pb-[14px]  lg:pb-[0px] pt-[14px]  z-[3]"
+     
     >
       <transition name="fade">
         <div
           v-if="mobileMenu == true"
-          class="mobile-menu  w-screen h-screen flex justify-center items-start absolute top-32 left-0 px-[1rem] bg-[#343434]/60 backdrop-blur-sm"
+          class="mobile-menu  w-screen h-screen flex justify-center items-start absolute top-16 left-0 px-[1rem] bg-[#343434]/60 "
+          @click="mobileMenu = false"
         >
           <div
             class="p-4 bg-white w-full max-h-[260px]  flex flex-col gap-4 rounded-md shadow-md "
           >
-            <nuxt-link @click="mobileMenu = false" to="/1">О нас</nuxt-link>
+            <nuxt-link @click="mobileMenu = false" to="/o-nas">О нас</nuxt-link>
             <nuxt-link @click="mobileMenu = false" to="/2">Услуги</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/3">Анализы</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/4">Комплексы анализов</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/5">Контакты</nuxt-link>
+            <nuxt-link @click="mobileMenu = false" to="/all-analyzes/gematologicheskie-issledovaniya/2849/">Анализы</nuxt-link>
+            <nuxt-link @click="mobileMenu = false" to="/all-complecs/1-dlya-zhenshhin/2797">Комплексы анализов</nuxt-link
+            >
+            <nuxt-link @click="mobileMenu = false" to="/contacts">Контакты</nuxt-link>
+            <nuxt-link @click="mobileMenu = false" to="/result" class="text-main px-4 py-2 block sm:hidde rounded-[5px] border-[0.5px] border-main text-center">Результаты анализов</nuxt-link>
           </div>
         </div>
         <!-- /.mobile-menu -->
@@ -27,16 +30,24 @@
       >
         <logo-main class="" />
         <transition name="fade">
+          <!-- desctop -->
           <header-search
-          class="col-span-2  sm:relative w-full"
-          :class="[WidhtDevice < 600 ? 'absolute top-14 container' : 'desctop']"
-          v-show="searchView == false"
-        />
+            class="block left-0 w-full  sm:col-span-2 "
+            v-if="!isMobile"
+            @mobSearchClose="mobSearchClose()"
+          />
+           <!-- mobile -->
+          <header-search
+            class="absolute left-0 w-full  top-[80px]  sm:col-span-2  sm:relative "
+            v-else-if="isMobile == true && showSearchMob == true"
+            @mobSearchClose="mobSearchClose()"
+          />
+          
         </transition>
-        
 
         <div class="col-span-1 flex gap-[10px] justify-between">
-          <nuxt-link to="/result"
+          <nuxt-link
+            to="/result"
             class="text-[14px] xl:text-[16px] !text-white font-light px-[14px] py-[14px] hidden lg:w-full xl:max-w-[210px] sm:flex sm:items-center sm:justify-center  border-[0.5px] rounded-[5px] h-[47px]"
           >
             Результаты анализов
@@ -45,7 +56,7 @@
             class="flex w-full sm:w-[100px]  justify-between sm:justify-end items-center gap-[0px] sm:gap-[10px] "
           >
             <!-- icon search -->
-            <button class="block sm:hidden" @click="searchView = !searchView">
+            <button class="block sm:hidden" @click="reOpenmobSearch()">
               <img src="/img/icons/mob-search.svg" alt="" class="w-8  h-8 " />
             </button>
             <!-- icon call -->
@@ -74,8 +85,25 @@
                 >
               </div> -->
             </button>
-            <!-- icon user -->
+            <!-- icon user not loggin -->
+            <nuxt-link
+            to="/my-account"
+             v-if="$auth.loggedIn"
+              class="order-3 sm:order-last relative"
+            >
+              <img
+                src="/img/icons/Addaccount.svg"
+                alt=""
+                class="w-8 xl:w-[2.5rem] h-8 xl:h-[2.5rem] "
+              />
+              <span
+               
+                class="w-3 h-3 rounded-full flex justify-center items-center bg-[#5cf07c] absolute -top-[0.3rem] left-[1.3rem]  xl:left-[1.6rem]"
+              ></span>
+            </nuxt-link>
+            <!-- icon user  loggin -->
             <button
+            v-else
               class="order-3 sm:order-last relative"
               @click="loginView = true"
             >
@@ -84,10 +112,7 @@
                 alt=""
                 class="w-8 xl:w-[2.5rem] h-8 xl:h-[2.5rem] "
               />
-              <span
-                v-if="$auth.loggedIn"
-                class="w-3 h-3 rounded-full flex justify-center items-center bg-[#5cf07c] absolute -top-[0.3rem] left-[1.5rem]  xl:left-[1.6rem]"
-              ></span>
+            
             </button>
             <!-- icon menu -->
             <button
@@ -148,16 +173,35 @@ export default {
     CartWrapper,
     LoginHeader
   },
+  // props: {
+  //   isMobile: {
+  //     type: Boolean,
+  //     default () {
+  //       return false
+  //     }
+  //   }
+  // },
   data () {
     return {
       cartView: false,
       loginView: false,
       searchView: false,
       WidhtDevice: 1920,
-      mobileMenu: false
+      mobileMenu: false,
+      showSearchMob: false,
+      isMobile: false
     }
   },
+
   methods: {
+    mobSearchClose(){
+      this.showSearchMob = !this.showSearchMob
+      console.log('180');
+    },
+    reOpenmobSearch (){
+      this.showSearchMob = !this.showSearchMob
+      console.log('184');
+    },
     cartCloseView () {
       this.cartView = false
     },
@@ -166,6 +210,10 @@ export default {
     },
     mobileMenuDisplay () {
       this.mobileMenu = !this.mobileMenu
+    },
+     onResize () {
+      this.isMobile = window.innerWidth < 600
+      console.log(this.$route.path);
     }
   },
   computed: {
@@ -177,8 +225,14 @@ export default {
       return result
     }
   },
+  beforeDestroy () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.onResize, { passive: true })
+    }
+  },
   mounted () {
-    this.WidhtDevice = window.screen.width
+    this.onResize()
+    window.addEventListener('resize', this.onResize, { passive: true })
   }
 }
 </script>

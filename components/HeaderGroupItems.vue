@@ -18,9 +18,9 @@
       </div>
     </div>
     <div class="w-full flex justify-center sm:hidden container">
-      <button type="" class=" border-[1px] border-[#746F6F] w-full  flex justify-center items-center h-[48px] rounded-[5px] bg-white">
+      <nuxt-link to="/result" type="" class=" border-[1px] border-[#746F6F] w-full  flex justify-center items-center h-[48px] rounded-[5px] bg-white">
         Результаты анализов
-      </button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         {
           img: '/img/icons/Group950.svg',
           name: 'Анализы по группам',
-          link: '/all-analyzes/gematologicheskie-issledovaniya/2849/'
+          link: '/all-analyzes/gematologicheskie-issledovaniya/2849'
         },
         {
           img: '/img/icons/Group951.svg',
@@ -43,7 +43,7 @@ export default {
         {
           img: '/img/icons/Group952.svg',
           name: 'Анализы на дому',
-          link: '/404'
+          link: '/viezd'
         },
         {
           img: '/img/icons/Group953.svg',

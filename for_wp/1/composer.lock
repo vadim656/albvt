@@ -1,0 +1,87 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0ee9b98d11953d4e0590ace20a70d106",
+    "packages": [
+        {
+            "name": "zngly/wp-graphql-acf-mutations",
+            "version": "1.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zngly/wp-graphql-acf-mutations.git",
+                "reference": "5cd68f66c9bac820fe9873d912e418de51960041"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zngly/wp-graphql-acf-mutations/zipball/5cd68f66c9bac820fe9873d912e418de51960041",
+                "reference": "5cd68f66c9bac820fe9873d912e418de51960041",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "johnpbloch/wordpress": ">=6.0",
+                "spatie/file-system-watcher": "^1.1",
+                "wordpress-plugin/advanced-custom-fields-pro": "^5.9",
+                "wp-graphql/wp-graphql": "^1.8",
+                "wp-graphql/wp-graphql-acf": "^0.5.3",
+                "wpackagist-theme/twentytwentytwo": "*"
+            },
+            "type": "wordpress-plugin",
+            "extra": {
+                "wordpress-install-dir": "./wordpress",
+                "installer-paths": {
+                    "wordpress/wp-content/plugins/{$name}/": [
+                        "type:wordpress-plugin"
+                    ],
+                    "wordpress/wp-content/themes/{$name}/": [
+                        "type:wordpress-theme"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Vlad Medves",
+                    "email": "vlad@zngly.com"
+                }
+            ],
+            "description": "ACF Mutations for WP GraphQL",
+            "homepage": "https://github.com/zngly/wp-graphql-acf-mutations",
+            "keywords": [
+                "acf",
+                "graphql",
+                "mutations",
+                "package",
+                "wpgraphql",
+                "zngly"
+            ],
+            "support": {
+                "issues": "https://github.com/zngly/wp-graphql-acf-mutations/issues",
+                "source": "https://github.com/zngly/wp-graphql-acf-mutations"
+            },
+            "time": "2022-07-22T20:40:02+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

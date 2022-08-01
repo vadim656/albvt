@@ -27,11 +27,17 @@
             <div class="flex flex-col gap-[8px] p-[10px]">
               <span class="text-[14px] text-[#A0AFBD] w-full">{{ slideContent.acf.podzagolovok }}</span>
               <span class="text-[16px] font-medium truncate" :title="slideContent.acf.nazvanie">{{ slideContent.acf.nazvanie }} </span>
-              <nuxt-link :to="'/posts/' + '/'">
+              <nuxt-link v-if="slideContent.acf.ssylka_na_info.length >= 2"  :to="slideContent.acf.ssylka_na_info">
                 <button class="border  border-main rounded-[5px] mt-2 py-2 w-full text-main text-[15px] hover:bg-main hover:text-white anime">
                 Читать
               </button>
               </nuxt-link>
+              <span v-else>
+                <button class="border  border-main rounded-[5px] mt-2 py-2 w-full text-main text-[15px] hover:bg-main hover:text-white anime">
+                 нечего пока читать
+              </button>
+              </span>
+              
               
             </div>
          </div>

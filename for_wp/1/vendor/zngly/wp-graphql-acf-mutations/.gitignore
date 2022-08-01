@@ -1,0 +1,14 @@
+# IDE specific
+.idea/
+
+# Project specific
+vendor
+composer.lock
+
+# OS specific
+.DS_Store/
+
+wordpress
+
+node_modules
+package-lock.json

@@ -285,15 +285,7 @@
             "slug": "lekarstvennyj-monitoring",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "6.1. Лекарственный мониторинг",
-                    "databaseId": 2880,
-                    "slug": "6-1-lekarstvennyj-monitoring"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
@@ -360,28 +352,443 @@
                   "node": {
                     "name": "Бактериальные",
                     "databaseId": 2882,
-                    "slug": "bakterialnye"
+                    "slug": "bakterialnye",
+                    "children": {
+                      "edges": [
+                        {
+                          "node": {
+                            "name": "9.28. Сифилис",
+                            "databaseId": 2973,
+                            "slug": "9-28-sifilis-treponema-pallidum"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.29. Боррелиоз (болезнь Лайма)",
+                            "databaseId": 2974,
+                            "slug": "9-29-borrelioz-bolezn-lajma-borreliosis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.30. Мобилункус",
+                            "databaseId": 2975,
+                            "slug": "9-30-mobilunkus-mobiluncus-curtisii-m-mulieris"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.31. Бактероидная флора",
+                            "databaseId": 2976,
+                            "slug": "9-31-bakteroidnaya-flora-bacteroides-spp"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.32. Гонорея (гонококк)",
+                            "databaseId": 2977,
+                            "slug": "9-32-gonoreya-gonokokk-neisseria-gonorrhoeae"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.33. Гарднереллез",
+                            "databaseId": 2978,
+                            "slug": "9-33-gardnerellez-gardnerella-gardnerella-vaginalis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.34. Туберкулез",
+                            "databaseId": 2979,
+                            "slug": "9-34-tuberkulez-mikobakterii-tuberkule"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.35. Хеликобактерная инфекция",
+                            "databaseId": 2980,
+                            "slug": "9-35-helikobakternaya-infekcziya-helikoba"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.36. Криптоспоридиоз",
+                            "databaseId": 2981,
+                            "slug": "9-36-kriptosporidioz-vodyanistaya-diareya"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.37. Микоплазменная инфекция",
+                            "databaseId": 2982,
+                            "slug": "9-37-mikoplazmennaya-infekcziya-mikoplazm"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.38. Уреаплазмоз",
+                            "databaseId": 2983,
+                            "slug": "9-38-ureaplazmoz-ureaplazmy-ureaplasmosis-ureaplasma-spp-ureaplasma-urealyticum-ureapla"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.39. Хламидийная инфекция",
+                            "databaseId": 2984,
+                            "slug": "9-39-hlamidijnaya-infekcziya-hlamidioz-hla"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.40. Листериоз",
+                            "databaseId": 2985,
+                            "slug": "9-40-listerioz-listerii-listeria-monocytogenes-listeriosis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.41. Стрептококковая инфекция",
+                            "databaseId": 2986,
+                            "slug": "9-41-streptokokkovaya-infekcziya-streptok"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.42. Менингококк",
+                            "databaseId": 2987,
+                            "slug": "9-42-meningit-meningokokk-neisseria-meningitides"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.43. Стафилококковая инфекция",
+                            "databaseId": 2988,
+                            "slug": "9-43-stafilokokkovaya-infekcziya-stafilok"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.44. Гемофильная инфекция",
+                            "databaseId": 2989,
+                            "slug": "9-44-gemofilnaya-infekcziya-haemophilus-influenzae"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.45. Дифтерия",
+                            "databaseId": 2990,
+                            "slug": "9-45-difteriya-difterijnaya-palochka-corynebacterium-diphtheriae"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.46. Коклюш",
+                            "databaseId": 2991,
+                            "slug": "9-46-koklyush-bordetella-pertussis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.47. Паракоклюш",
+                            "databaseId": 2992,
+                            "slug": "9-47-parakoklyush-bordetella-parapertussis"
+                          }
+                        }
+                      ]
+                    }
                   }
                 },
                 {
                   "node": {
                     "name": "Вирусные",
                     "databaseId": 2881,
-                    "slug": "virusnye"
+                    "slug": "virusnye",
+                    "children": {
+                      "edges": [
+                        {
+                          "node": {
+                            "name": "9.1. ВИЧ-инфекция",
+                            "databaseId": 2946,
+                            "slug": "9-1-vich-infekcziya-virus-immunodeficzita-ch"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.10. Герпес-вирус человека 3 типа (опоясывающий лишай), Варицелла-Зостер, Ветряная оспа",
+                            "databaseId": 2955,
+                            "slug": "9-10-gerpes-virus-cheloveka-3-tipa-opoyasyva"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.11. Герпес-вирус человека 4 типа (вирус Эпштейна-Барр)",
+                            "databaseId": 2956,
+                            "slug": "9-11-gerpes-virus-cheloveka-4-tipa-virus-epsh"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.12. Герпес-вирус человека 5 типа (цитомегаловирус)",
+                            "databaseId": 2957,
+                            "slug": "9-12-gerpes-virus-cheloveka-5-tipa-czitomega"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.13. Герпес-вирус человека 6 типа",
+                            "databaseId": 2958,
+                            "slug": "9-13-gerpes-virus-cheloveka-6-tipa-hhv-6"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.14. Герпес-вирус человека 8 типа",
+                            "databaseId": 2959,
+                            "slug": "9-14-gerpes-virus-cheloveka-8-tipa-hhv-8"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.15. Т-лимфотропный вирус",
+                            "databaseId": 2960,
+                            "slug": "9-15-t-limfotropnyj-virus-htlv"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.16. Краснуха",
+                            "databaseId": 2961,
+                            "slug": "9-16-krasnuha-rubella-virus"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.17. Корь",
+                            "databaseId": 2962,
+                            "slug": "9-17-kor-morbillivirus"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.18. Паротит эпидемический",
+                            "databaseId": 2963,
+                            "slug": "9-18-parotit-epidemicheskij"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.19. Респираторно-синцитиальный вирус",
+                            "databaseId": 2964,
+                            "slug": "9-19-respiratorno-sinczitialnaya-infekczi"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.2. Вирус папилломы человека",
+                            "databaseId": 2947,
+                            "slug": "9-2-vpch-infekcziya-papillomavirusnaya-inf"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.20. Аденовирусная инфекция",
+                            "databaseId": 2965,
+                            "slug": "9-20-adenovirusnaya-infekcziya"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.21. Острые кишечные инфекции",
+                            "databaseId": 2966,
+                            "slug": "9-21-ostrye-kishechnye-infekczii"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.22. Ротавирусная инфекция",
+                            "databaseId": 2967,
+                            "slug": "9-22-rotavirusnaya-infekcziya-rotavirus-rotavirus"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.23. Энтеровирус",
+                            "databaseId": 2968,
+                            "slug": "9-23-enterovirus"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.24. Вирус клещевого энцефалита",
+                            "databaseId": 2969,
+                            "slug": "9-24-kleshhevoj-enczefalit-virus-kleshhevogo"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.25. Парвовирус В19",
+                            "databaseId": 2970,
+                            "slug": "9-25-parvovirus-v19-parvovirus-b19"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.26. Полиомиелит",
+                            "databaseId": 2971,
+                            "slug": "9-26-poliomielit"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.27. Коронавирусная инфекция (COVID-19)",
+                            "databaseId": 2972,
+                            "slug": "9-27-koronavirusnaya-infekcziya-covid-19"
+                          }
+                        }
+                      ]
+                    }
                   }
                 },
                 {
                   "node": {
                     "name": "Грибковые",
                     "databaseId": 2883,
-                    "slug": "gribkovye"
+                    "slug": "gribkovye",
+                    "children": {
+                      "edges": [
+                        {
+                          "node": {
+                            "name": "9.58. Микозы",
+                            "databaseId": 3003,
+                            "slug": "9-58-mikozy-parazitarnye-griby-dermato"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.59. Кандидоз",
+                            "databaseId": 3004,
+                            "slug": "9-59-kandidoz-kandida-candidiasis-candida"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.60. Аспергиллез",
+                            "databaseId": 3005,
+                            "slug": "9-60-aspergillez"
+                          }
+                        }
+                      ]
+                    }
                   }
                 },
                 {
                   "node": {
                     "name": "Паразитарные",
                     "databaseId": 2884,
-                    "slug": "parazitarnye"
+                    "slug": "parazitarnye",
+                    "children": {
+                      "edges": [
+                        {
+                          "node": {
+                            "name": "9.61. Простейшие",
+                            "databaseId": 3006,
+                            "slug": "9-61-prostejshie-dizenterijnaya-ameba-lyam"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.62. Дизентерия амебная",
+                            "databaseId": 3007,
+                            "slug": "9-62-dizenteriya-amebnaya-amebiaz-entamoeba-histolytica"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.63. Лямблиоз",
+                            "databaseId": 3008,
+                            "slug": "9-63-lyambliozlyamblii-giardia-lamblia-intestinalis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.64. Токсоплазмоз",
+                            "databaseId": 3009,
+                            "slug": "9-64-toksoplazmoz-toksoplazma-toxoplasmosistoxoplasma-gondii"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.65. Трихомониаз",
+                            "databaseId": 3010,
+                            "slug": "9-65-trihomoniaz-trihomonada-trichomonas-vaginalis-trichomoniasis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.66. Гельминтоз",
+                            "databaseId": 3011,
+                            "slug": "9-66-gelmintoz"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.67. Энтеробиоз",
+                            "databaseId": 3012,
+                            "slug": "9-67-enterobioz-ostriczy-enterobius-spp"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.68. Аскаридоз",
+                            "databaseId": 3013,
+                            "slug": "9-68-askaridoz"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.69. Токсокароз",
+                            "databaseId": 3014,
+                            "slug": "9-69-toksokaroz-toksokara-toxocara-canis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.70. Описторхоз (кошачья двуустка)",
+                            "databaseId": 3015,
+                            "slug": "9-70-opistorhoz-koshachya-dvuustka-opisthorchis-felineus"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.71. Трихинеллез",
+                            "databaseId": 3016,
+                            "slug": "9-71-trihinellez-trihinella-trichinella-spiralis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.72. Эхинококкоз",
+                            "databaseId": 3017,
+                            "slug": "9-72-ehinokokkoz-ehinokokki-echinococcus-spp"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.73. Стронгилоидоз",
+                            "databaseId": 3018,
+                            "slug": "9-73-strongiloidoz-strongyloides-stercoralis"
+                          }
+                        },
+                        {
+                          "node": {
+                            "name": "9.74. Демодекоз (клещ демодекс)",
+                            "databaseId": 3019,
+                            "slug": "9-74-demodekoz-kleshh-demodeks-demodex-folliculorum-demodex-brevis"
+                          }
+                        }
+                      ]
+                    }
                   }
                 }
               ]
@@ -395,15 +802,7 @@
             "slug": "mikrobiologicheskie-issledovaniya-ne",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "10.1. Микробиологические исследования: неспецифические воспалительные заболевания различных локализаций",
-                    "databaseId": 2885,
-                    "slug": "10-1-mikrobiologicheskie-issledovaniya-n"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
@@ -700,15 +1099,7 @@
             "slug": "issledovanie-spermy-i-svyazannye-test",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "15.2. Антиспермальные антитела",
-                    "databaseId": 2920,
-                    "slug": "15-2-antispermalnye-antitela"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
@@ -719,15 +1110,7 @@
             "slug": "issledovaniya-zhelchi",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "16.1. Исследование желчного камня",
-                    "databaseId": 2921,
-                    "slug": "16-1-issledovanie-zhelchnogo-kamnya"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
@@ -804,19 +1187,10 @@
             "slug": "czitogeneticheskie-issledovaniya",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "19.1. Цитогенетические исследования",
-                    "databaseId": 2928,
-                    "slug": "19-1-czitogeneticheskie-issledovaniya"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
-        
         {
           "node": {
             "databaseId": 2840,
@@ -824,15 +1198,7 @@
             "slug": "onkogeneticheskie-issledovaniya",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "20.1. Онкогенетические исследования",
-                    "databaseId": 2929,
-                    "slug": "20-1-onkogeneticheskie-issledovaniya"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
@@ -953,15 +1319,7 @@
             "slug": "nasledstvennye-monogennye-zabolevan",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "22.1. Наследственные моногенные заболевания и состояния",
-                    "databaseId": 2944,
-                    "slug": "22-1-nasledstvennye-monogennye-zaboleva"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         },
@@ -983,21 +1341,10 @@
             "slug": "nasledstvennye-bolezni-obmena-veshhes",
             "parentDatabaseId": 2822,
             "children": {
-              "edges": [
-                {
-                  "node": {
-                    "name": "24.1. Наследственные болезни обмена веществ у новорождённых/скрининг «Пяточка»",
-                    "databaseId": 2945,
-                    "slug": "24-1-nasledstvennye-bolezni-obmena-veshhe"
-                  }
-                }
-              ]
+              "edges": []
             }
           }
         }
-        
-       
-       
       ]
     }
   },

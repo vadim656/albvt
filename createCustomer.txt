@@ -1,0 +1,88 @@
+
+Метод POST 
+url = 'https://foxsis.ru/alvd/wp-json/wc/v3/customers'
+
+
+---------------------------------------------
+
+пример отправки запроса для создания клиента 
+
+
+// !String  обязательные поля для регистрации нового клиента!
+
+{
+
+    "email": "test4@gmail.com",
+    "first_name": "Григорий",
+    "last_name": "Создан",
+    "billing": {
+        "first_name": "Григорий",
+        "last_name": "Создан",
+        "address_1": "красная",
+        "address_2": "13",
+        "city": "Ставрополь",
+        "email": "test@gmail.com",
+        "phone": "89624060015"
+    }
+}
+
+
+--------------------------------------------------------------------------------
+
+
+В ответе на запрос будет получена такая форма = 
+
+--------------------------------------------------
+
+{
+    "id": 6, // ID клиента к которому можно привязать заказ 
+    "email": "test4@gmail.com", 
+    "first_name": "Григорий", 
+    "last_name": "Создан", 
+    "role": "customer",
+    "username": "test4",
+    "billing": {
+        "first_name": "Григорий",  
+        "last_name": "Создан", 
+        "company": "",
+        "address_1": "красная", 
+        "address_2": "13", 
+        "city": "Ставрополь", 
+        "postcode": "",
+        "country": "",
+        "state": "",
+        "email": "test@gmail.com", 
+        "phone": "89624060015" 
+    },
+    "shipping": {
+        "first_name": "",
+        "last_name": "",
+        "company": "",
+        "address_1": "",
+        "address_2": "",
+        "city": "",
+        "postcode": "",
+        "country": "",
+        "state": "",
+        "phone": ""
+    },
+    "is_paying_customer": false,
+    "avatar_url": "https://secure.gravatar.com/avatar/58090ea9184cf410bac8ee57bc5f985f?s=96&d=mm&r=g",
+    "meta_data": [],
+    "_links": {
+        "self": [
+            {
+                "href": "https://foxsis.ru/alvd/wp-json/wc/v3/customers/6"
+            }
+        ],
+        "collection": [
+            {
+                "href": "https://foxsis.ru/alvd/wp-json/wc/v3/customers"
+            }
+        ]
+    }
+}
+
+
+
+

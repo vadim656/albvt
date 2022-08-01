@@ -1,6 +1,6 @@
 <template>
   <div class="container ">
-    <div class="py-[47px] flex flex-col w-full gap-12">
+    <div class="py-[47px] mt-[47px] sm:mt-0 flex flex-col w-full gap-12">
       <heading-h-3>О нас</heading-h-3>
       <div class="flex flex-col w-full gap-4">
         <span class="font-medium">Наша лицензия</span>

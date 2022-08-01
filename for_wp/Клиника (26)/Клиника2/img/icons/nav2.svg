@@ -1,0 +1,20 @@
+<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_130_1069)">
+<path d="M19.6406 20.8563L26.3263 15.189" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M12.6196 16.9092L17.033 20.8284" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M27.6444 15.7672C28.6097 15.7672 29.3922 15.0098 29.3922 14.0755C29.3922 13.1412 28.6097 12.3838 27.6444 12.3838C26.679 12.3838 25.8965 13.1412 25.8965 14.0755C25.8965 15.0098 26.679 15.7672 27.6444 15.7672Z" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M11.3309 17.4587C12.2962 17.4587 13.0788 16.7012 13.0788 15.7669C13.0788 14.8326 12.2962 14.0752 11.3309 14.0752C10.3656 14.0752 9.58301 14.8326 9.58301 15.7669C9.58301 16.7012 10.3656 17.4587 11.3309 17.4587Z" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M18.3221 23.6618C19.2874 23.6618 20.07 22.9044 20.07 21.9701C20.07 21.0357 19.2874 20.2783 18.3221 20.2783C17.3568 20.2783 16.5742 21.0357 16.5742 21.9701C16.5742 22.9044 17.3568 23.6618 18.3221 23.6618Z" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M29.0425 15.0908L33.2374 18.1359" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M34.6356 20.8424C35.6009 20.8424 36.3835 20.085 36.3835 19.1507C36.3835 18.2164 35.6009 17.459 34.6356 17.459C33.6702 17.459 32.8877 18.2164 32.8877 19.1507C32.8877 20.085 33.6702 20.8424 34.6356 20.8424Z" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M34.6357 23.6618V32.6843H11.3306V20.2783" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M18.3223 32.6845V26.4814" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+<path d="M27.6445 32.6847V18.5869" stroke="#6184FF" stroke-width="1.4" stroke-miterlimit="10"/>
+</g>
+<circle cx="22.5" cy="22.5" r="22" stroke="#E5E5E5"/>
+<defs>
+<clipPath id="clip0_130_1069">
+<rect width="27.9661" height="27.0677" fill="white" transform="translate(9 9)"/>
+</clipPath>
+</defs>
+</svg>

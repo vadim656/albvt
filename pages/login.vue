@@ -47,6 +47,7 @@
 
 
 export default {
+  layout: 'MainLayout',
   head () {
     return {
       title: 'Войти в личный кабинет'

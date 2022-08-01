@@ -5,7 +5,7 @@
       @click="closeCart()"
     ></div>
     <div
-      class="bg-white absolute overflow-hidden pt-[24px] right-0 top-0 w-full  max-w-[370px] shadow-md rounded-bl-[5px] z-[999999]"
+      class="bg-white absolute overflow-hidden pt-[24px] right-0 top-0 w-full  max-w-[370px] shadow-md rounded-[5px] z-[999999]"
     >
       <span
         class="w-full sm:flex justify-end pb-[24px] text-[16px] px-[24px] hidden"
@@ -58,7 +58,7 @@
           @click="closeCart()"
          
         >
-        <nuxt-link to="/all-analyzes"  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]">Анализы</nuxt-link>
+        <nuxt-link to="/all-analyzes/gematologicheskie-issledovaniya/2849"  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]">Анализы</nuxt-link>
           
         </button>
       </div>

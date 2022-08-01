@@ -1,0 +1,5 @@
+{
+    "require": {
+        "zngly/wp-graphql-acf-mutations": "^1.0"
+    }
+}

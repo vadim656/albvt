@@ -12,7 +12,11 @@
   }
   .anime {
   @apply motion-safe:transition duration-[0.1s] ease-in ;
-}
+  }
+  .input-med {
+  @apply bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]  ;
+  
+  }
 
 
 

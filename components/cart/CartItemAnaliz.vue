@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white shadow-md w-full sm:w-[270px] rounded-[5px] p-[20px] flex flex-col gap-[20px]"
+    class="bg-white shadow-md w-full rounded-[5px] p-[20px] flex flex-col gap-[20px]"
   >
     <div
       class="flex flex-col gap-[4px] border-b-[0.5px] pb-[16px] border-b-main/50"
@@ -56,7 +56,7 @@
       >
     </div>
     <div
-      v-if="CART.includes(data)"
+      v-if="CART.includes(data) || CART_IDS.includes(data.id)"
       :id="data.id"
       class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[14px]"
     >
@@ -106,7 +106,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['CART'])
+    ...mapGetters(['CART' , 'CART_IDS'])
   },
   mounted () {
     this.data.upsell_ids.forEach(element => {
