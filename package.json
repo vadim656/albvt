@@ -2,7 +2,6 @@
   "name": "albb",
   "version": "1.0.0",
   "private": true,
-
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -10,7 +9,8 @@
     "generate": "nuxt generate",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:prettier",
-    "lintfix": "prettier --write --list-different ."
+    "lintfix": "prettier --write --list-different .",
+    "deploy": "pm2 start npm --name App -- start"
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.5",
@@ -27,7 +27,6 @@
     "v-tooltip": "^2.1.3",
     "vue": "^2.6.14",
     "vue-input-facade": "^2.0.1",
-    "vue-lodash": "^2.1.2",
     "vue-template-compiler": "^2.6.14",
     "vuejs-datepicker": "^1.6.2",
     "vuex-persistedstate": "^4.1.0",

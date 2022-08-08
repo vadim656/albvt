@@ -29,7 +29,6 @@ export default {
     '@plugins/v-mask.js',
     '@plugins/v-tooltip.js',
     '@plugins/vue-input-facade.js',
-    '@plugins/lodash.js',
     { src: '~/plugins/vue-datepicker', ssr: false }
   ],
 
@@ -144,5 +143,4 @@ export default {
     }
   },
 
-  cache: true
 }
