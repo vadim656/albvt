@@ -7,7 +7,7 @@
       <img
         src="/img/icons/full-logo.svg"
         alt=""
-        class="w-[122px] sm:w-[152px] h-auto"
+        class="w-[112px] sm:w-[152px] h-auto"
       />
     </nuxt-link>
   </div>

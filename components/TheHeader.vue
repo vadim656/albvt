@@ -32,13 +32,13 @@
         <transition name="fade">
           <!-- desctop -->
           <header-search
-            class="block left-0 w-full  sm:col-span-2 "
+            class="hidden sm:block left-0 w-full  sm:col-span-2 "
             v-if="!isMobile"
             @mobSearchClose="mobSearchClose()"
           />
            <!-- mobile -->
           <header-search
-            class="absolute left-0 w-full  top-[80px]  sm:col-span-2  sm:relative "
+            class="block sm:hidden absolute left-0 w-full  top-[40px]  sm:col-span-2  sm:relative "
             v-else-if="isMobile == true && showSearchMob == true"
             @mobSearchClose="mobSearchClose()"
           />
@@ -140,7 +140,7 @@
         >
           <a href="" class="font-semibold text-[16px]">+7 (863) 241-85-55</a>
         </div>
-
+        
         <cart-wrapper v-if="cartView == true" @cartView="cartCloseView" />
         <login-header
           v-if="loginView == true && !$auth.loggedIn"

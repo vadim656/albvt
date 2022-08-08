@@ -113,7 +113,7 @@
               inCart.includes(item.node.name) ||
                 CART_IDS.includes(item.node.databaseId)
             "
-            class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[14px]"
+            class="flex justify-center items-center   rounded-[5px] py-2 text-main gap-1   h-[40px] px-[8px] text-[14px]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -129,6 +129,7 @@
                 d="M5 13l4 4L19 7"
               />
             </svg>
+            <span class="text-[12px]">В корзине</span>
           </div>
 
           <button
@@ -323,64 +324,7 @@ export default {
         this.searchResults = []
       }
     },
-    // search: _.throttle(async function () {
-    //   this.searchInputFake = this.searchInput
-    //   this.showSearch = true
-    //   const lowerCase = this.searchInput.toLowerCase()
-    //   this.autoKeyboardLang(lowerCase)
 
-    //   try {
-    //     const res = await this.$apollo.query({
-    //       query: ALL_CHARACTERS_QUERY,
-    //       variables: {
-    //         search: lowerCase
-    //       }
-    //     })
-    //     if (res) {
-    //       this.loading = false
-    //       const { results } = res.data.products.edges
-    //       return (
-    //         { results },
-    //         (this.searchResults = res.data.products.edges),
-    //         this.searchToEn()
-    //       )
-    //     }
-    //   } catch (err) {
-    //     alert('косяк')
-    //     this.loading = false
-    //     this.searchToEn()
-    //     this.searchResults = []
-    //   }
-    // }, 100),
-    // async search () {
-    //   this.searchInputFake = this.searchInput
-    //   this.showSearch = true
-    //   const lowerCase = this.searchInput.toLowerCase()
-    //   this.autoKeyboardLang(lowerCase)
-
-    //   try {
-    //     const res = await this.$apollo.query({
-    //       query: ALL_CHARACTERS_QUERY,
-    //       variables: {
-    //         search: lowerCase
-    //       }
-    //     })
-    //     if (res) {
-    //       this.loading = false
-    //       const { results } = res.data.products.edges
-    //       return (
-    //         { results },
-    //         (this.searchResults = res.data.products.edges),
-    //         this.searchToEn()
-    //       )
-    //     }
-    //   } catch (err) {
-    //     alert('косяк')
-    //     this.loading = false
-    //     this.searchToEn()
-    //     this.searchResults = []
-    //   }
-    // },
     async searchToEn () {
       const EnToRu = this.test
       try {

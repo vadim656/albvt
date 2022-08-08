@@ -47,7 +47,7 @@
     <div
       class=" flex xl:hidden flex-wrap sm:flex-nowrap gap-2 lg:gap-4 col-span-2 text-[10px] lg:text-[14px] font-normal text-[#777777]"
     >
-      <span class="w-full">Код: {{ item.attributes[2].options[0] }}</span>
+      <span class="w-full sm:w-auto">Код: {{ item.attributes[2].options[0] }}</span>
       <div class="flex gap-2 cursor-pointer">
         <span v-for="(material, i) in item.upsell_ids" :key="i">
           <span v-if="material == 10387">
@@ -104,7 +104,7 @@
     <div
       v-if="CART.includes(item) ||  CART_IDS.includes(item.id)"
       :id="item.id"
-      class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[14px]"
+      class="flex justify-center items-center   rounded-[5px] py-2 text-main gap-1    h-[40px] px-[8px] text-[14px]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -120,14 +120,15 @@
           d="M5 13l4 4L19 7"
         />
       </svg>
+      <span class="text-[12px]">В корзине</span>
     </div>
 
     <button
       @click="addToCart(item)"
       v-else
-      class="col-span-2 xl:col-span-1 group   flex justify-center items-center border bg-white  border-main rounded-[5px] xl:py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
+      class="col-span-4 lg:col-span-2 xl:col-span-1 group   flex justify-center items-center border bg-white  border-main rounded-[5px] xl:py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
     >
-      <span class="flex xl:hidden pr-2 border-r-[1px] border-main"
+      <span class="flex xl:hidden pr-2 border-r-[1px] border-main text-[14px]"
         >{{ parseInt(item.price).toLocaleString('ru-RU') }} ₽</span
       >
       <img

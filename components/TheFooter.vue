@@ -38,7 +38,7 @@
                 class="w-[18px] h-[18px] object-cover hidden lg:block"
               />
               <span class="text-[13px]"
-                >344022, г. Ростов-на-Дону,<br />
+                >344022,<br /> г. Ростов-на-Дону,<br />
                 ул. Восточная, 11</span
               >
             </div>
@@ -62,13 +62,13 @@
         </div>
         <div class="pyrder-2 lg:col-span-1 col-span-2">
           <!-- карта!! -->
-         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adaf7dfa6bc4d1d3631e0e20b828484c5faf7118d65f939ad39ec025cbae30557&amp;source=constructor" width="100%" height="350" frameborder="0"></iframe>
+         <!-- <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adaf7dfa6bc4d1d3631e0e20b828484c5faf7118d65f939ad39ec025cbae30557&amp;source=constructor" width="100%" height="350" frameborder="0"></iframe> -->
         </div>
       </div>
     </div>
     <!-- mobile bottom-bar -->
     <div
-      class="sm:hidden fixed bottom-0 left-0 bg-white drop-shadow(0px_0px_20px_rgba(0,0,0,0.1)) px-4 py-2 z-[3] w-full"
+      class="sm:hidden fixed bottom-0 left-0 bg-white drop-shadow(0px_0px_20px_rgba(0,0,0,0.1)) px-4 py-2 z-[1] w-full"
     >
       <div class="grid grid-cols-4 w-full text-[10px]">
         <nuxt-link to="/" class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">

@@ -21,9 +21,11 @@
             placeholder="+7(___)___−__−__*"
             v-facade="'+7(###)###-##-##'"
             v-model="credentials.username"
+             @input='evt=>credentials.username=evt.target.value'
             class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
             id="login"
           />
+          <span>{{credentials.username}}</span>
         </div>
         <div class="flex flex-col items-start justify-start gap-2 w-full ">
           <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
@@ -32,9 +34,11 @@
             placeholder="Пароль"
             value="ofis_my"
             v-model="credentials.password"
+             @input='evt=>credentials.password=evt.target.value'
             class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
             id="pass"
           />
+          <span>{{credentials.password}}</span>
         </div>
         <div class="flex flex-col items-center justify-center gap-2">
           <button
@@ -61,9 +65,13 @@
                       d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                     />
                   </svg>
-                  <span class="text-[#A55B4A] uppercase text-[12px]"
+                  <div class="flex flex-col gap-2">
+                    <span class="text-[#A55B4A] uppercase text-[12px]"
                     >Неправильный логин или пароль</span
                   >
+                  <span>{{dataErrors}}</span>
+                  </div>
+                  
                 </div>
           <div @click="closeLogin()">
             <nuxt-link to="/register" class="text-[#343434] w-full text-center"
@@ -75,7 +83,7 @@
       </tab-login>
       <tab-login title="По Email">
          <!-- email -->
-      <form @submit.prevent="handleLoginSubmit()" class="flex flex-col gap-4">
+      <form @submit.prevent="handleLoginSubmit2()" class="flex flex-col gap-4">
         
         <div class="flex flex-col items-start justify-start gap-2 w-full ">
           <!-- <label for="login" class="text-[14px]">Логин</label> -->
@@ -83,6 +91,7 @@
             type="text"
             placeholder="email"
             v-model="credentials2.username"
+            @input='evt=>credentials2.username=evt.target.value'
             class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
             id="login2"
           />
@@ -93,6 +102,7 @@
             type="password"
             placeholder="Пароль"
             v-model="credentials2.password"
+            @input='evt=>credentials2.password=evt.target.value'
             class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
             id="pass2"
           />
@@ -162,7 +172,8 @@ export default {
         password: ''
       },
       successfulData: null,
-      loginError: false
+      loginError: false,
+      dataErrors: ''
     }
   },
   mounted () {
@@ -187,6 +198,7 @@ export default {
       } catch (errors) {
         this.formBusy = false
         this.loginError = true
+        this.dataErrors = errors
         console.log(errors)
       }
     },
@@ -204,6 +216,7 @@ export default {
       } catch (errors) {
         this.formBusy = false
         this.loginError = true
+        this.dataErrors = errors
         console.log(errors)
       }
     },

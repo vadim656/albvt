@@ -20,12 +20,12 @@
           <img src="/img/icons/arrow-white.svg" alt="" />
           <div class="dropdown-content top-4 left-0 bg-white shadow-md  min-w-[250px] rounded-[5px] anime">
             <ul class="text-[14px]">
-              <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
+              <!-- <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
                 <nuxt-link to="/test-pages/capelnica">Постановка капельниц</nuxt-link>
               </li>
               <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
                 <nuxt-link to="/test-pages/two">ЭКГ</nuxt-link>
-              </li>
+              </li> -->
               <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
                 <nuxt-link to="/zakaz"
                   >Предрейсовые и послерейсовые медицинские осмотры</nuxt-link

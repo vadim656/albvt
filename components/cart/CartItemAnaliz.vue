@@ -13,7 +13,7 @@
     <div class="flex flex-col gap-[4px]">
       <div class="flex justify-between items-center">
         <span class="text-[16px]">Цена:</span>
-        <span class="text-[#838383] text-[16px]">{{ data.price }} ₽</span>
+        <span class="text-[#838383] text-[16px]">{{ parseInt(data.price).toLocaleString('ru-RU') }} ₽</span>
       </div>
 
       <div
@@ -58,7 +58,7 @@
     <div
       v-if="CART.includes(data) || CART_IDS.includes(data.id)"
       :id="data.id"
-      class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[14px]"
+      class="flex justify-center items-center   rounded-[5px] py-2 text-main  gap-1  h-[40px] px-[8px] text-[14px]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@
           stroke-linejoin="round"
           d="M5 13l4 4L19 7"
         />
-      </svg>
+      </svg><span class="text-[12px]">В корзине</span>
     </div>
 
     <button
