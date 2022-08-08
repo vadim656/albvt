@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-[20px] sm:gap-[58px]">
     <heading-h-3>Общая информация</heading-h-3>
     <div class="container relative">
-      <swiper
+      <!-- <swiper
         class="!pb-[60px] swiper-2"
         :spaceBetween="20"
         :slidesPerView="'auto'"
@@ -42,7 +42,7 @@
             </div>
          </div>
         </swiper-slide>
-      </swiper>
+      </swiper> -->
 
 
     </div>
@@ -51,13 +51,12 @@
 
 <script>
 import HeadingH3 from './HeadingH3.vue'
-import { Navigation, Pagination, Autoplay } from 'swiper'
+// import { Navigation, Pagination, Autoplay } from 'swiper'
 
-import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
-// Import Swiper styles
-import 'swiper/swiper-bundle.css'
+// import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
+// import 'swiper/swiper-bundle.css'
 
-SwiperCore.use([Navigation, Pagination, Autoplay])
+// SwiperCore.use([Navigation, Pagination, Autoplay])
 
 export default {
   data () {
@@ -66,18 +65,18 @@ export default {
   props: {
     data_slider: Array
   },
-  components: { HeadingH3, Swiper, SwiperSlide },
+  components: { HeadingH3},
   methods: {
-    onSwiper2 (swiper) {
+    // onSwiper2 (swiper) {
       
-    },
-    onSlideChange () {
-    }
+    // },
+    // onSlideChange () {
+    // }
   },
   computed: {
-    filteredPost: function () {
-      return this.data_slider.filter(item => item.categories == 4727)
-    }
+    // filteredPost: function () {
+    //   return this.data_slider.filter(item => item.categories == 4727)
+    // }
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-[20px] sm:gap-[58px]">
     <heading-h-3>Комплексы анализов</heading-h-3>
     <div class="container relative">
-      <swiper
+      <!-- <swiper
         class=" !pb-[60px]"
         :spaceBetween="20"
         :slidesPerView="'auto'"
@@ -25,7 +25,7 @@
           <div
             class="bg-white flex flex-col border-[0.5px] border-[#808080] rounded-[5px] overflow-hidden gap-[12px]"
           >
-          <!-- {{slideContent}} -->
+        
             <img :src="slideContent.acf.kartinka" alt="" class="w-full h-[200px] object-cover" />
             <div class="flex flex-col gap-[16px] p-[10px]">
               <span class="text-[18px] border-b border-b-[#8D8D8D] w-full pb-4  ">{{ slideContent.acf.nazvanie }} </span>
@@ -39,7 +39,7 @@
           
           </swiper-slide
         >
-      </swiper>
+      </swiper> -->
 
 
 
@@ -48,14 +48,13 @@
 </template>
 
 <script>
-import { Navigation, Pagination, Autoplay } from 'swiper'
+// import { Navigation, Pagination, Autoplay } from 'swiper'
 
-import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
-// Import Swiper styles
-import 'swiper/swiper-bundle.css'
+// import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
+// import 'swiper/swiper-bundle.css'
 
 
-SwiperCore.use([Navigation, Pagination, Autoplay])
+// SwiperCore.use([Navigation, Pagination, Autoplay])
 import HeadingH3 from './HeadingH3.vue'
 export default {
   data () {
@@ -65,19 +64,19 @@ export default {
   props: {
     data_slider: Array
   },
-  components: {  HeadingH3, Swiper, SwiperSlide },
+  components: {  HeadingH3 },
   methods: {
-    onSwiper (swiper) {
+    // onSwiper (swiper) {
       
-    },
-    onSlideChange () {
+    // },
+    // onSlideChange () {
       
-    }
+    // }
   },
   computed: {
-    filteredPost: function () {
-      return this.data_slider.filter(item => item.categories == 4726)
-    }
+    // filteredPost: function () {
+    //   return this.data_slider.filter(item => item.categories == 4726)
+    // }
   }
 
 }

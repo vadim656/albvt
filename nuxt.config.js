@@ -43,28 +43,7 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/auth-next',
     
-    [
-      'nuxt-mail',
-      {
-        smtp: {
-          auth: {
-            user: 'albv@foxsis.ru',
-            pass: 'Dropestroke0013!'
-          }
-        }
-
-      }
-    ]
   ],
-  mail: {
-    message: {
-      to: 'va.four2016@gmail.com',
-    },
-    smtp: {
-      host: "smtp.beget.com",
-      port: 25,
-    },
-  },
   auth: {
     strategies: {
       graphql: {

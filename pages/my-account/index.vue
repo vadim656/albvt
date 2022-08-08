@@ -66,7 +66,7 @@
         </tab-vk>
         <tab-vk title="Выгодные предложения">
           <div class="container relative my-[47px]">
-            <swiper
+            <!-- <swiper
               class=" swiper-2  h-[300px] sm:h-[550px]"
               :spaceBetween="20"
               :slidesPerView="1"
@@ -113,7 +113,7 @@
                   Подробнее
                 </div>
               </swiper-slide>
-            </swiper>
+            </swiper> -->
           </div>
         </tab-vk>
 
@@ -322,15 +322,15 @@ import { gql } from 'graphql-tag'
 import tabsVk from '~/components/tabs/tabs-vk.vue'
 import TabVk from '~/components/tabs/tab-vk.vue'
 
-import { Navigation, Pagination, Autoplay } from 'swiper'
+// import { Navigation, Pagination, Autoplay } from 'swiper'
 
-import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
+// import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
 // Import Swiper styles
-import 'swiper/swiper-bundle.css'
+// import 'swiper/swiper-bundle.css'
 import LkZakaz from '~/components/lk-user/lk-zakaz.vue'
 import LkZakazDesc from '~/components/lk-user/lk-zakaz-desc.vue'
 
-SwiperCore.use([Navigation, Pagination, Autoplay])
+// SwiperCore.use([Navigation, Pagination, Autoplay])
 
 const ALL_PRODUCTS_CART = gql`
   query ALL_PRODUCTS_CART($customerId: Int) {
@@ -436,7 +436,7 @@ export default {
       }
     }
   },
-  components: { tabsVk, TabVk, Swiper, SwiperSlide, LkZakaz, LkZakazDesc },
+  components: { tabsVk, TabVk, LkZakaz, LkZakazDesc },
   layout: 'MainLayout',
   middleware: ['isAuth'],
   data () {
