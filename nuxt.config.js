@@ -19,7 +19,7 @@ export default {
   static: {
     prefix: false
   },
-
+  buildDir: 'nuxt-dist',
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/main.css'],
 
