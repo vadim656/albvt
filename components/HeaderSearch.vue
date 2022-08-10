@@ -36,12 +36,12 @@
 
       <ul
         v-show="searchInputFake.length >= 1 && showSearch == true"
-        class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md sm:px-0 [px-16px] sm:rounded-[5px] w-full "
+        class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md sm:px-0 [px-16px] sm:rounded-[5px] w-full overflow-y-auto sm:h-auto  max-h-[440px]"
       >
         <li
           v-for="(item, i) in sortedArray"
           :key="i"
-          class="border-b-[0.5px] border-b-[#D9D9D9]/50 px-4 py-3  grid grid-cols-[9fr,4fr] sm:grid-cols-[10fr,3fr] gap-2 items-center hover:bg-[#F5F5F5] anime"
+          class="border-b-[0.5px] border-b-[#D9D9D9]/50 px-4 py-3  grid grid-cols-[8fr,4fr] lg:grid-cols-[9fr,4fr] sm:grid-cols-[10fr,3fr] gap-2 items-center hover:bg-[#F5F5F5] anime"
         >
           <div class="flex flex-col gap-1">
             <!-- если комплекс -->
@@ -57,7 +57,7 @@
                   '/' +
                   item.node.databaseId
               "
-              class="test-text text-[#777777] hover:text-[#343434] anime text-[12px] sm:text-[14px]"
+              class="test-text2 text-[#777777] hover:text-[#343434] anime font-semibold text-[12px] sm:text-[14px]"
               :title="item.node.name"
               >{{ item.node.name }}</nuxt-link
             >
@@ -74,7 +74,7 @@
                   '/' +
                   item.node.databaseId
               "
-              class="test-text text-[#777777] hover:text-[#343434] anime text-[12px] sm:text-[14px]"
+              class="test-text2 text-[#777777] hover:text-[#343434] font-semibold anime text-[12px] sm:text-[14px]"
               :title="item.node.name"
               >{{ item.node.name }}</nuxt-link
             >
@@ -117,7 +117,7 @@
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-6 w-6 hidden sm:block"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -468,5 +468,15 @@ export default {
 
 input::-webkit-input-placeholder {
   color: #8a8a8a;
+}
+.test-text2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
 }
 </style>

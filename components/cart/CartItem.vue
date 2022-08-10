@@ -6,7 +6,7 @@
       <div class="flex gap-2">
         <div class="flex flex-col">
           <span
-            class="text-[14px] sm:text-[16px]  cursor-pointer text-main anime test-text "
+            class="text-[14px] sm:text-[16px]  cursor-pointer text-main anime test-text2 "
             :title="itemInCart.name"
             >{{ itemInCart.name }}</span
           >

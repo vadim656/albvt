@@ -10,7 +10,7 @@
     >
       <nuxt-link :to="this.$route.fullPath + '/' + item.id">
         <p
-          class="test-text anime cursor-pointer  h-full text-[#343434] xl:text-[#777777] hover:text-[#343434]"
+          class="test-text2 anime cursor-pointer  h-full text-[#343434] xl:text-[#777777] hover:text-[#343434]"
           :title="item.name"
         >
           {{ item.name }}
@@ -104,11 +104,11 @@
     <div
       v-if="CART.includes(item) ||  CART_IDS.includes(item.id)"
       :id="item.id"
-      class="flex justify-center items-center   rounded-[5px] py-2 text-main gap-1    h-[40px] px-[8px] text-[14px]"
+      class="flex justify-center items-center col-span-4 sm:col-span-1   rounded-[5px] py-2 text-main gap-1    h-[40px] px-[8px] text-[14px]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
+        class="h-6 w-6 "
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

@@ -31,7 +31,7 @@
                     :key="i"
                     class="bg-white p-4 rounded-[5px] shadow-md  h-full grid grid-cols-5 items-center gap-4"
                   >
-                    <div class="h-full flex flex-col gap-2 col-span-4">
+                    <div class="h-full flex flex-col gap-2 col-span-5 sm:col-span-4">
                       <nuxt-link
                         :to="
                           `/all-analyzes/in-complecs/` +
@@ -39,14 +39,14 @@
                             '/' +
                             item.id
                         "
-                        class="text-[16px] text-[#4CBDEE]"
+                        class="text-[14px] sm:text-[16px] text-[#4CBDEE]"
                         >{{ item.name }}</nuxt-link
                       >
                       <span class="text-[14px] text-[#343434]/70">
                         Код: {{ item.attributes[2].options[0] }}
                       </span>
                     </div>
-                    <div class="font-medium text-[16px] h-full col-span-1 flex justify-end">
+                    <div class="font-medium text-[14px] sm:text-[16px] h-full col-span-5 sm:col-span-1 flex justify-end">
                       {{ item.price }} ₽
                     </div>
                   </div>

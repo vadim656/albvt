@@ -19,12 +19,12 @@
           <span class="font-semibold text-[17px]">О нас</span>
           <ul class="flex flex-col gap-[14px]">
             <li>
-              <NuxtLink
-                to="/"
+              <nuxt-link
+                to="/o-nas"
                 class="cursor-pointer text-[13px] !text-[#343434] hover:!text-main"
               >
                 Нормативные документы
-              </NuxtLink>
+              </nuxt-link>
               
             </li>
           </ul>
@@ -116,7 +116,7 @@ export default {
         },
         {
           name: 'Анализы на дому',
-          link: '/'
+          link: '/viezd'
         },
         {
           name: 'Комплексы анализов',
