@@ -16,7 +16,7 @@
           </span>
          <input
           @input="search($event.target.value)"
-          v-bind:value="searchInput"
+          :value="searchInputRes"
           type="text"
           id="default-search2"
           class="block  w-full pr-20 rounded-[5px] text-center  bg-white pl-4 border-[2px] border-[#343434]/20   h-[60px] focus:outline-none text-[#979797]"
@@ -28,7 +28,6 @@
       </div>
 
       <ul
-        v-show="searchInput.length >= 1"
         class=" flex flex-col bg-white  pt-4 shadow-md rounded-[5px] w-full "
       >
         <li
@@ -164,7 +163,7 @@ export default {
   components: { HeadingH3 },
   data () {
     return {
-      searchInput: '',
+      searchInputRes: '',
       searchProducts: [],
       searchResults: [],
       inCart: [],
@@ -175,7 +174,7 @@ export default {
   computed: {
     ...mapGetters(['CART']),
     sortedArray: function () {
-      const inputSearhValue = this.searchInput.toLowerCase()
+      const inputSearhValue = this.searchInputRes.toLowerCase()
       const inputSearhValueEn = this.test.toLowerCase()
 
       // длинна строки
@@ -220,7 +219,7 @@ export default {
           item =>
             item.node.name
               .toLowerCase()
-              .includes(this.searchInput.toLowerCase()) ||
+              .includes(this.searchInputRes.toLowerCase()) ||
             item.node.name.toLowerCase().includes(this.test.toLowerCase())
         )
         .splice(0, 100)
@@ -228,14 +227,14 @@ export default {
   },
   methods: {
     ...mapActions(['ADD_TO_CART']),
-    CurentInSearchInput () {
+    CurentInsearchInputRes () {
       if (this.$route.query.search) {
-        this.searchInput = this.$route.query.search
-        this.search()
+        this.searchInputRes = this.$route.query.search
+        this.search(this.searchInputRes)
       }
     },
     async search (value) {
-       this.searchInput = value
+       this.searchInputRes = value
       const lowerCase = value.toLowerCase()
       this.autoKeyboardLang(lowerCase)
 
@@ -380,7 +379,7 @@ export default {
     }
   },
   created () {
-    this.CurentInSearchInput()
+    this.CurentInsearchInputRes()
   }
 }
 </script>

@@ -365,6 +365,9 @@
                       : '!border-[green] !focus:outline-[green]'
                   ]"
                 />
+                <span class="text-[12px] text-[#343434]/70"
+                  >Пароль должен состоять из 8 и более символов</span
+                >
               </div>
             </div>
             <div class="flex flex-col gap-1">
@@ -416,53 +419,68 @@
     </div>
     <!-- шан 1 -->
     <div
-      class="flex justify-center gap-[20px] items-center w-full max-w-[620px]"
+      class="flex flex-col justify-center gap-[40px] items-center w-full max-w-[620px]"
       v-if="step == 1"
     >
-      <div
-        class="flex flex-col gap-4 justify-center items-center"
-        @click="formZakaz.gender = 'male'"
-      >
+      <div class="flex justify-center gap-[20px] items-center w-full">
         <div
-          class="flex border-4 flex-col p-4 shadow-md rounded-[5px] cursor-pointer"
-          :class="[
-            formZakaz.gender == 'male'
-              ? 'border-main/50 box-border'
-              : ' border-white'
-          ]"
+          class="flex flex-col gap-4 justify-center items-center"
+          @click="formZakaz.gender = 'male'"
         >
-          <img src="/img/icons/male.svg" alt="" class="" />
+          <div
+            class="flex border-4 flex-col p-4 shadow-md rounded-[5px] cursor-pointer"
+            :class="[
+              formZakaz.gender == 'male'
+                ? 'border-main/50 box-border'
+                : ' border-white'
+            ]"
+          >
+            <img src="/img/icons/male.svg" alt="" class="" />
+          </div>
+          <span
+            :class="[
+              formZakaz.gender == 'male'
+                ? '  text-[#343434]'
+                : ' text-[#343434]/50'
+            ]"
+            >Мужчина</span
+          >
         </div>
-        <span
-          :class="[
-            formZakaz.gender == 'male'
-              ? '  text-[#343434]'
-              : ' text-[#343434]/50'
-          ]"
-          >Мужчина</span
+        <div
+          class="flex flex-col gap-4 justify-center items-center"
+          @click="formZakaz.gender = 'female'"
         >
+          <div
+            class="flex border-4 flex-col p-4 shadow-md rounded-[5px] cursor-pointer"
+            :class="[
+              formZakaz.gender == 'female'
+                ? 'border-main/50 box-border'
+                : ' border-white'
+            ]"
+          >
+            <img src="/img/icons/female.svg" alt="" class="" />
+          </div>
+          <span
+            :class="[
+              formZakaz.gender == 'female'
+                ? '  text-[#343434]'
+                : ' text-[#343434]/50'
+            ]"
+            >Женщина</span
+          >
+        </div>
       </div>
-      <div
-        class="flex flex-col gap-4 justify-center items-center"
-        @click="formZakaz.gender = 'female'"
-      >
-        <div
-          class="flex border-4 flex-col p-4 shadow-md rounded-[5px] cursor-pointer"
-          :class="[
-            formZakaz.gender == 'female'
-              ? 'border-main/50 box-border'
-              : ' border-white'
-          ]"
-        >
-          <img src="/img/icons/female.svg" alt="" class="" />
-        </div>
-        <span
-          :class="[
-            formZakaz.gender == 'female'
-              ? '  text-[#343434]'
-              : ' text-[#343434]/50'
-          ]"
-          >Женщина</span
+
+      <div class="flex items-center justify-center gap-2 w-full sm:w-2/4">
+        <input
+          type="checkbox"
+          value="femalemale"
+          id="gender3"
+          v-model="formZakaz.genderDop"
+          class=""
+        />
+        <label for="gender3" class="text-[14px]"
+          >Пациент придёт с представителем</label
         >
       </div>
     </div>
@@ -609,6 +627,7 @@
         </div>
       </div>
     </div>
+
     <!-- шан 3 -->
     <div
       class="flex flex-col justify-center gap-[20px] items-center w-full max-w-[620px]"
@@ -715,7 +734,7 @@
                     <!-- адрес -->
                     <div class="flex flex-col gap-1">
                       <label for="company-website" class="block text-[12px]">
-                        Адрес проживания
+                        Адрес проживания (г. Ростов-на-дону)
                       </label>
                       <div class="mt-1 flex rounded-[5px] shadow-sm">
                         <input
@@ -1070,7 +1089,9 @@
         <div>
           <button
             @click="nextStep()"
-            v-if="formZakaz.mesto == 'ofic'"
+            v-if="formZakaz.mesto == 'ofic' &&
+                formZakaz.invitroSelect !==
+                  'Выберите ближайший офис нашего партнера ИНВИТРО:'"
             class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
           >
             Дальше

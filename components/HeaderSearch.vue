@@ -21,7 +21,7 @@
           autocomplete="off"
         />
         <nuxt-link
-          :to="{ path: '/search-result/', query: { search: searchInput } }"
+          :to="{ path: '/search-result', query: { search: searchInput } }"
           @click="showSearch = false"
           class="flex justify-center items-center px-[16px]  z-[1] bg-white  anime rounded-tr-[5px] rounded-br-[5px]"
         >
@@ -145,7 +145,7 @@
         </li>
         <nuxt-link
           v-if="searchResults.length != 0"
-          :to="{ path: '/search-result/', query: { search: searchInput } }"
+          :to="{ path: '/search-result', query: { search: searchInput } }"
           replace
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
         >

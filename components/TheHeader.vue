@@ -61,7 +61,8 @@
             </button>
             <!-- icon call -->
             <button class="block sm:hidden">
-              <img src="/img/icons/mob-call.svg" alt="" class="w-8 h-8 " />
+              <a href="tel:88632418555"><img src="/img/icons/mob-call.svg" alt="" class="w-8 h-8 " /></a>
+              
             </button>
             <!-- icon cart -->
             <button
@@ -138,7 +139,7 @@
         <div
           class="hidden sm:flex justify-end items-center gap-[3px] col-span-1 row-span-1 text-white "
         >
-          <a href="" class="font-semibold text-[16px]">+7 (863) 241-85-55</a>
+          <a href="tel:88632418555" class="font-semibold text-[16px]">+7 (863) 241-85-55</a>
         </div>
         
         <cart-wrapper v-if="cartView == true" @cartView="cartCloseView" />
