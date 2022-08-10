@@ -29,7 +29,8 @@ export default {
     '@plugins/v-mask.js',
     '@plugins/v-tooltip.js',
     '@plugins/vue-input-facade.js',
-    { src: '~/plugins/vue-datepicker', ssr: false }
+    { src: '~/plugins/vue-datepicker', ssr: false },
+    { src: '~/plugins/vue-agile.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -119,7 +120,8 @@ export default {
         tailwindcss: {},
         autoprefixer: {}
       }
-    }
+    },
+    transpile: ['vue-agile']
   },
 
 }

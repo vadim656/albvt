@@ -34,15 +34,15 @@
               </div>
             </div>
 
-         
-
             <!-- мобильная -->
 
-
-            <div class="sm:hidden grid grid-cols-1 gap-[20px]">
+            <div
+              class="sm:hidden grid grid-cols-1 gap-[20px]"
+              v-if="orders.edges !== null && orders.edges.length >= 1"
+            >
               <span class="text-[14px] font-medium">Мои заказы</span>
               <lk-zakaz
-                v-for="item in orders"
+                v-for="item in orders.edges"
                 :key="item.node.databaseId"
                 :item="item"
                 @openItemInfo="openItemInfo(item.node.databaseId)"
@@ -51,17 +51,20 @@
             </div>
             <!-- десктоп -->
 
-
-            <div class="hidden sm:grid grid-cols-1 gap-[20px]" v-if="orders.length">
+            <div
+              class="hidden sm:grid grid-cols-1 gap-[20px]"
+              v-if="orders.edges !== null && orders.edges.length >= 1"
+            >
               <span class="text-[20px] font-medium">Мои заказы</span>
               <lk-zakaz-desc
-                v-for="item in orders"
+                v-for="item in orders.edges"
                 :key="item.node.databaseId"
                 :item="item"
                 @openItemInfo="openItemInfo(item.node.databaseId)"
                 :itemID="itemID"
               />
             </div>
+            <span v-else>Вы еще не сделали заказ</span>
           </div>
         </tab-vk>
         <tab-vk title="Выгодные предложения">
@@ -144,9 +147,10 @@
               <!-- личные данные клиента -->
               <span class="text-[30px]">Личные данные</span>
               <form
-              v-if="dataMe.user.client_data !== null"
+                v-if="dataMe.user.client_data !== null"
                 @submit.prevent="updateUserInfo()"
-                class="flex flex-col gap-[20px]">
+                class="flex flex-col gap-[20px]"
+              >
                 <div class="flex flex-col gap-[20px]">
                   <div
                     class="flex w-full flex-col sm:flex-row justify-between gap-[20px]"
@@ -247,7 +251,6 @@
                 <div
                   class="flex justify-between gap-[20px] w-full text-[#343434]/50"
                 >
-                 
                   <span class="w-full sm:w-1/2"
                     >Информация для врача консультанта</span
                   >
@@ -260,7 +263,6 @@
                       placeholder="Мои пожелания..."
                     ></textarea>
                     <div class="flex flex-col sm:flex-row gap-[20px] ">
-                    
                       <button
                         type="submit"
                         class="rounded-[5px]  border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
@@ -322,15 +324,8 @@ import { gql } from 'graphql-tag'
 import tabsVk from '~/components/tabs/tabs-vk.vue'
 import TabVk from '~/components/tabs/tab-vk.vue'
 
-// import { Navigation, Pagination, Autoplay } from 'swiper'
-
-// import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2'
-// Import Swiper styles
-// import 'swiper/swiper-bundle.css'
 import LkZakaz from '~/components/lk-user/lk-zakaz.vue'
 import LkZakazDesc from '~/components/lk-user/lk-zakaz-desc.vue'
-
-// SwiperCore.use([Navigation, Pagination, Autoplay])
 
 const ALL_PRODUCTS_CART = gql`
   query ALL_PRODUCTS_CART($customerId: Int) {
@@ -432,7 +427,7 @@ export default {
         }
       },
       update (data) {
-        return data.orders.edges
+        return data.orders
       }
     }
   },

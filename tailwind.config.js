@@ -33,7 +33,8 @@ module.exports = {
       'transparent': 'transparent',
       'white': '#FFFFFF',
       'main': '#54ACD2',
-      'blue': '#227FD6'
+      'blue': '#227FD6',
+      'danger': '#A75F4F'
     }
   },
   plugins: []

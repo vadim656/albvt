@@ -203,6 +203,216 @@
           </tabs-login>
         </div>
       </div>
+      <div
+        v-if="register == true"
+        class=" bg-white  shadow-md rounded-[5px] p-[24px] flex w-full mb-[24px] flex-col justify-center items-center gap-4 mt-24px"
+      >
+        <span class="text-[20px] font-semibold">Регистрация</span>
+        <!-- шан 2 -->
+        <div class="flex justify-center gap-[20px] items-center w-full ">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Имя
+              </label>
+              <div class="mt-1 flex rounded-[5px] shadow-sm">
+                <input
+                  type="text"
+                  name="company-website"
+                  id="company-website"
+                  class="input-med"
+                  v-model="formCreate.name"
+                  @input="doneformZakazZakaz()"
+                  placeholder="Иван"
+                  :class="[
+                    this.formCreate.family.length == 0
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Фамилия
+              </label>
+              <div class="mt-1 flex rounded-[5px] shadow-sm">
+                <input
+                  type="text"
+                  name="company-website"
+                  id="company-website"
+                  class="input-med"
+                  v-model="formCreate.family"
+                  @input="doneformZakazZakaz()"
+                  placeholder="Иванов"
+                  :class="[
+                    this.formCreate.name.length == 0
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Отчество
+              </label>
+              <div class="mt-1 flex rounded-[5px] shadow-sm">
+                <input
+                  type="text"
+                  name="company-website"
+                  id="company-website"
+                  class="input-med"
+                  v-model="formCreate.otchestvo"
+                  @input="doneformZakazZakaz()"
+                  placeholder="Петрович"
+                  :class="[
+                    this.formCreate.otchestvo.length == 0
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Паспорт (серия/номер)
+              </label>
+              <div class="mt-1 flex rounded-[5px] shadow-sm">
+                <input
+                  type="text"
+                  name="company-website"
+                  id="company-website"
+                  class="input-med"
+                  @input="doneformZakazZakaz()"
+                  placeholder="0000 000000"
+                  v-facade="'#### ######'"
+                  v-model="formCreate.passportSeriya"
+                  :class="[
+                    this.formCreate.passportSeriya.length !== 11
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Email
+              </label>
+              <div class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm">
+                <input
+                  type="text"
+                  name="company-website"
+                  id="company-website"
+                  class="input-med"
+                  v-model="formCreate.email"
+                  @input="doneformZakazZakaz()"
+                  :class="[
+                    this.formCreate.email.length <= 6
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                  placeholder="example@gmail.com"
+                />
+                <span class="text-[12px] text-[#343434]/70"
+                  >На эту почту будут отправлены результаты анализов</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Телефон
+              </label>
+              <div class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm">
+                <input
+                  type="text"
+                  id="company-website"
+                  class="input-med"
+                  @input="doneformZakazZakaz()"
+                  v-model="formCreate.phone"
+                  name="phone"
+                  placeholder="+7(___)___−__−__*"
+                  v-facade="'+7(###)###-##-##'"
+                  :class="[
+                    this.formCreate.phone.length !== 16
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+                <span class="text-[12px] text-[#343434]/70"
+                  >Этот номер будет использоваться в качестве логина для доступа
+                  в личный кабинет</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Пароль
+              </label>
+              <div class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm">
+                <input
+                  type="password"
+                  id="company-website"
+                  class="input-med"
+                  @input="doneformZakazZakaz()"
+                  v-model="formCreate.password"
+                  name="phone"
+                  placeholder="*********"
+                  :class="[
+                    formCreate.password >= 8
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Повторите пароль
+              </label>
+              <div class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm">
+                <input
+                  type="password"
+                  id="company-website"
+                  class="input-med"
+                  @input="doneformZakazZakaz()"
+                  v-model="formCreate.ConfPassword"
+                  name="phone"
+                  placeholder="*********"
+                  :class="[
+                    formCreate.password !== formCreate.ConfPassword
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          @click="RegisterUser()"
+          :class="[
+            formCreate.phone.length == 16 &&
+            formCreate.password.length >= 8 &&
+            formCreate.password == formCreate.ConfPassword &&
+            formCreate.family.length > 1 &&
+            formCreate.name.length > 1 &&
+            formCreate.otchestvo.length > 1 &&
+            formCreate.passportSeriya.length == 11
+              ? ' cursor-pointer opacity-100 '
+              : 'cursor-not-allowed opacity-30'
+          ]"
+          class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
+        >
+          Зарегистрироваться
+        </button>
+        <span class="" v-if="succesRegister == null">Введите данные</span>
+        <span class="text-[green]" v-if="succesRegister == true">Успешно!</span>
+        <span class="text-[#A75F4F]" v-if="succesRegister == false"
+          >Попробуйте еще раз!</span
+        >
+      </div>
     </div>
     <!-- шан 1 -->
     <div
@@ -517,7 +727,7 @@
                           v-model="formZakaz.ulitcha"
                           placeholder="г. Ростов на дону, 45 параллель, 13 "
                           :class="[
-                            this.formZakaz.dataRozhdeniya.length <= 1
+                            this.formZakaz.ulitcha.length <= 6
                               ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                               : '!border-[green] !focus:outline-[green]'
                           ]"
@@ -797,13 +1007,85 @@
       >
         Назад
       </button>
+      <!-- step-1-next -->
       <button
         @click="nextStep()"
-        v-if="step <= 3 && step != 0"
+        v-if="step == 1"
         class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
       >
         Дальше
       </button>
+      <!-- step-2-next -->
+      <div v-if="step == 2" class="w-full">
+        <button
+          @click="nextStep()"
+          v-if="
+            step == 2 &&
+              formZakaz.phone.length == 16 &&
+              formZakaz.family.length > 1 &&
+              formZakaz.name.length > 1 &&
+              formZakaz.email.length > 6 &&
+              formZakaz.email.includes('@') &&
+              formZakaz.email.includes('.') &&
+              formZakaz.otchestvo.length > 1 &&
+              formZakaz.passportSeriya.length == 11
+          "
+          class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
+        >
+          Дальше
+        </button>
+        <span v-else class="w-full min-w-[240px] max-w-[300px] text-danger"
+          >Заполните все поля</span
+        >
+      </div>
+
+      <!-- step-3-next -->
+      <div v-if="step == 3" class="w-full">
+        <!-- step-3-1-next -->
+        <div>
+          <button
+            @click="nextStep()"
+            v-if="formZakaz.mesto == 'ofis_my'"
+            class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
+          >
+            Дальше
+          </button>
+        </div>
+        <!-- step-3-2-next -->
+        <div>
+          <button
+            @click="nextStep()"
+            v-if="formZakaz.mesto == 'sam' && formZakaz.ulitcha.length > 6"
+            class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
+          >
+            Дальше
+          </button>
+          <span
+            v-if="formZakaz.mesto == 'sam' && formZakaz.ulitcha.length < 6"
+            class="w-full min-w-[240px] max-w-[300px] text-danger"
+            >Заполните Ваш адрес</span
+          >
+        </div>
+        <!-- step-3-3-next -->
+        <div>
+          <button
+            @click="nextStep()"
+            v-if="formZakaz.mesto == 'ofic'"
+            class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
+          >
+            Дальше
+          </button>
+          <span
+            v-if="
+              formZakaz.mesto == 'ofic' &&
+                formZakaz.invitroSelect ==
+                  'Выберите ближайший офис нашего партнера ИНВИТРО:'
+            "
+            class="w-full min-w-[240px] max-w-[300px] text-danger"
+            >Выберите офис партнера</span
+          >
+        </div>
+      </div>
     </div>
     <!-- инвитро -->
     <div
@@ -1057,6 +1339,16 @@ export default {
         ],
         done: false
       },
+      formCreate: {
+        family: '',
+        name: '',
+        otchestvo: '',
+        passportSeriya: '',
+        email: '',
+        phone: '',
+        password: '',
+        ConfPassword: ''
+      },
       dopTest: [],
       totalCartPrice: null,
       prePrice: null,
@@ -1076,6 +1368,7 @@ export default {
       },
       okeyRegister: false,
       succes: '',
+      succesRegister: null,
       dataMe: [],
       loginError: false,
       jjj22: []
@@ -1083,55 +1376,69 @@ export default {
   },
   methods: {
     nextStep () {
+      if (this.step == 1) {
+        this.validUserCheck()
+        this.demotest()
+      }
       this.step++
+
       window.scrollTo(0, -50)
     },
     backStep () {
       this.step--
       window.scrollTo(0, -50)
     },
+    testButton () {
+      this.$nuxt.refresh()
+    },
     RegisterUser () {
-      const dsfdf33 = this.formZakaz.phone.toString()
-      const phoneForRegister = dsfdf33
-        .replace('-', '')
-        .replace('-', '')
-        .replace('+7', '')
-        .replace('(', '')
-        .replace(')', '')
-      const url = 'https://foxsis.ru/alvd/wp-json/wp/v2/users'
-      const dataUserRegister = {
-        first_name: this.formZakaz.name,
-        last_name: this.formZakaz.family,
-        password: this.credentials.password,
-        email: this.formZakaz.email,
-        username: phoneForRegister,
-        acf: {
-          otchestvo: this.credentials.otchestvo,
-          dataRozhdeniya: this.credentials.dataRozhdeniya,
-          nomer_doma: this.credentials.nomerDoma,
-          pasport: this.credentials.passportSeriya,
-          kvartira: this.credentials.kvartira,
-          nomer_telefona: phoneForRegister,
-          data_vydachi_pasport: this.credentials.passportData,
-          pasport_kem: this.credentials.passportKem,
-          gender: this.credentials.gender
+      if (
+        this.formCreate.phone.length == 16 &&
+        this.formCreate.password.length >= 8 &&
+        this.formCreate.password == this.formCreate.ConfPassword &&
+        this.formCreate.family.length > 1 &&
+        this.formCreate.name.length > 1 &&
+        this.formCreate.otchestvo.length > 1 &&
+        this.formCreate.passportSeriya.length == 11
+      ) {
+        const dsfdf33 = this.formCreate.phone.toString()
+        const phoneForRegister = dsfdf33
+          .replace('-', '')
+          .replace('-', '')
+          .replace('+7', '')
+          .replace('(', '')
+          .replace(')', '')
+        const url = 'https://foxsis.ru/alvd/wp-json/wp/v2/users'
+        const dataUserRegister = {
+          first_name: this.formCreate.name,
+          last_name: this.formCreate.family,
+          password: this.formCreate.password,
+          email: this.formCreate.email,
+          username: phoneForRegister,
+          acf: {
+            otchestvo: this.formCreate.otchestvo,
+            pasport: this.formCreate.passportSeriya,
+            nomer_telefona: phoneForRegister
+          }
         }
-      }
 
-      this.$axios
-        .post(url, dataUserRegister)
-        .then(data => {
-          // Result
-          this.succes = true
-          this.dataNewUser = data
-          this.handleLoginSubmit()
-          this.reloadPage()
-        })
-        .catch(error => {
-          // Error
-          console.error(error)
-          this.succes = 'Что то пошло не так'
-        })
+        this.$axios
+          .post(url, dataUserRegister)
+          .then(data => {
+            // Result
+            this.succesRegister = true
+            console.log(data)
+            this.dataNewUser = data
+            this.register = false
+            this.credentials.username = phoneForRegister
+            this.credentials.password = this.formCreate.password
+          })
+          .catch(error => {
+            // Error
+            console.error(error)
+            this.succesRegister = false
+          })
+      }
     },
     oplata () {
       console.log('1344')
@@ -1436,15 +1743,20 @@ export default {
           username: getPhone,
           password: this.credentials.password
         })
-        // console.log(localStorage["auth._token.graphql"]);
         this.formBusy = false
         this.loginError = false
+        this.fetchUserData()
+        this.validUserCheck()
+        this.demotest()
         // this.validUserCheck()
       } catch (errors) {
         this.formBusy = false
         this.loginError = true
         console.log(errors)
       }
+    },
+    demotest () {
+      console.log('tut')
     },
     async handleLoginSubmit2 () {
       const emailUser = this.credentials2.username
@@ -1459,9 +1771,9 @@ export default {
         // console.log(localStorage["auth._token.graphql"]);
         await this.$auth.fetchUser()
         this.fetchUserData()
+        this.validUserCheck()
         this.formBusy = false
         this.loginError = false
-        location.reload()
         this.step = 1
       } catch (errors) {
         this.formBusy = false
@@ -1510,9 +1822,9 @@ export default {
     },
     validUserCheck () {
       if (!this.$auth.loggedIn) {
-        console.log('eyseyseys')
+        console.log('не авторизован')
       } else {
-        console.log('nonono')
+        console.log('blablabbla')
         this.reNameInput()
         this.step = 1
       }
@@ -1528,7 +1840,7 @@ export default {
 
       this.formZakaz.otchestvo = this.jjj22.user.client_data.otchestvo
 
-      this.formZakaz.dataRozhdeniya = this.jjj22.user.client_data.datarozhdeniya
+      // this.formZakaz.dataRozhdeniya = this.jjj22.user.client_data.datarozhdeniya
 
       this.formZakaz.passportSeriya = this.jjj22.user.client_data.pasport
     },

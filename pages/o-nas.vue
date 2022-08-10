@@ -25,7 +25,7 @@
             :key="i"
             class="flex flex-col justify-center items-center gap-1 bg-white shadow-md py-2 rounded-[5px] "
           >
-            <img :src="img.src" alt="" @click="openPhoto(i)" />
+            <img :src="img.src" alt="" @click="openPhoto(i+4)" />
             <span class="w-full text-center text-[14px]">{{ img.title }}</span>
           </div>
 
@@ -38,7 +38,7 @@
       v-if="modalPhoto == true && id.length > 0"
       class="fixed w-screen top-0 left-0 h-screen  flex justify-center items-center"
     >
-      <div class="fixed w-screen top-0 left-0 h-screen bg-[#343434]/50"></div>
+      <div class="fixed w-screen top-0 left-0 h-screen bg-[#343434]/50" @click="modalPhoto = false"></div>
       <div
         class="flex gap-[20px] items-center w-full max-w-[300px] sm:max-w-[800px]"
       >
