@@ -38,7 +38,7 @@
 
             <div
               class="sm:hidden grid grid-cols-1 gap-[20px]"
-              v-if="orders.edges !== null && orders.edges.length >= 1"
+              v-if="orders && orders.edges.length "
             >
               <span class="text-[14px] font-medium">Мои заказы</span>
               <lk-zakaz
@@ -46,6 +46,7 @@
                 :key="item.node.databaseId"
                 :item="item"
                 @openItemInfo="openItemInfo(item.node.databaseId)"
+                @oplata="oplata(parseInt(item.node.total.replace('₽', '')))"
                 :itemID="itemID"
               />
             </div>
@@ -53,7 +54,7 @@
 
             <div
               class="hidden sm:grid grid-cols-1 gap-[20px]"
-              v-if="orders.edges !== null && orders.edges.length >= 1"
+              v-if="orders && orders.edges.length"
             >
               <span class="text-[20px] font-medium">Мои заказы</span>
               <lk-zakaz-desc
@@ -61,6 +62,7 @@
                 :key="item.node.databaseId"
                 :item="item"
                 @openItemInfo="openItemInfo(item.node.databaseId)"
+                @oplata="oplata(parseInt(item.node.total.replace('₽', '')))"
                 :itemID="itemID"
               />
             </div>
@@ -69,6 +71,49 @@
         </tab-vk>
         <tab-vk title="Выгодные предложения">
           <div class="container relative my-[47px]">
+            <client-only placeholder="Загрузка...">
+              <agile
+                :options="allLK"
+                class="flex flex-col items-center justify-center gap-[20px]"
+              >
+                <div class="slide">
+                  <img
+                    src="/img/slide1.jpg"
+                    alt=""
+                    class="w-full object-cover rounded-[5px]"
+                  />
+                  <div
+                    class="cursor-pointer border-[1px] border-white text-white font-medium text-[14px] rounded-full px-8 py-4 absolute bottom-10 left-10"
+                  >
+                    Подробнее
+                  </div>
+                </div>
+                <div class="slide">
+                  <img
+                    src="/img/slide2.jpg"
+                    alt=""
+                    class="w-full object-cover rounded-[5px]"
+                  />
+                  <div
+                    class="cursor-pointer border-[1px] border-white text-white font-medium text-[14px] rounded-full px-8 py-4 absolute bottom-10 left-10"
+                  >
+                    Подробнее
+                  </div>
+                </div>
+                <div class="slide">
+                  <img
+                    src="/img/slide3.jpg"
+                    alt=""
+                    class="w-full  object-cover rounded-[5px]"
+                  />
+                  <div
+                    class="cursor-pointer border-[1px] border-white text-white font-medium text-[14px] rounded-full px-8 py-4 absolute bottom-10 left-10"
+                  >
+                    Подробнее
+                  </div>
+                </div>
+              </agile>
+            </client-only>
             <!-- <swiper
               class=" swiper-2  h-[300px] sm:h-[550px]"
               :spaceBetween="20"
@@ -326,6 +371,7 @@ import TabVk from '~/components/tabs/tab-vk.vue'
 
 import LkZakaz from '~/components/lk-user/lk-zakaz.vue'
 import LkZakazDesc from '~/components/lk-user/lk-zakaz-desc.vue'
+import { VueAgile } from 'vue-agile'
 
 const ALL_PRODUCTS_CART = gql`
   query ALL_PRODUCTS_CART($customerId: Int) {
@@ -431,7 +477,7 @@ export default {
       }
     }
   },
-  components: { tabsVk, TabVk, LkZakaz, LkZakazDesc },
+  components: { tabsVk, TabVk, LkZakaz, LkZakazDesc, agile: VueAgile },
   layout: 'MainLayout',
   middleware: ['isAuth'],
   data () {
@@ -446,7 +492,14 @@ export default {
       meResUograde: [],
       userID: null,
       itemID: 0,
-      demo: ''
+      demo: '',
+      allLK: {
+        navButtons: false,
+        dots: true,
+        centerMode: true,
+        pauseOnHover: true,
+        slidesToShow: 1
+      }
     }
   },
 

@@ -211,25 +211,38 @@
         <!-- шан 2 -->
         <div class="flex justify-center gap-[20px] items-center w-full ">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="flex flex-col gap-1">
-              <label for="company-website" class="block text-[12px]">
-                Имя
-              </label>
-              <div class="mt-1 flex rounded-[5px] shadow-sm">
-                <input
-                  type="text"
-                  name="company-website"
-                  id="company-website"
-                  class="input-med"
-                  v-model="formCreate.name"
-                  @input="doneformZakazZakaz()"
-                  placeholder="Иван"
-                  :class="[
-                    this.formCreate.family.length == 0
-                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
-                      : '!border-[green] !focus:outline-[green]'
-                  ]"
-                />
+            <div class="col-span-2 flex flex-col gap-2">
+              <span class="w-full text-center">Ваш пол</span>
+              <div
+                class="flex items-center gap-4 mt-2 flex-wrap sm:flex-nowrap"
+              >
+                <div class="flex items-center gap-2 w-full sm:w-1/2 ">
+                  <input
+                    type="radio"
+                    checked="checked"
+                    value="male"
+                    v-model="formZakaz.gender"
+                    id="gender1"
+                    name="gender1"
+                    class="cursor-pointer"
+                  />
+                  <label for="gender1" class="text-[14px] cursor-pointer"
+                    >Мужчина</label
+                  >
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-1/2 ">
+                  <input
+                    type="radio"
+                    value="female"
+                    v-model="formZakaz.gender"
+                    id="gender2"
+                    name="gender2"
+                    class="cursor-pointer"
+                  />
+                  <label for="gender2" class="text-[14px] cursor-pointer"
+                    >Женщина</label
+                  >
+                </div>
               </div>
             </div>
             <div class="flex flex-col gap-1">
@@ -253,6 +266,28 @@
                 />
               </div>
             </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Имя
+              </label>
+              <div class="mt-1 flex rounded-[5px] shadow-sm">
+                <input
+                  type="text"
+                  name="company-website"
+                  id="company-website"
+                  class="input-med"
+                  v-model="formCreate.name"
+                  @input="doneformZakazZakaz()"
+                  placeholder="Иван"
+                  :class="[
+                    this.formCreate.family.length == 0
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                />
+              </div>
+            </div>
+
             <div class="flex flex-col gap-1">
               <label for="company-website" class="block text-[12px]">
                 Отчество
@@ -418,7 +453,7 @@
       </div>
     </div>
     <!-- шан 1 -->
-    <div
+    <!-- <div
       class="flex flex-col justify-center gap-[40px] items-center w-full max-w-[620px]"
       v-if="step == 1"
     >
@@ -483,7 +518,7 @@
           >Пациент придёт с представителем</label
         >
       </div>
-    </div>
+    </div> -->
     <!-- шан 2 -->
     <div
       class="flex justify-center gap-[20px] items-center w-full max-w-[620px]"
@@ -633,6 +668,7 @@
       class="flex flex-col justify-center gap-[20px] items-center w-full max-w-[620px]"
       v-if="step == 3"
     >
+    <div class="flex flex-col sm:flex-row justify-between gap-[20px] w-full px-[20px]">
       <div class="flex flex-col gap-2">
         <client-only>
           <label for="company-website" class="block text-[12px]">
@@ -645,8 +681,29 @@
             v-model="date_today"
             class="input-med"
         /></client-only>
-      </div>
 
+      </div>
+      <div class="flex flex-col items-start justify-center gap-2 w-full">
+         <label for="company-website" class="block text-[12px]">
+            Если пациент младше 18 лет
+          </label>
+          <div class="flex items-center justify-start gap-2 w-full">
+            <input
+          type="checkbox"
+          value="femalemale"
+          id="gender3"
+          v-model="formZakaz.genderDop"
+          class=""
+        />
+        <label for="gender3" class="text-[14px] sm:text-[12px]"
+          >Пациент придёт с представителем</label
+        >
+          </div>
+        
+      </div>
+    </div>
+      
+      
       <div class=" flex flex-col gap-[20px] mt-[24px] px-[20px] w-full">
         <form @submit.prevent="oplata()" class="flex flex-col gap-4">
           <div class="flex flex-col">
@@ -717,20 +774,6 @@
                   class=" py-[16px] flex flex-col gap-4 text-[16px] font-light"
                 >
                   <div class="w-full">
-                    <!-- <input
-                      @input="doneformZakazZakaz()"
-                      type="text"
-                      required="required"
-                      placeholder="Улица*"
-                      class=" input-med "
-                      v-model="formZakaz.ulitcha"
-                      :class="[
-                        this.formZakaz.dataRozhdeniya.length <= 1
-                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
-                          : '!border-[green] !focus:outline-[green]'
-                      ]"
-                    /> -->
-
                     <!-- адрес -->
                     <div class="flex flex-col gap-1">
                       <label for="company-website" class="block text-[12px]">
@@ -753,37 +796,6 @@
                         />
                       </div>
                     </div>
-
-                    <!-- <input
-                      @input="doneformZakazZakaz()"
-                      type="text"
-                      required="required"
-                      placeholder="Номер дома*"
-                      class=" input-med "
-                      v-model="formZakaz.nomerDoma"
-                      :class="[
-                        this.formZakaz.nomerDoma.length <= 1
-                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
-                          : '!border-[green] !focus:outline-[green]'
-                      ]"
-                    />
-                    <input
-                      @input="doneformZakazZakaz()"
-                      type="text"
-                      placeholder="Квартира(если есть)"
-                      class=" input-med "
-                      v-model="formZakaz.kvartira"
-                    />
-
-                    <input
-                      @input="doneformZakazZakaz()"
-                      type="text"
-                      required="required"
-                      placeholder="Желаемая дата сдачи анализов*"
-                      v-facade="'##.##.####'"
-                      class=" input-med "
-                      v-model="formZakaz.dataSdachi"
-                    /> -->
                   </div>
                 </div>
               </div>
@@ -969,23 +981,6 @@
                 >
                   Отправить заявку
                 </button>
-                <!-- <button
-                v-if="formZakaz.done == true && $auth.loggedIn"
-                @click="modalOrder()"
-                class="rounded-[5px]  border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
-              >
-                Отправить заявку
-              </button> -->
-                <!-- <div class="flex flex-col gap-[10px]" v-else>
-                <div
-                  class="opacity-50 rounded-[5px] cursor-not-allowed  border border-main h-[49px]   anime text-main w-full flex justify-center items-center py-2 text-[16px]"
-                >
-                  Отправить заявку
-                </div>
-                <span class="text-[#A55B4A] text-[14px]"
-                  >* Заполните все поля
-                </span>
-              </div> -->
                 <button
                   @click="addConsult()"
                   class="rounded-[5px] border bg-main h-[49px] hover:bg-[#4CBDEE]  anime  text-white w-full flex justify-center items-center py-2 text-[16px]"
@@ -993,16 +988,7 @@
                   Получить консультацию
                 </button>
               </div>
-              <!-- v-f -->
-              <!-- <span class="text-[12px]">
-              <nuxt-link
-                to="/register"
-                class="text-[#A55B4A] underline underline-offset-2"
-              >
-                Зарегистрируйтесь
-              </nuxt-link>
-              для дальнейшего доступа в личный кабинет
-            </span> -->
+
               <span class="w-full text-center text-[#768C9F]/60 text-[12px]">
                 Оформляя заказ, Вы принимаете условия
                 <nuxt-link
@@ -1021,7 +1007,7 @@
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
       <button
         @click="backStep()"
-        v-if="step <= 4 && step >= 2"
+        v-if="step <= 4 && step > 2"
         class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
       >
         Назад
@@ -1089,9 +1075,11 @@
         <div>
           <button
             @click="nextStep()"
-            v-if="formZakaz.mesto == 'ofic' &&
+            v-if="
+              formZakaz.mesto == 'ofic' &&
                 formZakaz.invitroSelect !==
-                  'Выберите ближайший офис нашего партнера ИНВИТРО:'"
+                  'Выберите ближайший офис нашего партнера ИНВИТРО:'
+            "
             class="text-[12px] sm:text-[14px] text-main bg-white hover:text-white hover:bg-main font-light px-[14px] py-[14px]  w-full min-w-[240px] max-w-[300px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px] "
           >
             Дальше
@@ -1185,8 +1173,8 @@
           class=" input-med "
         />
         <span v-if="status == true">Сообщение успешно отправлено</span>
-        <span v-elseif="status == false"
-          >Произошла ошибка, попробуйте еще раз</span
+        <span v-else-if="errors.length"
+          >{{status}}</span
         >
         <button
           v-show="formZakaz.name.length !== 0 && formZakaz.phone.length === 16"
@@ -1499,11 +1487,11 @@ export default {
         .then(response => {
           console.log(response)
           this.status = true
-          this.errors = false
+          this.errors = ''
         })
         .catch(error => {
           // this.errors = error.response.data.message
-          this.errors = true
+          this.errors = error
         })
     },
     selectInvitroAdd (item) {
@@ -1847,7 +1835,7 @@ export default {
       } else {
         console.log('blablabbla')
         this.reNameInput()
-        this.step = 1
+        this.step = 2
       }
     },
     reNameInput () {

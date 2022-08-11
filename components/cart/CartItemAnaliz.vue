@@ -13,7 +13,9 @@
     <div class="flex flex-col gap-[4px]">
       <div class="flex justify-between items-center">
         <span class="text-[16px]">Цена:</span>
-        <span class="text-[#838383] text-[16px]">{{ parseInt(data.price).toLocaleString('ru-RU') }} ₽</span>
+        <span class="text-[#838383] text-[16px]"
+          >{{ parseInt(data.price).toLocaleString('ru-RU') }} ₽</span
+        >
       </div>
 
       <div
@@ -55,6 +57,7 @@
         >{{ data.attributes[0].options[0] }} дней</span
       >
     </div>
+
     <div
       v-if="CART.includes(data) || CART_IDS.includes(data.id)"
       :id="data.id"
@@ -72,8 +75,25 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M5 13l4 4L19 7"
+        /></svg
+      ><span class="text-[12px]">В корзине</span>
+    </div>
+    <div v-if="data.stock_status == 'outofstock'" class="w-full flex items-center justify-center gap-1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-danger"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
         />
-      </svg><span class="text-[12px]">В корзине</span>
+      </svg>
+      <span class=" text-center text-danger">Временно недоступен</span>
     </div>
 
     <button
@@ -106,7 +126,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['CART' , 'CART_IDS'])
+    ...mapGetters(['CART', 'CART_IDS'])
   },
   mounted () {
     this.data.upsell_ids.forEach(element => {

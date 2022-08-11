@@ -67,7 +67,6 @@ export default {
         navButtons: false,
         dots: true,
         centerMode: true,
-        // swipeDistance: 20,
         pauseOnHover: true,
         responsive: [
           {

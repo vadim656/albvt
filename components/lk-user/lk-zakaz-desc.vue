@@ -45,20 +45,32 @@
         </div>
       </div>
       <div class="col-span-1 w-full flex justify-center">
-        <span v-if="item.node.status == 'PROCESSING'" class="text-[14px] text-white bg-[#5A5A5A] font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]">Обработка</span>
-        <span v-else-if="item.node.status == 'CANCELLED'" class="text-[14px] text-white bg-[#AB6757]  font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
+        <span
+          v-if="item.node.status == 'PROCESSING'"
+          class="text-[14px] text-white bg-[#5A5A5A] font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
+          >Обработка</span
+        >
+        <span
+          v-else-if="item.node.status == 'CANCELLED'"
+          class="text-[14px] text-white bg-[#AB6757]  font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
           >Отменен</span
         >
 
-        <span v-else-if="item.node.status == 'COMPLETED'" class="text-[14px] text-white bg-[#1EA750] font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
+        <span
+          v-else-if="item.node.status == 'COMPLETED'"
+          class="text-[14px] text-white bg-[#1EA750] font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
           >Оплачен</span
         >
         <button
-        v-else
+          @click="oplata()"
+          v-else
           class="text-[14px] text-white bg-main hover:text-main hover:bg-white font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
         >
           Оплатить
-          {{ parseInt(item.node.total.replace('₽', '')) }} ₽
+          {{
+            parseInt(item.node.total.replace('₽', '')).toLocaleString('ru-RU')
+          }}
+          ₽
         </button>
       </div>
     </div>
@@ -75,6 +87,9 @@ export default {
   methods: {
     openItemInfo () {
       this.$emit('openItemInfo')
+    },
+    oplata () {
+      this.$emit('oplata')
     }
   },
   computed: {

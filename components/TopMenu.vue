@@ -27,7 +27,7 @@
                 <nuxt-link to="/test-pages/two">ЭКГ</nuxt-link>
               </li> -->
               <li class="hover:bg-[#343434]/10 px-4 py-2 anime">
-                <nuxt-link to="/zakaz"
+                <nuxt-link to="/reis"
                   >Предрейсовые и послерейсовые медицинские осмотры</nuxt-link
                 >
               </li>
@@ -36,7 +36,7 @@
         </li>
         <li class="group">
           <nuxt-link
-            to="/all-analyzes/gematologicheskie-issledovaniya/2849/"
+            to="/all-analyzes/gematologicheskie-issledovaniya/2849"
             class="!text-white hover:underline hover:underline-offset-2 anime"
             >Анализы</nuxt-link
           >

@@ -131,7 +131,9 @@
             </svg>
             <span class="text-[12px]">В корзине</span>
           </div>
-
+          <div v-if="item.node.stockStatus !== 'IN_STOCK'" class="w-full flex justify-center items-center">
+            <span class="text-[12px] text-danger">Временно недоступен</span>
+          </div>
           <button
             v-else
             @click="productInCart(item.node.databaseId)"
@@ -195,6 +197,7 @@ const ALL_CHARACTERS_QUERY = gql`
           databaseId
           ... on SimpleProduct {
             price(format: RAW)
+            stockStatus
             crossSell(first: 1) {
               edges {
                 node {

@@ -69,10 +69,14 @@
         >
         <button
           v-else
+          @click="oplata()"
           class="text-[14px] text-white bg-main hover:text-main hover:bg-white font-light px-[14px] py-[14px]  w-full  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
         >
           Оплатить
-          {{ parseInt(item.node.total.replace('₽', '')) }} ₽
+          {{
+            parseInt(item.node.total.replace('₽', '')).toLocaleString('ru-RU')
+          }}
+          ₽
         </button>
       </div>
     </div>
@@ -89,6 +93,9 @@ export default {
   methods: {
     openItemInfo () {
       this.$emit('openItemInfo')
+    },
+    oplata () {
+      this.$emit('oplata')
     }
   },
   computed: {

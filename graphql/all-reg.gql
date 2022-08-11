@@ -298,3 +298,21 @@ mutation GQUSer {
     }
   }
 }
+
+query SearchToArt {
+  products(where: {taxonomyFilter: {filters: {taxonomy: PASKU, terms: "346смж"}}}) {
+    edges {
+      node {
+        name
+        sku
+        allPaSku {
+          edges {
+            node {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}
