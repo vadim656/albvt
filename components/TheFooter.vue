@@ -72,7 +72,7 @@
     >
       <div class="grid grid-cols-4 w-full text-[10px]">
         <nuxt-link to="/" 
-        class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
+        class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20 !text-[#343434]">
           <img class="" src="/img/icons/mob-to-main.svg" alt="" />
           <span>
             Главная
