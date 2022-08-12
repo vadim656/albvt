@@ -3,22 +3,22 @@
     <h1 class="text-[30px] font-medium">Выезд на дом</h1>
     
 
-    <div class="grid grid-cols-[8fr,4fr] gap-[40px]  items-start">
+    <div class="grid grid-col-1 sm:grid-cols-[8fr,4fr] gap-[40px]  items-start">
 
       <div class="flex flex-col">
-          <div class="grid grid-cols-[1fr,40px,1fr,40px,1fr] items-center mb-[47px]">
+          <div class="grid grid-col-1 sm:grid-cols-[1fr,40px,1fr,40px,1fr] items-center mb-[47px] gap-[20px] sm:gap-0">
         <div class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4">
             <span class="text-[30px] text-main">1</span>
             <span>Оставьте заявку</span>
         </div>
-        <span class="w-full h-[2px] bg-main"></span>
+        <span class="w-full h-[2px] bg-main hidden sm:block"></span>
         <div class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4">
-            <span class="text-[30px] text-main">1</span>
+            <span class="text-[30px] text-main">2</span>
             <span>Дождитесь звонка</span>
         </div>
-        <span class="w-full h-[2px] bg-main"></span>
+        <span class="w-full h-[2px] bg-main hidden sm:block"></span>
         <div class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4">
-            <span class="text-[30px] text-main">1</span>
+            <span class="text-[30px] text-main">3</span>
             <span>Мы приедем к Вам</span>
         </div>
     </div>
@@ -118,7 +118,7 @@
 Это выгодно сократит время нахождения нашей медсестры у Вас дома, что позволит ей успеть на последующие вызовы.
         </span>
         <nuxt-link
-        to="/zakaz"
+        to="/all-analyzes/gematologicheskie-issledovaniya/2849"
           class="flex w-full justify-center items-center border  border-main rounded-[5px] py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
         >
           Подать online заявку

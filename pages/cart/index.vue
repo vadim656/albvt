@@ -1158,7 +1158,7 @@
               ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
               : '!border-[green] !focus:outline-[green]'
           ]"
-          class=" input-med "
+          class=" input-med"
         />
         <input
           type="text"
@@ -1449,9 +1449,7 @@ export default {
           })
       }
     },
-    oplata () {
-      console.log('1344')
-    },
+
 
     addConsult () {
       if (
@@ -1464,14 +1462,17 @@ export default {
     },
     ConsultZayavka () {
       const cartToMail = this.CART
-      const finalCartToMail = cartToMail.map(element => element.name)
-      const convertCart = JSON.stringify(finalCartToMail)
+      const finalCartToMail = cartToMail.map(element =>  ' -- ' + element.name + ' Art: ' + element.attributes[2].options[0]   + '\n'  )
+      const mestoSdachi =  this.formZakaz.mesto.toString()
+      // const convertCart = JSON.stringify(finalCartToMail)
+      const convertCart = finalCartToMail.toString()
       console.log(convertCart)
-      // 2. Create a FormData object, and append each field to the object
       const emailBody = {
         'text-859': this.formZakaz.name,
         'text-893': this.formZakaz.phone,
-        'your-message': convertCart
+        'your-message': convertCart,
+        'text-785': mestoSdachi,
+
       }
 
       const form = new FormData()
@@ -1490,7 +1491,6 @@ export default {
           this.errors = ''
         })
         .catch(error => {
-          // this.errors = error.response.data.message
           this.errors = error
         })
     },
@@ -1812,7 +1812,7 @@ export default {
         await this.$auth.fetchUser()
         this.formBusy = false
         this.loginError = false
-        this.step = 1
+        this.step = 2
       } catch (errors) {
         this.formBusy = false
         this.loginError = true

@@ -71,25 +71,29 @@
       class="sm:hidden fixed bottom-0 left-0 bg-white drop-shadow(0px_0px_20px_rgba(0,0,0,0.1)) px-4 py-2 z-[1] w-full"
     >
       <div class="grid grid-cols-4 w-full text-[10px]">
-        <nuxt-link to="/" class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
+        <nuxt-link to="/" 
+        class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
           <img class="" src="/img/icons/mob-to-main.svg" alt="" />
           <span>
             Главная
           </span>
         </nuxt-link>
-        <nuxt-link to="/all-analyzes/gematologicheskie-issledovaniya/2849" class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
+        <nuxt-link to="/all-analyzes/gematologicheskie-issledovaniya/2849" 
+        class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
          <img class="" src="/img/icons/mob-foo-2.svg" alt="" />
           <span>
             Анализы
           </span>
         </nuxt-link>
-        <nuxt-link to="/result" class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
+        <nuxt-link to="/result" 
+        class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
          <img class="" src="/img/icons/mob-foo-3.svg" alt="" />
           <span>
             Результаты
           </span>
         </nuxt-link>
-        <nuxt-link to="/contacts" class="flex flex-col gap-2 justify-center items-center">
+        <nuxt-link to="/contacts" 
+        class="flex flex-col gap-2 justify-center items-center">
          <img src="/img/icons/mob-foo-4.svg" alt="" />
           <span>
             Адреса

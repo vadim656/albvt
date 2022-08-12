@@ -6,7 +6,7 @@
       >{{ item.attributes[2].options[0] }}
     </span>
     <div
-      class="row-span-1 col-span-4 xl:col-span-1 flex  flex-col font-medium text-[14px]   lg:text-[16px]  py-2 xl:py-[20px] "
+      class="row-span-1 col-span-4 xl:col-span-1 flex  flex-col font-medium text-[14px]     py-2 xl:py-[20px] "
     >
       <nuxt-link :to="this.$route.fullPath + '/' + item.id">
         <p
@@ -26,7 +26,7 @@
             'bg-white text-[12px] lg:text-[14px] px-2 py-4 border border-[#777777] rounded-[5px]'
           ]
         }"
-        >{{ parseInt(item.price).toLocaleString('ru-RU') }} руб.
+        >{{ parseInt(item.price).toLocaleString('ru-RU') }} ₽
         <article class="text-[#A75F4F]">*</article>
       </span>
       <span

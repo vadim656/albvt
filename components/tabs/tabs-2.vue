@@ -11,7 +11,7 @@
         {{ tab.title }}
       </li>
     </ul>
-    <slot ></slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -34,6 +34,10 @@ export default {
   },
   mounted () {
     this.selectTab(0)
+    window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
   },
   methods: {
     selectTab (i) {
@@ -41,10 +45,12 @@ export default {
       this.tabs.forEach((tab, index) => {
         tab.isActive = index === i
         console.log('tut')
-       this.$emit('scroll')
+        window.scrollTo({
+          top: 247,
+          behavior: 'smooth'
+        })
       })
-    },
-  
+    }
   }
 }
 </script>
