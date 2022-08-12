@@ -14,7 +14,7 @@
   @apply motion-safe:transition duration-[0.1s] ease-in ;
   }
   .input-med {
-  @apply bg-white w-full p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]  ;
+  @apply bg-white w-full p-2 border-[2px]  rounded-[5px]  focus:outline-none ;
   
   }
 

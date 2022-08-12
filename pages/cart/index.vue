@@ -253,14 +253,14 @@
                 <input
                   type="text"
                   name="company-website"
-                  id="company-website"
+                  id="company-website4"
                   class="input-med"
                   v-model="formCreate.family"
                   @input="doneformZakazZakaz()"
                   placeholder="Иванов"
                   :class="[
-                    this.formCreate.name.length == 0
-                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                    this.formCreate.family.length == 0
+                      ? '!focus:outline-[#A55B4A] !border-[#A55B4A]'
                       : '!border-[green] !focus:outline-[green]'
                   ]"
                 />
@@ -274,13 +274,13 @@
                 <input
                   type="text"
                   name="company-website"
-                  id="company-website"
+                  id="company-websitess"
                   class="input-med"
                   v-model="formCreate.name"
                   @input="doneformZakazZakaz()"
                   placeholder="Иван"
                   :class="[
-                    this.formCreate.family.length == 0
+                    this.formCreate.name.length == 0
                       ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                       : '!border-[green] !focus:outline-[green]'
                   ]"
@@ -395,7 +395,7 @@
                   name="phone"
                   placeholder="*********"
                   :class="[
-                    formCreate.password >= 8
+                    formCreate.password.length <= 8
                       ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                       : '!border-[green] !focus:outline-[green]'
                   ]"
@@ -419,9 +419,9 @@
                   name="phone"
                   placeholder="*********"
                   :class="[
-                    formCreate.password !== formCreate.ConfPassword
-                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
-                      : '!border-[green] !focus:outline-[green]'
+                    formCreate.password == formCreate.ConfPassword && formCreate.password.length >= 8
+                      ? '!border-[green] !focus:outline-[green] '
+                      : '!focus:outline-[#A55B4A] !border-[#A55B4A]'
                   ]"
                 />
               </div>
@@ -539,7 +539,7 @@
               @input="doneformZakazZakaz()"
               placeholder="Иван"
               :class="[
-                this.formZakaz.family.length == 0
+                this.formZakaz.name.length == 0
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"
@@ -560,7 +560,7 @@
               @input="doneformZakazZakaz()"
               placeholder="Иванов"
               :class="[
-                this.formZakaz.name.length == 0
+                this.formZakaz.family.length == 0
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"

@@ -57,7 +57,7 @@
                   '/' +
                   item.node.databaseId
               "
-              class="test-text2 text-[#777777] hover:text-[#343434] anime font-semibold text-[12px] sm:text-[14px]"
+              class=" text-[#777777] hover:text-[#343434] anime font-semibold text-[12px] sm:text-[14px]"
               :title="item.node.name"
               >{{ item.node.name }}</nuxt-link
             >
@@ -176,7 +176,7 @@ import _ from 'lodash'
 
 const ALL_CHARACTERS_QUERY = gql`
   query ALL_CHARACTERS_QUERY($search: String) {
-    products(first: 30, where: { search: $search }) {
+    products(first: 40, where: { search: $search }) {
       edges {
         node {
           name
@@ -256,7 +256,7 @@ export default {
         if (
           nameA.split(' ').includes(inputSearhValue) ||
           nameA.split(' ').includes(inputSearhValueEn) <
-            nameB.split(' ').includes(inputSearhValue) ||
+          nameB.split(' ').includes(inputSearhValue) ||
           nameB.split(' ').includes(inputSearhValueEn)
         ) {
           console.log('211')
@@ -265,7 +265,7 @@ export default {
         if (
           nameA.split(' ').includes(inputSearhValue) ||
           nameA.split(' ').includes(inputSearhValueEn) >
-            nameB.split(' ').includes(inputSearhValue) ||
+          nameB.split(' ').includes(inputSearhValue) ||
           nameB.split(' ').includes(inputSearhValueEn)
         ) {
           console.log('218')
@@ -276,17 +276,17 @@ export default {
       }
 
       return this.searchResults
-        .sort(compareTwo)
-        .sort(compareTree)
-
-        .filter(
+      .sort(compareTree)     
+      .sort(compareTwo)
+      .sort(compareTree)
+      .filter(
           item =>
             item.node.name
               .toLowerCase()
               .includes(this.searchInput.toLowerCase()) ||
             item.node.name.toLowerCase().includes(this.test.toLowerCase())
         )
-        .splice(0, 7)
+        .splice(0, 10)
     }
   },
   methods: {
@@ -472,7 +472,7 @@ export default {
 input::-webkit-input-placeholder {
   color: #8a8a8a;
 }
-.test-text2 {
+/* .test-text2 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -moz-box;
@@ -481,5 +481,5 @@ input::-webkit-input-placeholder {
     -webkit-box-orient: vertical;
     line-clamp: 2;
     box-orient: vertical;
-}
+} */
 </style>

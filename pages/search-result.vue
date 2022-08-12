@@ -14,22 +14,19 @@
               class="block w-full h-auto hover:scale-110 anime"
             />
           </span>
-         <input
-          @input="search($event.target.value)"
-          :value="searchInputRes"
-          type="text"
-          id="default-search2"
-          class="block  w-full pr-20 rounded-[5px] text-center  bg-white pl-4 border-[2px] border-[#343434]/20   h-[60px] focus:outline-none text-[#979797]"
-          placeholder="Поиск анализов"
-          autocomplete="off"
-        />
+          <input
+            @input="search($event.target.value)"
+            :value="searchInputRes"
+            type="text"
+            id="default-search2"
+            class="block  w-full pr-20 rounded-[5px] text-center  bg-white pl-4 border-[2px] border-[#343434]/20   h-[60px] focus:outline-none text-[#979797]"
+            placeholder="Поиск анализов"
+            autocomplete="off"
+          />
         </label>
-
       </div>
 
-      <ul
-        class=" flex flex-col bg-white  pt-4 shadow-md rounded-[5px] w-full "
-      >
+      <ul class=" flex flex-col bg-white  pt-4 shadow-md rounded-[5px] w-full ">
         <li
           v-for="(item, i) in sortedArray"
           :key="i"
@@ -123,7 +120,7 @@ import HeadingH3 from '~/components/HeadingH3.vue'
 
 const ALL_CHARACTERS_QUERY = gql`
   query ALL_CHARACTERS_QUERY($search: String) {
-    products(first: 30, where: { search: $search }) {
+    products(first: 100, where: { search: $search }) {
       edges {
         node {
           name
@@ -212,9 +209,9 @@ export default {
       }
 
       return this.searchResults
+        .sort(compareTree)
         .sort(compareTwo)
         .sort(compareTree)
-
         .filter(
           item =>
             item.node.name
@@ -234,7 +231,7 @@ export default {
       }
     },
     async search (value) {
-       this.searchInputRes = value
+      this.searchInputRes = value
       const lowerCase = value.toLowerCase()
       this.autoKeyboardLang(lowerCase)
 

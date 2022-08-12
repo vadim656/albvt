@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style>
-.test-text {
+/* .test-text {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -moz-box;
@@ -119,5 +119,5 @@ export default {
   -webkit-box-orient: vertical;
   line-clamp: 1;
   box-orient: vertical;
-}
+} */
 </style>
