@@ -3,7 +3,7 @@
     <h1 class="text-[30px] font-medium">Частые вопросы</h1>
 
     
-    <div class="grid grid-cols-[6fr,4fr] gap-[20px] items-start">
+    <div class="grid grid-cols-1 sm:grid-cols-[6fr,4fr] gap-[20px] items-start">
       <div class="flex flex-col">
           <span class="test-[18px] py-2">Вопрос-ответ</span>
           <accordion title="Берете ли Вы кровь у детей?">Нет, данная услуга временно не доступна.</accordion>

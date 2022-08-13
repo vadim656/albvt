@@ -142,7 +142,7 @@
           <a href="tel:88632418555" class="font-semibold text-[16px]">+7 (863) 241-85-55</a>
         </div>
         
-        <cart-wrapper v-if="cartView == true" @cartView="cartCloseView" />
+        <cart-wrapper v-if="cartView == true" @cartView="cartCloseView" ref="cart"/>
         <login-header
           v-if="loginView == true && !$auth.loggedIn"
           @loginView="loginCloseView"

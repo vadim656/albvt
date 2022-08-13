@@ -117,12 +117,12 @@
 Поэтому мы предоставляем вам возможность подать online заявку и сразу же оплатить её.<br />
 Это выгодно сократит время нахождения нашей медсестры у Вас дома, что позволит ей успеть на последующие вызовы.
         </span>
-        <nuxt-link
-        to="/all-analyzes/gematologicheskie-issledovaniya/2849"
+        <button
+        @click="onlineZakaz"
           class="flex w-full justify-center items-center border  border-main rounded-[5px] py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
         >
           Подать online заявку
-        </nuxt-link>
+        </button>
       </div>
     </div>
   </div>
@@ -138,7 +138,12 @@ export default {
       form: {
         year: '',
         checkedNames: []
-      }
+      },
+      methods: {
+        onlineZakaz(){
+          
+        }
+      },
     }
   }
 }

@@ -40,7 +40,7 @@
     >
       <div class="fixed w-screen top-0 left-0 h-screen bg-[#343434]/50" @click="modalPhoto = false"></div>
       <div
-        class="flex gap-[20px] items-center w-full max-w-[300px] sm:max-w-[800px]"
+        class="flex gap-0 sm:gap-[20px] items-center w-full max-w-[300px] sm:max-w-[800px]"
       >
         <button 
         @click="prevSlide()" 

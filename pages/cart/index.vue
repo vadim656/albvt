@@ -211,7 +211,7 @@
         <!-- шан 2 -->
         <div class="flex justify-center gap-[20px] items-center w-full ">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="col-span-2 flex flex-col gap-2">
+            <div class="sm:col-span-2 flex flex-col gap-2">
               <span class="w-full text-center">Ваш пол</span>
               <div
                 class="flex items-center gap-4 mt-2 flex-wrap sm:flex-nowrap"

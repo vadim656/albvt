@@ -131,7 +131,10 @@
             </svg>
             <span class="text-[12px]">В корзине</span>
           </div>
-          <div v-if="item.node.stockStatus !== 'IN_STOCK'" class="w-full flex justify-center items-center">
+          <div
+            v-if="item.node.stockStatus !== 'IN_STOCK'"
+            class="w-full flex justify-center items-center"
+          >
             <span class="text-[12px] text-danger">Временно недоступен</span>
           </div>
           <button
@@ -256,19 +259,42 @@ export default {
         if (
           nameA.split(' ').includes(inputSearhValue) ||
           nameA.split(' ').includes(inputSearhValueEn) <
-          nameB.split(' ').includes(inputSearhValue) ||
+            nameB.split(' ').includes(inputSearhValue) ||
           nameB.split(' ').includes(inputSearhValueEn)
         ) {
-          console.log('211')
           return 1
         }
         if (
           nameA.split(' ').includes(inputSearhValue) ||
           nameA.split(' ').includes(inputSearhValueEn) >
-          nameB.split(' ').includes(inputSearhValue) ||
+            nameB.split(' ').includes(inputSearhValue) ||
           nameB.split(' ').includes(inputSearhValueEn)
         ) {
-          console.log('218')
+
+          return -1
+        }
+
+        return 0
+      }
+
+      function compareFor (a, b) {
+        var nameA = a.node.name.toLowerCase()
+        var nameB = b.node.name.toLowerCase()
+
+        if (
+          nameA.split(' ').includes(inputSearhValue) ||
+          nameA.split(' ').includes(inputSearhValueEn) <
+            nameB.split(' ').includes(inputSearhValue) ||
+          nameB.split(' ').includes(inputSearhValueEn)
+        ) {
+          return 1
+        }
+        if (
+          nameA.split(' ').includes(inputSearhValue) ||
+          nameA.split(' ').includes(inputSearhValueEn) >
+            nameB.split(' ').includes(inputSearhValue) ||
+          nameB.split(' ').includes(inputSearhValueEn)
+        ) {
           return -1
         }
 
@@ -276,10 +302,10 @@ export default {
       }
 
       return this.searchResults
-      .sort(compareTree)     
-      .sort(compareTwo)
-      .sort(compareTree)
-      .filter(
+        .sort(compareTree)
+        .sort(compareTwo)
+        .sort(compareFor)
+        .filter(
           item =>
             item.node.name
               .toLowerCase()
