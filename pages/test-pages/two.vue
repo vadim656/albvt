@@ -2,7 +2,7 @@
   <div class="container py flex flex-col gap-[20px] py-[47px]">
     <h1 class="text-[30px] font-medium">Справка для предоставления в ИФНС</h1>
 
-    <div class="grid grid-cols-[8fr,4fr] gap-[40px] items-start">
+    <div class="grid grid-cols-1 sm:grid-cols-[8fr,4fr] gap-[40px] items-start">
       <div class="flex flex-col">
         <span class="test-[18px] py-2">Вопрос-ответ</span>
         <accordion
@@ -12,9 +12,7 @@
             личном обращении в медицинский центр АЛЬБА ВИТА. Для этого Вам нужно
             предоставить:
           </p>
-          <ul
-            class="list-disc list-outside pl-4 pt-4  flex flex-col gap-2"
-          >
+          <ul class="list-disc list-outside pl-4 pt-4  flex flex-col gap-2">
             <li>
               Лекарства (влияние лекарственных препаратов на результат
               лабраторных тестов разнаплановое и не всегда предсказуемое).
@@ -55,65 +53,82 @@
         <accordion
           title="В каком случае можно получить справку для налогового вычета за платные медицинские услуги?"
           ><p>
-            Социальный налоговый вычет по расходам на лечение и (или) приобретение медикаментов предоставляется налогоплательщику, оплатившему за счет собственных средств:
+            Социальный налоговый вычет по расходам на лечение и (или)
+            приобретение медикаментов предоставляется налогоплательщику,
+            оплатившему за счет собственных средств:
           </p>
-          <ul
-            class="list-disc list-outside pl-4 pt-4  flex flex-col gap-2"
-          >
+          <ul class="list-disc list-outside pl-4 pt-4  flex flex-col gap-2">
             <li>
               Услуги по своему лечению;
             </li>
             <li>
-              Услуги по лечению супруга (супруги), своих родителей и (или) своих детей в возрасте до 18 лет.
+              Услуги по лечению супруга (супруги), своих родителей и (или) своих
+              детей в возрасте до 18 лет.
             </li>
           </ul>
           <br />
           <p>
-           Порядок предоставления социального налогового вычета по расходам на лечение и приобретение медикаментов определен п.3 ст. 219 НК РФ. Перечни медицинских услуг и медикаментов, при оплате которых предоставляется вычет, утверждены Постановлением Правительства РФ от 19.03.2001 № 201.
+            Порядок предоставления социального налогового вычета по расходам на
+            лечение и приобретение медикаментов определен п.3 ст. 219 НК РФ.
+            Перечни медицинских услуг и медикаментов, при оплате которых
+            предоставляется вычет, утверждены Постановлением Правительства РФ от
+            19.03.2001 № 201.
           </p></accordion
         >
         <accordion
           title="Какие документы нужно предоставить в налоговую инспекцию для получения социального вычета?"
           ><p>
-            Для получения социального вычета Вам потребуется предъявить в ИФНС России:
+            Для получения социального вычета Вам потребуется предъявить в ИФНС
+            России:
           </p>
-          <ul
-            class="list-disc list-outside pl-4 pt-4  flex flex-col gap-2"
-          >
+          <ul class="list-disc list-outside pl-4 pt-4  flex flex-col gap-2">
             <li>
-              Справку о получении платных медицинских услуг (можно получить при личном визите в медицинский офис  и копию Лицензии.
+              Справку о получении платных медицинских услуг (можно получить при
+              личном визите в медицинский офис и копию Лицензии.
             </li>
             <li>
-              Необходимо заполнить налоговую декларацию (по форме 3-НДФЛ) по окончании года, в котором была произведена оплата медицинских услуг
+              Необходимо заполнить налоговую декларацию (по форме 3-НДФЛ) по
+              окончании года, в котором была произведена оплата медицинских
+              услуг
             </li>
             <li>
-             Получить справку из бухгалтерии по месту работы о суммах начисленных и удержанных налогов за соответствующий год по форме 2-НДФЛ
+              Получить справку из бухгалтерии по месту работы о суммах
+              начисленных и удержанных налогов за соответствующий год по форме
+              2-НДФЛ
             </li>
             <li>
-             Подготовить копии документов, подтверждающих степень родства с лицом, за которое были оплачены медицинские услуги. Если утеряны чеки, то пациент не теряет право на получение налогового вычета. 
+              Подготовить копии документов, подтверждающих степень родства с
+              лицом, за которое были оплачены медицинские услуги. Если утеряны
+              чеки, то пациент не теряет право на получение налогового вычета.
             </li>
             <li>
-             В комплект документов, подтверждающих право на получение социального налогового вычета по расходам на медицинские услуги, необходимо приложить Договор на оказание платных медицинских услуг, Приложение к Договору не требуется.
+              В комплект документов, подтверждающих право на получение
+              социального налогового вычета по расходам на медицинские услуги,
+              необходимо приложить Договор на оказание платных медицинских
+              услуг, Приложение к Договору не требуется.
             </li>
           </ul>
           <br />
           <p>
-           Порядок предоставления социального налогового вычета по расходам на лечение и приобретение медикаментов определен п.3 ст. 219 НК РФ. Перечни медицинских услуг и медикаментов, при оплате которых предоставляется вычет, утверждены Постановлением Правительства РФ от 19.03.2001 № 201.
+            Порядок предоставления социального налогового вычета по расходам на
+            лечение и приобретение медикаментов определен п.3 ст. 219 НК РФ.
+            Перечни медицинских услуг и медикаментов, при оплате которых
+            предоставляется вычет, утверждены Постановлением Правительства РФ от
+            19.03.2001 № 201.
           </p></accordion
         >
         <accordion
           title="Можно ли оставить online заявку для получения справки по налоговому вычету?"
           ><p>
-           Да, можно.
+            Да, можно.
           </p></accordion
         >
-
       </div>
 
       <div
         class="bg-white  shadow-md rounded-[5px] p-[24px] flex flex-col gap-[20px]"
       >
-        <form action="" class="flex flex-col gap-4">
+        <form @submit.prevent="getFNS()" class="flex flex-col gap-4">
           <span class="text-[15px] font-medium"
             >Оставить заявку для получения справки в ИФНС</span
           >
@@ -124,27 +139,84 @@
               <span class="text-[#A55B4A] text-[15px] "
                 >Кто будет получать налоговый вычет?</span
               >
-              <div class="grid grid-cols-2 gap-[10px]">
-                <input
-                  type="text"
-                  placeholder="Фамилия"
-                  class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                />
-                <input
-                  type="text"
-                  placeholder="Имя"
-                  class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                />
-                <input
-                  type="text"
-                  placeholder="Отчество"
-                  class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                />
-                <input
-                  type="text"
-                  placeholder="ИНН"
-                  class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-[10px]">
+               <div class="flex flex-col gap-1">
+                  <label for="company-website" class="block text-[12px]">
+                    Фамилия
+                  </label>
+                  <div class="mt-1 flex rounded-[5px] shadow-sm">
+                    <input
+                      required
+                      type="text"
+                      v-model="formZakaz.family"
+                      :class="[
+                        formZakaz.family.length < 2
+                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                          : '!border-[green] !focus:outline-[green]'
+                      ]"
+                      class=" input-med "
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label for="company-website" class="block text-[12px]">
+                    Имя
+                  </label>
+                  <div class="mt-1 flex rounded-[5px] shadow-sm">
+                    <input
+                      required
+                      type="text"
+                      v-model="formZakaz.name"
+                      :class="[
+                        formZakaz.name.length < 1
+                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                          : '!border-[green] !focus:outline-[green]'
+                      ]"
+                      class=" input-med "
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label for="company-website" class="block text-[12px]">
+                    Отчество
+                  </label>
+                  <div class="mt-1 flex rounded-[5px] shadow-sm">
+                    <input
+                      required
+                      type="text"
+                      v-model="formZakaz.otchestvo"
+                      :class="[
+                        formZakaz.otchestvo.length < 2
+                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                          : '!border-[green] !focus:outline-[green]'
+                      ]"
+                      class=" input-med "
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label for="company-website" class="block text-[12px]">
+                    ИНН
+                  </label>
+                  <div class="mt-1 flex rounded-[5px] shadow-sm">
+                    <input
+                      required
+                      type="text"
+                      v-facade="'##########'"
+                      placeholder="__________"
+                      v-model="formZakaz.inn"
+                      :class="[
+                        formZakaz.inn.length !== 10
+                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                          : '!border-[green] !focus:outline-[green]'
+                      ]"
+                      class=" input-med "
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                
               </div>
             </div>
 
@@ -206,26 +278,58 @@
               <span class="text-[#A55B4A] text-[15px] "
                 >Контакты для связи с Вами</span
               >
-              <div class="grid grid-cols-2 gap-[10px]">
-                <input
-                  type="text"
-                  placeholder="E-mail"
-                  class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                />
-                <input
-                  type="text"
-                  placeholder="+7"
-                  class="bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
-                />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-[10px]">
+                <div class="flex flex-col gap-1">
+                  <label for="company-website" class="block text-[12px]">
+                    Email
+                  </label>
+                  <div class="mt-1 flex rounded-[5px] shadow-sm">
+                    <input
+                      required
+                      type="text"
+                      v-model="formZakaz.email"
+                      :class="[
+                        this.formZakaz.email.length < 4
+                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                          : '!border-[green] !focus:outline-[green]'
+                      ]"
+                      class=" input-med "
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label for="company-website" class="block text-[12px]">
+                    Телефон
+                  </label>
+                  <div class="mt-1 flex rounded-[5px] shadow-sm">
+                    <input
+                      required
+                      type="text"
+                      v-facade="'+7(###)###-##-##'"
+                      placeholder="+7(___)___−__−__"
+                      v-model="formZakaz.phone"
+                      :class="[
+                        this.formZakaz.phone.length !== 16
+                          ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                          : '!border-[green] !focus:outline-[green]'
+                      ]"
+                      class=" input-med "
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </form>
+        
         <button
+        type="submit"
+        @click="getFNS()"
           class="flex w-full justify-center items-center border  border-main rounded-[5px] py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
         >
           Отправить заявку
         </button>
+        <span v-if="status.length" class="">{{ status }}</span>
       </div>
     </div>
   </div>
@@ -238,10 +342,53 @@ export default {
   layout: 'MainLayout',
   data () {
     return {
+      
       form: {
-        year: '',
+        year: 'Я сам',
         checkedNames: []
+      },
+      formZakaz: {
+        name: '',
+        family: '',
+        inn: '',
+        otchestvo: '',
+        email: '',
+        phone: ''
+      },
+      test : '',
+      status: ''
+    }
+  },
+  methods: {
+    getFNS(){
+      const period = this.form.checkedNames.map( (item) => item ).toString()
+      const emailBody = {
+        'text-fio':    this.formZakaz.family + ' ' + this.formZakaz.name + ' ' + this.formZakaz.otchestvo,
+        'text-inn':    this.formZakaz.inn,
+        'text-kto':    this.form.year,
+        'text-period': period,
+        'email-438':   this.formZakaz.email,
+        'text-phone':  this.formZakaz.phone
       }
+
+      const form = new FormData()
+      for (const field in emailBody) {
+        form.append(field, emailBody[field])
+      }
+
+      this.$axios
+        .$post(
+          'https://foxsis.ru/alvd/wp-json/contact-form-7/v1/contact-forms/11895/feedback', 
+          form
+        )
+        .then(response => {
+          console.log(response.message)
+          this.status = response.message
+          this.errors = ''
+        })
+        .catch(error => {
+          this.status = error.message
+        })
     }
   }
 }

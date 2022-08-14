@@ -39,8 +39,9 @@
       class="fixed w-screen top-0 left-0 h-screen  flex justify-center items-center"
     >
       <div class="fixed w-screen top-0 left-0 h-screen bg-[#343434]/50" @click="modalPhoto = false"></div>
+      <!-- desctop -->
       <div
-        class="flex gap-0 sm:gap-[20px] items-center w-full max-w-[300px] sm:max-w-[800px]"
+        class="hidden sm:flex gap-0 sm:gap-[20px] items-center w-full  sm:max-w-[800px]"
       >
         <button 
         @click="prevSlide()" 
@@ -86,6 +87,58 @@
           </svg>
         </button>
       </div>
+      <!-- mobile -->
+      <div
+        class="flex flex-col sm:hidden gap-4 sm:gap-[20px] items-center w-full  max-w-[300px]"
+      >
+        
+        <img :src="id" alt="" class="w-full  h-auto object-cover z-[3]" />
+        <div class="flex justify-center items-center gap-4">
+          <button 
+        @click="prevSlide()" 
+
+        class="z-[3]"
+        :class="[indexPhoto !== 0 ? 'opacity-100' : 'opacity-30 cursor-disable']"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-12 w-12 text-white z-[3]"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button 
+        @click="nextSlide()" 
+
+        class="z-[3]"
+        :class="[indexPhoto !== 4 ? 'opacity-100' : 'opacity-30 cursor-disable']"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-12 w-12 text-white z-[3]"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+        </div>
+        
+      </div>
     </div>
   </div>
 </template>
@@ -124,7 +177,7 @@ export default {
       this.modalPhoto = true
     },
     nextSlide () {
-      if (this.indexPhoto !== 5) {
+      if (this.indexPhoto !== 4) {
         this.id = this.photo[this.indexPhoto++].src
       }
     },
