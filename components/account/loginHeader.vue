@@ -73,11 +73,11 @@
                   </div>
                   
                 </div>
-          <div @click="closeLogin()">
+          <!-- <div @click="closeLogin()">
             <nuxt-link to="/register" class="text-[#343434] w-full text-center"
               >Регистрация</nuxt-link
             >
-          </div>
+          </div> -->
         </div>
       </form>
       </tab-login>
@@ -136,11 +136,11 @@
                     >Неправильный логин или пароль</span
                   >
                 </div>
-          <div @click="closeLogin()">
+          <!-- <div @click="closeLogin()">
             <nuxt-link to="/register" class="text-[#343434] w-full text-center"
               >Регистрация</nuxt-link
             >
-          </div>
+          </div> -->
         </div>
       </form>
       </tab-login>

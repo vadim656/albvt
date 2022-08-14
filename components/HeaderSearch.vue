@@ -155,9 +155,7 @@
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
         >
           <span
-            @click="
-              searchInputFake = searchInputFake.replace(searchInputFake, '')
-            "
+            @click="closeSearch()"
           >
             Все результаты</span
           >
@@ -322,6 +320,7 @@ export default {
       this.$emit('mobSearchClose')
     },
     closeSearch () {
+      this.searchInputFake = this.searchInputFake.replace(this.searchInputFake, '')
       this.mobSearchClose()
     },
     async search (value) {

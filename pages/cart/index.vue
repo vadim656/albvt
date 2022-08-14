@@ -257,7 +257,6 @@
                   class="input-med"
                   v-model="formCreate.family"
                   @input="doneformZakazZakaz()"
-                  placeholder="Иванов"
                   :class="[
                     this.formCreate.family.length == 0
                       ? '!focus:outline-[#A55B4A] !border-[#A55B4A]'
@@ -278,7 +277,6 @@
                   class="input-med"
                   v-model="formCreate.name"
                   @input="doneformZakazZakaz()"
-                  placeholder="Иван"
                   :class="[
                     this.formCreate.name.length == 0
                       ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
@@ -300,12 +298,31 @@
                   class="input-med"
                   v-model="formCreate.otchestvo"
                   @input="doneformZakazZakaz()"
-                  placeholder="Петрович"
                   :class="[
                     this.formCreate.otchestvo.length == 0
                       ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                       : '!border-[green] !focus:outline-[green]'
                   ]"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="company-website" class="block text-[12px]">
+                Дата рождения
+              </label>
+              <div class="mt-1 flex rounded-[5px] shadow-sm">
+                <input
+                  @input="doneformZakazZakaz()"
+                  required
+                  type="text"
+                  v-facade="'##.##.####'"
+                  v-model="formZakaz.dataRozhdeniya"
+                  :class="[
+                    this.formZakaz.dataRozhdeniya.length !== 10
+                      ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
+                      : '!border-[green] !focus:outline-[green]'
+                  ]"
+                  class=" input-med "
                 />
               </div>
             </div>
@@ -320,7 +337,6 @@
                   id="company-website"
                   class="input-med"
                   @input="doneformZakazZakaz()"
-                  placeholder="0000 000000"
                   v-facade="'#### ######'"
                   v-model="formCreate.passportSeriya"
                   :class="[
@@ -331,6 +347,7 @@
                 />
               </div>
             </div>
+            <div></div>
             <div class="flex flex-col gap-1">
               <label for="company-website" class="block text-[12px]">
                 Email
@@ -348,7 +365,6 @@
                       ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                       : '!border-[green] !focus:outline-[green]'
                   ]"
-                  placeholder="example@gmail.com"
                 />
                 <span class="text-[12px] text-[#343434]/70"
                   >На эту почту будут отправлены результаты анализов</span
@@ -393,7 +409,6 @@
                   @input="doneformZakazZakaz()"
                   v-model="formCreate.password"
                   name="phone"
-                  placeholder="*********"
                   :class="[
                     formCreate.password.length <= 8
                       ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
@@ -417,9 +432,9 @@
                   @input="doneformZakazZakaz()"
                   v-model="formCreate.ConfPassword"
                   name="phone"
-                  placeholder="*********"
                   :class="[
-                    formCreate.password == formCreate.ConfPassword && formCreate.password.length >= 8
+                    formCreate.password == formCreate.ConfPassword &&
+                    formCreate.password.length >= 8
                       ? '!border-[green] !focus:outline-[green] '
                       : '!focus:outline-[#A55B4A] !border-[#A55B4A]'
                   ]"
@@ -588,6 +603,7 @@
             />
           </div>
         </div>
+
         <div class="flex flex-col gap-1">
           <label for="company-website" class="block text-[12px]">
             Паспорт (серия/номер)
@@ -610,6 +626,7 @@
             />
           </div>
         </div>
+
         <div class="flex flex-col gap-1">
           <label for="company-website" class="block text-[12px]">
             Email
@@ -668,42 +685,41 @@
       class="flex flex-col justify-center gap-[20px] items-center w-full max-w-[620px]"
       v-if="step == 3"
     >
-    <div class="flex flex-col sm:flex-row justify-between gap-[20px] w-full px-[20px]">
-      <div class="flex flex-col gap-2">
-        <client-only>
+      <div
+        class="flex flex-col sm:flex-row justify-between gap-[20px] w-full px-[20px]"
+      >
+        <div class="flex flex-col gap-2">
+          <client-only>
+            <label for="company-website" class="block text-[12px]">
+              Выберите желаемую дату сдачи
+            </label>
+            <date-picker
+              placeholder="dd.MM.YYYY"
+              format="dd/MM/yyyy"
+              :language="ru"
+              v-model="date_today"
+              class="input-med"
+          /></client-only>
+        </div>
+        <div class="flex flex-col items-start justify-center gap-2 w-full">
           <label for="company-website" class="block text-[12px]">
-            Выберите желаемую дату сдачи
-          </label>
-          <date-picker
-            placeholder="dd.MM.YYYY"
-            format="dd/MM/yyyy"
-            :language="ru"
-            v-model="date_today"
-            class="input-med"
-        /></client-only>
-
-      </div>
-      <div class="flex flex-col items-start justify-center gap-2 w-full">
-         <label for="company-website" class="block text-[12px]">
             Если пациент младше 18 лет
           </label>
           <div class="flex items-center justify-start gap-2 w-full">
             <input
-          type="checkbox"
-          value="femalemale"
-          id="gender3"
-          v-model="formZakaz.genderDop"
-          class=""
-        />
-        <label for="gender3" class="text-[14px] sm:text-[12px]"
-          >Пациент придёт с представителем</label
-        >
+              type="checkbox"
+              value="femalemale"
+              id="gender3"
+              v-model="formZakaz.genderDop"
+              class=""
+            />
+            <label for="gender3" class="text-[14px] sm:text-[12px]"
+              >Пациент придёт с представителем</label
+            >
           </div>
-        
+        </div>
       </div>
-    </div>
-      
-      
+
       <div class=" flex flex-col gap-[20px] mt-[24px] px-[20px] w-full">
         <form @submit.prevent="oplata()" class="flex flex-col gap-4">
           <div class="flex flex-col">
@@ -1173,9 +1189,7 @@
           class=" input-med "
         />
         <span v-if="status == true">Сообщение успешно отправлено</span>
-        <span v-else-if="errors.length"
-          >{{status}}</span
-        >
+        <span v-else-if="errors.length">{{ status }}</span>
         <button
           v-show="formZakaz.name.length !== 0 && formZakaz.phone.length === 16"
           @click="ConsultZayavka()"
@@ -1450,7 +1464,6 @@ export default {
       }
     },
 
-
     addConsult () {
       if (
         (this.formZakaz.name, length !== 0 && this.formZakaz.phone.length == 18)
@@ -1462,8 +1475,15 @@ export default {
     },
     ConsultZayavka () {
       const cartToMail = this.CART
-      const finalCartToMail = cartToMail.map(element =>  ' -- ' + element.name + ' Art: ' + element.attributes[2].options[0]   + '\n'  )
-      const mestoSdachi =  this.formZakaz.mesto.toString()
+      const finalCartToMail = cartToMail.map(
+        element =>
+          ' -- ' +
+          element.name +
+          ' Art: ' +
+          element.attributes[2].options[0] +
+          '\n'
+      )
+      const mestoSdachi = this.formZakaz.mesto.toString()
       // const convertCart = JSON.stringify(finalCartToMail)
       const convertCart = finalCartToMail.toString()
       console.log(convertCart)
@@ -1471,8 +1491,7 @@ export default {
         'text-859': this.formZakaz.name,
         'text-893': this.formZakaz.phone,
         'your-message': convertCart,
-        'text-785': mestoSdachi,
-
+        'text-785': mestoSdachi
       }
 
       const form = new FormData()

@@ -61,7 +61,7 @@
                       '/' +
                       item.node.databaseId
                   "
-                  class="w-full hover:text-[#4cbdee] anime cursor-pointer text-[14px] sm:text-[16px] pb-[12px] border-b-[0.5px] border-b-[#343434]/10 "
+                  class="w-full hover:text-[#4cbdee] anime  cursor-pointer text-[14px] sm:text-[16px] pb-[12px] border-b-[0.5px] border-b-[#343434]/10 "
                   >{{ item.node.name }}</nuxt-link
                 >
               </h4>
@@ -219,7 +219,7 @@
                       '/' +
                       item.node.databaseId
                   "
-                  class="w-full hover:text-[#4cbdee] anime cursor-pointer text-[14px] sm:text-[16px] pb-[12px] border-b-[0.5px] border-b-[#343434]/10 "
+                  class=" w-full hover:text-[#4cbdee] anime cursor-pointer text-[14px] sm:text-[16px] pb-[12px]"
                   >{{ item.node.name }}</nuxt-link
                 >
               </h4>

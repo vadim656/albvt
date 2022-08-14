@@ -10,7 +10,7 @@
             :key="i"
             class="flex flex-col justify-center items-center gap-1 bg-white shadow-md py-2 rounded-[5px] "
           >
-            <img :src="img.src" alt="" @click="openPhoto(i)" />
+            <img :src="img.src" alt="" @click="openPhoto(i)" class="cursor-pointer"/>
             <span class="w-full text-center text-[14px]"
               >Лицензия Альба Вита ({{ i + 1 }} страница)</span
             >
@@ -25,7 +25,7 @@
             :key="i"
             class="flex flex-col justify-center items-center gap-1 bg-white shadow-md py-2 rounded-[5px] "
           >
-            <img :src="img.src" alt="" @click="openPhoto(i+4)" />
+            <img :src="img.src" alt="" @click="openPhoto(i+4)"  class="cursor-pointer"/>
             <span class="w-full text-center text-[14px]">{{ img.title }}</span>
           </div>
 
@@ -99,16 +99,16 @@ export default {
       id: '',
       indexPhoto: null,
       photo: [
-        { src: '/img/license-1-b-400x516.png' },
-        { src: '/img/license-2-b-400x516.png' },
-        { src: '/img/license-3-b-400x516.png' },
-        { src: '/img/license-4-b-400x516.png' },
+        { src: '/img/1-o-nas.jpg' },
+        { src: '/img/2-o-nas.jpg' },
+        { src: '/img/3-o-nas.jpg' },
+        // { src: '/img/license-4-b-400x516.png' },
         {
-          src: '/img/proof-ogrn-400x516.png',
+          src: '/img/ogrn.jpg',
           title: 'Свидетельство ОГРН Альба Вита'
         },
         {
-          src: '/img/proof-inn-400x516.png',
+          src: '/img/inn.jpg',
           title: 'Свидетельство ИНН Альба Вита'
         }
       ],

@@ -14,8 +14,8 @@
             class="p-4 bg-white w-full max-h-[260px]  flex flex-col gap-4 rounded-md shadow-md "
           >
             <nuxt-link @click="mobileMenu = false" to="/o-nas">О нас</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/2">Услуги</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/all-analyzes/gematologicheskie-issledovaniya/2849/">Анализы</nuxt-link>
+            <nuxt-link @click="mobileMenu = false" to="/reis">Услуги</nuxt-link>
+            <nuxt-link @click="mobileMenu = false" to="/all-analyzes/gematologicheskie-issledovaniya/2849">Анализы</nuxt-link>
             <nuxt-link @click="mobileMenu = false" to="/all-complecs/1-dlya-zhenshhin/2797">Комплексы анализов</nuxt-link
             >
             <nuxt-link @click="mobileMenu = false" to="/contacts">Контакты</nuxt-link>
