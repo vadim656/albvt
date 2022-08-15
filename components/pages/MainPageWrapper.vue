@@ -1,7 +1,7 @@
 <template>
   <div class="sm:container flex flex-col gap-[40px] sm:gap-[100px]">
-    <the-block-one class="mt-[47px] hidden " />
-    <header-group-items class="mt-[20px] sm:hidden block bg-main" />
+    <!-- <the-block-one class="mt-[47px] hidden " /> -->
+    <header-group-items class="mt-[47px] sm:hidden block bg-main" />
     <complecs-analises  :data_slider="data_wrap"/>
 
     <all-info  :data_slider="data_wrap"/>

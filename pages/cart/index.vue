@@ -701,7 +701,7 @@
               class="input-med"
           /></client-only>
         </div>
-        <div class="flex flex-col items-start justify-center gap-2 w-full">
+        <div class="flex flex-col items-start justify-center gap-2 w-full" v-if="formZakaz.mesto == 'ofis_my'">
           <label for="company-website" class="block text-[12px]">
             Если пациент младше 18 лет
           </label>

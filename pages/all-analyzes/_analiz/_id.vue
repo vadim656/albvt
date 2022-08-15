@@ -1,9 +1,30 @@
 <template>
   <div class="">
     <div class="flex flex-col gap-[20px] ">
-      <h1 class=" text-[24px] font-medium">
-        {{ pageName }}
-      </h1>
+      <div class="flex flex-col sm:flex-row gap-2 sm:justify-between">
+        <h1 class="text-[24px] font-medium flex gap-2 items-center">
+          <button
+            @click="$router.back()"
+            class=" flex justify-center items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 text-main"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          {{ pageName }}
+        </h1>
+      </div>
       <div class="bg-white shadow-md rounded-[5px] ">
         <div>
           <div
@@ -65,7 +86,7 @@ export default {
     },
 
     async getProductToParams () {
-       this.limit = null
+      this.limit = null
       const category = 'category='
       const PerPage = 'per_page='
       const all_products = await this.$axios.$get(
@@ -78,7 +99,6 @@ export default {
       )
 
       return { all_products }, (this.products = all_products)
-      
     }
   },
   computed: {
@@ -101,7 +121,9 @@ export default {
         PerPage +
         8
     ).then(res => res.json())
-    this.pageName = this.products[0].categories[0].name.replace(/[0-9]/g, '').replace(/\./g, '')
+    this.pageName = this.products[0].categories[0].name
+      .replace(/[0-9]/g, '')
+      .replace(/\./g, '')
   }
 }
 </script>

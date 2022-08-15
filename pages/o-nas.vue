@@ -6,7 +6,7 @@
         <span class="font-medium">Наша лицензия</span>
         <div class="grid grid-cols-2 gap-[20px] lg:grid-cols-4 w-full">
           <div
-            v-for="(img, i) in photo.slice(0, 4)"
+            v-for="(img, i) in photo.slice(0, 3)"
             :key="i"
             class="flex flex-col justify-center items-center gap-1 bg-white shadow-md py-2 rounded-[5px] "
           >
@@ -21,7 +21,7 @@
         <span class="font-medium">Свидетельства ОГРН и ИНН</span>
         <div class="grid grid-cols-2 gap-[20px] lg:grid-cols-4 w-full">
           <div
-            v-for="(img, i) in photo.slice(4, 7)"
+            v-for="(img, i) in photo.slice(3, 6)"
             :key="i"
             class="flex flex-col justify-center items-center gap-1 bg-white shadow-md py-2 rounded-[5px] "
           >
@@ -36,13 +36,13 @@
     </div>
     <div
       v-if="modalPhoto == true && id.length > 0"
-      class="fixed w-screen top-0 left-0 h-screen  flex justify-center items-center"
+      class="fixed w-screen top-0 left-0 h-screen  flex justify-center items-center z-[2]"
     >
       <div class="fixed w-screen top-0 left-0 h-screen bg-[#343434]/50" @click="modalPhoto = false"></div>
       <!-- desctop -->
       <div
-        class="hidden sm:flex gap-0 sm:gap-[20px] items-center w-full  sm:max-w-[800px]"
-      >
+        class="hidden sm:flex gap-0 sm:gap-[20px] justify-center items-center w-full  sm:max-w-[600px]"
+      > 
         <button 
         @click="prevSlide()" 
 
@@ -64,6 +64,12 @@
             />
           </svg>
         </button>
+        <a :href="id" target="_blank" class="absolute z-[4] ">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 hover:text-[#343434]/30 text-[#343434]/50  anime" title="Увеличить" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+      </svg>
+        </a>
+        
         <img :src="id" alt="" class="w-full  h-auto object-cover z-[3]" />
         <button 
         @click="nextSlide()" 
@@ -89,10 +95,11 @@
       </div>
       <!-- mobile -->
       <div
-        class="flex flex-col sm:hidden gap-4 sm:gap-[20px] items-center w-full  max-w-[300px]"
+        class="flex flex-col sm:hidden gap-4 sm:gap-[20px] justify-center items-center w-full  max-w-[200px]"
       >
         
-        <img :src="id" alt="" class="w-full  h-auto object-cover z-[3]" />
+        <img :src="id" alt="" class="w-full  h-auto object-cover z-[5]" />
+        
         <div class="flex justify-center items-center gap-4">
           <button 
         @click="prevSlide()" 
@@ -137,6 +144,7 @@
           </svg>
         </button>
         </div>
+
         
       </div>
     </div>
@@ -145,6 +153,7 @@
 
 <script>
 import HeadingH3 from '~/components/HeadingH3.vue'
+
 export default {
   components: { HeadingH3 },
   data () {
@@ -186,7 +195,8 @@ export default {
         this.id = this.photo[this.indexPhoto--].src
       }
     }
-  }
+  },
+  
 }
 </script>
 

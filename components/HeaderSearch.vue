@@ -47,7 +47,7 @@
             <!-- если комплекс -->
             <nuxt-link
               v-if="item.node.crossSell.edges.length"
-              @click="showSearch = false"
+              @click="closeSearch()"
               :to="
                 '/all-complecs' +
                   '/' +
@@ -64,7 +64,7 @@
             <!-- если анализ -->
             <nuxt-link
               v-else
-              @click="showSearch = false"
+              @click="closeSearch()"
               :to="
                 '/all-analyzes' +
                   '/' +
@@ -131,12 +131,7 @@
             </svg>
             <span class="text-[12px]">В корзине</span>
           </div>
-          <div
-            v-if="item.node.stockStatus !== 'IN_STOCK'"
-            class="w-full flex justify-center items-center"
-          >
-            <span class="text-[12px] text-danger">Временно недоступен</span>
-          </div>
+          
           <button
             v-else
             @click="productInCart(item.node.databaseId)"
@@ -147,6 +142,12 @@
               >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
             >
           </button>
+          <div
+            v-if="item.node.stockStatus !== 'IN_STOCK'"
+            class="w-full flex justify-center items-center"
+          >
+            <span class="text-[12px] text-danger">Временно недоступен</span>
+          </div>
         </li>
         <nuxt-link
           v-if="searchResults.length != 0"
@@ -161,10 +162,13 @@
           >
         </nuxt-link>
         <span
-          v-else
+          v-if="loadSearch == true "
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
-          >К сожалению ничего не найдено</span
-        >
+          >Идет поиск</span>
+          <span
+          v-if="searchResults.length < 1"
+          class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
+          >К сожалению ничего не найдено</span>
       </ul>
     </div>
   </div>
@@ -231,7 +235,8 @@ export default {
       inCart: [],
       test: '',
       showSearch: false,
-      loading: false
+      loading: false,
+      loadSearch: false
     }
   },
   computed: {
@@ -300,16 +305,17 @@ export default {
       }
 
       return this.searchResults
-        .sort(compareTree)
-        .sort(compareTwo)
-        .sort(compareFor)
-        .filter(
+      .filter(
           item =>
             item.node.name
               .toLowerCase()
               .includes(this.searchInput.toLowerCase()) ||
             item.node.name.toLowerCase().includes(this.test.toLowerCase())
         )
+        .sort(compareTree)
+        .sort(compareTwo)
+        .sort(compareFor)
+        
         .splice(0, 10)
     }
   },
@@ -327,6 +333,7 @@ export default {
       this.searchInput = value
       this.searchInputFake = value
       this.showSearch = true
+      this.loadSearch = true
       const lowerCase = value.toLowerCase()
       this.autoKeyboardLang(lowerCase)
 
@@ -339,6 +346,7 @@ export default {
         })
         if (res) {
           this.loading = false
+          this.loadSearch = false
           const { results } = res.data.products.edges
           return (
             { results },

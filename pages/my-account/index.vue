@@ -214,7 +214,7 @@
                       placeholder="e-mail"
                     />
                   </div>
-                  <div
+                  <!-- <div
                     class="flex w-full flex-col sm:flex-row justify-between gap-[20px]"
                   >
                     <div class="flex w-full sm:w-1/2 flex-row">
@@ -245,7 +245,7 @@
                         предложениях по e-mail</label
                       >
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div
                   class="flex justify-between gap-[20px] flex-col sm:flex-row"

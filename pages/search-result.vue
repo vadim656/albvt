@@ -97,7 +97,7 @@
               class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2 h-[40px] lg:w-[160px]"
             >
               <img src="/img/icons/add-to-cart.svg" alt="" />
-              <span class="text-[14px] sm:text-[16px]"
+              <span class="text-[12px] sm:text-[16px]"
                 >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
               >
             </button>

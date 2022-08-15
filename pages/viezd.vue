@@ -1,27 +1,33 @@
 <template>
   <div class="container py flex flex-col gap-[20px] py-[47px]">
     <h1 class="text-[30px] font-medium">Выезд на дом</h1>
-    
 
     <div class="grid grid-col-1 sm:grid-cols-[8fr,4fr] gap-[40px]  items-start">
-
       <div class="flex flex-col">
-          <div class="grid grid-col-1 sm:grid-cols-[1fr,40px,1fr,40px,1fr] items-center mb-[47px] gap-[20px] sm:gap-0">
-        <div class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4">
+        <div
+          class="grid grid-col-1 sm:grid-cols-[1fr,40px,1fr,40px,1fr] items-center mb-[47px] gap-[20px] sm:gap-0"
+        >
+          <div
+            class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4"
+          >
             <span class="text-[30px] text-main">1</span>
             <span>Оставьте заявку</span>
-        </div>
-        <span class="w-full h-[2px] bg-main hidden sm:block"></span>
-        <div class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4">
+          </div>
+          <span class="w-full h-[2px] bg-main hidden sm:block"></span>
+          <div
+            class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4"
+          >
             <span class="text-[30px] text-main">2</span>
             <span>Дождитесь звонка</span>
-        </div>
-        <span class="w-full h-[2px] bg-main hidden sm:block"></span>
-        <div class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4">
+          </div>
+          <span class="w-full h-[2px] bg-main hidden sm:block"></span>
+          <div
+            class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4"
+          >
             <span class="text-[30px] text-main">3</span>
             <span>Мы приедем к Вам</span>
+          </div>
         </div>
-    </div>
         <span class="test-[18px] py-2">Вопрос-ответ</span>
         <accordion title="Стоимость услуги и способ оплаты"
           ><p>
@@ -35,9 +41,10 @@
           </p>
         </accordion>
         <accordion title="График работы выездной работы"
-          >- время приёма заявок для выезда медсестры: пн – вскр 07:00 - 18:00<br /><br />
-          - время выезда медсестры к Вам: 07:00 - 11:00 (на следующий рабочий день
-          после подачи заявки на выезд)
+          >- время приёма заявок для выезда медсестры: пн – вскр 07:00 -
+          18:00<br /><br />
+          - время выезда медсестры к Вам: 07:00 - 11:00 (на следующий рабочий
+          день после подачи заявки на выезд)
         </accordion>
         <accordion title="Какие исследования нельзя сдать на дому?">
           - глюкозотолерантный тест,<br /><br />
@@ -103,8 +110,8 @@
           ><p>
             По электронной почте: мы присылаем результаты анализов на тот
             e-mail, который был указан при оформлении заказа.<br />
-            В отделении: бумажный вариант результата анализов можно
-            получить у нас в медцентре, предъявив смету с номером заказа.
+            В отделении: бумажный вариант результата анализов можно получить у
+            нас в медцентре, предъявив смету с номером заказа.
           </p></accordion
         >
       </div>
@@ -113,16 +120,32 @@
         class="bg-white  shadow-md rounded-[5px] p-[24px] flex flex-col gap-[20px]"
       >
         <span>
-          <span class="text-main">Задача нашего медицинского центра -</span>  сделать Ваше сотрудничество с нами максимально комфортным.<br />
-Поэтому мы предоставляем вам возможность подать online заявку и сразу же оплатить её.<br />
-Это выгодно сократит время нахождения нашей медсестры у Вас дома, что позволит ей успеть на последующие вызовы.
+          <span class="text-main">Задача нашего медицинского центра -</span>
+          сделать Ваше сотрудничество с нами максимально комфортным.<br />
+          Поэтому мы предоставляем вам возможность подать online заявку и сразу
+          же оплатить её.<br />
+          Это выгодно сократит время нахождения нашей медсестры у Вас дома, что
+          позволит ей успеть на последующие вызовы.
         </span>
-        <button
-        @click="onlineZakaz"
+        <nuxt-link
+          v-if="CART.length >= 1"
+          to="/cart"
           class="flex w-full justify-center items-center border  border-main rounded-[5px] py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
         >
           Подать online заявку
-        </button>
+        </nuxt-link>
+        <nuxt-link
+          to="/all-analyzes/gematologicheskie-issledovaniya/2849"
+          v-if="CART.length == 0"
+          class="flex w-full justify-center items-center border  border-main rounded-[5px] py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
+        >
+          Перейти в анализы
+        </nuxt-link>
+        <span
+          v-if="CART.length == 0"
+          class="w-full text-center  text-[12px] sm:text-[14px] text-[#343434]/50"
+          >Ваша корзина пуста</span
+        >
       </div>
     </div>
   </div>
@@ -130,6 +153,7 @@
 
 <script>
 import accordion from '~/components/tabs/accordion.vue'
+import { mapGetters } from 'vuex'
 export default {
   components: { accordion },
   layout: 'MainLayout',
@@ -138,13 +162,14 @@ export default {
       form: {
         year: '',
         checkedNames: []
-      },
-      methods: {
-        onlineZakaz(){
-          
-        }
-      },
+      }
     }
+  },
+  methods: {
+    onlineZakaz () {}
+  },
+  computed: {
+    ...mapGetters(['CART'])
   }
 }
 </script>
