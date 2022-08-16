@@ -35,7 +35,7 @@
       </div>
 
       <ul
-        v-show="searchInputFake.length >= 1 && showSearch == true"
+        v-show="searchInputFake.length >= 3 && showSearch == true"
         class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md sm:px-0 [px-16px] sm:rounded-[5px] w-full overflow-y-auto sm:h-auto  max-h-[440px]"
       >
         <li
@@ -131,7 +131,7 @@
             </svg>
             <span class="text-[12px]">В корзине</span>
           </div>
-          
+
           <button
             v-else
             @click="productInCart(item.node.databaseId)"
@@ -155,20 +155,18 @@
           replace
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
         >
-          <span
-            @click="closeSearch()"
-          >
-            Все результаты</span
-          >
+          <span @click="closeSearch()"> Все результаты</span>
         </nuxt-link>
         <span
-          v-if="loadSearch == true "
+          v-if="loading == true"
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
-          >Идет поиск</span>
-          <span
-          v-if="searchResults.length < 1"
+          >Идет поиск</span
+        >
+        <span
+          v-if="searchResults.length < 1 && loading == false"
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
-          >К сожалению ничего не найдено</span>
+          >К сожалению ничего не найдено</span
+        >
       </ul>
     </div>
   </div>
@@ -235,88 +233,39 @@ export default {
       inCart: [],
       test: '',
       showSearch: false,
-      loading: false,
+      loading: true,
       loadSearch: false
     }
   },
   computed: {
     ...mapGetters(['CART', 'CART_IDS']),
     sortedArray: function () {
+
       const inputSearhValue = this.searchInput.toLowerCase()
+
       const inputSearhValueEn = this.test.toLowerCase()
 
+      const filteredResult = this.searchResults.filter(
+        item =>
+          item.node.name.toLowerCase().includes(inputSearhValue) ||
+          item.node.name.toLowerCase().includes(inputSearhValueEn)
+      )
+
+      const mapped = filteredResult.map((item) => item)
       // длинна строки
       function compareTwo (a, b) {
         var nameA = a.node.name.toLowerCase()
         var nameB = b.node.name.toLowerCase()
 
-        if (nameA.length < nameB.length) return -1
-        if (nameA.length > nameB.length) return 1
-        return 0
-      }
-      // точно соответствующий
-      function compareTree (a, b) {
-        var nameA = a.node.name.toLowerCase()
-        var nameB = b.node.name.toLowerCase()
-
-        if (
-          nameA.split(' ').includes(inputSearhValue) ||
-          nameA.split(' ').includes(inputSearhValueEn) <
-            nameB.split(' ').includes(inputSearhValue) ||
-          nameB.split(' ').includes(inputSearhValueEn)
-        ) {
-          return 1
-        }
-        if (
-          nameA.split(' ').includes(inputSearhValue) ||
-          nameA.split(' ').includes(inputSearhValueEn) >
-            nameB.split(' ').includes(inputSearhValue) ||
-          nameB.split(' ').includes(inputSearhValueEn)
-        ) {
-
-          return -1
-        }
-
-        return 0
+        return  nameA.split(' ').includes(inputSearhValue) <  nameB.split(' ').includes(inputSearhValue)
+          ? 1
+          : -1
       }
 
-      function compareFor (a, b) {
-        var nameA = a.node.name.toLowerCase()
-        var nameB = b.node.name.toLowerCase()
+      const resultMap = mapped.sort(compareTwo).splice(0, 10)
 
-        if (
-          nameA.split(' ').includes(inputSearhValue) ||
-          nameA.split(' ').includes(inputSearhValueEn) <
-            nameB.split(' ').includes(inputSearhValue) ||
-          nameB.split(' ').includes(inputSearhValueEn)
-        ) {
-          return 1
-        }
-        if (
-          nameA.split(' ').includes(inputSearhValue) ||
-          nameA.split(' ').includes(inputSearhValueEn) >
-            nameB.split(' ').includes(inputSearhValue) ||
-          nameB.split(' ').includes(inputSearhValueEn)
-        ) {
-          return -1
-        }
+      return resultMap
 
-        return 0
-      }
-
-      return this.searchResults
-      .filter(
-          item =>
-            item.node.name
-              .toLowerCase()
-              .includes(this.searchInput.toLowerCase()) ||
-            item.node.name.toLowerCase().includes(this.test.toLowerCase())
-        )
-        .sort(compareTree)
-        .sort(compareTwo)
-        .sort(compareFor)
-        
-        .splice(0, 10)
     }
   },
   methods: {
@@ -326,7 +275,10 @@ export default {
       this.$emit('mobSearchClose')
     },
     closeSearch () {
-      this.searchInputFake = this.searchInputFake.replace(this.searchInputFake, '')
+      this.searchInputFake = this.searchInputFake.replace(
+        this.searchInputFake,
+        ''
+      )
       this.mobSearchClose()
     },
     async search (value) {
@@ -334,6 +286,7 @@ export default {
       this.searchInputFake = value
       this.showSearch = true
       this.loadSearch = true
+      this.loading = true
       const lowerCase = value.toLowerCase()
       this.autoKeyboardLang(lowerCase)
 
@@ -355,7 +308,6 @@ export default {
           )
         }
       } catch (err) {
-        this.loading = false
         this.searchToEn()
         this.searchResults = []
       }
