@@ -36,12 +36,12 @@
     </div>
     <div
       v-if="modalPhoto == true && id.length > 0"
-      class="fixed w-screen top-0 left-0 h-screen  flex justify-center items-center z-[2]"
+      class="fixed w-screen top-0 left-0 h-screen  flex justify-center items-center z-[999999]"
     >
       <div class="fixed w-screen top-0 left-0 h-screen bg-[#343434]/50" @click="modalPhoto = false"></div>
       <!-- desctop -->
       <div
-        class="hidden sm:flex gap-0 sm:gap-[20px] justify-center items-center w-full  sm:max-w-[600px]"
+        class="hidden sm:flex gap-0 sm:gap-[20px] justify-center items-center w-full  sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]"
       > 
         <button 
         @click="prevSlide()" 
