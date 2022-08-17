@@ -72,13 +72,16 @@
               >
             </div>
           </div>
-          <div
-            v-if="inCart.includes(item.node.name)"
-            class="flex justify-center items-center   rounded-[5px] py-2 text-main    h-[40px] px-[8px] text-[16px]"
+           <div
+            v-if="
+              inCart.includes(item.node.name) ||
+                CART_IDS.includes(item.node.databaseId)
+            "
+            class="flex justify-center items-center   rounded-[5px] py-2 text-main gap-1   h-[40px] px-[8px] text-[14px]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-6 w-6 hidden sm:block"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -90,18 +93,19 @@
                 d="M5 13l4 4L19 7"
               />
             </svg>
+            <span class="text-[12px]">В корзине</span>
           </div>
-          <div v-else class="flex justify-end items-center">
-            <button
-              @click="productInCart(item.node.databaseId)"
-              class="bg-main/10   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2 h-[40px] lg:w-[160px]"
+
+          <button
+            v-else
+            @click="productInCart(item.node.databaseId)"
+            class="bg-main/20   text-[#343434] rounded-[5px] flex justify-center items-center gap-2 p-2"
+          >
+            <img src="/img/icons/add-to-cart.svg" alt="" />
+            <span class="text-[12px] sm:text-[16px]"
+              >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
             >
-              <img src="/img/icons/add-to-cart.svg" alt="" />
-              <span class="text-[12px] sm:text-[16px]"
-                >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
-              >
-            </button>
-          </div>
+          </button>
         </li>
         <span
           v-if="sortedArray.length == 0"
@@ -169,7 +173,7 @@ export default {
   },
   layout: 'MainLayout',
   computed: {
-    ...mapGetters(['CART']),
+    ...mapGetters(['CART', 'CART_IDS']),
     sortedArray: function () {
       const inputSearhValue = this.searchInputRes.toLowerCase()
       const inputSearhValueEn = this.test.toLowerCase()

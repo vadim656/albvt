@@ -25,7 +25,6 @@
             class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
             id="login"
           />
-          <span>{{credentials.username}}</span>
         </div>
         <div class="flex flex-col items-start justify-start gap-2 w-full ">
           <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
@@ -38,7 +37,6 @@
             class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
             id="pass"
           />
-          <span>{{credentials.password}}</span>
         </div>
         <div class="flex flex-col items-center justify-center gap-2">
           <button
@@ -69,7 +67,7 @@
                     <span class="text-[#A55B4A] uppercase text-[12px]"
                     >Неправильный логин или пароль</span
                   >
-                  <span>{{dataErrors}}</span>
+                  <!-- <span>{{dataErrors}}</span> -->
                   </div>
                   
                 </div>

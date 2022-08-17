@@ -1808,6 +1808,7 @@ export default {
         this.loginError = true
         console.log(errors)
       }
+      location.reload()
     },
     async handleLoginSubmit3 () {
       const phoneUser = this.credentials.username
@@ -1837,6 +1838,9 @@ export default {
         this.loginError = true
         console.log(errors)
       }
+      
+      location.reload()
+    
     },
     async onLogout () {
       await this.$apolloHelpers.onLogout()
