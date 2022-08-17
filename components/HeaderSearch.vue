@@ -36,7 +36,7 @@
 
       <ul
         v-show="searchInputFake.length >= 3 && showSearch == true"
-        class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md sm:px-0 [px-16px] sm:rounded-[5px] w-full overflow-y-auto sm:h-auto  max-h-[440px]"
+        class="absolute top-[4rem] left-0 flex flex-col bg-white z-[4] pt-4 shadow-md sm:px-0 [px-16px] sm:rounded-[5px] w-full overflow-y-auto sm:h-auto  max-h-[320px]"
       >
         <li
           v-for="(item, i) in sortedArray"
@@ -279,7 +279,10 @@ export default {
       )
       this.mobSearchClose()
       this.showSearch = false
-      console.log('closeSearch')
+      console.log(this.$nuxt.$route.name)
+      if (this.$nuxt.$route.name == "search-result") {
+          console.log('da');
+      }
     },
     async search (value) {
       this.searchInput = value

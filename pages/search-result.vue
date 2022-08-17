@@ -106,7 +106,7 @@
         <span
           v-if="sortedArray.length == 0"
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
-          >К сожалению ничего не найдено</span
+          >Идет поиск</span
         >
       </ul>
     </div>
@@ -377,6 +377,11 @@ export default {
   },
   created () {
     this.CurentInsearchInputRes()
+  },
+  watch: {
+    $route () {
+      location.reload()
+    }
   }
 }
 </script>
