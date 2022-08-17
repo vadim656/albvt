@@ -41,13 +41,13 @@
         <li
           v-for="(item, i) in sortedArray"
           :key="i"
+          @click="closeSearch()"
           class="border-b-[0.5px] border-b-[#D9D9D9]/50 px-4 py-3  grid grid-cols-[8fr,4fr] lg:grid-cols-[9fr,4fr] sm:grid-cols-[10fr,3fr] gap-2 items-center hover:bg-[#F5F5F5] anime"
         >
           <div class="flex flex-col gap-1">
             <!-- если комплекс -->
             <nuxt-link
               v-if="item.node.crossSell.edges.length"
-              @click="closeSearch()"
               :to="
                 '/all-complecs' +
                   '/' +
@@ -64,7 +64,6 @@
             <!-- если анализ -->
             <nuxt-link
               v-else
-              @click="closeSearch()"
               :to="
                 '/all-analyzes' +
                   '/' +
@@ -74,7 +73,7 @@
                   '/' +
                   item.node.databaseId
               "
-              class="test-text2 text-[#777777] hover:text-[#343434] font-semibold anime text-[12px] sm:text-[14px]"
+              class="text-[#777777] hover:text-[#343434] font-semibold anime text-[12px] sm:text-[14px]"
               :title="item.node.name"
               >{{ item.node.name }}</nuxt-link
             >
@@ -240,7 +239,6 @@ export default {
   computed: {
     ...mapGetters(['CART', 'CART_IDS']),
     sortedArray: function () {
-
       const inputSearhValue = this.searchInput.toLowerCase()
 
       const inputSearhValueEn = this.test.toLowerCase()
@@ -251,13 +249,14 @@ export default {
           item.node.name.toLowerCase().includes(inputSearhValueEn)
       )
 
-      const mapped = filteredResult.map((item) => item)
+      const mapped = filteredResult.map(item => item)
       // длинна строки
       function compareTwo (a, b) {
         var nameA = a.node.name.toLowerCase()
         var nameB = b.node.name.toLowerCase()
 
-        return  nameA.split(' ').includes(inputSearhValue) <  nameB.split(' ').includes(inputSearhValue)
+        return nameA.split(' ').includes(inputSearhValue) <
+          nameB.split(' ').includes(inputSearhValue)
           ? 1
           : -1
       }
@@ -265,7 +264,6 @@ export default {
       const resultMap = mapped.sort(compareTwo).splice(0, 10)
 
       return resultMap
-
     }
   },
   methods: {
@@ -280,6 +278,8 @@ export default {
         ''
       )
       this.mobSearchClose()
+      this.showSearch = false
+      console.log('closeSearch')
     },
     async search (value) {
       this.searchInput = value

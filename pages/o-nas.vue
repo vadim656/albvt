@@ -6,7 +6,7 @@
         <span class="font-medium">Наша лицензия</span>
         <div class="grid grid-cols-2 gap-[20px] lg:grid-cols-4 w-full">
           <div
-            v-for="(img, i) in photo.slice(0, 3)"
+            v-for="(img, i) in photo.slice(0, 4)"
             :key="i"
             class="flex flex-col justify-center items-center gap-1 bg-white shadow-md py-2 rounded-[5px] "
           >
@@ -21,7 +21,7 @@
         <span class="font-medium">Свидетельства ОГРН и ИНН</span>
         <div class="grid grid-cols-2 gap-[20px] lg:grid-cols-4 w-full">
           <div
-            v-for="(img, i) in photo.slice(3, 6)"
+            v-for="(img, i) in photo.slice(4, 6)"
             :key="i"
             class="flex flex-col justify-center items-center gap-1 bg-white shadow-md py-2 rounded-[5px] "
           >
@@ -126,7 +126,7 @@
         @click="nextSlide()" 
 
         class="z-[3]"
-        :class="[indexPhoto !== 4 ? 'opacity-100' : 'opacity-30 cursor-disable']"
+        :class="[indexPhoto !== 5 ? 'opacity-100' : 'opacity-30 cursor-disable']"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -164,6 +164,7 @@ export default {
         { src: '/img/1-o-nas.jpg' },
         { src: '/img/2-o-nas.jpg' },
         { src: '/img/3-o-nas.jpg' },
+        { src: '/img/4-o-nas.jpg' },
         // { src: '/img/license-4-b-400x516.png' },
         {
           src: '/img/ogrn.jpg',
@@ -186,7 +187,7 @@ export default {
       this.modalPhoto = true
     },
     nextSlide () {
-      if (this.indexPhoto !== 4) {
+      if (this.indexPhoto !== 5) {
         this.id = this.photo[this.indexPhoto++].src
       }
     },

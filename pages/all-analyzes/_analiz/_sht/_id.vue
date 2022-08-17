@@ -20,8 +20,8 @@
             </svg>
           </button>
     <div class="w-full sm:w-2/3  order-2 sm:order-1 gap-[20px]">
-      <div class="flex flex-col gap-[8px] ">
-       <button
+      <div class="flex flex-row items-start gap-[8px] ">
+        <button
             @click="$router.back()"
             class=" hidden sm:flex justify-center items-center"
           >
@@ -40,12 +40,15 @@
               />
             </svg>
           </button>
-        <h1
+       <div class="flex flex-col gap-[8px] ">
+          <h1
           class="font-medium pb-[8px] text-[24px]   block overflow-hidden"
         >
           {{ subcategory.name.replace(/[0-9]/g, '').replace(/\./g, "") }}:
         </h1>
         <h3 class="font-medium pb-4  text-[13px]">{{ products.name }}</h3>
+       </div>
+       
       </div>
 
       <div class=" flex flex-col gap-[20px] ">
