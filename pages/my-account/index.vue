@@ -3,36 +3,13 @@
     <!-- подумать об автозаполнии клиента исли был в офисе и потом захотел зарегистрироватся -->
     <div>
       <tabs-vk>
-        <tab-vk title="Результаты исследований">
+        <tab-vk title="Результаты исследований" >
           <div
             class="grid grid-cols-1  sm:grid-cols-[3fr,9fr] my-[47px] gap-[20px]"
           >
-            <div class=" bg-white rounded-[5px] shadow-md flex flex-col ">
-              <div
-                class="bg-[#EDEDED] p-4  flex flex-col gap-4 font-medium text-[18px]"
-              >
-                <span class=" capitalize">{{ this.$auth.user.firstName }}</span>
-                <span class=" capitalize">{{ this.$auth.user.lastName }}</span>
-                <!-- <span class="capitalize ">{{ user.lastName }}</span>  -->
-                <!-- <span>{{ this.$auth.$state.user.client_data.otchestvo }}</span> -->
-              </div>
-
-              <div class="flex flex-col gap-4 h-full justify-between p-4">
-                <!-- <div>Ваша скидка 0%</div> -->
-                <button
-                  @click="handleReload()"
-                  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
-                >
-                  Обновить информацию
-                </button>
-                <button
-                  @click="handleLogout()"
-                  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
-                >
-                  Выйти
-                </button>
-              </div>
-            </div>
+            <lk-user-info 
+            @handleReload="handleReload" 
+            @handleLogout="handleLogout"/>
 
             <!-- мобильная -->
 
@@ -41,28 +18,26 @@
               v-if="orders && orders.edges.length "
             >
               <span class="text-[14px] font-medium">Мои заказы</span>
-              <lk-zakaz
+              <!-- <lk-zakaz
                 v-for="item in orders.edges"
                 :key="item.node.databaseId"
                 :item="item"
                 @openItemInfo="openItemInfo(item.node.databaseId)"
                 @oplata="oplata(parseInt(item.node.total.replace('₽', '')))"
                 :itemID="itemID"
-              />
+              /> -->
             </div>
             <!-- десктоп -->
 
             <div
               class="hidden sm:grid grid-cols-1 gap-[20px]"
-              v-if="orders && orders.edges.length"
+              v-if="orders.edges.length > 0"
             >
               <span class="text-[20px] font-medium">Мои заказы</span>
               <lk-zakaz-desc
-                v-for="item in orders.edges"
-                :key="item.node.databaseId"
-                :item="item"
-                @openItemInfo="openItemInfo(item.node.databaseId)"
-                @oplata="oplata(parseInt(item.node.total.replace('₽', '')))"
+                v-for="(order, i) in orders.edges"
+                :key="i"
+                :order_data="order.node"
                 :itemID="itemID"
               />
             </div>
@@ -169,23 +144,9 @@
           <div
             class="grid grid-cols-1 sm:grid-cols-[3fr,9fr] my-[47px] gap-[20px]"
           >
-            <div class=" bg-white rounded-[5px] shadow-md flex flex-col ">
-              <div
-                class="bg-[#EDEDED] p-4  flex flex-col gap-4 font-medium text-[18px]"
-              >
-                <span class=" capitalize">{{ this.$auth.user.firstName }}</span>
-                <span class=" capitalize">{{ this.$auth.user.lastName }}</span>
-              </div>
-              <div class="flex flex-col h-full justify-between p-4">
-                <!-- <div>Ваша скидка 10%</div> -->
-                <button
-                  @click="handleLogout"
-                  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
-                >
-                  Выйти
-                </button>
-              </div>
-            </div>
+            <lk-user-info 
+            @handleReload="handleReload" 
+            @handleLogout="handleLogout"/>
             <div
               class="bg-white rounded-[5px] shadow-md p-4 flex flex-col gap-4"
             >
@@ -372,6 +333,7 @@ import TabVk from '~/components/tabs/tab-vk.vue'
 import LkZakaz from '~/components/lk-user/lk-zakaz.vue'
 import LkZakazDesc from '~/components/lk-user/lk-zakaz-desc.vue'
 import { VueAgile } from 'vue-agile'
+import LkUserInfo from '~/components/lk-user/lk-user-info.vue'
 
 const ALL_PRODUCTS_CART = gql`
   query ALL_PRODUCTS_CART($customerId: Int) {
@@ -477,7 +439,7 @@ export default {
       }
     }
   },
-  components: { tabsVk, TabVk, LkZakaz, LkZakazDesc, agile: VueAgile },
+  components: { tabsVk, TabVk, LkZakaz, LkZakazDesc, agile: VueAgile, LkUserInfo },
   layout: 'MainLayout',
   middleware: ['isAuth'],
   data () {
@@ -539,9 +501,6 @@ export default {
       } else {
         this.itemID = id
       }
-    },
-    onSlideChange () {
-      console.log('slide change')
     },
     handleReload () {
       location.reload()

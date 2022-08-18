@@ -73,7 +73,7 @@
                 class="flex flex-col gap-4"
               >
                 <div
-                  class="flex flex-col items-start justify-start gap-2 w-full "
+                  class="flex flex-col items-start justify-start gap-2 w-full relative"
                 >
                   <!-- <label for="login" class="text-[14px]">Логин</label> -->
                   <input
@@ -87,17 +87,57 @@
                   />
                 </div>
                 <div
-                  class="flex flex-col items-start justify-start gap-2 w-full "
+                  class="flex flex-col items-start justify-start gap-2 w-full relative"
                 >
                   <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
                   <input
-                    type="password"
+                    :type="typePassword"
                     placeholder="Пароль"
                     value="ofis_my"
                     v-model="credentials.password"
                     class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     id="pass"
                   />
+                  <button
+                    @click="show_hide_password()"
+                    class="absolute right-[14px] top-[14px]"
+                  >
+                    <svg
+                      v-if="typePassword == 'password'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 text-[#343434]/70"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                    <svg
+                      v-else
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 text-[#343434]/70"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-2">
                   <button
@@ -150,16 +190,56 @@
                   />
                 </div>
                 <div
-                  class="flex flex-col items-start justify-start gap-2 w-full "
+                  class="flex flex-col items-start justify-start gap-2 w-full relative"
                 >
                   <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
                   <input
-                    type="password"
+                    :type="typePassword"
                     placeholder="Пароль"
                     v-model="credentials2.password"
                     class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     id="pass2"
                   />
+                  <button
+                    @click="show_hide_password()"
+                    class="absolute right-[14px] top-[14px]"
+                  >
+                    <svg
+                      v-if="typePassword == 'password'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 text-[#343434]/70"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                    <svg
+                      v-else
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 text-[#343434]/70"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                      />
+                    </svg>
+                  </button>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-2">
                   <button
@@ -401,9 +481,11 @@
               <label for="company-website" class="block text-[12px]">
                 Пароль
               </label>
-              <div class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm">
+              <div
+                class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm relative"
+              >
                 <input
-                  type="password"
+                  :type="typePassword"
                   id="company-website"
                   class="input-med"
                   @input="doneformZakazZakaz()"
@@ -415,6 +497,46 @@
                       : '!border-[green] !focus:outline-[green]'
                   ]"
                 />
+                <button
+                  @click="show_hide_password()"
+                  class="absolute right-[14px] top-[14px]"
+                >
+                  <svg
+                    v-if="typePassword == 'password'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-[#343434]/70"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                  <svg
+                    v-else
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-[#343434]/70"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                    />
+                  </svg>
+                </button>
                 <span class="text-[12px] text-[#343434]/70"
                   >Пароль должен состоять из 8 и более символов</span
                 >
@@ -424,9 +546,11 @@
               <label for="company-website" class="block text-[12px]">
                 Повторите пароль
               </label>
-              <div class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm">
+              <div
+                class="mt-1 flex flex-col gap-1 rounded-[5px] shadow-sm relative"
+              >
                 <input
-                  type="password"
+                  :type="typePassword"
                   id="company-website"
                   class="input-med"
                   @input="doneformZakazZakaz()"
@@ -439,6 +563,46 @@
                       : '!focus:outline-[#A55B4A] !border-[#A55B4A]'
                   ]"
                 />
+                <button
+                  @click="show_hide_password()"
+                  class="absolute right-[14px] top-[14px]"
+                >
+                  <svg
+                    v-if="typePassword == 'password'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-[#343434]/70"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                  <svg
+                    v-else
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-[#343434]/70"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                    />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -701,7 +865,10 @@
               class="input-med"
           /></client-only>
         </div>
-        <div class="flex flex-col items-start justify-center gap-2 w-full" v-if="formZakaz.mesto == 'ofis_my'">
+        <div
+          class="flex flex-col items-start justify-center gap-2 w-full"
+          v-if="formZakaz.mesto == 'ofis_my'"
+        >
           <label for="company-website" class="block text-[12px]">
             Если пациент младше 18 лет
           </label>
@@ -803,9 +970,8 @@
                           id="company-website"
                           class="input-med w-full"
                           v-model="formZakaz.ulitcha"
-                          placeholder="г. Ростов на дону, 45 параллель, 13 "
                           :class="[
-                            this.formZakaz.ulitcha.length <= 6
+                            this.formZakaz.ulitcha.length <= 24
                               ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                               : '!border-[green] !focus:outline-[green]'
                           ]"
@@ -1120,21 +1286,39 @@
             'Выберите ближайший офис нашего партнера ИНВИТРО:'
       "
       @click="modalInvitroView()"
-      class="fixed flex justify-center items-center bg-[#343434]/40  w-screen h-screen left-0 top-0  z-[1] backdrop-blur-sm"
+      class="fixed flex justify-center items-center bg-[#343434]/40  w-screen h-screen left-0 top-1  z-[99999999] backdrop-blur-sm"
     >
       <div
         class="w-[400px] h-full max-h-[500px] z-[6] bg-white p-4 rounded-[5px] shadow-md"
       >
         <div
-          class="bg-white p-4 rounded-[5px] shadow-md flex flex-col gap-2"
+          class="bg-white p-2 rounded-[5px] shadow-md flex flex-col gap-2 relative"
           v-if="
             formZakaz.mesto == 'ofic' &&
               formZakaz.invitroSelect !==
                 'Выберите ближайший офис нашего партнера ИНВИТРО:'
           "
         >
+          <button @click="modalInvitro = false" class="flex items-center justify-end gap-1 text-[12px]">
+            Закрыть
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
           <span class="text-[#746F6F] text-[14px] w-full text-center"
-            >Вы находитесь на сайте нашего партнера ИНВИТРО</span
+            >Вы находитесь на сайте <br />
+            нашего партнера ИНВИТРО</span
           >
           <span class="text-[#B07263] w-full text-center text-[14px]"
             >Ознакомьтесь с подробной информацией о работе данного офиса.</span
@@ -1191,12 +1375,31 @@
         <span v-if="status == true">Сообщение успешно отправлено</span>
         <span v-else-if="errors.length">{{ status }}</span>
         <button
-          v-show="formZakaz.name.length !== 0 && formZakaz.phone.length === 16"
+          v-show="
+            formZakaz.name.length !== 0 &&
+              formZakaz.phone.length === 16 &&
+              status == false
+          "
           @click="ConsultZayavka()"
           class="rounded-[5px]  border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full max-w-[250px] flex justify-center items-center py-2 text-[16px]"
         >
           Отправить
         </button>
+        <svg
+          v-show="status == true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          class="h-6 w-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M5 13l4 4L19 7"
+          ></path>
+        </svg>
         <span @click="modalConsul = !modalConsul" class="cursor-pointer"
           >Закрыть</span
         >
@@ -1241,6 +1444,7 @@ export default {
   data () {
     return {
       date_today: new Date(),
+      typePassword: 'password',
       ru: ru,
       step: 0,
       form: {
@@ -1260,7 +1464,7 @@ export default {
         passportData: '',
         passportKem: '',
         gorod: '',
-        ulitcha: '',
+        ulitcha: 'г. Ростов-на-Дону, ',
         nomerDoma: '',
         kvartira: '',
         dateAnaliz: '',
@@ -1398,6 +1602,14 @@ export default {
     }
   },
   methods: {
+    show_hide_password () {
+      if (this.typePassword == 'password') {
+        this.typePassword = 'text'
+      } else {
+        this.typePassword = 'password'
+      }
+      return false
+    },
     nextStep () {
       if (this.step == 1) {
         this.validUserCheck()
@@ -1468,7 +1680,6 @@ export default {
       if (
         (this.formZakaz.name, length !== 0 && this.formZakaz.phone.length == 18)
       ) {
-        console.log('da')
       } else {
         this.modalConsul = true
       }
@@ -1722,7 +1933,7 @@ export default {
         payment_method_title: 'Direct Bank Transfer',
         customer_id: this.jjj22.user.databaseId,
         set_paid: false,
-        status: 'processing',
+        status: 'pending',
         billing: {
           first_name: this.formZakaz.name,
           last_name: this.formZakaz.family,
@@ -1742,6 +1953,7 @@ export default {
             path: '/cart/thanks',
             query: { order: response.id }
           })
+          this.RESET_CART()
         })
         .catch(error => {
           this.errors = error.response.data.message
@@ -1838,9 +2050,8 @@ export default {
         this.loginError = true
         console.log(errors)
       }
-      
+
       location.reload()
-    
     },
     async onLogout () {
       await this.$apolloHelpers.onLogout()
