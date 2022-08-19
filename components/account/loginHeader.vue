@@ -28,7 +28,9 @@
                 id="login"
               />
             </div>
-            <div class="flex flex-col items-start justify-start gap-2 w-full relative">
+            <div
+              class="flex flex-col items-start justify-start gap-2 w-full relative"
+            >
               <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
               <input
                 :type="typePassword"
@@ -39,7 +41,10 @@
                 class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a] password-area"
                 id="passHeader"
               />
-              <button @click="show_hide_password()" class="absolute right-[14px] top-[14px]">
+              <button
+                @click="show_hide_password()"
+                class="absolute right-[14px] top-[14px]"
+              >
                 <svg
                   v-if="typePassword == 'password'"
                   xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +139,9 @@
                 id="login2"
               />
             </div>
-            <div class="flex flex-col items-start justify-start gap-2 w-full relative">
+            <div
+              class="flex flex-col items-start justify-start gap-2 w-full relative"
+            >
               <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
               <input
                 :type="typePassword"
@@ -144,7 +151,10 @@
                 class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                 id="pass2"
               />
-              <button @click="show_hide_password()" class="absolute right-[14px] top-[14px]">
+              <button
+                @click="show_hide_password()"
+                class="absolute right-[14px] top-[14px]"
+              >
                 <svg
                   v-if="typePassword == 'password'"
                   xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +268,6 @@ export default {
       } else {
         this.typePassword = 'password'
       }
-      return false
     },
     async handleLoginSubmit () {
       const phoneUser = this.credentials.username
@@ -280,6 +289,9 @@ export default {
         // console.log(localStorage["auth._token.graphql"]);
         this.formBusy = false
         this.loginError = false
+        setTimeout(() => {
+          this.$nuxt.$router.replace({ path: '/my-account' })
+        }, 1000)
       } catch (errors) {
         this.formBusy = false
         this.loginError = true
@@ -298,6 +310,9 @@ export default {
         // console.log(localStorage["auth._token.graphql"]);
         this.formBusy = false
         this.loginError = false
+         setTimeout(() => {
+          this.$nuxt.$router.replace({ path: '/my-account' })
+        }, 1000)
       } catch (errors) {
         this.formBusy = false
         this.loginError = true

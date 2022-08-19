@@ -1933,7 +1933,7 @@ export default {
         payment_method_title: 'Direct Bank Transfer',
         customer_id: this.jjj22.user.databaseId,
         set_paid: false,
-        status: 'pending',
+        status: 'on-hold',
         billing: {
           first_name: this.formZakaz.name,
           last_name: this.formZakaz.family,

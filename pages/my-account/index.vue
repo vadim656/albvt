@@ -15,29 +15,29 @@
 
             <div
               class="sm:hidden grid grid-cols-1 gap-[20px]"
-              v-if="orders && orders.edges.length "
+              v-if="orders && orders.edges.length && orders.edges !== null"
             >
               <span class="text-[14px] font-medium">Мои заказы</span>
-              <!-- <lk-zakaz
-                v-for="item in orders.edges"
-                :key="item.node.databaseId"
-                :item="item"
-                @openItemInfo="openItemInfo(item.node.databaseId)"
-                @oplata="oplata(parseInt(item.node.total.replace('₽', '')))"
+              <lk-zakaz
+                v-for="(order, i) in orders.edges"
+                :key="i"
+                :order_data="order.node"
+                @openItemInfo="openItemInfo(order.node.databaseId)"
                 :itemID="itemID"
-              /> -->
+              />
             </div>
             <!-- десктоп -->
 
             <div
               class="hidden sm:grid grid-cols-1 gap-[20px]"
-              v-if="orders.edges.length > 0"
+              v-if="orders.edges.length > 0 && orders.edges !== null"
             >
               <span class="text-[20px] font-medium">Мои заказы</span>
               <lk-zakaz-desc
                 v-for="(order, i) in orders.edges"
                 :key="i"
                 :order_data="order.node"
+                @openItemInfo="openItemInfo(order.node.databaseId)"
                 :itemID="itemID"
               />
             </div>
@@ -431,7 +431,7 @@ export default {
       query: ALL_PRODUCTS_CART,
       variables () {
         return {
-          customerId: parseInt(this.demo)
+          customerId: parseInt(this.$auth.user.databaseId)
         }
       },
       update (data) {
