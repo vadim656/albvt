@@ -62,10 +62,10 @@
           >Отменен</span
         >
 
-        <span
+        <div
           v-else-if="order_data.status == 'COMPLETED'"
-          class="text-[14px] cursor-default text-white bg-[#1EA750]  font-light py-[14px]  w-full  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
-          >Оплачен</span
+          class="text-[14px] text-center cursor-default text-white bg-[#1EA750]  font-light py-[14px]  w-full  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
+          >Оплачен</div
         >
         <button
           v-else

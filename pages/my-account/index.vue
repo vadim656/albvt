@@ -13,35 +13,43 @@
 
             <!-- мобильная -->
 
+
             <div
               class="sm:hidden grid grid-cols-1 gap-[20px]"
-              v-if="orders && orders.edges.length && orders.edges !== null"
+              v-if="dataOrders.orders.edges.length > 0 && dataOrders.orders.edges !== null"
             >
               <span class="text-[14px] font-medium">Мои заказы</span>
               <lk-zakaz
-                v-for="(order, i) in orders.edges"
+                v-for="(order, i) in dataOrders.orders.edges"
                 :key="i"
                 :order_data="order.node"
                 @openItemInfo="openItemInfo(order.node.databaseId)"
+                @oplata="oplata(order.node.total)"
                 :itemID="itemID"
               />
             </div>
+
+
+
             <!-- десктоп -->
 
             <div
               class="hidden sm:grid grid-cols-1 gap-[20px]"
-              v-if="orders.edges.length > 0 && orders.edges !== null"
+              v-if="dataOrders.orders.edges.length > 0 && dataOrders.orders.edges !== null"
             >
               <span class="text-[20px] font-medium">Мои заказы</span>
               <lk-zakaz-desc
-                v-for="(order, i) in orders.edges"
+                v-for="(order, i) in dataOrders.orders.edges"
                 :key="i"
                 :order_data="order.node"
                 @openItemInfo="openItemInfo(order.node.databaseId)"
+                @oplata="oplata(order.node.total)"
                 :itemID="itemID"
               />
             </div>
             <span v-else>Вы еще не сделали заказ</span>
+
+
           </div>
         </tab-vk>
         <tab-vk title="Выгодные предложения">
@@ -426,19 +434,19 @@ const UPDATE_USER = gql`
 `
 
 export default {
-  apollo: {
-    orders: {
-      query: ALL_PRODUCTS_CART,
-      variables () {
-        return {
-          customerId: parseInt(this.$auth.user.databaseId)
-        }
-      },
-      update (data) {
-        return data.orders
-      }
-    }
-  },
+  // apollo: {
+  //   orders: {
+  //     query: ALL_PRODUCTS_CART,
+  //     variables () {
+  //       return {
+  //         customerId: parseInt(this.$auth.user.databaseId)
+  //       }
+  //     },
+  //     update (data) {
+  //       return data.orders
+  //     }
+  //   }
+  // },
   components: { tabsVk, TabVk, LkZakaz, LkZakazDesc, agile: VueAgile, LkUserInfo },
   layout: 'MainLayout',
   middleware: ['isAuth'],
@@ -455,6 +463,7 @@ export default {
       userID: null,
       itemID: 0,
       demo: '',
+      orders: [],
       allLK: {
         navButtons: false,
         dots: true,
@@ -470,7 +479,7 @@ export default {
   methods: {
     oplata (total) {
       console.log(total)
-      const sum = total.toString()
+      const sum = total.toString().replace('₽', '')
       const test = 'MerchantLogin:OutSum:InvId:Пароль#1'
       var value = ('albvt:' + sum + ':1:' + 'kZqrav14Gq6afwQ7OaD5').toString()
       var result = CryptoJS.MD5(value)
@@ -550,9 +559,18 @@ export default {
           id: databaseId
         }
       })
-      const dataMe = resMe.data
 
-      return { dataMe }
+      const resOrders = await client.query({
+        query: ALL_PRODUCTS_CART,
+        variables: {
+          customerId: parseInt(databaseId)
+        }
+      })
+
+      return { 
+        dataMe: resMe.data,
+        dataOrders: resOrders.data,
+       }
     }
   }
 }

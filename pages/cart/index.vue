@@ -98,7 +98,7 @@
                     class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     id="pass"
                   />
-                  <button
+                  <div
                     @click="show_hide_password()"
                     class="absolute right-[14px] top-[14px]"
                   >
@@ -137,7 +137,7 @@
                         d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
                       />
                     </svg>
-                  </button>
+                  </div>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-2">
                   <button
@@ -200,7 +200,7 @@
                     class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                     id="pass2"
                   />
-                  <button
+                  <div
                     @click="show_hide_password()"
                     class="absolute right-[14px] top-[14px]"
                   >
@@ -239,7 +239,7 @@
                         d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
                       />
                     </svg>
-                  </button>
+                  </div>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-2">
                   <button
@@ -398,7 +398,7 @@
                   v-facade="'##.##.####'"
                   v-model="formZakaz.dataRozhdeniya"
                   :class="[
-                    this.formZakaz.dataRozhdeniya.length !== 10
+                    formZakaz.dataRozhdeniya.length !== 10
                       ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                       : '!border-[green] !focus:outline-[green]'
                   ]"
@@ -497,7 +497,7 @@
                       : '!border-[green] !focus:outline-[green]'
                   ]"
                 />
-                <button
+                <div
                   @click="show_hide_password()"
                   class="absolute right-[14px] top-[14px]"
                 >
@@ -536,7 +536,7 @@
                       d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
                     />
                   </svg>
-                </button>
+                </div>
                 <span class="text-[12px] text-[#343434]/70"
                   >Пароль должен состоять из 8 и более символов</span
                 >
@@ -563,7 +563,7 @@
                       : '!focus:outline-[#A55B4A] !border-[#A55B4A]'
                   ]"
                 />
-                <button
+                <div
                   @click="show_hide_password()"
                   class="absolute right-[14px] top-[14px]"
                 >
@@ -602,7 +602,7 @@
                       d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
                     />
                   </svg>
-                </button>
+                </div>
               </div>
             </div>
           </div>
@@ -718,7 +718,7 @@
               @input="doneformZakazZakaz()"
               placeholder="Иван"
               :class="[
-                this.formZakaz.name.length == 0
+                formZakaz.name.length == 0
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"
@@ -739,7 +739,7 @@
               @input="doneformZakazZakaz()"
               placeholder="Иванов"
               :class="[
-                this.formZakaz.family.length == 0
+                formZakaz.family.length == 0
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"
@@ -760,7 +760,7 @@
               @input="doneformZakazZakaz()"
               placeholder="Петрович"
               :class="[
-                this.formZakaz.otchestvo.length == 0
+                formZakaz.otchestvo.length == 0
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"
@@ -783,7 +783,7 @@
               v-facade="'#### ######'"
               v-model="formZakaz.passportSeriya"
               :class="[
-                this.formZakaz.passportSeriya.length !== 11
+                formZakaz.passportSeriya.length !== 11
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"
@@ -804,7 +804,7 @@
               v-model="formZakaz.email"
               @input="doneformZakazZakaz()"
               :class="[
-                this.formZakaz.email.length <= 6
+                formZakaz.email.length <= 6
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"
@@ -830,7 +830,7 @@
               placeholder="+7(___)___−__−__*"
               v-facade="'+7(###)###-##-##'"
               :class="[
-                this.formZakaz.phone.length !== 16
+                formZakaz.phone.length !== 16
                   ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                   : '!border-[green] !focus:outline-[green]'
               ]"
@@ -924,7 +924,7 @@
                   ]"
                 >
                   <span class="w-full text-center"
-                    >В офисе нашего партнера ИНВИТРО,<br />
+                    >В офисе <br> нашего партнера ИНВИТРО,<br />
                     но по <span class="text-main">НАШИМ</span> низким
                     ценам</span
                   >
@@ -971,7 +971,7 @@
                           class="input-med w-full"
                           v-model="formZakaz.ulitcha"
                           :class="[
-                            this.formZakaz.ulitcha.length <= 24
+                            formZakaz.ulitcha.length <= 24
                               ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
                               : '!border-[green] !focus:outline-[green]'
                           ]"
@@ -1354,11 +1354,11 @@
           placeholder="Имя"
           v-model="formZakaz.name"
           :class="[
-            this.formZakaz.name.length <= 0
+            formZakaz.name.length <= 0
               ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
               : '!border-[green] !focus:outline-[green]'
           ]"
-          class=" input-med"
+          class=" input-med w-full max-w-[250px]"
         />
         <input
           type="text"
@@ -1366,11 +1366,11 @@
           v-facade="'+7(###)###-##-##'"
           v-model="formZakaz.phone"
           :class="[
-            this.formZakaz.phone.length !== 16
+            formZakaz.phone.length !== 16
               ? ' !focus:outline-[#A55B4A] !border-[#A55B4A]'
               : '!border-[green] !focus:outline-[green]'
           ]"
-          class=" input-med "
+          class=" input-med w-full max-w-[250px]"
         />
         <span v-if="status == true">Сообщение успешно отправлено</span>
         <span v-else-if="errors.length">{{ status }}</span>
