@@ -78,13 +78,6 @@
         /></svg
       ><span class="text-[12px]">В корзине</span>
     </div>
-    <button
-      @click="sendToBack()"
-      v-else
-      class="flex justify-center items-center border bg-white  border-main rounded-[5px] sm:py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
-    >
-      <span class=""> В корзину</span>
-    </button>
     <div v-if="data.stock_status == 'outofstock'" class="w-full flex items-center justify-center gap-1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -102,6 +95,14 @@
       </svg>
       <span class=" text-center text-danger">Временно недоступен</span>
     </div>
+    <button
+      @click="sendToBack()"
+      v-else
+      class="flex justify-center items-center border bg-white  border-main rounded-[5px] sm:py-2 text-main  hover:bg-main hover:text-white anime h-[40px] px-[8px] text-[14px]"
+    >
+      <span class=""> В корзину</span>
+    </button>
+    
 
     
   </div>

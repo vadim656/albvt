@@ -130,7 +130,12 @@
             </svg>
             <span class="text-[12px]">В корзине</span>
           </div>
-
+          <div
+            v-if="item.node.stockStatus !== 'IN_STOCK'"
+            class="w-full flex justify-center items-center"
+          >
+            <span class="text-[12px] text-danger">Временно недоступен</span>
+          </div>
           <button
             v-else
             @click="productInCart(item.node.databaseId)"
@@ -141,12 +146,7 @@
               >{{ parseInt(item.node.price).toLocaleString('ru-RU') }} ₽</span
             >
           </button>
-          <div
-            v-if="item.node.stockStatus !== 'IN_STOCK'"
-            class="w-full flex justify-center items-center"
-          >
-            <span class="text-[12px] text-danger">Временно недоступен</span>
-          </div>
+          
         </li>
         <nuxt-link
           v-if="searchResults.length != 0"
