@@ -3,20 +3,23 @@
     <!-- подумать об автозаполнии клиента исли был в офисе и потом захотел зарегистрироватся -->
     <div>
       <tabs-vk>
-        <tab-vk title="Результаты исследований" >
+        <tab-vk title="Результаты исследований">
           <div
             class="grid grid-cols-1  sm:grid-cols-[3fr,9fr] my-[47px] gap-[20px]"
           >
-            <lk-user-info 
-            @handleReload="handleReload" 
-            @handleLogout="handleLogout"/>
+            <lk-user-info
+              @handleReload="handleReload"
+              @handleLogout="handleLogout"
+            />
 
             <!-- мобильная -->
 
-
             <div
               class="sm:hidden grid grid-cols-1 gap-[20px]"
-              v-if="dataOrders.orders.edges.length > 0 && dataOrders.orders.edges !== null"
+              v-if="
+                dataOrders.orders.edges.length > 0 &&
+                  dataOrders.orders.edges !== null
+              "
             >
               <span class="text-[14px] font-medium">Мои заказы</span>
               <lk-zakaz
@@ -29,13 +32,14 @@
               />
             </div>
 
-
-
             <!-- десктоп -->
 
             <div
               class="hidden sm:grid grid-cols-1 gap-[20px]"
-              v-if="dataOrders.orders.edges.length > 0 && dataOrders.orders.edges !== null"
+              v-if="
+                dataOrders.orders.edges.length > 0 &&
+                  dataOrders.orders.edges !== null
+              "
             >
               <span class="text-[20px] font-medium">Мои заказы</span>
               <lk-zakaz-desc
@@ -48,8 +52,6 @@
               />
             </div>
             <span v-else>Вы еще не сделали заказ</span>
-
-
           </div>
         </tab-vk>
         <tab-vk title="Выгодные предложения">
@@ -152,9 +154,10 @@
           <div
             class="grid grid-cols-1 sm:grid-cols-[3fr,9fr] my-[47px] gap-[20px]"
           >
-            <lk-user-info 
-            @handleReload="handleReload" 
-            @handleLogout="handleLogout"/>
+            <lk-user-info
+              @handleReload="handleReload"
+              @handleLogout="handleLogout"
+            />
             <div
               class="bg-white rounded-[5px] shadow-md p-4 flex flex-col gap-4"
             >
@@ -345,7 +348,7 @@ import LkUserInfo from '~/components/lk-user/lk-user-info.vue'
 
 const ALL_PRODUCTS_CART = gql`
   query ALL_PRODUCTS_CART($customerId: Int) {
-    orders(where: { customerId: $customerId }) {
+    orders(where: { customerId: $customerId }, first: 100) {
       edges {
         node {
           databaseId
@@ -363,13 +366,16 @@ const ALL_PRODUCTS_CART = gql`
                 databaseId
                 product {
                   node {
+                    databaseId
                     attributes {
                       edges {
                         node {
                           options
+                          name
                         }
                       }
                     }
+                    name
                   }
                 }
               }
@@ -447,7 +453,14 @@ export default {
   //     }
   //   }
   // },
-  components: { tabsVk, TabVk, LkZakaz, LkZakazDesc, agile: VueAgile, LkUserInfo },
+  components: {
+    tabsVk,
+    TabVk,
+    LkZakaz,
+    LkZakazDesc,
+    agile: VueAgile,
+    LkUserInfo
+  },
   layout: 'MainLayout',
   middleware: ['isAuth'],
   data () {
@@ -567,10 +580,10 @@ export default {
         }
       })
 
-      return { 
+      return {
         dataMe: resMe.data,
-        dataOrders: resOrders.data,
-       }
+        dataOrders: resOrders.data
+      }
     }
   }
 }

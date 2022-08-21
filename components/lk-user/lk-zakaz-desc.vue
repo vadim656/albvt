@@ -13,18 +13,6 @@
           order_data.date.substring(10, 0)
         }}</span>
       </div>
-      <!-- <button
-        @click="openItemInfo(order_data.databaseId)"
-        class="flex justify-end items-center gap-1 text-[14px] font-semibold col-span-1"
-      >
-        Подробнее
-        <img
-          v-if="order_data.databaseId !== itemID"
-          src="/img/icons/arrow-right.svg"
-          alt=""
-        />
-        <img v-else src="/img/icons/arrow-right.svg" alt="" class="rotate-90" />
-      </button> -->
     </div>
     <div class="grid grid-cols-3 grid-rows-1 gap-y-4">
       <div class="col-span-1 flex flex-col justify-center items-start gap-2">
@@ -44,12 +32,11 @@
           <span v-if="sortedDataDay >= 2 && sortedDataDay < 5">дня</span>
           <span v-if="sortedDataDay == 1 || sortedDataDay == 21">день</span>
           <span v-if="sortedDataDay >= 20 && sortedDataDay < 25">дня</span>
-         
         </div>
       </div>
       <div class="col-span-1 w-full flex justify-end">
         <span
-          v-if="order_data.status == 'PROCESSING'"
+          v-if="order_data.status == 'ON_HOLD'"
           class="text-[14px] text-white bg-[#5A5A5A] font-light px-[14px] py-[14px]  w-full max-w-[220px]  sm:flex sm:items-center sm:justify-center  border-[0.5px] border-main rounded-[5px]"
           >Обработка</span
         >
@@ -98,10 +85,16 @@ export default {
   computed: {
     sortedDataDay: function () {
       const days = this.order_data.lineItems.edges
-      const dayValue = days.map(item =>
-        parseInt(item.node.product.node.attributes.edges[0].node.options[0])
-      )
-      return Math.max.apply(null, dayValue)
+      if (days !== null || 0 || '0') {
+        const dayValue = days.map((item) =>
+          // item.node.product.node.attributes.edges[0].node
+         parseInt(item.node.product.node.attributes.edges[0].node.options[0]) !== null ||  parseInt(item.node.product.node.attributes.edges[0].node.options[0]) !== 0  ? parseInt(item.node.product.node.attributes.edges[0].node.options[0]) : 1
+          
+        )
+        return Math.max.apply(null, dayValue)
+      } else {
+        return 1
+      }
     }
   }
 }
