@@ -150,6 +150,7 @@ const ALL_CHARACTERS_QUERY = gql`
           databaseId
           ... on SimpleProduct {
             price(format: RAW)
+            stockStatus
           }
           productCategories {
             edges {

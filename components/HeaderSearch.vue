@@ -154,7 +154,7 @@
           replace
           class=" w-full flex justify-center items-center py-4 text-[#343434] hover:bg-[#CBCBCB] anime bg-[#E2E2E2]"
         >
-          <span @click="closeSearch()"> Все результаты</span>
+          <span  @click="closeSearch()"> Все результаты</span>
         </nuxt-link>
         <span
           v-if="loading == true"
@@ -335,7 +335,6 @@ export default {
           return { results }
         }
       } catch (err) {
-        this.loading = false
         this.searchResults = []
       }
     },
