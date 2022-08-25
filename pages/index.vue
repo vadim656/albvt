@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main-page-wrapper :data_wrap="data" :isMobile="isMobile"  />
+    <main-page-wrapper :data_wrap="data" :isMobile="isMobile" />
   </div>
 </template>
 
@@ -12,18 +12,18 @@ export default {
     return {
       data: [],
       dataInfo: [],
-      isMobile: false
+      isMobile: false,
     }
   },
-   beforeDestroy () {
+  beforeDestroy () {
     if (typeof window !== 'undefined') {
       window.removeEventListener('resize', this.onResize, { passive: true })
     }
   },
   methods: {
-     onResize () {
+    onResize () {
       this.isMobile = window.innerWidth < 600
-      console.log(this.$route.path);
+      console.log(this.$route.path)
     }
   },
   mounted () {
@@ -44,6 +44,7 @@ export default {
         }
       }
     )
+    
 
     return { data }
   }

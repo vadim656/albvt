@@ -11,21 +11,23 @@
             class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4"
           >
             <span class="text-[30px] text-main">1</span>
-            <span>Оставьте заявку</span>
+            <span>
+              {{ dataViezd.acf.step_1 }}
+            </span>
           </div>
           <span class="w-full h-[2px] bg-main hidden sm:block"></span>
           <div
             class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4"
           >
             <span class="text-[30px] text-main">2</span>
-            <span>Дождитесь звонка</span>
+            <span>{{ dataViezd.acf.step_2 }}</span>
           </div>
           <span class="w-full h-[2px] bg-main hidden sm:block"></span>
           <div
             class="flex flex-col gap-2 bg-white shadow-md justify-center items-center w-full py-4"
           >
             <span class="text-[30px] text-main">3</span>
-            <span>Мы приедем к Вам</span>
+            <span>{{ dataViezd.acf.step_3 }}</span>
           </div>
         </div>
         <span class="test-[18px] py-2">Вопрос-ответ</span>
@@ -120,12 +122,8 @@
         class="bg-white  shadow-md rounded-[5px] p-[24px] flex flex-col gap-[20px]"
       >
         <span>
-          <span class="text-main">Задача нашего медицинского центра -</span>
-          сделать Ваше сотрудничество с нами максимально комфортным.<br />
-          Поэтому мы предоставляем вам возможность подать online заявку и сразу
-          же оплатить её.<br />
-          Это выгодно сократит время нахождения нашей медсестры у Вас дома, что
-          позволит ей успеть на последующие вызовы.
+          <span class="text-main">{{ dataViezd.acf.blok_sinim }}</span>
+          {{ dataViezd.acf.blok_sprava }}
         </span>
         <nuxt-link
           v-if="CART.length >= 1"
@@ -170,7 +168,11 @@ export default {
   },
   computed: {
     ...mapGetters(['CART'])
-  }
+  },
+  async asyncData({ $axios }) {
+  const dataViezd = await $axios.$get('https://foxsis.ru/alvd/wp-json/wp/v2/pages/13922?_fields=acf')
+  return { dataViezd }
+}
 }
 </script>
 

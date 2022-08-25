@@ -139,7 +139,7 @@
         <div
           class="hidden sm:flex justify-end items-center gap-[3px] col-span-1 row-span-1 text-white "
         >
-          <a href="tel:88632418555" class="font-semibold text-[16px]">+7 (863) 241-85-55</a>
+          <a v-if="phone.length" :href="`tel:${phone.split(' ').join('').replaceAll('-', '').replace('(', '').replace(')', '').replace('+7', '8')}`" class="font-semibold text-[16px]">{{phone}}</a>
         </div>
         
         <cart-wrapper v-if="cartView == true" @cartView="cartCloseView" ref="cart"/>
@@ -190,7 +190,8 @@ export default {
       WidhtDevice: 1920,
       mobileMenu: false,
       showSearchMob: false,
-      isMobile: false
+      isMobile: false,
+      phone: ''
     }
   },
 
@@ -215,6 +216,12 @@ export default {
      onResize () {
       this.isMobile = window.innerWidth < 600
       console.log(this.$route.path);
+    },
+    async fetchSomethingPhone () {
+      const phone = await this.$axios.$get(
+        'https://foxsis.ru/alvd/wp-json/wp/v2/pages/11904'
+      )
+      this.phone = phone.acf.nomer_telefona
     }
   },
   computed: {
@@ -234,6 +241,7 @@ export default {
   mounted () {
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
+    this.fetchSomethingPhone()
   }
 }
 </script>
