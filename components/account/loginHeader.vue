@@ -1,21 +1,18 @@
 <template>
   <div class="">
     <div
-      class="fixed bg-[#343434]/40  w-screen h-screen left-0 top-0 pt-[13px] z-[11]"
+      class="fixed bg-[#343434]/40 w-screen h-screen left-0 top-0 pt-[13px] z-[11]"
       @click="closeLogin()"
     ></div>
     <div
-      class="bg-white absolute overflow-hidden p-[24px] right-0 top-0 w-full  max-w-[370px] shadow-md rounded-bl-[5px] z-[999999]"
+      class="bg-white absolute overflow-hidden p-[24px] right-0 top-0 w-full max-w-[370px] shadow-md rounded-bl-[5px] z-[999999]"
     >
       <span class="w-full text-right pb-4">Вход в личный кабинет</span>
       <tabs-login>
         <tab-login title="По телефону">
           <!-- телефон -->
-          <form
-            @submit.prevent="handleLoginSubmit()"
-            class="flex flex-col gap-4"
-          >
-            <div class="flex flex-col items-start justify-start gap-2 w-full ">
+          <form @submit.prevent="handleLoginSubmit()" class="flex flex-col gap-4">
+            <div class="flex flex-col items-start justify-start gap-2 w-full">
               <!-- <label for="login" class="text-[14px]">Логин</label> -->
               <input
                 type="text"
@@ -23,28 +20,23 @@
                 placeholder="+7(___)___−__−__*"
                 v-facade="'+7(###)###-##-##'"
                 v-model="credentials.username"
-                @input="evt => (credentials.username = evt.target.value)"
+                @input="(evt) => (credentials.username = evt.target.value)"
                 class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                 id="login"
               />
             </div>
-            <div
-              class="flex flex-col items-start justify-start gap-2 w-full relative"
-            >
+            <div class="flex flex-col items-start justify-start gap-2 w-full relative">
               <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
               <input
                 :type="typePassword"
                 placeholder="Пароль"
                 value="ofis_my"
                 v-model="credentials.password"
-                @input="evt => (credentials.password = evt.target.value)"
+                @input="(evt) => (credentials.password = evt.target.value)"
                 class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a] password-area"
                 id="passHeader"
               />
-              <div
-                @click="show_hide_password()"
-                class="absolute right-[14px] top-[14px]"
-              >
+              <div @click="show_hide_password()" class="absolute right-[14px] top-[14px]">
                 <svg
                   v-if="typePassword == 'password'"
                   xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +77,7 @@
             <div class="flex flex-col items-center justify-center gap-2">
               <button
                 type="submit"
-                class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
+                class="rounded-[5px] border border-main h-[49px] hover:bg-main anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
               >
                 Войти
               </button>
@@ -124,37 +116,29 @@
         </tab-login>
         <tab-login title="По Email">
           <!-- email -->
-          <form
-            @submit.prevent="handleLoginSubmit2()"
-            class="flex flex-col gap-4"
-          >
-            <div class="flex flex-col items-start justify-start gap-2 w-full ">
+          <form @submit.prevent="handleLoginSubmit2()" class="flex flex-col gap-4">
+            <div class="flex flex-col items-start justify-start gap-2 w-full">
               <!-- <label for="login" class="text-[14px]">Логин</label> -->
               <input
                 type="text"
                 placeholder="email"
                 v-model="credentials2.username"
-                @input="evt => (credentials2.username = evt.target.value)"
+                @input="(evt) => (credentials2.username = evt.target.value)"
                 class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                 id="login2"
               />
             </div>
-            <div
-              class="flex flex-col items-start justify-start gap-2 w-full relative"
-            >
+            <div class="flex flex-col items-start justify-start gap-2 w-full relative">
               <!-- <label for="pass" class="text-[14px]">Пароль</label> -->
               <input
                 :type="typePassword"
                 placeholder="Пароль"
                 v-model="credentials2.password"
-                @input="evt => (credentials2.password = evt.target.value)"
+                @input="(evt) => (credentials2.password = evt.target.value)"
                 class="w-full bg-white p-2 border-[1px] border-[#AEAEAE] rounded-[5px] focus:outline-[#8a8a8a]"
                 id="pass2"
               />
-              <div
-                @click="show_hide_password()"
-                class="absolute right-[14px] top-[14px]"
-              >
+              <div @click="show_hide_password()" class="absolute right-[14px] top-[14px]">
                 <svg
                   v-if="typePassword == 'password'"
                   xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +179,7 @@
             <div class="flex flex-col items-center justify-center gap-2">
               <button
                 type="submit"
-                class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
+                class="rounded-[5px] border border-main h-[49px] hover:bg-main anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
               >
                 Войти
               </button>
@@ -235,100 +219,100 @@
 </template>
 
 <script>
-import TabLogin from '../tabs/tab-login.vue'
-import tabsLogin from '../tabs/tabs-login.vue'
+import TabLogin from "../tabs/tab-login.vue";
+import tabsLogin from "../tabs/tabs-login.vue";
 export default {
   components: { tabsLogin, TabLogin },
-  data () {
+  data() {
     return {
       isAuthenticated: false,
       submitting: false,
       error: null,
       credentials: {
-        username: '',
-        password: ''
+        username: "",
+        password: "",
       },
       credentials2: {
-        username: '',
-        password: ''
+        username: "",
+        password: "",
       },
       successfulData: null,
       loginError: false,
-      dataErrors: '',
-      typePassword: 'password'
-    }
+      dataErrors: "",
+      typePassword: "password",
+    };
   },
-  mounted () {
-    this.isAuthenticated = !!this.$apolloHelpers.getToken()
+  mounted() {
+    this.isAuthenticated = !!this.$apolloHelpers.getToken();
   },
   methods: {
-    show_hide_password () {
-      if (this.typePassword == 'password') {
-        this.typePassword = 'text'
+    show_hide_password() {
+      if (this.typePassword == "password") {
+        this.typePassword = "text";
       } else {
-        this.typePassword = 'password'
+        this.typePassword = "password";
       }
     },
-    async handleLoginSubmit () {
-      const phoneUser = this.credentials.username
+    async handleLoginSubmit() {
+      const phoneUser = this.credentials.username;
       const getPhone = phoneUser
-        .replace('-', '')
-        .replace('-', '')
-        .replace('+7', '')
-        .replace('(', '')
-        .replace(')', '')
-      this.credentials.username = getPhone
-      console.log(getPhone)
-      const credentials = this.credentials
-      this.formBusy = true
+        .replace("-", "")
+        .replace("-", "")
+        .replace("+7", "")
+        .replace("(", "")
+        .replace(")", "");
+      this.credentials.username = getPhone;
+      console.log(getPhone);
+      const credentials = this.credentials;
+      this.formBusy = true;
       try {
-        await this.$auth.loginWith('graphql', {
+        await this.$auth.loginWith("graphql", {
           username: getPhone,
-          password: this.credentials.password
-        })
+          password: this.credentials.password,
+        });
         // console.log(localStorage["auth._token.graphql"]);
-        this.formBusy = false
-        this.loginError = false
+        this.formBusy = false;
+        this.loginError = false;
         setTimeout(() => {
-          this.$nuxt.$router.replace({ path: '/my-account' })
-        }, 1000)
+          this.$nuxt.$router.replace({ path: "/my-account" });
+        }, 1000);
       } catch (errors) {
-        this.formBusy = false
-        this.loginError = true
-        this.dataErrors = errors
-        console.log(errors)
+        this.formBusy = false;
+        this.loginError = true;
+        this.dataErrors = errors;
+        console.log(errors);
       }
     },
-    async handleLoginSubmit2 () {
-      const emailUser = this.credentials2.username
-      this.formBusy = true
+    async handleLoginSubmit2() {
+      const emailUser = this.credentials2.username;
+      this.formBusy = true;
       try {
-        await this.$auth.loginWith('graphql', {
+        await this.$auth.loginWith("graphql", {
           username: emailUser,
-          password: this.credentials2.password
-        })
+          password: this.credentials2.password,
+        });
         // console.log(localStorage["auth._token.graphql"]);
-        this.formBusy = false
-        this.loginError = false
-         setTimeout(() => {
-          this.$nuxt.$router.replace({ path: '/my-account' })
-        }, 1000)
+        this.formBusy = false;
+        this.loginError = false;
+        setTimeout(() => {
+          this.$nuxt.$router.replace({ path: "/my-account" });
+        }, 1000);
       } catch (errors) {
-        this.formBusy = false
-        this.loginError = true
-        this.dataErrors = errors
-        console.log(errors)
+        this.formBusy = false;
+        this.loginError = true;
+        this.dataErrors = errors;
+        console.log(errors);
       }
     },
-    async onLogout () {
-      await this.$apolloHelpers.onLogout()
-      this.isAuthenticated = false
+    async onLogout() {
+      await this.$apolloHelpers.onLogout();
+      this.isAuthenticated = false;
     },
-    closeLogin () {
-      this.$emit('loginView')
-    }
-  }
-}
+    closeLogin() {
+      this.$emit("loginView");
+    },
+  },
+};
 </script>
 
 <style></style>

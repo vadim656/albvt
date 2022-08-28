@@ -31,7 +31,7 @@
         </div>
          <!-- mobile -->
         <div
-        v-if="isMobile == true && this.$route.path == '/all-complecs/'"
+        v-if="isMobile == true "
          title="Комплексы" class="cursor-pointer">
           <div class="">
             <div class="bg-white shadow-md rounded-[5px] p-[10px]">

@@ -6,6 +6,7 @@
 
 <script>
 import MainPageWrapper from '~/components/pages/MainPageWrapper.vue'
+
 export default {
   components: { MainPageWrapper },
   data () {
@@ -21,6 +22,7 @@ export default {
     }
   },
   methods: {
+    
     onResize () {
       this.isMobile = window.innerWidth < 600
       console.log(this.$route.path)
@@ -28,6 +30,7 @@ export default {
   },
   mounted () {
     this.onResize()
+
     window.addEventListener('resize', this.onResize, { passive: true })
   },
   layout: 'MainLayout',

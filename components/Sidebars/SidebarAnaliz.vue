@@ -31,8 +31,11 @@
         </div>
 
         <!-- mobile -->
+
+        <!-- v-if="isMobile == true && this.$route.path == '/all-analyzes/'" -->
+
         <div
-          v-if="isMobile == true && this.$route.path == '/all-analyzes/'"
+          v-if="isMobile == true"
           class="bg-white shadow-md rounded-[5px] p-[10px] "
           :class="[viewAll ? 'h-full' : 'h-full']"
         >
@@ -61,8 +64,9 @@
                       '/' +
                       item.node.databaseId
                   "
+                  
                   class="w-full hover:text-[#4cbdee] anime  cursor-pointer text-[14px] sm:text-[16px] pb-[12px] border-b-[0.5px] border-b-[#343434]/10 "
-                  >{{ item.node.name }}</nuxt-link
+                  >{{ item.node.name }} </nuxt-link
                 >
               </h4>
               <transition name="fade">
@@ -388,7 +392,6 @@ export default {
   methods: {
     onResize () {
       this.isMobile = window.innerWidth < 600
-      console.log(this.$route.path);
     },
     ...mapActions(['GET_CATEGORIES_FROM_JSON']),
     viewAllAnalizesTrue () {
@@ -405,9 +408,14 @@ export default {
       } else {
         this.viewItem = null
       }
+      
     },
     preFetchDataCat (item) {
-      this.GET_CATEGORIES_FROM_JSON(item.name)
+      this.GET_CATEGORIES_FROM_JSON(item.name) 
+
+      
+
+      console.log('415');
     },
     preFetchDataSubCat (item) {
       this.GET_CATEGORIES_FROM_JSON(item.name)

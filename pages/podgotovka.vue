@@ -412,7 +412,7 @@
           </table>
         </div>
       </tab-2>
-      <tab-2 title="Моча" class="flex flex-col">
+      <tab-2 title="Моча" class="flex flex-col test-id">
         <span class="text-main text-[14px]"
           >Сбор мочи для общего анализа в контейнер с консервантом</span
         ><br />
@@ -515,7 +515,7 @@
         </p>
         <br />
       </tab-2>
-      <tab-2 title="Кал" class="flex flex-col">
+      <tab-2 title="Кал" class="flex flex-col test-id">
         <ul
           class="list-disc list-outside pl-4 pt-4 text-[14px] font-light flex flex-col gap-2"
         >
@@ -574,7 +574,7 @@
         </ul>
         <br />
       </tab-2>
-      <tab-2 title="Спермограмма" class="flex flex-col">
+      <tab-2 title="Спермограмма" class="flex flex-col test-id">
         <p class="text-[14px] font-light">
           Правила сбора биоматериала и подготовка к исследованию эякулята (тесты
           № 594, 595, 597, 598, 599)

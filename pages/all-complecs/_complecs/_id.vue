@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-[20px] ">
       <div class="flex flex-col sm:flex-row gap-2 sm:justify-between">
         
-        <h1 class="text-[24px] font-medium flex gap-2 items-center">
+        <h1 class="text-[24px] font-medium flex gap-2 items-center" id="scroll-to">
            <button
             @click="$router.back()"
             class=" flex justify-center items-center"
@@ -79,6 +79,10 @@ export default {
   },
   methods: {
     ...mapActions(['ADD_TO_CART']),
+     scrollToAnaliz () {
+      var scrollDiv = document.getElementById('scroll-to').offsetTop - 90
+      window.scrollTo({ top: scrollDiv, behavior: 'smooth' })
+    },
     addToCart (item) {
       this.ADD_TO_CART(item), (this.addCartItem = item.name)
     },
@@ -112,8 +116,6 @@ export default {
       return this.limit ? this.products.slice(0, this.limit) : this.products
     }
   },
-  created () {},
-  mounted () {},
   async fetch () {
     const category = 'category='
     const PerPage = 'per_page='
@@ -126,6 +128,23 @@ export default {
         8
     ).then(res => res.json())
     this.pageName = this.products[0].categories[0].name
+  },
+  mounted () {
+     if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+  },
+  updated () {
+    if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+  },
+  watch: {
+    $route () {
+      if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+    }
   }
 }
 </script>

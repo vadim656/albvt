@@ -34,10 +34,10 @@ export default {
   },
   mounted () {
     this.selectTab(0)
-    window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        })
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'smooth'
+    // })
   },
   methods: {
     selectTab (i) {
@@ -49,8 +49,12 @@ export default {
           top: 247,
           behavior: 'smooth'
         })
+        
       })
-    }
+      // const el = document.querySelector('.test-id')
+      //   el.scrollIntoView({block: "start", behavior: "smooth"})
+    },
+    scrollToID () {}
   }
 }
 </script>

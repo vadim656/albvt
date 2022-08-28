@@ -2,7 +2,6 @@
   <div class="w-full h-full bg-main  pb-[26px] ">
     <header
       class="w-full fixed left-0 top-0 bg-main  sm:pb-[14px]  lg:pb-[0px] pt-[14px]  z-[3]"
-     
     >
       <transition name="fade">
         <div
@@ -15,11 +14,25 @@
           >
             <nuxt-link @click="mobileMenu = false" to="/o-nas">О нас</nuxt-link>
             <nuxt-link @click="mobileMenu = false" to="/reis">Услуги</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/all-analyzes/gematologicheskie-issledovaniya/2849">Анализы</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/all-complecs/1-dlya-zhenshhin/2797">Комплексы анализов</nuxt-link
+            <nuxt-link
+              @click="mobileMenu = false"
+              to="/all-analyzes/gematologicheskie-issledovaniya/2849"
+              >Анализы</nuxt-link
             >
-            <nuxt-link @click="mobileMenu = false" to="/contacts">Контакты</nuxt-link>
-            <nuxt-link @click="mobileMenu = false" to="/result" class="text-main px-4 py-2 block sm:hidde rounded-[5px] border-[0.5px] border-main text-center">Результаты анализов</nuxt-link>
+            <nuxt-link
+              @click="mobileMenu = false"
+              to="/all-complecs/1-dlya-zhenshhin/2797"
+              >Комплексы анализов</nuxt-link
+            >
+            <nuxt-link @click="mobileMenu = false" to="/contacts"
+              >Контакты</nuxt-link
+            >
+            <nuxt-link
+              @click="mobileMenu = false"
+              to="/result"
+              class="text-main px-4 py-2 block sm:hidde rounded-[5px] border-[0.5px] border-main text-center"
+              >Результаты анализов</nuxt-link
+            >
           </div>
         </div>
         <!-- /.mobile-menu -->
@@ -36,13 +49,12 @@
             v-if="!isMobile"
             @mobSearchClose="mobSearchClose()"
           />
-           <!-- mobile -->
+          <!-- mobile -->
           <header-search
             class="block sm:hidden absolute left-0 w-full  top-[40px]  sm:col-span-2  sm:relative "
             v-else-if="isMobile == true && showSearchMob == true"
             @mobSearchClose="mobSearchClose()"
           />
-          
         </transition>
 
         <div class="col-span-1 flex gap-[10px] justify-between">
@@ -61,8 +73,9 @@
             </button>
             <!-- icon call -->
             <button class="block sm:hidden">
-              <a href="tel:88632418555"><img src="/img/icons/mob-call.svg" alt="" class="w-8 h-8 " /></a>
-              
+              <a href="tel:88632418555"
+                ><img src="/img/icons/mob-call.svg" alt="" class="w-8 h-8 "
+              /></a>
             </button>
             <!-- icon cart -->
             <button
@@ -88,8 +101,8 @@
             </button>
             <!-- icon user not loggin -->
             <nuxt-link
-            to="/my-account"
-             v-if="$auth.loggedIn"
+              to="/my-account"
+              v-if="$auth.loggedIn"
               class="order-3 sm:order-last relative"
             >
               <img
@@ -98,13 +111,12 @@
                 class="w-8 xl:w-[2.5rem] h-8 xl:h-[2.5rem] "
               />
               <span
-               
                 class="w-3 h-3 rounded-full flex justify-center items-center bg-[#5cf07c] absolute -top-[0.3rem] left-[1.3rem]  xl:left-[1.6rem]"
               ></span>
             </nuxt-link>
             <!-- icon user  loggin -->
             <button
-            v-else
+              v-else
               class="order-3 sm:order-last relative"
               @click="loginView = true"
             >
@@ -113,7 +125,6 @@
                 alt=""
                 class="w-8 xl:w-[2.5rem] h-8 xl:h-[2.5rem] "
               />
-            
             </button>
             <!-- icon menu -->
             <button
@@ -139,10 +150,27 @@
         <div
           class="hidden sm:flex justify-end items-center gap-[3px] col-span-1 row-span-1 text-white "
         >
-          <a v-if="phone.length" :href="`tel:${phone.split(' ').join('').replaceAll('-', '').replace('(', '').replace(')', '').replace('+7', '8')}`" class="font-semibold text-[16px]">{{phone}}</a>
+          <a
+            v-if="phone.length"
+            :href="
+              `tel:${phone
+                .split(' ')
+                .join('')
+                .replaceAll('-', '')
+                .replace('(', '')
+                .replace(')', '')
+                .replace('+7', '8')}`
+            "
+            class="font-semibold text-[16px]"
+            >{{ phone }}</a
+          >
         </div>
-        
-        <cart-wrapper v-if="cartView == true" @cartView="cartCloseView" ref="cart"/>
+
+        <cart-wrapper
+          v-if="cartView == true"
+          @cartView="cartCloseView"
+          ref="cart"
+        />
         <login-header
           v-if="loginView == true && !$auth.loggedIn"
           @loginView="loginCloseView"
@@ -156,7 +184,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+
 import LoginHeader from './account/loginHeader.vue'
 
 import CartWrapper from './cart/CartWrapper.vue'
@@ -196,13 +225,14 @@ export default {
   },
 
   methods: {
-    mobSearchClose(){
+    ...mapActions(['GET_BIOMATERIALS_FROM_API']),
+    mobSearchClose () {
       this.showSearchMob = !this.showSearchMob
-      console.log('180');
+      console.log('180')
     },
-    reOpenmobSearch (){
+    reOpenmobSearch () {
       this.showSearchMob = !this.showSearchMob
-      console.log('184');
+      console.log('184')
     },
     cartCloseView () {
       this.cartView = false
@@ -213,9 +243,8 @@ export default {
     mobileMenuDisplay () {
       this.mobileMenu = !this.mobileMenu
     },
-     onResize () {
+    onResize () {
       this.isMobile = window.innerWidth < 600
-      console.log(this.$route.path);
     },
     async fetchSomethingPhone () {
       const phone = await this.$axios.$get(
@@ -242,6 +271,7 @@ export default {
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
     this.fetchSomethingPhone()
+    this.GET_BIOMATERIALS_FROM_API()
   }
 }
 </script>
