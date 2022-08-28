@@ -6,7 +6,7 @@
       <div
         v-for="(item, i) in itemsgroup"
         :key="i"
-        class="bg-white rounded-[5px] h-[140px] lg:h-[122px] xl:h-[172px] flex justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
+        class="hidden bg-white rounded-[5px] h-[140px] lg:h-[122px] xl:h-[172px] sm:flex justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
       >
         <img :src="item.img" alt="уу" class="w-[48px] h-auto" />
         <NuxtLink
@@ -14,6 +14,54 @@
           class="font-medium text-[14px] text-[#343434] w-full flex justify-center items-center"
         >
           <span class="sm:w-full w-2/3 text-center">{{ item.name }}</span>
+        </NuxtLink>
+      </div>
+      <!-- mobile -->
+      <div
+        class="bg-white rounded-[5px] h-[140px] lg:h-[122px] xl:h-[172px] flex sm:hidden justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
+      >
+        <img src="/img/icons/Group950.svg" alt="уу" class="w-[48px] h-auto" />
+        <NuxtLink
+          to="/all-analyzes"
+          class="font-medium text-[14px] text-[#343434] w-full flex justify-center items-center"
+        >
+          <span class="sm:w-full w-2/3 text-center">Анализы по группам</span>
+        </NuxtLink>
+      </div>
+
+      <div
+        class="bg-white rounded-[5px] h-[140px] lg:h-[122px] xl:h-[172px] flex sm:hidden justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
+      >
+        <img src="/img/icons/Group951.svg" alt="уу" class="w-[48px] h-auto" />
+        <NuxtLink
+          to="/all-complecs"
+          class="font-medium text-[14px] text-[#343434] w-full flex justify-center items-center"
+        >
+          <span class="sm:w-full w-2/3 text-center">Комплексы анализов</span>
+        </NuxtLink>
+      </div>
+
+      <div
+        class="bg-white rounded-[5px] h-[140px] lg:h-[122px] xl:h-[172px] flex sm:hidden justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
+      >
+        <img src="/img/icons/Group952.svg" alt="уу" class="w-[48px] h-auto" />
+        <NuxtLink
+          to="/viezd"
+          class="font-medium text-[14px] text-[#343434] w-full flex justify-center items-center"
+        >
+          <span class="sm:w-full w-2/3 text-center">Анализы на дому</span>
+        </NuxtLink>
+      </div>
+
+      <div
+        class="bg-white rounded-[5px] h-[140px] lg:h-[122px] xl:h-[172px] flex sm:hidden justify-center items-center flex-col gap-[11px] hover:shadow-xl anime"
+      >
+        <img src="/img/icons/Group953.svg" alt="уу" class="w-[48px] h-auto" />
+        <NuxtLink
+          to="/podgotovka"
+          class="font-medium text-[14px] text-[#343434] w-full flex justify-center items-center"
+        >
+          <span class="sm:w-full w-2/3 text-center">Подготовка к анализам</span>
         </NuxtLink>
       </div>
     </div>
