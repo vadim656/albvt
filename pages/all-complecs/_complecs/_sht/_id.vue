@@ -21,7 +21,7 @@
           </button>
     <div class="w-full sm:w-2/3  order-2 sm:order-1 gap-[20px]">
    
-      <div class="flex flex-row items-start gap-[8px] ">
+      <div class="flex flex-row items-start gap-[8px] " >
         <button
             @click="$router.back()"
             class=" hidden sm:flex justify-center items-center"
@@ -107,7 +107,7 @@
       </div>
     </div>
 
-    <div class="w-full sm:w-1/3 order-1 sm:order-2">
+    <div class="w-full sm:w-1/3 order-1 sm:order-2"  id="scroll-toAnaliz">
       <cart-item-analiz
         :data="products"
         :bio="GET_ALL_BIOMATERIALS"
@@ -148,6 +148,10 @@ export default {
     }
   },
   methods: {
+     scrollToAnaliz () {
+      var scrollDiv = document.getElementById('scroll-toAnaliz').offsetTop - 90
+      window.scrollTo({ top: scrollDiv, behavior: 'smooth' })
+    },
     ...mapActions(['ADD_TO_CART', 'GET_BIOMATERIALS_FROM_API']),
     addToCart (data) {
       this.ADD_TO_CART(data), (this.addCartItem = data.name)
@@ -176,11 +180,25 @@ export default {
   mounted () {
     this.GET_BIOMATERIALS_FROM_API()
     this.getCrosselsProducts()
+    if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
   },
   computed: {
     ...mapGetters(['GET_ALL_BIOMATERIALS'])
   },
-
+  updated () {
+    if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+  },
+  watch: {
+    $route () {
+      if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+    }
+  },
   async asyncData ({ $axios, params }) {
     const title = params.id
     let products = await $axios.$get(

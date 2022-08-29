@@ -54,7 +54,7 @@
             Пробоподготовка (МИК)
             <span class="font-thin text-[10px]  sm:text-[12px]">(+200₽)</span>
           </span>
-          <span v-if="material == 9837">
+          <span v-if="material == 14738">
             Пробоподготовка (КГИСТ) <span class="text-[10px]  sm:text-[12px]">(+100₽)</span>
           </span>
           <span v-if="material == 9838">
@@ -83,7 +83,7 @@
           <span v-if="material == 9846">
             Пробоподготовка (КЖЦ) <span class="text-[10px]  sm:text-[12px]">(+300₽)</span>
           </span>
-          <span v-if="material == 9847">
+          <span v-if="material == 14748">
             Забор венозной крови <span class="text-[10px]  sm:text-[12px]">(+150₽)</span>
           </span>
           <span v-if="material == 9848">

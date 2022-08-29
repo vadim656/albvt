@@ -78,7 +78,7 @@
             Главная
           </span>
         </nuxt-link>
-        <nuxt-link to="/all-analyzes/gematologicheskie-issledovaniya/2849" 
+        <nuxt-link to="/all-analyzes" 
         class="flex flex-col gap-2 justify-center items-center border-r-[1px] border-[#343434]/20">
          <img class="" src="/img/icons/mob-foo-2.svg" alt="" />
           <span>

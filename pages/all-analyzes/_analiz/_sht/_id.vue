@@ -76,7 +76,7 @@
     </div>
     
 
-    <div class="w-full sm:w-1/3 order-1 sm:order-2">
+    <div class="w-full sm:w-1/3 order-1 sm:order-2" id="scroll-toAnaliz">
       <cart-item-analiz 
       :data="products" 
       :bio="GET_ALL_BIOMATERIALS"
@@ -116,6 +116,10 @@ export default {
     }
   },
   methods: {
+     scrollToAnaliz () {
+      var scrollDiv = document.getElementById('scroll-toAnaliz').offsetTop - 90
+      window.scrollTo({ top: scrollDiv, behavior: 'smooth' })
+    },
     ...mapActions(['ADD_TO_CART', 'GET_BIOMATERIALS_FROM_API']),
     addToCart (data) {
       this.ADD_TO_CART(data),
@@ -125,6 +129,21 @@ export default {
   },
   mounted () {
     this.GET_BIOMATERIALS_FROM_API()
+    if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+  },
+  updated () {
+    if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+  },
+  watch: {
+    $route () {
+      if (window.screen.width <= 600) {
+      this.scrollToAnaliz()
+    }
+    }
   },
   computed: {
     ...mapGetters(['GET_ALL_BIOMATERIALS', 'CART_IDS']),
