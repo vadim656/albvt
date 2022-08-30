@@ -91,6 +91,7 @@ export default {
     },
     async getProductToParams () {
       this.limit = null
+      this.dalee = true
       const params2 = this.$route.params
       const all_products = await this.$axios.$get(
         'https://foxsis.ru/alvd/wp-json/wc/v3/products',
@@ -101,7 +102,8 @@ export default {
           },
           params: {
             category: params2.id,
-            per_page: 100
+            per_page: 100, 
+            order: 'orderby=title'
           }
         }
       )
@@ -119,13 +121,14 @@ export default {
   async fetch () {
     const category = 'category='
     const PerPage = 'per_page='
+    const order = 'orderby=title'
     this.products = await fetch(
       'https://foxsis.ru/alvd/wp-json/wc/v3/products?' +
         category +
         this.$route.params.id +
         '&' +
         PerPage +
-        8
+        8 + '&' + order
     ).then(res => res.json())
     this.pageName = this.products[0].categories[0].name
   },
@@ -135,7 +138,7 @@ export default {
     }
   },
   updated () {
-    if (window.screen.width <= 600) {
+    if (window.screen.width <= 600 && this.dalee == false) {
       this.scrollToAnaliz()
     }
   },

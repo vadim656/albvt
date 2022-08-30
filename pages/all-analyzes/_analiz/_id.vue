@@ -76,7 +76,8 @@ export default {
       test: [],
       products: [],
       posts: [],
-      pageName: ''
+      pageName: '',
+      dalee: false
     }
   },
   methods: {
@@ -90,15 +91,19 @@ export default {
 
     async getProductToParams () {
       this.limit = null
+      this.dalee = true
       const category = 'category='
       const PerPage = 'per_page='
+      const order = 'orderby=title'
       const all_products = await this.$axios.$get(
         'https://foxsis.ru/alvd/wp-json/wc/v3/products?' +
           category +
           this.$route.params.id +
           '&' +
           PerPage +
-          100
+          100 +
+          '&' +
+          order
       )
 
       return { all_products }, (this.products = all_products)
@@ -118,33 +123,37 @@ export default {
   async fetch () {
     const category = 'category='
     const PerPage = 'per_page='
+    const order = 'orderby=title'
     this.products = await fetch(
       'https://foxsis.ru/alvd/wp-json/wc/v3/products?' +
         category +
         this.$route.params.id +
         '&' +
         PerPage +
-        8
+        8 +
+        '&' +
+        order
     ).then(res => res.json())
     this.pageName = this.products[0].categories[0].name
       .replace(/[0-9]/g, '')
       .replace(/\./g, '')
   },
   mounted () {
-     if (window.screen.width <= 600) {
+     if (window.screen.width <= 600 && this.dalee == false) {
       this.scrollToAnaliz()
     }
   },
   updated () {
-    if (window.screen.width <= 600) {
+    if (window.screen.width <= 600 && this.dalee == false) {
       this.scrollToAnaliz()
     }
   },
+
   watch: {
     $route () {
       if (window.screen.width <= 600) {
-      this.scrollToAnaliz()
-    }
+        this.scrollToAnaliz()
+      }
     }
   }
 }
