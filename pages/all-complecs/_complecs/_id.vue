@@ -74,7 +74,8 @@ export default {
       test: [],
       products: [],
       posts: [],
-      pageName: ''
+      pageName: '',
+      dalee: false
     }
   },
   methods: {
