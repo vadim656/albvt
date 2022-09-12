@@ -14,19 +14,19 @@
               <p>E-mail:</p>
             </div>
             <div class="flex flex-col gap-1">
-              <a href="tel:88632418555" class="text-main">
-                +7 (863) 241-85-55</a
+              <a :href="`tel:` + data.acf.tel.replace('(', '').replace(')', '').replaceAll('-', '')" class="text-main">
+                {{data.acf.tel}}</a
               >
-              <a href="email: albavita2019@yandex.ru" class="text-main">
-                albavita2019@yandex.ru</a
+              <a :href="`email:` + data.acf.email" class="text-main">
+                {{data.acf.email}}</a
               >
             </div>
           </div>
 
           <br />
           <p>Время и график работы:</p>
-          <p>Пн-Вс 7:00-11:00 — сдача анализов</p>
-          <p>Пн-Вс 7:00-15:00 — можно забрать результаты исследований</p>
+          <p>{{data.acf.vremya_i_grafik_raboty1}}</p>
+          <p>{{data.acf.vremya_i_grafik_raboty2}}</p>
         </div>
         <div>
           <div class="flex flex-col gap-2">
@@ -57,7 +57,15 @@
 import HeadingH3 from '~/components/HeadingH3.vue'
 export default {
   components: { HeadingH3 },
-  layout: 'MainLayout'
+  layout: 'MainLayout',
+  async asyncData ({ $axios }) {
+    let { data } = await $axios.get(
+      'https://foxsis.ru/alvd/wp-json/wp/v2/pages/13926',
+    )
+    
+
+    return { data }
+  }
 }
 </script>
 
