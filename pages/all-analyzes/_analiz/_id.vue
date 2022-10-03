@@ -94,7 +94,7 @@ export default {
       this.dalee = true
       const category = 'category='
       const PerPage = 'per_page='
-      const order = 'orderby=title'
+      const order = 'order=asc&orderby=title'
       const all_products = await this.$axios.$get(
         'https://foxsis.ru/alvd/wp-json/wc/v3/products?' +
           category +
@@ -103,7 +103,7 @@ export default {
           PerPage +
           100 +
           '&' +
-          order
+          'order=asc&orderby=title'
       )
 
       return { all_products }, (this.products = all_products)

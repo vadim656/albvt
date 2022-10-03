@@ -104,7 +104,8 @@ export default {
           params: {
             category: params2.id,
             per_page: 100, 
-            order: 'orderby=title'
+            order: 'asc',
+            orderby: 'title'
           }
         }
       )
@@ -129,7 +130,7 @@ export default {
         this.$route.params.id +
         '&' +
         PerPage +
-        8 + '&' + order
+        8 + '&' + 'order=asc&orderby=title'
     ).then(res => res.json())
     this.pageName = this.products[0].categories[0].name
   },

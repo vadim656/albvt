@@ -59,8 +59,9 @@
             <tabs-analiz class="w-full ">
               <tab-analiz
                 title="Описание"
+                :key="products.name + '1'"
                 class="cursor-pointer flex flex-col gap-4"
-                v-if="products.description.length > 0"
+                v-if="products.description.length"
               >
                 <div
                   v-html="products.description"
