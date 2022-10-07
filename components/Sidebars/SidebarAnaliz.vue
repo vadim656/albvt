@@ -121,8 +121,6 @@
                           </svg>
                           {{
                             subitem.node.name
-                              .replace(/[0-9]/g, '')
-                              .replace(/\./g, '')
                           }}
                         </span>
                       </div>
@@ -154,8 +152,7 @@
                               <span>-</span>
                               {{
                                 itemSubSub.node.name
-                                  .replace(/[0-9]/g, '')
-                                  .replace(/\./g, '')
+                                  
                               }}
                             </span>
                           </nuxt-link>
@@ -180,8 +177,7 @@
                           <span>-</span>
                           {{
                             subitem.node.name
-                              .replace(/[0-9]/g, '')
-                              .replace(/\./g, '')
+                              
                           }}
                         </span>
                       </nuxt-link>
@@ -279,10 +275,11 @@
                           </svg>
                           {{
                             subitem.node.name
-                              .replace(/[0-9]/g, '')
-                              .replace(/\./g, '')
                           }}
                         </span>
+                        
+                              <!-- .replace(/[0-9]/g, '')
+                              .replace(/\./g, '') -->
                       </div>
                       <ul
                         class="pt-4 pl-4  flex flex-col gap-[10px]"
@@ -312,8 +309,6 @@
                               <span>-</span>
                               {{
                                 itemSubSub.node.name
-                                  .replace(/[0-9]/g, '')
-                                  .replace(/\./g, '')
                               }}
                             </span>
                           </nuxt-link>
@@ -338,8 +333,6 @@
                           <span>-</span>
                           {{
                             subitem.node.name
-                              .replace(/[0-9]/g, '')
-                              .replace(/\./g, '')
                           }}
                         </span>
                       </nuxt-link>
