@@ -13,7 +13,7 @@
       </span>
       <!-- max-h-[180px] sm:max-h-[380px]  -->
       <div
-        class="scrollbar-cart flex flex-col list-disc list-outside px-[24px] h-full max-h-auto  sm:max-h-[180px] lg:max-h-[260px]  overflow-y-auto "
+        class="scrollbar-cart flex flex-col gap-4 list-disc list-outside px-[24px] h-full max-h-auto  sm:max-h-[180px] lg:max-h-[260px]  overflow-y-auto "
       >
         <cart-item
           v-for="(item, index) in CART"
@@ -21,17 +21,27 @@
           :itemInCart="item"
           @deleteFromCart="deleteFromCart(index)"
         />
+        <div class="flex flex-col gap-4 ">
+          <span class="w-full py-2  border-b-2 border-[#DDEEF6]">Взятие биоматериала</span>
+          <div class="flex flex-col gap-2 ">
+             <cart-item-bio v-for="(item, i) in bioMaterialsComplete" 
+          :key="i"
+          :bio_data="item"
+           />
+          </div>
+         
+        </div>
       </div>
       <!-- dop to price -->
       <div
-        class="bg-[#ECECEC] py-[18px] px-[24px] mt-[24px] flex flex-col gap-[24px]"
+        class=""
         v-if="CART.length >= 1"
       >
-        <ul class="flex flex-col gap-2">
-          <!-- <span
+        <!-- <ul class="flex flex-col gap-2">
+          <span
             class="text-[#A55B4A] text-[16px] font-medium w-full text-center"
             >+ Взятие биоматериала:
-          </span> -->
+          </span>
           <li
             v-for="(item, index) in bioMaterialsComplete"
             :key="item.sku"
@@ -44,7 +54,7 @@
         <span class="text-[#54ACD2] text-[10px] sm:text-[12px] text-center"
           >Взятие биоматериала не входит в общую стоимость выбранных вами
           исследований. Оно требуется для выбранных Вами услуг.</span
-        >
+        > -->
       </div>
       <div class="bg-white p-[24px] flex flex-col gap-[24px]" v-else>
         <span class="text-[#A55B4A] text-[16px] font-medium w-full text-center">
@@ -54,12 +64,12 @@
           >Впишите нужное исследование в поисковую строку или перейдите в раздел
           “Анализы”</span
         >
-        <button
-          @click="closeCart()"
-         
-        >
-        <nuxt-link to="/all-analyzes/gematologicheskie-issledovaniya/2849"  class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]">Анализы</nuxt-link>
-          
+        <button @click="closeCart()">
+          <nuxt-link
+            to="/all-analyzes/gematologicheskie-issledovaniya/2849"
+            class="rounded-[5px] border border-main h-[49px] hover:bg-main  anime text-main hover:text-white w-full flex justify-center items-center py-2 text-[16px]"
+            >Анализы</nuxt-link
+          >
         </button>
         <button @click="closeCart()">Закрыть</button>
       </div>
@@ -129,7 +139,11 @@ export default {
     closeCart () {
       this.$emit('cartView')
     },
-    ...mapActions(['DELETE_FROM_CART', 'RESET_CART', 'GET_BIOMATERIALS_FROM_API']),
+    ...mapActions([
+      'DELETE_FROM_CART',
+      'RESET_CART',
+      'GET_BIOMATERIALS_FROM_API'
+    ]),
     deleteFromCart (index) {
       this.DELETE_FROM_CART(index)
     },
@@ -140,10 +154,10 @@ export default {
   },
   computed: {
     ...mapGetters(['CART', 'GET_ALL_BIOMATERIALS']),
-    bioMaterialsActive: function () {
-      let activeItem = this.dopItems.filter(item => item.active == true)
-      return activeItem
-    },
+    // bioMaterialsActive: function () {
+    //   let activeItem = this.dopItems.filter(item => item.active == true)
+    //   return activeItem
+    // },
     bioMaterialsComplete: function () {
       let chars = this.dopTest
       let uniqueChars = []

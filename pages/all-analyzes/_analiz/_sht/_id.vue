@@ -135,6 +135,7 @@ export default {
     if (window.screen.width <= 600) {
       this.scrollToAnaliz()
     }
+    this.$router.replace({'query': null});
   },
   updated () {
     if (window.screen.width <= 600) {

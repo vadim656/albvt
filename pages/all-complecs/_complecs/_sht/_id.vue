@@ -161,6 +161,7 @@ export default {
     if (window.screen.width <= 600) {
       this.scrollToAnaliz()
     }
+    this.$router.replace({'query': null});
   },
   computed: {
     ...mapGetters(['GET_ALL_BIOMATERIALS'])
