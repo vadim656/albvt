@@ -13,6 +13,7 @@
       </span>
       <!-- max-h-[180px] sm:max-h-[380px]  -->
       <div
+      v-if="CART.length >= 1"
         class="scrollbar-cart flex flex-col gap-4 list-disc list-outside px-[24px] h-full max-h-auto  sm:max-h-[180px] lg:max-h-[260px]  overflow-y-auto "
       >
         <cart-item
@@ -33,29 +34,7 @@
         </div>
       </div>
       <!-- dop to price -->
-      <div
-        class=""
-        v-if="CART.length >= 1"
-      >
-        <!-- <ul class="flex flex-col gap-2">
-          <span
-            class="text-[#A55B4A] text-[16px] font-medium w-full text-center"
-            >+ Взятие биоматериала:
-          </span>
-          <li
-            v-for="(item, index) in bioMaterialsComplete"
-            :key="item.sku"
-            class="flex justify-between items-start  text-[12px] text-[#909090]"
-          >
-            <span class="font-medium text-[12px] ">- {{ item.name }} </span>
-            <span>{{ item.price }} руб.</span>
-          </li>
-        </ul>
-        <span class="text-[#54ACD2] text-[10px] sm:text-[12px] text-center"
-          >Взятие биоматериала не входит в общую стоимость выбранных вами
-          исследований. Оно требуется для выбранных Вами услуг.</span
-        > -->
-      </div>
+
       <div class="bg-white p-[24px] flex flex-col gap-[24px]" v-else>
         <span class="text-[#A55B4A] text-[16px] font-medium w-full text-center">
           Ваша корзина пуста.
